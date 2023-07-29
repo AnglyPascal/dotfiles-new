@@ -1,0 +1,15 @@
+[user]
+	email = ahsanalmahir@gmail.com
+	name = AnglyPascal
+[core]
+	editor = nvim
+[color]
+	ui = true
+[credential]
+	helper = store
+[init]
+	defaultBranch = main
+[http]
+	postBuffer = 18443717
+[push]
+	autoSetupRemote = true
