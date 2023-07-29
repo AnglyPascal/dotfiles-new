@@ -1,0 +1,292 @@
+html#main-window {
+	--color-bg: #1e1f29;
+	--toolbar-bgcolor: var(--color-bg) !important;
+
+	--gap-between-tabs: 5px;
+	--margin-after-tab-list: 10px;
+	--margin-before-tab-list: 10px;
+	--tab-font: "Cantarell", sans-serif;
+	--tab-font-weight: 400;
+	--tab-height: 25px;
+	--tabs-container-height: 140px;
+
+	--urlbar-container-margin: 9%;
+	--urlbar-list-width: 70%;
+	--urlbar-text-font: "mononoki Nerd Font", sans-serif;
+	--urlbar-text-size: 8pt;
+	--urlbar-text-weight: 100;
+
+	/* Firefox variables */
+	--lwt-toolbar-field-focus-color: #ffebed !important;
+	--lwt-toolbar-field-color: #ffdee2 !important;
+	--lwt-toolbar-field-background-color: var(--color-bg) !important;
+
+	--arrowpanel-background: #1e1f29 !important;
+	--arrowpanel-color: white !important;
+	--arrowpanel-border-color: transparent !important;
+}
+
+
+
+:root:not([customizing]) #nav-bar toolbarbutton {
+	transform: scale(.8, .8) !important;
+}
+
+
+
+
+/* *******************************************************************
+	Toolbar Elements
+*/
+
+.browser-toolbar {
+	padding-left: 10px !important;
+	padding-right: 10px !important;
+}
+
+/* Bookmarks bar tweaks */
+#PlacesToolbar {
+	align-items: center !important;
+	display: flex !important;
+	font-family: "mononoki Nerd Font", sans-serif !important;
+	font-size: 10pt !important;
+	font-weight: 100 !important;
+	justify-content: center !important;
+}
+
+/* Custom back and forward buttons */
+#back-button {
+	list-style-image: url("left-arrow.svg") !important;
+}
+
+#forward-button {
+	list-style-image: url("right-arrow.svg") !important;
+}
+
+
+#navigator-toolbox {
+	--tabs-border-color: var(--color-bg) !important;
+	background-color: #0d0d12 !important;
+	border: none !important;
+	box-shadow: none !important;
+}
+
+
+
+
+
+
+
+
+
+/* *******************************************************************
+	Urlbar
+*/
+
+
+/* Url bar suggestions list container */
+.urlbarView {
+	background-color: var(--color-bg) !important;
+	border-radius: 0 8px 8px !important;
+	box-shadow: 0px 0px 40px rgba(0, 0, 0, 35%) !important;
+	box-shadow: none !important;
+	margin-left: var(--urlbar-container-margin) !important;
+	width: var(--urlbar-list-width) !important;
+}
+
+/* Url bar suggestions' selected row */
+.urlbarView:not(.megabar) .urlbarView-row:not([type="tip"])[selected],
+.urlbarView.megabar .urlbarView-row:not([type="tip"])[selected] > .urlbarView-row-inner {
+	background: #f9ff99 !important;
+	color: black !important;
+	fill-opacity: 1;
+}
+
+/* The text that says 'Search with ...' */
+.urlbarView-action {
+	color: black !important;
+}
+
+
+/* Url bar suggestions' row that is being hovered over */
+.urlbarView-row:hover {
+	background-color: none !important;
+	background-image: linear-gradient(77deg, #ffc386, #ff8989) !important;
+	color: black !important;
+}
+
+/* Text that says: This time, search with: */
+#urlbar-one-offs-header-label {
+	font-family: "Cantarell", sans-serif !important;
+	font-size: 10pt !important;
+	font-weight: 100 !important;
+}
+
+
+#urlbar-background,
+#urlbar-container,
+.urlbar-input-box {
+	background-color: var(--color-bg) !important;
+	background-image: none !important;
+}
+
+#urlbar:not(.megabar),
+#urlbar.megabar > #urlbar-background,
+#searchbar {
+	border: none !important;
+	box-shadow: none !important;
+	max-height: 20px !important;
+}
+
+/* Hacky way to make the url input bar centered */
+input#urlbar-input {
+	font-family: var(--urlbar-text-font) !important;
+	font-size: 8pt !important;
+	font-weight: 100 !important;
+	text-align: center !important;
+	width: 99999px !important;
+}
+
+
+.urlbar-history-dropmarker,
+#star-button,
+#identity-box {
+	display: none !important;
+}
+
+
+#tracking-protection-icon-container,
+#urlbar-search-button {
+	background-color: none !important;
+	background-image: none !important;
+	border: none !important;
+}
+
+/* *******************************************************************
+	Browser tabs
+*/
+
+/* Hide some bloat */
+.tab-close-button,
+.tab-line,
+.tabbrowser-tab::before,
+.tabbrowser-tab::after {
+	display: none !important;
+}
+
+/* Regular browser tabs */
+.tabbrowser-tab {
+	background-color: none !important;
+	background-image: linear-gradient(to left, #0d0d12, #181821) !important;
+	border-radius: var(--tab-height) !important;
+	margin-inline-end: var(--gap-between-tabs) !important;
+	max-height: var(--tab-height) !important;
+	min-height: var(--tab-height) !important;
+}
+
+.tabbrowser-tab:hover {
+	background-color: none !important;
+	background-image: linear-gradient(to left, #ff94a2, #ffdde0) !important;
+	color: black !important;
+}
+
+.tabbrowser-tab[selected="true"] {
+	background-color: none !important;
+	background-image: linear-gradient(to left, #ff94a2, #ffdde0) !important;
+	color: black !important;
+	font-weight: var(--tab-font-weight) !important;
+}
+
+.tab-content {
+	background-color: none !important;
+	background-image: none !important;
+	font-family: var(--tab-font) !important;
+}
+
+
+/* Close button
+
+.tabbrowser-tab .tab-close-button {
+  -moz-box-ordinal-group: 0 !important;
+  margin-top: 2px !important;
+  margin-bottom: 2px !important;
+  margin-left: 0px !important;
+  margin-right: 3px !important;
+}
+
+.tabbrowser-tab .tab-close-button {
+  display: none !important;
+}
+
+.tabbrowser-tab:not([pinned="true"]):hover .tab-icon-image,
+.tabbrowser-tab:not([pinned="true"]):hover .tab-throbber {
+  display: none;
+}
+
+.tabbrowser-tab:not([pinned="true"]):hover .tab-close-button {
+  display: -moz-box !important;
+  margin-left: -4px !important;
+}
+
+*/
+
+
+
+/* pinned browser tabs */
+/* TODO: Find a way to add spacing between the pinned tabs when tab list scrolling is triggered. Adding a margin just screws everything up */
+.tabbrowser-tab:hover[pinned="true"] {
+	background-image: linear-gradient(to left, #ff8989, #ff8989) !important;
+}
+
+.tabbrowser-tab[pinned="true"][selected="true"] {
+	background-image: linear-gradient(to left, #a1ffb6, #a1ffb6) !important;
+}
+
+.tabbrowser-tab[pinned="true"] {
+	background-image: linear-gradient(to left, #0d0d12, #2b2b3b) !important;
+	color: #1d1d1d !important;
+	max-width: var(--tab-height) !important;
+	min-width: var(--tab-height) !important;
+}
+
+.tabbrowser-tab[pinned="true"] .tab-icon-image {
+	align-items: center !important;
+	display: inline-block !important;
+	min-height: 8px !important;
+	min-width: 8px !important;
+}
+
+.tabbrowser-tab[pinned="true"] .tab-label-container {
+	display: none !important;
+}
+
+.tabbrowser-tab[pinned="true"] .tab-throbber {
+  display:none !important;
+}
+
+.tab-stack {
+	display: flex !important;
+	justify-content: center !important;
+}
+
+/* Modify these values to tweak the start point of the tab list */
+.tabbrowser-arrowscrollbox {
+	margin-inline-start: var(--margin-before-tab-list) !important;
+	margin-inline-end: var(--margin-after-tab-list) !important;
+}
+
+
+
+/* *******************************************************************
+	Settings menu pop-up
+*/
+.panel-arrowbox {
+	margin: 0 !important;
+	display: none !important;
+}
+
+.panel-arrowcontent {
+	opacity: 1 !important;
+	margin: 0 !important;
+}
+

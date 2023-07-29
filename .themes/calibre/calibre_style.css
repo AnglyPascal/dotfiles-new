@@ -1,0 +1,32 @@
+body {
+	color:rgb(220, 220, 220) !important;
+	background-color:rgb(26, 26, 26);
+
+	/*color:rgb(26, 26, 26) !important;
+    background-color:rgb(220, 220, 220);*/
+
+	text-align:justify;
+	line-spacing:1.5;
+
+	margin-top:0px;
+	margin-bottom:30px;
+	margin-right:50px;
+	margin-left:50px;
+
+	font-family:'Ubuntu', sans-serif;
+	font-size: .86em;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+	color:rgb(255, 255, 255) !important;
+	text-align:center;
+	font-style:italic;
+	font-weight:bold;
+} 
+
+
+.calibre16, .calibre17, .calibre18, .calibre12, .calibre7, .calibre8, .calibre5{
+	padding: 5px;
+	text-indent: -.35em;
+}

@@ -1,0 +1,186 @@
+html#main-window {
+  --color-bg: #17171c;
+  --toolbar-bgcolor: var(--color-bg) !important;
+
+  //--gap-between-tabs: 5px;
+  --margin-after-tab-list: 10px;
+  --margin-before-tab-list: 10px;
+  --tab-font: "Share", sans-serif;
+  --tab-font-weight: 400;
+  --tab-height: 27px;
+  --tabs-container-height: 140px;
+
+  --urlbar-container-margin: 9%;
+  --urlbar-list-width: 70%;
+  --urlbar-text-font: "Share Tech Mono", sans-serif;
+  --urlbar-text-size: 10pt;
+  --urlbar-text-weight: 100;
+
+  /* Firefox variables */
+  --lwt-toolbar-field-focus-color: #ffebed !important;
+  --lwt-toolbar-field-color: #ffdee2 !important;
+  --lwt-toolbar-field-background-color: var(--color-bg) !important;
+
+  --arrowpanel-background: #17171c !important;
+  --arrowpanel-color: white !important;
+  --arrowpanel-border-color: transparent !important;
+}
+
+:root:not([customizing]) #nav-bar toolbarbutton {
+  transform: scale(.8, .8) !important;
+}
+
+::selection {
+  background-color: #3b3b45 !important;
+  color: white !important;
+}
+
+:root{
+  --lwt-accent-color: #17171c!important
+}
+
+/* Hide the mic indicator */
+#webrtcIndicator {
+  display: none;
+}
+
+/* Toolbar Elements */
+.browser-toolbar {
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+}
+
+.urlbarView {
+  background-color: var(--color-bg) !important;
+  border-radius: 0 8px 8px !important;
+  box-shadow: 0px 0px 40px #17171c !important;
+  box-shadow: none !important;
+  //margin-left: var(--urlbar-container-margin) !important;
+  width: var(--urlbar-list-width) !important;
+  
+  font-family: "Share Tech", sans-serif !important;
+  font-size: 10pt !important;
+  font-weight: 100 !important;
+}
+
+/* Url bar suggestions' selected row */
+.urlbarView:not(.megabar) .urlbarView-row:not([type="tip"])[selected],
+.urlbarView.megabar .urlbarView-row:not([type="tip"])[selected] > .urlbarView-row-inner {
+  background: #212129 !important;
+  color: #ffffff !important;
+  fill-opacity: 1;
+}
+
+/* The text that says 'Search with ...' */
+.urlbarView-action {
+  color: white !important;
+}
+
+/* Url bar suggestions' row that is being hovered over */
+.urlbarView-row:hover {
+  background-color: #212129 !important;
+  /* background-image: linear-gradient(77deg, #ffc386, #ff8989) !important; */
+  color: white !important;
+}
+
+/* Text that says: This time, search with: */
+#urlbar-one-offs-header-label {
+  font-family: "Share", sans-serif !important;
+  font-size: 10pt !important;
+  font-weight: 100 !important;
+}
+
+#urlbar-background,
+#urlbar-container,
+.urlbar-input-box {
+  background-color: var(--color-bg) !important;
+  background-image: none !important;
+}
+
+#urlbar:not(.megabar),
+#urlbar.megabar > #urlbar-background,
+#searchbar {
+  border: none !important;
+  box-shadow: none !important;
+  max-height: 20px !important;
+}
+
+.urlbar-history-dropmarker,
+#star-button,
+#identity-box {
+  display: none !important;
+}
+
+
+#tabbrowser-tabs {
+    --user-tab-rounding: 0px;
+}
+
+/* Regular browser tabs */
+.tabbrowser-tab {
+  background-color: #17171c !important;
+  // background-image: linear-gradient(to left, #17171c, #17171c) !important; 
+  // border-radius: var(--tab-height) !important;
+  margin-inline-end: var(--gap-between-tabs) !important;
+  max-height: var(--tab-height) !important;
+  min-height: var(--tab-height) !important;
+  min-width: 0 !important; 
+}
+
+
+@media (-moz-proton) {
+    .tab-background {
+        border-radius: var(--user-tab-rounding) var(--user-tab-rounding) 0px 0px !important;
+        margin-block: 1px 0 !important;
+    }
+    #scrollbutton-up, #scrollbutton-down { /* 6/10/2021 */
+        border-top-width: 1px !important;
+        border-bottom-width: 0 !important;
+    }
+    /* Container color bar visibility */
+    .tabbrowser-tab[usercontextid] > .tab-stack > .tab-background > .tab-context-line {
+        margin: 0px max(calc(var(--user-tab-rounding) - 0px), 0px) !important;
+    }
+}
+
+/* Override Normal Density height to Compact Density height only for tabs */
+@media (-moz-proton) {
+    #tabbrowser-tabs {
+        --tab-min-height: 29px !important;
+    }
+    #scrollbutton-up,
+    #scrollbutton-down {
+        border-top-width: 0 !important;
+        border-bottom-width: 0 !important;
+    }
+}
+
+
+
+/* Modify these values to tweak the start point of the tab list */
+.tabbrowser-arrowscrollbox {
+  margin-inline-start: var(--margin-before-tab-list) !important;
+  margin-inline-end: var(--margin-after-tab-list) !important;
+}
+
+
+
+
+/* Menu items border and padding */
+
+
+/* Selected tabs width */
+.tabbrowser-tab[selected][fadein]:not([pinned]) {  
+    /*max-width: 225px !important;*/
+    /*background-color: #19b !important;*/
+    border: 1px solid rgba(130, 130, 130, 0.3) !important;
+
+}
+
+/*** Tighten up drop-down/context/popup menu spacing ***/
+menupopup > menuitem, menupopup > menu {
+  padding-block: 4px !important;
+}
+:root {
+  --arrowpanel-menuitem-padding: 4px 8px !important;
+}
