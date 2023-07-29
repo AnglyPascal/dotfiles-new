@@ -1,0 +1,38 @@
+snippet code "haskell code" iA
+\begin{code}
+	$1
+\end{code}
+$0
+endsnippet
+
+snippet '([\d ])(ge|le|eq)([\d ])' "math commands" wrA
+`!p
+dic={'ge':'>=', 'le':'<=', 'eq':'=='}
+key=match.group(2)
+snip.rv =  match.group(1)+dic[key]+match.group(3)
+`
+endsnippet
+
+# snippet ; ":" iA
+# :
+# endsnippet
+
+snippet >> "->" iA
+->
+endsnippet
+
+snippet << "<-" iA
+<-
+endsnippet
+
+snippet imp "=>" iA
+=>
+endsnippet
+
+snippet =>o "import" iA
+impo
+endsnippet
+
+snippet bind "monad bind" iA
+>>=
+endsnippet

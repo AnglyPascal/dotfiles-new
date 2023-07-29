@@ -1,0 +1,181 @@
+MenuBar=Disabled
+State=AAAA/wAAAAD9AAAAAwAAAAAAAACLAAACPvwCAAAAAvsAAAAWAGYAbwBsAGQAZQByAHMARABvAGMAawEAAAAsAAABHgAAAFwA////+wAAABQAcABsAGEAYwBlAHMARABvAGMAawEAAAFOAAABHAAAAFwA////AAAAAQAAALQAAAIa/AIAAAAB+wAAABAAaQBuAGYAbwBEAG8AYwBrAAAAACwAAAIaAAAAAgD///8AAAADAAAFRgAAAG/8AQAAAAH7AAAAGAB0AGUAcgBtAGkAbgBhAGwARABvAGMAawEAAAAAAAAFRgAAAIsA////AAAEtwAAAj4AAAAEAAAABAAAAAgAAAAI/AAAAAEAAAACAAAAAQAAABYAbQBhAGkAbgBUAG8AbwBsAEIAYQByAQAAAAD/////AAAAAAAAAAA=
+eDP-1-1 HDMI-1-2 Height 1366x768=733
+eDP-1-1 HDMI-1-2 Width 1366x768=1350
+eDP-1-1 HDMI-1-2 XPosition 1366x768=8
+eDP-1-1 HDMI-1-2 YPosition 1366x768=8
+
+[$Version]
+update_info=dolphin_detailsmodesettings.upd:rename-leading-padding
+
+[CompactMode]
+MaximumTextWidthIndex=2
+PreviewSize=22
+UseSystemFont=false
+ViewFont=Share Tech Mono,10,-1,5,50,0,0,0,0,0
+
+[Desktop Entry]
+DefaultProfile=Profile 1.profile
+
+[DownloadDialog Settings]
+eDP-1-1 Height 768=438
+eDP-1-1 Width 1366=700
+
+[Favorite Profiles]
+Favorites=
+
+[FoldersPanel]
+HiddenFilesShown=true
+
+[General]
+BrowseThroughArchives=true
+ConfirmClosingMultipleTabs=false
+GlobalViewProps=false
+LockPanels=false
+RememberOpenedTabs=false
+RenameInline=false
+ShowCopyMoveMenu=true
+ShowZoomSlider=false
+Version=202
+ViewPropsTimestamp=2020,12,1,12,43,45
+
+[IconsMode]
+IconSize=64
+MaximumTextLines=2
+PreviewSize=256
+UseSystemFont=false
+ViewFont=Share Tech,10,-1,5,50,0,0,0,0,0
+
+[KFileDialog Settings]
+Places Icons Auto-resize=false
+Places Icons Static Size=16
+
+[KPropertiesDialog]
+1366x768 screen: Height=454
+1366x768 screen: Width=379
+2 screens: Height=454
+2 screens: Width=409
+eDP-1 HDMI-2 Height 1366x768=600
+eDP-1 HDMI-2 Width 1366x768=454
+eDP-1 Height 1366x768 eDP-1=600
+eDP-1 Height 768=532
+eDP-1 Width 1366=445
+eDP-1 Width 1366x768 eDP-1=525
+eDP-1-1 HDMI-1-2 Height 1366x768=600
+eDP-1-1 HDMI-1-2 Height 1366x768 eDP-1-1=454
+eDP-1-1 HDMI-1-2 Height 1920x1080=532
+eDP-1-1 HDMI-1-2 Height 1920x1080 HDMI-1-2=600
+eDP-1-1 HDMI-1-2 Height 768=532
+eDP-1-1 HDMI-1-2 Width 1366=510
+eDP-1-1 HDMI-1-2 Width 1366x768=525
+eDP-1-1 HDMI-1-2 Width 1366x768 eDP-1-1=446
+eDP-1-1 HDMI-1-2 Width 1920x1080=525
+eDP-1-1 HDMI-1-2 Width 1920x1080 HDMI-1-2=525
+eDP-1-1 Height 1366x768=468
+eDP-1-1 Height 1366x768 eDP-1-1=454
+eDP-1-1 Height 768=532
+eDP-1-1 Width 1366=510
+eDP-1-1 Width 1366x768=411
+eDP-1-1 Width 1366x768 eDP-1-1=407
+
+[MainWindow]
+MenuBar=Disabled
+ToolBarsMovable=Disabled
+eDP-1 DP-1 Height 1920x1080=1045
+eDP-1 DP-1 Width 1920x1080=1904
+eDP-1 DP-1 XPosition 1366x768=0
+eDP-1 DP-1 XPosition 1920x1080=1374
+eDP-1 DP-1 YPosition 1366x768=0
+eDP-1 DP-1 YPosition 1920x1080=8
+eDP-1 HDMI-2 Height 1080=1060
+eDP-1 HDMI-2 Height 1366x768=729
+eDP-1 HDMI-2 Height 768=729
+eDP-1 HDMI-2 Width 1366=1350
+eDP-1 HDMI-2 Width 1366x768=1350
+eDP-1 HDMI-2 Width 1920=944
+eDP-1 HDMI-2 XPosition=966
+eDP-1 HDMI-2 XPosition 1366x768=8
+eDP-1 HDMI-2 YPosition=10
+eDP-1 HDMI-2 YPosition 1366x768=8
+eDP-1 Height 1366x768=729
+eDP-1 Height 768=729
+eDP-1 Width 1366=1350
+eDP-1 Width 1366x768=667
+eDP-1 XPosition=8
+eDP-1 XPosition 1366x768=689
+eDP-1 YPosition=8
+eDP-1 YPosition 1366x768=10
+eDP-1-1 DP-1-1 Height 1366x768=733
+eDP-1-1 DP-1-1 Height 1920x1080=337
+eDP-1-1 DP-1-1 Width 1366x768=1350
+eDP-1-1 DP-1-1 Width 1920x1080=624
+eDP-1-1 DP-1-1 XPosition 1366x768=1928
+eDP-1-1 DP-1-1 XPosition 1920x1080=10
+eDP-1-1 DP-1-1 YPosition 1366x768=8
+eDP-1-1 DP-1-1 YPosition 1920x1080=10
+eDP-1-1 HDMI-1-2 Height 1080=1064
+eDP-1-1 HDMI-1-2 Height 1366x768=733
+eDP-1-1 HDMI-1-2 Height 1920x1080=1045
+eDP-1-1 HDMI-1-2 Height 768=741
+eDP-1-1 HDMI-1-2 Width 1366=679
+eDP-1-1 HDMI-1-2 Width 1366x768=1350
+eDP-1-1 HDMI-1-2 Width 1920=1904
+eDP-1-1 HDMI-1-2 Width 1920x1080=1904
+eDP-1-1 HDMI-1-2 XPosition=689
+eDP-1-1 HDMI-1-2 XPosition 1366x768=1928
+eDP-1-1 HDMI-1-2 XPosition 1920x1080=8
+eDP-1-1 HDMI-1-2 YPosition=10
+eDP-1-1 HDMI-1-2 YPosition 1366x768=8
+eDP-1-1 HDMI-1-2 YPosition 1920x1080=8
+eDP-1-1 Height 1366x768=733
+eDP-1-1 Height 768=725
+eDP-1-1 Width 1366=667
+eDP-1-1 Width 1366x768=1350
+eDP-1-1 XPosition=689
+eDP-1-1 XPosition 1366x768=8
+eDP-1-1 YPosition=10
+eDP-1-1 YPosition 1366x768=8
+eDP1 Height 768=729
+eDP1 Width 1366=1350
+eDP1 XPosition=8
+eDP1 YPosition=8
+
+[MainWindow][Toolbar mainToolBar]
+IconSize=16
+
+[Open-with settings]
+CompletionMode=1
+History=mpv,inks,/usr/bin/feh --image-bg black --geometry 800x700 --scale-down -Z --start-at,feh,gwe,/home/ahsan/.local/share/applications/feh.desktop,alacritty -e nvim %,neo,mpv --loop-file=0,gnu,feh --image-bg black --geometry 800x700 --scale-down -Z --start-at,/usr/bin/feh --image-bg black --geometry 800x700 --scale-down -Z,mcomix,feh -Z,mcom
+
+[PlacesPanel]
+IconSize=16
+
+[PreviewSettings]
+Plugins=appimagethumbnail,audiothumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,directorythumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,opendocumentthumbnail,svgthumbnail,ffmpegthumbs
+
+[SettingsDialog]
+eDP-1 HDMI-2 Height 1366x768=497
+eDP-1 HDMI-2 Width 1366x768=605
+eDP-1 Height 768=509
+eDP-1 Width 1366=588
+eDP-1-1 HDMI-1-2 Height 1366x768=497
+eDP-1-1 HDMI-1-2 Width 1366x768=605
+eDP-1-1 Height 1366x768=497
+eDP-1-1 Height 768=509
+eDP-1-1 Width 1366=588
+eDP-1-1 Width 1366x768=605
+
+[Toolbar mainToolBar]
+IconSize=16
+
+[ViewPropertiesDialog]
+eDP-1 HDMI-2 Height 1366x768=446
+eDP-1 HDMI-2 Width 1366x768=384
+eDP-1 Height 768=464
+eDP-1 Width 1366=384
+eDP-1-1 HDMI-1-2 Height 1366x768=446
+eDP-1-1 HDMI-1-2 Width 1366x768=384
+eDP-1-1 Height 1366x768=446
+eDP-1-1 Height 768=446
+eDP-1-1 Width 1366=384
+eDP-1-1 Width 1366x768=384

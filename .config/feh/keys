@@ -1,0 +1,26 @@
+## feh key configuration.
+## Comments start with a # sign, do not use them mid-line.
+## Each line must be blank, a comment, or a key definition.
+##
+## key definition: <action name> <key1> [<key2> [<key3>]]
+##
+## Each <key> is an X11 keysym (as output by xev) with optional modifier.
+## For instance, C-x would be Ctrl+X, or 4-space Mod4+Space
+
+## Same for image navigation ...
+next_img l Right equal
+prev_img h Left minus
+
+## and image movement
+scroll_up    K C-Up 
+scroll_down  J C-Down 
+scroll_left  H C-Left 
+scroll_right L C-Right 
+
+toggle_keep_vp v V
+
+quit q n
+
+## zooming
+zoom_in  Up k
+zoom_out Down j

@@ -1,0 +1,11 @@
+snippet 'title\((.*)\)' "title" wr
+`!p
+string = match.group(1)
+l = len(string)
+h = ''
+for i in range(l+4):
+	h += '#'
+string = h + "\n# " + string + " #\n" + h
+snip.rv = string
+`
+endsnippet

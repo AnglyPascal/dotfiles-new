@@ -1,0 +1,328 @@
+global !p
+def math():
+    return vim.eval('vimtex#syntax#in_mathzone()') == '1'
+
+# def comment():
+    # return vim.eval('vimtex#syntax#in_comment()') == '1'
+
+def env(names):
+	decision = False
+	if isinstance(names, str):
+		names = [names]
+	for name in names:
+		[x,y] = vim.eval("vimtex#env#is_inside('" + name + "')")
+		decision = decision or (x != '0' and x != '0')
+	return decision
+endglobal
+
+
+
+snippet beg "begin"
+\begin{$1}
+	$2
+\end{$1}$0
+endsnippet
+
+context "math()"
+snippet '([A-Za-z])(\d)' "auto subscript" wrA
+`!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
+endsnippet
+
+context "math()"
+snippet '([A-Za-z])_(\d\d)' "auto subscript2" wrA
+`!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`}$0
+endsnippet
+
+context "math()"
+snippet '([^\\p]\b[A-Za-z])([ij])([ ,.\\\)}\]])' "auto subscript2" wrA
+`!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)``!p snip.rv = match.group(3)`
+endsnippet
+
+context "math()"
+snippet '([fgEASBFx])([ijnk])' "auto subscript2" wrA
+`!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
+endsnippet
+
+context "math()"
+snippet ^ "superscript" iA
+^{$1}
+endsnippet
+
+context "math()"
+snippet '(iv|_iv)' "inverser" wrA
+^{-1}
+endsnippet
+
+
+context "math()"
+snippet sr "^2" iA
+^2
+endsnippet
+
+context "math()"
+snippet cb "^3" iA
+^3
+endsnippet
+
+context "math()"
+snippet ii "complex i" iA
+\mathrm{i}
+endsnippet
+
+
+context "math()"
+snippet // "frac" iA
+\\frac{$1}{$2}$0
+endsnippet
+
+context "math()"
+snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{[A-Za-z0-9]+\}|[A-Za-z0-9]))*)/' "symbol frac" wrA
+\\frac{`!p snip.rv = match.group(1)`}{$1}$0
+endsnippet
+
+priority 1000
+context "math()"
+snippet '^.*\)/' "() frac" wrA
+`!p
+stripped = match.string[:-1]
+depth = 0
+i = len(stripped) - 1
+while True:
+	if stripped[i] == ")": 
+		depth += 1
+	if stripped[i] == "(": 
+		depth -= 1
+	if depth == 0 :
+		break;
+	i-=1
+if stripped[-6:-1] == "right":
+	snip.rv = stripped[0 : i-5] + "\\frac{" + stripped[i+1:-7] + "}"
+else:
+	snip.rv = stripped[0 : i]   + "\\frac{" + stripped[i+1:-1] + "}"
+`{$1}$0
+endsnippet
+
+
+snippet it "italic" w
+\textit{$1}$0 
+endsnippet
+
+snippet '(bb|tt|ii|bf|imp|unimp|indef)' "one input commands" wr
+`!p
+dic = {'bb': 'textbb', 'tt': 'texttt', 'ii': 'textit', 'bf': 'textbf', 'imp': 'imp',
+'unimp': 'textcolor{gray}', 'indef': 'indef'}
+key = match.group(1)
+snip.rv = '\\' + dic[key]`{${1:${VISUAL}}}$0
+endsnippet
+
+# snippet idx "index" i
+# \index[$1]{$2} $0
+# endsnippet
+
+
+global !p 
+def env_expand(key):
+	dic = {'lem':'lemma', 'prob':'problem', 'sollem':'sollem', 'soln':'solution',
+	'proof':'prooof', 'hint':'hinted', 'esoln':'emptysoln', 'ethm':'emptythm',
+	'coro':'corollary', 'thm':'theorem', 'impthm':'theorembox', 'def':'definition',
+	'impdef':'impdefinition', 'algo':'algorithm', 'scala':'scala', 'java':'java',
+	'haskell':'haskell', 'eqn':'equation', 'nali':'align', 'remark':'Remark',
+	'rem':'Remark'}
+	if key in dic:
+		return dic[key]
+	else: 
+		return key
+
+def inline_env_expand(key):
+	ml    = ("\(",                    "\)")
+	# ml    = ("$",                    "$")
+	dm    = ("\[",                    "\]")
+	ali   = ("\[\\begin{aligned}", "",  "\\end{aligned}\]")
+	lrp   = ("\\left(",               "\\right)")
+	lra   = ("\\left[",               "\\right]")
+	lrb   = ("\\left\{",              "\\right\}")
+	abso  = ("\\left|",               "\\right|")
+	norm  = ("\\left\|",              "\\right\|")
+	dotp  = ("\\left<",               "\\right>")
+	ceil  = ("\\left\\lceil ",         "\\right\\rceil ")
+	floor = ("\\left\\lfloor ",        "\\right\\rfloor ")
+	pmat  = ("\\begin{pmatrix}\n\t",    "\n\\end{pmatrix}")
+	bmat  = ("\\begin{bmatrix}\n\t",    "\n\\end{bmatrix}")
+	cases = ("\\begin{cases}\n\t",      "\n\\end{cases}")
+	enum  = ("\\begin{enumerate}", "\item ", "\\end{enumerate}")
+	arabic  = ("\\begin{arabicEnum}", "\item ", "\\end{arabicEnum}")
+	roman  = ("\\begin{romanEnum}", "\item ", "\\end{romanEnum}")
+	alph  = ("\\begin{alphEnum}", "\item ", "\\end{alphEnum}")
+	item  = ("\\begin{itemize}", "\item ", "\\end{itemize}")
+
+	data = {'ml' : ml, 'dm' : dm, 'ali': ali, '()': lrp, 'lr(': lrp, 'lrb': lrb, 'lr{' : lrb, 'lra' : lra, 'lr[' : lra,
+					'abs' : abso, 'norm' : norm, 'dotp' : dotp, 'ceil' : ceil, 'floor' : floor, '\pmat': pmat, 'bmat': bmat,
+					'cases': cases, 'enum': enum, 'itemize': item, 'arabic': arabic,
+					'roman': roman, 'alph': alph}
+
+	return data[key]
+endglobal
+
+snippet '(thm|def|impdef|impthm|algo|scala|java|haskell)' "env with name" br
+`!p
+name = env_expand(match.group(1))
+snip.rv = "\\begin{" + name + "}"
+`$1
+	${2:${VISUAL}}
+`!p
+snip.rv = "\\end{" + name + "}"
+`$0
+endsnippet
+
+snippet '(lem|coro|prob|sollem|soln|proof|remark|rem|hint|example|center|tabular|esoln|ethm|frame|nali|eqn)' "env without name" br
+`!p
+name = env_expand(match.group(1))
+snip.rv = "\\begin{" + name + "}"
+`
+	${1:${VISUAL}}
+`!p
+snip.rv = "\\end{" + name + "}"
+`
+endsnippet
+
+snippet '\b(ml|dm)' "math delimeters" wrA
+`!p 
+(beg, end) = inline_env_expand(match.group(1))
+snip.rv = beg`${1:${VISUAL}}`!p snip.rv = end`$0
+endsnippet
+
+snippet '(enum|itemize)' "enumerate and itemize" brA
+`!p 
+(beg, mid, end) = inline_env_expand(match.group(1))
+snip.rv = beg`
+	${VISUAL:\\item} ${1:}
+`!p snip.rv = end`$0
+endsnippet
+
+snippet '(roman|arabic|alph)' "other versions of enumerate" br
+`!p 
+(beg, mid, end) = inline_env_expand(match.group(1))
+snip.rv = beg`
+	${VISUAL:\\item} ${1:}
+`!p snip.rv = end`$0
+endsnippet
+
+snippet ali "aligned" bA
+\[\begin{aligned}
+	${1:${VISUAL}}
+\end{aligned}\]
+endsnippet
+
+
+context "math()"
+snippet '(\(\)|lr\(|lr{|lrb|lr\[|lra|dotp|abs|norm|ceil|floor|\\pmat|bmat|cases)' "latex table row variable" wrA
+`!p 
+(beg, end) = inline_env_expand(match.group(1))
+snip.rv = beg`${1:${VISUAL}}`!p snip.rv = end`$0
+endsnippet
+
+context "math()"
+snippet mod "mod" i
+\ (\text{mod } $1)$0
+endsnippet
+
+# snippet bdm "box math" i
+# \begin{center}
+# 	\tcboxmath[arc=0mm, colback=black!5!white, boxrule=0mm]{
+# 		$1
+# 	}$0
+# \end{center}
+# endsnippet
+
+# context "math()"
+# snippet box "boxed" iA
+# \boxed{${1:${VISUAL}}}$0
+# endsnippet
+
+snippet minipage "minipage" i
+\begin{minipage}{$1\linewidth}
+	$3
+\end{minipage}\hfill%
+\begin{minipage}{$2\linewidth}
+	$4
+\end{minipage}
+$0
+endsnippet
+
+# snippet ind "index" i
+# \index[${1:strat}]{$2}$0
+# endsnippet
+
+# snippet env "environment expand" i
+# \textcolor{thmC}{\texttt{${1:${VISUAL}}}}$0
+# endsnippet
+
+
+snippet begdoc "document template" i
+\documentclass{note_style}
+\title{$1}
+
+\begin{document}
+
+\maketitle
+
+$2
+
+\end{document}
+endsnippet
+
+snippet figg "figure" i
+\begin{figure}[H]
+    \centering
+    \incfig[$1]{$2}
+    \caption{$3}
+	\label{fig:$2}
+\end{figure}
+$0
+endsnippet
+
+snippet fig "figure" i
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=$1\linewidth]{$2}
+    \caption{$3}
+\end{figure}
+$0
+endsnippet
+
+snippet table "table" i
+\begin{table}[H]
+    \centering
+	$1
+\end{table}
+$0
+endsnippet
+
+snippet figsub "figure" i
+\begin{figure}[h]
+     \centering
+     \begin{subfigure}[b]{0.48\textwidth}
+         \centering
+         \includegraphics[width=.8\textwidth]{./figs/$1}
+         \caption{$2}
+         \label{fig:$2}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.48\textwidth}
+         \centering
+         \includegraphics[width=.8\textwidth]{./figs/$3}
+         \caption{$4}
+         \label{fig:$4}
+     \end{subfigure}
+        \caption{$5}
+        \label{fig:$5}
+\end{figure}
+$0
+endsnippet
+
+
+snippet mcols "begin"
+\begin{multicols}{2}
+	$1
+\end{multicols}$0
+endsnippet

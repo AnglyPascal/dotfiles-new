@@ -1,0 +1,24 @@
+set recolor-darkcolor "#ffffff"
+set recolor-lightcolor "#17171c"
+
+set index-fg "#ffffff"
+set index-bg "#17171c"
+set index-active-fg "#000000"
+set index-active-bg "#ffffff"
+set inputbar-fg "#ffffff"
+set inputbar-bg "#17171c"
+
+set statusbar-bg "#17171c"
+set statusbar-basename true
+set font "Share Tech Mono 10"
+
+set selection-clipboard clipboard
+map b toggle_statusbar
+
+map h navigate previous
+map l navigate next
+map <Left> navigate previous
+map <Right> navigate next
+
+map H scroll left
+map L scroll right

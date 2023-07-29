@@ -1,0 +1,31 @@
+# Inserts a blank line between shell prompts
+add_newline = false
+format = """
+(bold green)$directory$git_branch$git_status$character
+"""
+# format = "$all"
+command_timeout = 1500
+
+# Replace the "❯" symbol in the prompt with "➜"
+[character]
+success_symbol = "[❯](bold green)"
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = true
+
+[directory]
+truncation_length = 2
+style = "bold green"
+# truncation_symbol = "/"
+
+[git_branch]
+format = "on [$symbol$branch]($style) "
+style = "bold blue"
+
+[time]
+time_format = "%I:%M:%S"
+format = "[$time]($style) "
+style = "black"
+disabled = false
+

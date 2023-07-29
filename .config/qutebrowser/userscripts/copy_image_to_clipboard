@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+if [[ $QUTE_URL == *"jpg"* || $QUTE_URL == *"jpeg"* ]] 
+then
+  ext="jpg"
+else
+  if [[ $QUTE_URL == *"png"* ]] 
+  then
+    ext="png"
+  else
+    if [[ $QUTE_URL == *"webp"* ]] 
+    then
+      ext="webp"
+    fi
+  fi
+fi
+
+curl $QUTE_URL | xclip -sel clip -t image/$ext
+

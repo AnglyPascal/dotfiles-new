@@ -1,0 +1,10 @@
+# Exclude these folders
+!/Oxford/.git
+
+# Sync these folders
+/GARNiDELiA
+/Manga/One Piece
+/Manga/Demon Slayer - Kimetsu no Yaiba
+/Oxford
+/Scans
+/Pictures/Sketches

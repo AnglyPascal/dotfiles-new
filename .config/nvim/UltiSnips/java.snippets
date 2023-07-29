@@ -1,0 +1,53 @@
+snippet print "print" bA
+System.out.println($1)$0
+endsnippet
+
+snippet main "main function" i
+public static void main(String[] args) {
+	$1
+}
+endsnippet
+
+snippet if "if" b
+if($1){
+	$2
+}
+endsnippet
+
+snippet elif "if" b
+else if($1){
+	$2
+}
+endsnippet
+
+snippet else "else" b
+else{
+	$1
+}
+endsnippet
+
+snippet for "for loop" b
+for(int $1 = 0; $1 < $2; $1 += $3){
+	$4
+}
+endsnippet
+
+snippet while "while loop" b
+while($1){
+	$2
+}
+endsnippet
+
+snippet test "make a test class" i
+public class Test{
+  public static void main(String[] args) {
+		$1
+  }
+}
+endsnippet
+
+snippet // "comment" bA
+/** $1
+ */
+endsnippet
+

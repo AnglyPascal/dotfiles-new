@@ -1,0 +1,491 @@
+##################
+### Lazim's i3 ###
+##################
+
+# Set mod key (Mod1=<Alt>, Mod4=<Super>)
+set $mod Mod4
+set $sup Mod1
+
+# Use Mouse+$mod to drag floating windows
+floating_modifier $mod 
+
+
+#############################
+# General Window Decoration #
+#############################
+
+# border/titlebar
+new_window               normal
+hide_edge_borders        vertical
+for_window [class="^.*"] border pixel 2
+
+bindsym Control+Shift+x [class="^.*"] border toggle
+
+# Configure border style <normal|1pixel|pixel xx|none|pixel>
+default_border          pixel 1
+default_floating_border normal
+hide_edge_borders       none # Hide borders
+
+floating_minimum_size 75 x 50
+floating_maximum_size 800 x 600
+
+font pango:Share Tech Mono 10
+
+
+#####################
+# Basic Keybindings #
+#####################
+
+set     $term       alacritty
+bindsym $mod+Return exec alacritty
+bindsym $mod+t      exec alacritty
+bindsym $mod+q      kill
+bindsym $mod+d      exec --no-startup-id dmenu_recency
+
+
+#########
+# Sound #
+#########
+
+exec --no-startup-id volumeicon
+bindsym $mod+Ctrl+m exec pavucontrol
+bindsym $mod+s      exec /home/ahsan/.scripts/sound.sh; \
+                    exec polybar-msg cmd restart
+bindsym $mod+m      exec /home/ahsan/.scripts/mic.sh
+# bindsym $mod+x      exec sudo pkill Pentablet_Drive; exec sudo /home/ahsan/.config/xp_pen/Pentablet_Driver.sh
+
+#########################
+# Media player controls #
+#########################
+
+bindsym XF86AudioPlay  exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl play-pause
+bindsym XF86AudioStop  exec playerctl stop
+bindsym XF86AudioNext  exec playerctl next
+bindsym XF86AudioPrev  exec playerctl previous
+
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute        exec pactl set-sink-mute   @DEFAULT_SINK@ toggle
+
+bindsym $sup+0     exec pactl set-sink-mute   @DEFAULT_SINK@ toggle
+bindsym $sup+equal exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym $sup+minus exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym $sup+8  exec playerctl play-pause
+bindsym $sup+6  exec playerctl stop
+bindsym $sup+9  exec playerctl next
+bindsym $sup+7  exec playerctl previous
+
+########################
+# Application Keybinds #
+########################
+
+bindsym $mod+z        exec bluetoothctl power on && bluetootchctl connect 60:F4:3A:A2:5B:B8
+bindsym $mod+F2       exec qutebrowser
+bindsym $mod+Ctrl+F2  exec firefox
+bindsym $mod+Shift+F2 exec brave
+bindsym $mod+F5       exec brave --incognito --tor
+bindsym $mod+F3       exec dolphin
+bindsym $mod+XF86HomePage  exec dolphin
+bindsym $mod+Shift+F3 exec alacritty -e ranger
+bindsym $mod+F4       exec spotify
+bindsym $mod+Shift+F4 exec alacritty -e cmus
+bindsym $mod+F7       exec xournalpp
+bindsym $mod+F8       exec krita
+bindsym $mod+F9       exec gimp
+
+bindsym $mod+$sup+2   exec qutebrowser
+bindsym $mod+Shift+$sup+2 exec brave
+bindsym $mod+$sup+3   exec dolphin
+bindsym $mod+$sup+4   exec spotify
+
+
+###############
+# Screenshots #
+###############
+
+# window select
+bindsym $mod+Shift+Print exec maim -u -st 9999999 -B "/home/ahsan/Pictures/temp.png" && \
+          xclip -sel clip -t image/png "/home/ahsan/Pictures/temp.png"               && \
+          mv "/home/ahsan/Pictures/temp.png"                                            \
+          "/home/ahsan/Pictures/Screenshots/$(date +%s).png"
+# full monitor
+bindsym $mod+Print --release exec maim -u -m 7 "/home/ahsan/Pictures/temp.png"       && \
+          xclip -sel clip -t image/png "/home/ahsan/Pictures/temp.png"               && \
+          mv "/home/ahsan/Pictures/temp.png"                                            \
+          "/home/ahsan/Pictures/Screenshots/$(date +%s).png"
+bindsym $mod+Ctrl+Shift+D --release exec maim -u -m 7 "/home/ahsan/Pictures/temp.png"       && \
+          xclip -sel clip -t image/png "/home/ahsan/Pictures/temp.png"               && \
+          mv "/home/ahsan/Pictures/temp.png"                                            \
+          "/home/ahsan/Pictures/Screenshots/$(date +%s).png"
+# area selection
+bindsym Ctrl+Shift+D --release exec maim -u -s -m 7 "/home/ahsan/Pictures/temp.png"         && \
+          xclip -sel clip -t image/png "/home/ahsan/Pictures/temp.png"               && \
+          mv "/home/ahsan/Pictures/temp.png"                                            \
+          "/home/ahsan/Pictures/Screenshots/$(date +%s).png"
+bindsym Print --release exec maim -u -s -m 7 "/home/ahsan/Pictures/temp.png"         && \
+          xclip -sel clip -t image/png "/home/ahsan/Pictures/temp.png"               && \
+          mv "/home/ahsan/Pictures/temp.png"                                            \
+          "/home/ahsan/Pictures/Screenshots/$(date +%s).png"
+
+bindsym Ctrl+Shift+z exec copyq show
+# bindsym Ctrl+Shift+l exec copyq next
+# bindsym Ctrl+Shift+h exec copyq previous
+bindsym $mod+shift+x exec betterlockscreen -l dim
+
+
+######################
+# i3wm Core Keybinds #
+######################
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left  focus left
+bindsym $mod+Down  focus down
+bindsym $mod+Up    focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# workspace back and forth (with/without active container)
+workspace_auto_back_and_forth yes
+# bindsym $mod+z workspace back_and_forth
+bindsym $mod+Shift+b move container to workspace back_and_forth; \
+                                       workspace back_and_forth
+
+# split orientation
+bindsym $mod+semicolon split h; exec notify-send 'tile horizontally'
+bindsym $mod+v         split v; exec notify-send 'tile vertically'
+bindsym $mod+g         split toggle
+default_orientation    vertical
+for_window [class="^.*"] split toggle 
+
+# toggle fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+# bindsym $mod+w layout tabbed
+# bindsym $mod+e layout toggle split
+
+bindsym $mod+space floating toggle        
+bindsym $mod+Shift+space focus mode_toggle 
+bindsym $mod+Shift+s sticky toggle         
+bindsym $mod+a focus parent                
+bindsym Ctrl+Shift+Down move scratchpad    
+bindsym $mod+minus scratchpad show         
+
+
+###################
+# Workspace names #
+###################
+
+# Monitor names
+set $monR HDMI-1-2
+set $monL eDP-1-1
+
+# workspace names
+set $ws1  1
+set $ws2  2
+set $ws3  3
+set $ws4  4
+set $ws5  5
+set $ws6  6
+set $ws7  7
+set $ws8  8
+set $ws9  9
+set $ws10 10
+
+# assign workspaces to specific outputs
+workspace $ws1  output $monR
+workspace $ws2  output $monR
+workspace $ws3  output $monR
+workspace $ws4  output $monR
+workspace $ws5  output $monL
+workspace $ws6  output $monL
+workspace $ws7  output $monL
+workspace $ws8  output $monR
+workspace $ws9  output $monR
+workspace $ws10 output $monR
+
+bindsym $mod+p move workspace to output left
+bindsym $mod+Tab focus output left
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+
+# Move focused container to workspace
+bindsym $mod+Ctrl+1 move container to workspace $ws1
+bindsym $mod+Ctrl+2 move container to workspace $ws2
+bindsym $mod+Ctrl+3 move container to workspace $ws3
+bindsym $mod+Ctrl+4 move container to workspace $ws4
+bindsym $mod+Ctrl+5 move container to workspace $ws5
+bindsym $mod+Ctrl+6 move container to workspace $ws6
+bindsym $mod+Ctrl+7 move container to workspace $ws7
+bindsym $mod+Ctrl+8 move container to workspace $ws8
+bindsym $mod+Ctrl+9 move container to workspace $ws9
+bindsym $mod+Ctrl+0 move container to workspace $ws10
+
+# Move to workspace with focused container
+bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2; workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3; workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4; workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
+
+bindsym $mod+Ctrl+greater move workspace to output right
+bindsym $mod+Ctrl+less move workspace to output left
+
+
+#########################
+# Specific window rules #
+#########################
+
+# Open specific applications in floating mode
+for_window [title="alsamixer"]        floating enable border pixel 1
+for_window [title="MEGAsync"]         floating enable border pixel 1
+for_window [class="Clipgrab"]         floating enable
+for_window [title="File Transfer*"]   floating enable
+for_window [class="fpakman"]          floating enable
+for_window [class="Galculator"]       floating enable border pixel 1
+for_window [class="GParted"]          floating enable border normal
+for_window [title="i3_help"]          floating enable sticky enable border normal
+for_window [class="Nitrogen"]         floating enable sticky enable border normal
+for_window [class="Pavucontrol"]      floating enable
+for_window [class="qt5ct"]            floating enable sticky enable border normal
+for_window [class="Qtconfig-qt4"]     floating enable sticky enable border normal
+for_window [class="(?i)virtualbox"]   floating enable border normal
+for_window [class="Xfburn"]           floating enable
+for_window [class="^feh*"]            floating enable
+for_window [class="^copyq$"]          floating enable
+for_window [class="^Figure*"]         floating enable
+# for_window [class="firefox"]          floating enable
+# for_window [title="Chat"]             floating enable
+for_window [title="^Participants*"]   floating enable
+for_window [class="Pentablet_Driver"] move scratchpad
+for_window [class="Thunderbird"]    floating enable
+for_window [class="(?i)System-config-printer.py"]  floating enable border normal
+
+
+# Window assignment
+assign [class="discord"]     $ws7
+assign [class="team"]        $ws8
+assign [title="Telegram"]    $ws9
+assign [class="firefox"]     $ws6
+assign [class="^tlauncher*"] $ws10
+assign [class="^Minecraft*"] $ws10
+assign [class="[sS]potify"]  $ws4
+
+# switch to workspace with urgent window automatically
+for_window [urgent=latest] focus
+
+
+###################
+# Window resizing #
+###################
+
+# Resize window (you can also use the mouse for that)
+bindsym $mod+r mode "resize"
+mode "resize" {
+        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym l resize grow   width 5 px or 5 ppt
+        bindsym j resize grow   height 5 px or 5 ppt
+        bindsym k resize shrink height 5 px or 5 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Right resize grow  width 10 px or 10 ppt
+        bindsym Down resize grow   height 10 px or 10 ppt
+        bindsym Up resize shrink   height 10 px or 10 ppt
+
+        # exit resize mode: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+
+#####################
+# Some more i3 keys #
+#####################
+
+bindsym $mod+Shift+c reload # reload the configuration file
+bindsym $mod+Shift+r restart # restart i3 inplace
+bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'" 
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Really wanna exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
+
+
+############################
+# Bootup related shortcuts #
+############################
+
+# Set shut down, restart and locking features
+bindsym Ctrl+Shift+0 mode "$mode_system"
+
+set $mode_system (l)ock, (e)xit, (Shift+s)uspend, (r)eboot, (s)hutdown
+mode "$mode_system" {
+    bindsym l       exec --no-startup-id i3exit lock,     mode "default"
+    bindsym e       exec --no-startup-id i3exit logout,   mode "default"
+    bindsym r       exec --no-startup-id i3exit reboot,   mode "default"
+    bindsym s       exec --no-startup-id i3exit shutdown, mode "default"
+    bindsym Shift+s exec --no-startup-id i3exit suspend,  mode "default"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# power button suspend
+bindsym XF86PowerOff exec betterlockscreen -l -u "/home/ahsan/Pictures/Violet Evergarden/" --display 1 --span; exec systemctl suspend
+
+
+##########################
+# Autostart Applications #
+##########################
+
+# i3 related stuffs
+exec_always --no-startup-id ff-theme-util
+exec_always --no-startup-id fix_xcursor
+
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id nm-applet
+exec --no-startup-id xfce4-power-manager
+
+exec --no-startup-id betterlockscreen -u "/home/ahsan/Pictures/Violet Evergarden"
+exec --no-startup-id /home/ahsan/.scripts/wallpaper.sh
+exec --no-startup-id $HOME/.config/polybar/launch.sh
+
+# XP-Pen tablet setup
+exec --no-startup-id xrandr --output HDMI-1-2 --auto --output eDP-1-1 --auto --right-of HDMI-1-2
+exec --no-startup-id sudo bash /home/ahsan/.config/xp_pen/Pentablet_Driver.sh
+
+exec --no-startup-id copyq
+exec --no-startup-id redshift -P -O 5000K
+exec --no-startup-id i3-msg 'workspace 1; exec /usr/bin/qutebrowser'
+exec --no-startup-id i3-msg 'exec /usr/bin/thunderbird'
+
+# exec --no-startup-id start_conky_maia
+# exec --no-startup-id start_conky_green
+
+
+##########
+# Colors #
+##########
+
+set_from_resource $term_background background
+set_from_resource $term_foreground foreground
+set_from_resource $term_color0     color0
+set_from_resource $term_color1     color1
+set_from_resource $term_color2     color2
+set_from_resource $term_color3     color3
+set_from_resource $term_color4     color4
+set_from_resource $term_color5     color5
+set_from_resource $term_color6     color6
+set_from_resource $term_color7     color7
+set_from_resource $term_color8     color8
+set_from_resource $term_color9     color9
+set_from_resource $term_color10    color10
+set_from_resource $term_color11    color11
+set_from_resource $term_color12    color12
+set_from_resource $term_color13    color13
+set_from_resource $term_color14    color14
+set_from_resource $term_color15    color15
+
+
+################
+# Theme Colors #
+################
+
+# class                 border  backgr. text    indic.   child_border
+client.focused          #d08770 #d08770 #80FFF9 #d08770
+client.focused_inactive #2F3D44 #17171c #1ABC9C #17171c
+client.unfocused        #17171c #17171c #1ABC9C #17171c
+client.urgent           #CB4B16 #bf616a #1ABC9C #268BD2
+client.placeholder      #000000 #0c0c0c #ffffff #000000 
+client.background       #17171c
+
+
+#############################
+### Settings for i3-gaps: ###
+#############################
+
+# Set inner/outer gaps
+gaps inner 8
+gaps outer 0
+workspace 1 gaps inner 0
+workspace 1 gaps outer 0
+
+smart_borders on
+
+# change borders
+# bindsym $mod+u       border none
+bindsym $mod+Shift+u border none
+bindsym $mod+n       gaps inner current set 0
+bindsym $mod+Shift+n gaps inner current set 8
+
+bindsym $mod+u [workspace=__focused__] floating toggle
+
+
+###############
+# Modify Gaps #
+###############
+
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+

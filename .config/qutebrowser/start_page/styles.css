@@ -1,0 +1,172 @@
+:root {
+  --fgColor: #d8dee9; /* foreground color */
+  --bgColor: #17171c; /* background color */
+  --linkColor: lightgrey;
+  --linkHoverColor: #8FBCBB;
+  --font: "Share Tech Mono"; /* custom font */
+  --leftMargin: 10%;
+  --LinkBoardContainersPerRow: 3;
+  --numberOfBackgroundImages: -1;
+  --idxForFixedBackgroundImage: -1; /* if not -1, Background Image will be fixed to certain index */ 
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  font-family: var(--font), Roboto, "DejaVu Sans", sans-serif;
+  text-decoration: none;
+}
+
+body {
+  color: var(--fgColor);
+  background-color: var(--bgColor);
+  background-size: cover;
+  height: 700px;
+  width: 1500px;
+  /* flex-flow: column; */
+  /* overflow: scroll; */
+}
+
+
+.infoContainer {
+  display: grid;
+  width: 1100px;
+  margin-top: 150px;
+  margin-left: 100px;
+  margin-right: 100px;
+  grid-template-columns: 350px 1fr; /*1fr = 1 Fraction of remaining length */
+  grid-gap: 20em;
+}
+
+.gridForIconsAndLinkBoards {
+  position: absolute;
+  display: grid;
+  width: 1100px;
+  top: 600px;
+  margin-left: 100px;
+  grid-template-columns: 350px 1fr; /*1fr = 1 Fraction of remaining length */
+  grid-gap: 2em;
+}
+
+.gridForIcons {
+  display: flex;
+  width: 200px;
+  height: 150px;
+  flex-direction: column;
+  flex-wrap: wrap;
+  /* grid-template-columns: repeat(2, 1fr); /*1fr = 1 Fraction of remaining length *1/ */
+  /* grid-gap: .5em; */
+}    
+.gridForIcons >* {
+  flex: 1 1 30px;
+}
+  
+
+.icon {
+  display: flex;
+  font-size: 3rem;
+  color: var(--linkColor);
+}
+
+.icon:hover {
+  color: var(--linkHoverColor);
+}
+
+.container {
+  display: flex;
+}
+
+.gridLinkBoards {
+  display: grid;
+  grid-template-columns: repeat(var(--LinkBoardContainersPerRow), 1fr); 
+  grid-gap: 5em;
+}
+
+.linkBoard {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  background-color: rgba(67, 76, 94, 0.35);
+  /* border-radius: 10px; */
+  width: 100%;
+}
+
+.linkBoardHead {
+  background-color: rgba(67, 76, 94, 0.45);
+  /* border-top-left-radius: 10px; */
+  /* border-top-right-radius: 10px; */
+  width: 100%;
+  /* justify-content: center; */
+  flex-direction: row;
+  display: flex;
+  font-size: 2rem;
+}
+
+.linkContainer {
+  margin-top: 0.4em;
+  color: var(--linkColor);
+}
+
+.linkContainer:hover {
+  color: var(--linkHoverColor);
+}
+
+.datetime{
+  margin-right: 10em;
+}
+#currentTime {
+  font-size: 5rem;
+  font-weight: 700;
+  margin-top: -16px;
+}
+
+#currentDate {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+}
+
+.gridForTodo {
+  position: absolute;
+  width: 1300px;
+  top: 550px;
+  margin-left: 100px;
+  /* display: grid; */
+  /* grid-template-columns: 350px 1fr; /*1fr = 1 Fraction of remaining length *1/ */
+  /* grid-gap: 2em; */
+  display: flex;
+  column-gap: 80px;
+  /* grid-template-columns: repeat(var(--LinkBoardContainersPerRow), 1fr); */
+  /* grid-gap: 5em; */
+}
+
+.todoListContainer {
+  display: flex;
+}
+
+.todoListBoard {
+  display: flex;
+  flex-flow: column;
+  align-items: left;
+  width: 400px;
+}
+
+.todoListBoardHead {
+  background-color: rgba(67, 76, 94, 0.45);
+  /* border-top-left-radius: 10px; */
+  /* border-top-right-radius: 10px; */
+  width: 100%;
+  justify-content: center;
+  flex-direction: row;
+  display: flex;
+  font-size: 1.2rem;
+}
+
+.todoListItem {
+  margin-top: 0.3em;
+  margin-bottom: em;
+  color: var(--linkColor);
+  padding: .5em;
+}
+
+

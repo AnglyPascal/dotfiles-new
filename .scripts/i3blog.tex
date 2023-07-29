@@ -1,0 +1,141 @@
+\documentclass[11pt, article, a4paper]{memoir}
+\usepackage[article]{ahsan}
+
+\setlength{\parindent}{0pt}
+
+\title{i3 vim blog}
+
+\begin{document}
+
+\maketitle
+    
+
+vim setup
+
+\begin{enumerate}
+    \item get zathura
+    \item setup the plugin files
+\end{enumerate}
+
+wine setup
+
+\begin{enumerate}
+    \item need \textbf{wine-staging}
+    \item install wine-gecko, wine-mono
+    \item don't let i3 handle window decoration, dont allow virtual env
+    \item install \textbf{lib32-gnutls}, specially important, or else dotnet40 won't run
+    \item set \texttt{sound=alsa}
+    \item scrolling works nice :D
+\end{enumerate}
+
+PowerKey: add HandlePowerKey=ignore in /etc/systemd/logind.conf
+
+chsh -s \$(which zsh) % to set zsh the default
+
+\newpage
+\section*{Package Installation}
+
+\textbf{Essential pacakges}
+
+\begin{lstlisting}[style=mybash]
+sudo pacman-mirrors -c Bangladesh
+sudo pacman -Syu yay termite copyq dolphin feh firefox gvim polybar pulseaudio      \
+        adobe-source-han-sans-jp-fonts ttf-font-awesome ttf-hanazono ttf-roboto     \
+        noto-fonts-cjk noto-fonts-emoji                                             \
+        zathura zathura-cb zathura-djvu zathura-pdf-mupdf calibre epdfview          \
+        texlive-most telegram-desktop discord playerctl                             \
+        vlc ffmpegthumbnailer ffmpegthumbs jpegoptim maim gthumb                    \
+        jre-openjdk konsole redshift unzip unrar p7zip perl-rename                  \
+        linux*-nvidia-440xx optimus-manager                                         \
+        wine-staging wine-gecko wine-mono lib32-gnutls winetricks                   \
+        python-pip gcc
+
+curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | gpg --import -
+yay -S slack-desktop spotify spicetify-cli windscribe-cli zoom megasync
+
+sudo pip install youtube-dl 
+pip install yandex-images-downloader instaloader                    \
+            sympy numpy matplotlib pint pynvim
+\end{lstlisting}
+
+
+\section*{Settings setup}
+
+Essential settings
+
+\begin{lstlisting}[style=mybash]
+echo 'Options "NaturalScrolling" "True"' > '/etc/X11/xorg.conf.d/30-touchpad.conf'
+\end{lstlisting}
+
+Create symlinks
+
+\begin{lstlisting}[ style=mybash ]
+conf="/home/ahsan/git/dotfiles/config"
+
+$conf/fstab $conf/hosts                 ->   /etc/fstab /etc/hosts
+$conf/i3 $conf/polybar $conf/zathura    ->   /home/.config/
+$conf/termite $conf/feh $conf/dunst     ->   /home/.config/
+\end{lstlisting}
+
+
+\begin{enumerate}
+    \item set MoeDark in Kvantum, change color to BestBlack and transparency
+    \item change discord theme
+    \item setup pulseaudio, add two devices \texttt{h:0,0} and \texttt{h:0,2} to
+        the config file
+    \item install playerctl, add media keys.
+    \item fix font gucharmap Share
+    \item copyq setup, dont set show/hide menu, gets stuck if floating enabled
+        instead setup \texttt{copyq menu} to a shortcut in i3 config, hide on exit
+    \item picom/gtx creates black boxes, use nvidia cards to fix this
+\end{enumerate}
+
+Setup the symlinks %Todo: make a script for the linking
+
+
+\section*{Themes setup}
+Setup Kvantum MoeDark theme, BetterDiscord Nocturnal and Terminal CustomTheme
+
+
+\subsection{Droidcam Installation}
+
+\begin{enumerate}
+    \item install linux*-headers dkms v4l2loopback 
+    \item reboot
+    \item install droidcam from aur
+    \item for 1080p: https://bbs.archlinux.org/viewtopic.php?id=209121
+    \item fuck... 
+    \item okay so what happened was, after installing dkms, everything related to droidcam
+        works. BUT, for some reason dkms doesn't load any other modules. So Audio becomes
+        broken. There should be some workaround to this, will have to chec
+\end{enumerate}
+
+sudo pacman -R pulseaudio
+sudo pacman -S linux58-headers dkms v4l2loopback-dkms
+reboot
+yay -S droidcam
+replace v4l2loopback-dc by v4l2loopback in /etc/modules-load.d/droidcam.conf
+specify the resoltuion at /etc/modprobe.d/droidcam.conf
+pacmd load-module module-alsa-source device=hw:0,1
+pacmd load-module module-alsa-source device=hw:1,0
+set default device in alsamixer
+set key maps
+install adb
+USB Debugging on, Tansfer Files on, Authorize
+
+
+https://www.reddit.com/r/Windscribe/comments/cn2qfb/etcresolvconf_is_not_a_symlink_this_may_break_dns/
+
+
+\section{Tridactyl}
+
+% key to go to the last active tab
+\texttt{set b buffer #}
+
+
+\section{touchpad}
+
+
+ram cap issue: https://askubuntu.com/questions/41778/computer-freezing-on-almost-full-ram-possibly-disk-cache-problem
+
+\end{document}

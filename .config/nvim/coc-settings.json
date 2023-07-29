@@ -1,0 +1,22 @@
+{
+  "python.formatting.provider": "yapf",
+  "cpp.formatting.provider": "clang-format",
+  "coc.preferences.formatOnSaveFiletypes": ["python"],
+  "languageserver": {
+    "ocaml": {
+      "command": "opam",
+      "args": ["config", "exec", "--", "ocaml-language-server", "--stdio"],
+      "filetypes": ["ocaml", "reason"]
+    },
+    "ccls": {
+      "command": "ccls",
+      "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
+      "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
+      "initializationOptions": {
+        "cache": {
+          "directory": "/tmp/ccls"
+        }
+      }
+    }
+  }
+}

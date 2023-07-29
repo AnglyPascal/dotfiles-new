@@ -1,0 +1,106 @@
+
+// ==UserScript==
+// @name          YouTube Real Cinema Mode
+// @namespace     http://userstyles.org
+// @description	  Don't like these small videos on YouTube pages? Me too. So one day I decided to change that and created this userstyle.
+// @author        HorsyNox
+// @homepage      https://userstyles.org/styles/122032
+// @include       http://youtube.com/*
+// @include       https://youtube.com/*
+// @include       http://*.youtube.com/*
+// @include       https://*.youtube.com/*
+// @run-at        document-start
+// @version       0.20210429200352
+// ==/UserScript==
+(function() {var css = [
+	"ytd-app:not([guide-persistent-and-visible]) ytd-page-manager {",
+	"  margin-top: 0!important;",
+	"}",
+	"",
+	"ytd-app:not([guide-persistent-and-visible]) #player-theater-container:empty~#columns #primary,",
+	"ytd-app:not([guide-persistent-and-visible]) #player-theater-container:empty~#columns #secondary{",
+	"    padding-top: 56px;",
+	"}",
+	"",
+	"ytd-app:not([guide-persistent-and-visible]) ytd-masthead,",
+	"ytd-app:not([guide-persistent-and-visible]) #masthead-container.ytd-app::after {",
+	"  transform: translateY(-56px);",
+	"  transition: transform .1s .5s ease-out;",
+	"}",
+	"ytd-app:not([guide-persistent-and-visible]) #masthead-container:hover ytd-masthead,",
+	"ytd-app:not([guide-persistent-and-visible]) #masthead-container:hover.ytd-app::after {",
+	"  transform: translateY(0px);",
+	"}",
+	"",
+	"ytd-app:not([guide-persistent-and-visible]) [theater] #player.ytd-watch {",
+	"  height: 100vh!important;",
+	"  max-height: 100vh!important;",
+	"}",
+	"",
+	"ytd-watch-flexy[theater] #player-theater-container.ytd-watch-flexy, ",
+	"ytd-watch-flexy[fullscreen] #player-theater-container.ytd-watch-flexy,",
+	"ytd-app:not([guide-persistent-and-visible]) [theater] #player video {",
+	"  width: 100%!important;",
+	"  height: 100vh!important;",
+	"  max-height: 100vh!important;",
+	"  max-width: 100%!important;",
+	"  left: 0!important;",
+	"}",
+	"",
+	"ytd-app:not([guide-persistent-and-visible]) .ytp-chrome-top.ytp-share-button-visible,",
+	"ytd-app:not([guide-persistent-and-visible]) #iv-drawer .iv-drawer-header,",
+	"ytd-app:not([guide-persistent-and-visible]) #iv-drawer .iv-drawer-content {",
+	"  margin-top: 30px;",
+	"}",
+	"",
+	"ytd-app:not([guide-persistent-and-visible]) [theater] .ytp-chrome-top.ytp-share-button-visible,",
+	"ytd-app:not([guide-persistent-and-visible]) [theater] #iv-drawer .iv-drawer-header,",
+	"ytd-app:not([guide-persistent-and-visible]) [theater] #iv-drawer .iv-drawer-content,",
+	"ytd-app:not([guide-persistent-and-visible]) [theater] .ytp-multicam-menu-header,",
+	"ytd-app:not([guide-persistent-and-visible]) [theater] .ytp-multicam-menu-items,",
+	"ytd-app:not([guide-persistent-and-visible]) [theater] .ytp-playlist-menu-header,",
+	"ytd-app:not([guide-persistent-and-visible]) [theater] .ytp-playlist-menu-items,",
+	"ytd-app:not([guide-persistent-and-visible]) [theater] .ytp-share-panel-close {",
+	"  margin-top: 56px;",
+	"}",
+	"",
+	"ytd-app:not([guide-persistent-and-visible]) .ytp-tooltip.ytp-tooltip-opaque.ytp-bottom {",
+	"  right: 60px!important;",
+	"  top: 35px!important;",
+	"}",
+	"",
+	"ytd-app:not([guide-persistent-and-visible]) [theater] .ytp-tooltip.ytp-tooltip-opaque.ytp-bottom {",
+	"  right: 60px!important;",
+	"  top: 60px!important;",
+	"}",
+	"",
+	"@supports (scrollbar-width: none) {",
+	"  body {",
+	"    scrollbar-width: none;",
+	"  }",
+	"}",
+	"@supports not (scrollbar-width: none) {",
+	"  body::-webkit-scrollbar {",
+	"    display: none;",
+	"  }",
+	"}"
+].join("\n");
+if (typeof GM_addStyle != "undefined") {
+	GM_addStyle(css);
+} else if (typeof PRO_addStyle != "undefined") {
+	PRO_addStyle(css);
+} else if (typeof addStyle != "undefined") {
+	addStyle(css);
+} else {
+	var node = document.createElement("style");
+	node.type = "text/css";
+	node.appendChild(document.createTextNode(css));
+	var heads = document.getElementsByTagName("head");
+	if (heads.length > 0) {
+		heads[0].appendChild(node);
+	} else {
+		// no head yet, stick it whereever
+		document.documentElement.appendChild(node);
+	}
+}
+})();

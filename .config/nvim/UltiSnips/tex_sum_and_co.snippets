@@ -1,0 +1,67 @@
+global !p
+def math():
+    return vim.eval('vimtex#syntax#in_mathzone()') == '1'
+endglobal
+
+context "math()"
+snippet bigcup "union" iA
+\bigcup^{${1:\infty}}_{${2:n=1}}$0
+endsnippet
+
+context "math()"
+snippet bigcap "union" iA
+\bigcap^{${1:\infty}}_{${2:n=1}}$0
+endsnippet
+
+context "math()"
+snippet 'sum ' "summation" rA
+\sum 
+endsnippet
+
+context "math()"
+snippet '(.)sum(\w)( |_[\d\w] |_{[\d\w\+\-]+} )' "summation" rA
+`!p
+beg=match.group(1)
+ind=match.group(2)
+snd=match.group(3)
+
+if beg != "\\":
+	beg += "\\"
+if snd == " ":
+	num = "1"
+elif snd[1] == "{":
+	num=snd[2 :-2]
+else:
+	num=snd[1 :-1]
+snip.rv = beg + "sum_{" + ind[0] + "=" + num + "}^{\infty} "
+`
+endsnippet
+
+context "math()"
+snippet '([^\\])sum(\w\w)( |_[\d\w] |_{[\d\w\+\-]+} )' "summation" rA
+`!p
+beg=match.group(1)
+ind=match.group(2)
+snd=match.group(3)
+
+if beg != "\\":
+	beg += "\\"
+if snd == " ":
+	num = "1"
+elif snd[1] == "{":
+	num=snd[2 :-2]
+else:
+	num=snd[1 :-1]
+snip.rv = beg + "sum_{" + ind[0] + "=" + num + "}^{" + ind[1] + "} "
+`
+endsnippet
+
+context "math()"
+snippet lim "limit" iA
+\lim_{${1:n}\to ${2:\infty}}$0
+endsnippet
+
+context "math()"
+snippet prod "product" wA
+\prod_{${1:n=${2:1}}}^{${3:\infty}} ${4:${VISUAL}} $0
+endsnippet

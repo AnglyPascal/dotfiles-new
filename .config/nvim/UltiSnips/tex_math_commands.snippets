@@ -1,0 +1,157 @@
+global !p
+def math():
+    return vim.eval('vimtex#syntax#in_mathzone()') == '1'
+endglobal
+
+context "math()"
+snippet '\b(bf|bb|vec|conju|tt|cal|frak|bar|ol)' "one input math commands" wrA
+`!p
+dic={'bb':'mathbb', 'tt':'mathtt', 'vec':'overrightarrow', 'conju':'overline',
+	 'cal':'mathcal', 'frak':'mathfrak', 'bf':'mathbf', 'ol':'overline',
+	 'bar':'bar'}
+key=match.group(1)
+snip.rv = '\\' + dic[key]
+`{$1}$0
+endsnippet
+
+context "math()" 
+snippet '([^n]ul|[^o]rm)' "one input commands" wrA
+`!p
+dic={'ul':'underline', 'rm':'mathrm'}
+key=match.group(1)
+key1=key[1:]
+snip.rv = key[0] + '\\' + dic[key1]
+`{${1:${VISUAL}}}$0
+endsnippet
+
+
+context "math()"
+snippet '([^\\])(oplus|otimes|times|dim|ker|Ker|img|to|ge|le|ne|pm|log|exp|sub|odot|cap|cup|sim|sin|cos|tan|ord|arg|gcd)' "math commands" wrA 
+`!p
+key=match.group(2)
+snip.rv = match.group(1) + '\\' + key
+`
+endsnippet
+
+context "math()"
+snippet '([^\\])(lsup|linf|sigalg|<=>|imp|trig|para|ee|arrowle)' "math commands" wrA 
+`!p
+dic={'para':'parallel', 'ee':'exists', 'imp':'implies', 'trig':'triangle', 'arrowle':'leftrightarrow', '<=>':'Leftrightarrow',
+ 'sigalg': '(\sigma\)-algebra', 'lsup':'limsup', 'linf':'liminf'}
+key=match.group(2)
+snip.rv = match.group(1) + '\\' + dic[key]
+`
+endsnippet
+
+
+context "math()"
+snippet '([^\\])(var|cov|det)' "math commands" wrA 
+`!p
+key=match.group(2)
+snip.rv = match.group(1) + '\\text{' + key + '}'
+`
+endsnippet
+
+context "math()"
+snippet '([^\\l])(sup|inf)' "math commands" wrA 
+`!p
+dic={'sup':'sup', 'inf':'inf'}
+key=match.group(2)
+snip.rv = match.group(1) + '\\' + dic[key]
+`
+endsnippet
+
+context "math()"
+snippet '([^tp\\]eq)' "math commands" wrA 
+`!p
+dic={'eq':'equiv'}
+key=match.group(1)
+snip.rv = key[0] + '\\' + dic[key[1:]]
+`
+endsnippet
+
+context "math()"
+snippet '([^\\])(--|fa|null|\.\.\.|ity|nin)' "math commands" wrA 
+`!p
+dic={'fa':'forall', 'null':'varnothing', '...':'dots ', 'ity':'infty',
+	 'nin':'notin', '--': 'setminus'}
+key=match.group(2)
+snip.rv = match.group(1) + '\\' + dic[key]
+`
+endsnippet
+
+context "math()"
+snippet '([^\\lmsn])(in|_in)' "math commands" wrA 
+`!p
+dic={'in':'in', '_in':'in'}
+key=match.group(2)
+snip.rv = match.group(1) + '\\' + dic[key]
+`
+endsnippet
+
+context "math()"
+snippet '([^\\])([pP]hi|alp|sig|[zb]eta|[dD]el|[gG]am|kap|mu|lam|eps|[tT]au|pi|chi|the|[oO]me|Psi)' "greek letters " wrA
+`!p 
+dic={'phi':'phi', 'alp': 'alpha', 'sig':'sigma', 'beta':'beta', 'del':'delta', 'pi':'pi',
+	 'gam':'gamma', 'kap':'kappa', 'lam':'lambda', 'eps':'epsilon', 'tau':'tau',
+	 'chi':'chi', 'the':'theta', 'ome':'omega', 'Ome':'Omega', 'Tau':'Tau', 'Gam':'Gamma',
+	 'Del':'Delta', 'zeta':'zeta', 'Phi':'Phi', 'Psi':'Psi', 'mu':'mu'}
+key = match.group(2)
+snip.rv = match.group(1) + '\\' + dic[key]
+`
+endsnippet
+
+context "math()"
+snippet ll "lim t -> a" i
+\lim_{t \to a}
+endsnippet
+
+context "math()"
+snippet ddx "d/dx" iA
+\frac{\mathrm{d}}{\mathrm{dx}}
+endsnippet
+
+context "math()"
+snippet '([^d])dx' "d/dx" riA
+`!p snip.rv=match.group(1)`\dx
+endsnippet
+
+context "math()"
+snippet ddt "d/dx" iA
+\frac{\mathrm{d}}{\mathrm{dt}}
+endsnippet
+
+context "math()"
+snippet '_' "sub" riA
+_{$1}$0
+endsnippet
+
+context "math()"
+snippet part "d/dx" wA
+\frac{\partial ${1:V}}{\partial ${2:x}} $0
+endsnippet
+
+context "math()"
+snippet sq "\sqrt{}" wA
+\sqrt{${1:${VISUAL}}}$0
+endsnippet
+
+context "math()"
+snippet and "and" wA
+\text{ and }
+endsnippet
+
+context "math()"
+snippet st "such that" wA
+\text{ such that, }
+endsnippet
+
+context "math()"
+snippet te "and" wA
+\text{ $1 }$0
+endsnippet
+
+context "math()"
+snippet '(int|\\int)' "integral" irA
+\int_{$1}^{$2} $0
+endsnippet

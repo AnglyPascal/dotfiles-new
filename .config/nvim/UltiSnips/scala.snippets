@@ -1,0 +1,41 @@
+snippet '<<' "element" wrA
+<-
+endsnippet
+
+# snippet '>>' "element" wrA
+# -> 
+# endsnippet
+
+snippet main "main method" i
+def main(args : Array[String]) : Unit = {
+	$1
+}
+$0
+endsnippet
+
+snippet print "print" iA
+println($1)$0
+endsnippet
+
+snippet pi "comment" b
+π
+endsnippet
+
+snippet // "comment" bA
+/** $1
+ */
+endsnippet
+
+snippet unittest "scalatest unit test" i
+it should "$1" in {
+	$2
+}$0
+endsnippet
+
+snippet 'box(.*)' "boxed comment" ir
+`!p
+t = match.group(1)
+n = len(t)
+snip.rv = ('/' * (n+6)) + "\n// " + t + " //\n" + ('/' * (n+6))
+`
+endsnippet

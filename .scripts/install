@@ -1,0 +1,334 @@
+#! /bin/bash
+
+DOTFILES_ROOT=$(pwd)
+
+set -e
+
+echo ''
+
+info () {
+  printf "\r  [ \033[00;34m..\033[0m ] $1\n"
+}
+
+user () {
+  printf "\r  [ \033[0;33m??\033[0m ] $1\n"
+}
+
+success () {
+  printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
+}
+
+fail () {
+  printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
+  echo ''
+  exit
+}
+
+overwrite_all=false 
+backup_all=false 
+skip_all=false
+
+link_file () {
+  local src=$1 dst=$2
+
+  local overwrite= backup= skip=
+  local action=
+
+  if [ -f "$dst" -o -d "$dst" -o -L "$dst" ]
+  then
+    if [ "$overwrite_all" == "false" ] && [ "$backup_all" == "false" ] && \
+       [ "$skip_all" == "false" ]
+    then
+      local currentSrc="$(readlink $dst)"
+      if [ "$currentSrc" == "$src" ]
+      then
+        skip=true;
+      else
+        user "File already exists: $dst ($(basename "$src")), what do you want to do?\n\
+              [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
+        read -n 1 action
+
+        case "$action" in
+          o )
+            overwrite=true;;
+          O )
+            overwrite_all=true;;
+          b )
+            backup=true;;
+          B )
+            backup_all=true;;
+          s )
+            skip=true;;
+          S )
+            skip_all=true;;
+          * )
+            ;;
+        esac
+      fi
+    fi
+
+    overwrite=${overwrite:-$overwrite_all}
+    backup=${backup:-$backup_all}
+    skip=${skip:-$skip_all}
+
+    if [ "$overwrite" == "true" ]
+    then
+      rm -rf "$dst"
+      success "removed $dst"
+    fi
+
+    if [ "$backup" == "true" ]
+    then
+      mv "$dst" "${dst}.backup"
+      success "moved $dst to ${dst}.backup"
+    fi
+
+    if [ "$skip" == "true" ]
+    then
+      success "skipped $src"
+    fi
+  fi
+
+  if [ "$skip" != "true" ]  # "false" or empty
+  then
+    ln -s "$1" "$2"
+    success "linked $1 to $2"
+  fi
+}
+
+link_base_folders(){
+  info 'mounting the file drives'
+  sudo mkdir /run/media/file1
+  sudo mkdir /run/media/file2
+  sudo mkdir /run/media/file3
+
+  sudo mount /dev/sdb2 /run/media/file1
+  sudo mount /dev/sdb4 /run/media/file2
+  sudo mount /dev/sdb3 /run/media/file3
+
+  info 'populating /home/ahsan'
+  bases1=(
+    "meme" 
+    "Pictures" 
+    "Softwares" 
+    "Videos" 
+    "MEGA/Main/git"
+    "MEGA/Main/Books"
+    "MEGA/Main/Mathematics"
+  )
+  for i in ${bases1[@]}
+  do 
+    link_file "/run/media/file1/$i" "/home/ahsan/$(basename $i)"
+  done
+  bases2=(
+    "mega/Music"
+    "onedrive/Manga"
+    "onedrive/GARNiDELiA"
+  )
+  for i in ${bases2[@]}
+  do
+    link_file "/run/media/file2/$i" "/home/ahsan/$(basename $i)"
+  done
+  bases3=(
+    "Documents"
+    "Downloads"
+  )
+  for i in ${bases3[@]}
+  do
+    link_file "/run/media/file3/$i" "/home/ahsan/$(basename $i)"
+  done
+}
+
+install_dots () {
+  # link the main folders first
+  local overwrite_all=false 
+  local backup_all=false 
+  local skip_all=false
+  base="$HOME/git/dotfiles"
+
+  # install home dir configs
+  info 'installing dots of home directory'
+  for src in "$base/dots/."*
+  do
+    if [ "$(basename "$src")" != "." ] && [ "$(basename "$src")" != ".." ]
+    then
+      dst="$HOME/$(basename "${src}")"
+      # echo $dst
+      link_file "$src" "$dst"
+    fi
+  done
+
+  # Install .config folders
+  echo '' 
+  info 'installing .config files'
+  for src in "$base/config/"*
+  do
+    if [ "$(basename "$src")" != "." ]  && \
+       [ "$(basename "$src")" != ".." ] && \
+       [ "$(basename "$src")" != "*" ]
+    then
+      dst="$HOME/.config/$(basename "${src}")"
+      # echo $dst
+      link_file "$src" "$dst"
+    fi
+  done
+
+  # installing fonts
+  info 'installing fonts'
+  if [ ! -d "$HOME/.local/share" ]
+  then
+    mkdri "$HOME/.local/share"
+  fi
+  link_file "$base/fonts/" "$HOME/.local/share/fonts/"
+  fc-cache
+
+  # install the custom desktop files
+  link_file "$base/applications/" "$HOME/.local/share/applications/"
+
+  # Install the themes
+  info 'installing themes'
+  if [ ! -d "$HOME/.themes/" ]
+  then
+    mkdir "$HOME/.themes/"
+  fi
+  link_file "$base/themes/oomox-autumn/" "$HOME/.themes/oomox-autumn"
+  link_file "$base/themes/BestBlack/" "$HOME/.config/spicetify/Themes/BestBlack"
+}
+
+install_vim(){
+  local overwrite_all=false 
+  local backup_all=false 
+  local skip_all=false
+  base="$HOME/git/dotfiles"
+
+  info "installing vim stuff"
+  if [ ! -d "$HOME/.vim/colors" ]
+  then
+    mkdir /home/ahsan/.vim/colors
+  fi 
+  link_file "$base/vim/bestblack.vim" "$HOME/.vim/colors/bestblack.vim"
+  link_file "$base/vim/spell/" "$HOME/.vim/spell"
+  link_file "$base/vim/UltiSnips/" "$HOME/.vim/UltiSnips"
+  link_file "/home/ahsan/git/dotfiles/vim/vimtex/listings.vim" "/home/ahsan/.vim/plugged/vimtex/autoload/vimtex/syntax/p/listings.vim"
+  echo "add algorithms as an element in the list s:verbatim_envs in indent/tex.vim"
+}
+
+setup_spicetify(){
+  info 'setting up spicetify'
+  
+  sudo chmod a+wr /opt/spotify
+  sudo chmod a+wr /opt/spotify/Apps -R
+
+  spicetify 
+  spicetify backup apply enable-devtool
+  spicetify config current_theme BestBlack
+  spicetify config color_scheme Base
+  spicetify apply
+}
+
+essential_packages () {
+  printf "\r\033[2K  [ \033[00;32mDownloading Essential Packages\033[0m ] \n"
+
+  sudo pacman-mirrors -c Bangladesh
+  sudo pacman -Syu                                                                   \
+    yay firefox alacritty gvim polybar dolphin copyq telegram-desktop discord        \
+    python-pip gcc haskell-base jre-openjdk texlive-most ruby base-devel             \
+    mpv vlc shotcut maim gthumb feh gwenview playerctl jpegoptim                     \
+    zathura zathura-cb zathura-djvu zathura-pdf-mupdf calibre epdfview               \
+    adobe-source-han-sans-jp-fonts ttf-font-awesome ttf-hanazono                     \
+    ttf-roboto noto-fonts-cjk noto-fonts-emoji texlive-fontsextra                    \
+    ffmpegthumbnailer ffmpegthumbs kvantum-qt5 mcomix nitrogen                       \
+    unzip unrar p7zip perl-rename ripgrep konsole redshift awk zip                   \
+    haskell-language-server haskell-regex-posix haskell-hackage-security haskell-tar \
+    haskell-network-uri linux515-nvidia-440xx optimus-manager                        \
+    pipewire pipewire-pulse pipewire-alsa pavucontrol bluez bluez-utils blueman      \
+    gst-plugin-pipewire gimp inkscape krita clementine qutebrowser rofi xclip        \
+    thunderbird nodejs npm nodejs                                                    \
+    junit cabal gradle stack tidy scala sbt pdfgrep ctags 
+
+  sudo pacman -Rncs viewnior vlc palemoon-bin pamac-cli pamac-gtk
+
+  sudo pacman -U /home/ahsan/Softwares/xournalpp-1.0.20-2-x86_64.pkg.tar.zst
+  sudo sed -i 's/#IgnorePkg   =/IgnorePkg    = xournalpp/' /etc/pacman.conf
+
+  # setup latex stylesheets
+  sudo ln -s /home/ahsan/git/sty /usr/share/texmf-dist/tex/latex/
+  sudo texhash
+
+  # set qute as the default browser
+  xdg-mime default                      \
+    org.qutebrowser.qutebrowser.desktop \
+    x-scheme-handler/https              \
+    x-scheme-handler/http
+
+  # install plug
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+  # install ammonite for scala
+  sudo sh -c '(echo "#!/usr/bin/env sh" && curl -L https://github.com/lihaoyi/Ammonite/releases/download/1.6.8/2.13-1.6.8) > /usr/local/bin/amm && chmod +x /usr/local/bin/amm' && amm
+}
+
+install_omz (){
+  # install oh my zsh
+  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  chsh -s $(which zsh)
+  echo ''
+}
+
+install_wine (){
+  sudo pacman -S wine-staging wine-gecko wine-mono lib32-gnutls winetricks
+}
+
+install_ocaml (){
+  sudo pacman -Sy ocaml opam
+  opam init
+  eval $(opam env --switch=default)
+  opam switch create 4.14.0
+  opam install dune utop ocaml-lsp-server merlin
+}
+
+yay_pip () {
+  printf "\r\033[2K  [ \033[00;32mDownloading AUR and Pip Packages\033[0m ] \n"
+    
+  # to import the spotify gpg key
+  curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | gpg --import -
+
+  info 'installing yay packages'
+  yay -S slack-desktop spotify spicetify-cli windscribe-cli zoom librsvg   \
+    geogebra-5 megasync brave betterlockscreen i3lock-color findimagedupes \
+    teams onedrive-abraunegg vue-cli
+
+  info 'installing pip packages'
+  pip install sympy numpy scipy matplotlib pint praw instaloader selenium \
+      termcolor tldextract yt-dlp
+
+  echo ''
+}
+
+other_setups () {
+  info 'setting up redshift'
+  redshift -P -O 4700
+
+  # resolv.conf symlink warning for windscribe
+  info 'making symlink of resolv.conf'
+  sudo rm /etc/resolv.conf
+  sudo ln -s /var/run/NetworkManager/resolv.conf /etc/resolv.conf
+  sudo systemctl start systemd-resolved.service
+}
+
+clean_install(){
+  link_base_folders
+  essential_packages
+  install_dots
+  install_vim
+  other_setups
+  setup_spicetify
+  yay_pip
+  install_omz
+}
+
+clean_install
+
+echo ''
+echo '  All installed!'
