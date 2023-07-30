@@ -1,4 +1,3 @@
-
 mime () {
   local mpv = $(which mpv)
   local zathura = $(which zathura)
