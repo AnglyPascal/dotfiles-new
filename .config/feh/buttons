@@ -4,4 +4,4 @@ toggle_menu 2
 zoom_in 4
 zoom_out 5
 rotate C-1
-zoom C-2
+zoom S-1

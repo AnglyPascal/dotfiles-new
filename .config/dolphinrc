@@ -6,7 +6,7 @@ eDP-1-1 HDMI-1-2 XPosition 1366x768=8
 eDP-1-1 HDMI-1-2 YPosition 1366x768=8
 
 [$Version]
-update_info=dolphin_detailsmodesettings.upd:rename-leading-padding
+update_info=dolphin_detailsmodesettings.upd:rename-leading-padding,dolphin_detailsmodesettings.upd:move-content-display
 
 [CompactMode]
 MaximumTextWidthIndex=2
@@ -42,7 +42,7 @@ ViewPropsTimestamp=2020,12,1,12,43,45
 [IconsMode]
 IconSize=64
 MaximumTextLines=2
-PreviewSize=256
+PreviewSize=208
 UseSystemFont=false
 ViewFont=Share Tech,10,-1,5,50,0,0,0,0,0
 
@@ -51,8 +51,8 @@ Places Icons Auto-resize=false
 Places Icons Static Size=16
 
 [KPropertiesDialog]
-1366x768 screen: Height=458
-1366x768 screen: Width=389
+1366x768 screen: Height=596
+1366x768 screen: Width=525
 2 screens: Height=454
 2 screens: Width=409
 eDP-1 HDMI-2 Height 1366x768=600

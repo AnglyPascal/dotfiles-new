@@ -103,6 +103,10 @@ let g:ctrlp_custom_ignore = {
 -- https://neovim.io/doc/user/lua.html#lua-highlight
 cmd([[ au TextYankPost * silent! lua vim.highlight.on_yank() ]])
 
+
+-- Git Gutter --------------------
+vim.g.gitgutter_highlight_lines = 1
+
 -- Completion --------------------
 local cmp = require("cmp")
 cmp.setup({

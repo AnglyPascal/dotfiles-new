@@ -9,8 +9,10 @@ alias cp="cp -i"
 alias df='df -h'
 alias free='free -m'
 
+alias grg="git --no-pager grep"
+
 alias wo='nmcli device connect wlp3s0'
-alias xp='sudo pkill Pentablet_Drive; sudo /home/ahsan/git/dotfiles/xp_pen/Pentablet_Driver.sh'
+alias xp='sudo pkill Pentablet_Drive; sudo /home/ahsan/.config/xp_pen/Pentablet_Driver.sh'
 
 alias ls='ls -X --group-directories-first --color=auto'
 alias ll='ls -alF'
