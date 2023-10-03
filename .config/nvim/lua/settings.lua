@@ -173,8 +173,8 @@ vim.g.ale_linters = {
   tex = {},
   python = {'pylint'},
   ocaml = {'merlin'},
-  cpp = {'clang'},
-  c = {'clang'},
+  cpp = {},
+  c = {},
 }
 
 vim.g.ale_fixers = {
@@ -182,7 +182,7 @@ vim.g.ale_fixers = {
   typescript = {'prettier', 'eslint'},
   typescriptreact = {'prettier', 'eslint'},
   ocaml = {'ocamlformat'},
-  cpp = {'clang-format'}
+  cpp = {}
 }
 
 vim.g.ale_haskell_ghc_options = '-fno-code -v0 -dynamic'

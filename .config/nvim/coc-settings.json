@@ -1,4 +1,5 @@
 {
+  "coc.preferences.jumpCommand": "drop",
   "python.formatting.provider": "yapf",
   "cpp.formatting.provider": "clang-format",
   "coc.preferences.formatOnSaveFiletypes": ["python"],

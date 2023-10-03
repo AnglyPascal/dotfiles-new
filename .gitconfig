@@ -13,3 +13,5 @@
 	postBuffer = 18443717
 [push]
 	autoSetupRemote = true
+[protocol "file"]
+	allow = always

@@ -275,7 +275,7 @@ au.FileType = {
     set.softtabstop = 4
     set.shiftwidth = 4
     set.textwidth = 79
-    set.expandtab = true
+    -- set.expandtab = true
     set.autoindent = true
     set.fileformat = unix
 

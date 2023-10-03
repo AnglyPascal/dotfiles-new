@@ -36,6 +36,9 @@ map("n", "<leader>r", ':IndentGuidesToggle<CR>')
 -- NERDTree --------------
 map("n", "<leader>g", ":GitGutterToggle<CR>")
 
+-- Git conflict markers --
+map("n", "cx", ":ConflictMarkerBoth<CR>")
+map("n", "cX", ":ConflictMarkerBoth!<CR>")
 
 map("n", "gF", "<c-w>gf")
 

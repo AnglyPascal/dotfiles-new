@@ -60,6 +60,7 @@ function M.setup()
       'rhysd/vim-grammarous',
       ft = {'tex', 'text', 'markdown'},
     }
+    use 'rhysd/conflict-marker.vim'
     -- use {
     --   "windwp/nvim-autopairs",
     --     config = function() require("nvim-autopairs").setup {} end
@@ -201,6 +202,7 @@ function M.setup()
 
     -- Assembly
     use { 'shirk/vim-gas' }
+    use { 'kylelaker/riscv.vim' }
 
     -- TypeScript
     use 'HerringtonDarkholme/yats.vim'
@@ -229,8 +231,8 @@ function M.setup()
     use 'anglypascal/vim-latexfmt'
     use 'lervag/vimtex'
 
-    -- R
-    use 'jalvesaq/Nvim-R'
+    -- -- R
+    -- use 'jalvesaq/Nvim-R'
   end
 
   packer_init()
