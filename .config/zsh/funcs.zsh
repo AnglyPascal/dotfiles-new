@@ -115,3 +115,28 @@ sortImg() {
 syncDate() {
  sudo date -s "$(wget --method=HEAD -qSO- --max-redirect=0 google.co.uk 2>&1 | sed -n 's/^ *Date: *//p')"
 }
+
+toggle_term () {
+  ALACRITY_CONFIG="$HOME/.config/alacritty/alacritty.yml"
+  if grep -Fq "light.yaml" "$ALACRITY_CONFIG"
+  then
+      sed -i 's/light\.yaml/dark\.yaml/' "$ALACRITY_CONFIG"
+  else
+      sed -i 's/dark\.yaml/light\.yaml/' "$ALACRITY_CONFIG"
+  fi
+}
+
+toggle_nvim () {
+  NVIM_CONFIG="$HOME/.config/nvim/init.lua"
+  if grep -Fq "bestwhite" "$NVIM_CONFIG"
+  then
+      sed -i 's/bestwhite/bestblack/' "$NVIM_CONFIG"
+  else
+      sed -i 's/bestblack/bestwhite/' "$NVIM_CONFIG"
+  fi
+}
+
+switch () {
+  toggle_term
+  toggle_nvim
+}

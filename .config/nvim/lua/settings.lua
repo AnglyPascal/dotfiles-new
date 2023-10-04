@@ -79,7 +79,6 @@ au.BufEnter =
 
 -- Themes and Colors -------------
 set.termguicolors = true
-cmd([[ color bestblack ]])
 
 -- Indent guids -----------------
 vim.g.indent_guides_guide_size = 1
