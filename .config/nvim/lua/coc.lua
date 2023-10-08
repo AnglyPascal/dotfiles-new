@@ -46,6 +46,7 @@ au.FileType = {
       nmap <silent> gy <Plug>(coc-type-definition)
       nmap <silent> gi <Plug>(coc-implementation)
       nmap <silent> gr <Plug>(coc-references)
+      nmap <silent> gn <Plug>(coc-rename)
     ]])
     map("n", "<leader>f", ":Format<CR>")
     cmd([[

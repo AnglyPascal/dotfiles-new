@@ -32,4 +32,4 @@ require("metals_config")
 
 require('colorizer').setup()
 
-vim.cmd.color('bestwhite')
+vim.cmd.color('bestblack')

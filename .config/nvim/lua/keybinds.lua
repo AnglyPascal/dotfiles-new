@@ -66,6 +66,11 @@ map("n", "gdh", ":diffget //2<CR>")
 map("n", "gdl", ":diffget //3<CR>")
 map("n", "gdp", ":diffput<CR>")
 
+map("n", "<leader>/", ":Git grep -q ")
+
+-- reset find -----------
+map("n", "c/", ":noh<CR>")
+
 -- macros ----------------
 map("", "k", "gk", { silent = true })
 map("", "j", "gj", { silent = true })
