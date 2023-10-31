@@ -24,3 +24,5 @@ quit q n
 ## zooming
 zoom_in  Up k
 zoom_out Down j
+
+toggle_pause space

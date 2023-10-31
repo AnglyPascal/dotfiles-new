@@ -89,6 +89,26 @@ function M.setup()
       tag = 'nightly' -- optional, updated every week. (see issue #1193)
     }
 
+    -- use {
+    --   "kawre/leetcode.nvim",
+    --   -- build = ":TSUpdate html",
+    --   requires = {
+    --     "nvim-treesitter/nvim-treesitter",
+    --     "nvim-telescope/telescope.nvim",
+    --     "nvim-lua/plenary.nvim", -- required by telescope
+    --     "MunifTanjim/nui.nvim",
+
+    --     -- optional
+    --     "nvim-tree/nvim-web-devicons",
+
+    --     -- recommended
+    --     "rcarriga/nvim-notify",
+    --   },
+    --   opts = {
+    --     -- configuration goes here
+    --   },
+    -- }
+
     -- new
     -- use 'AndrewRadev/sideways.vim' -- move list values sideways
     -- use 'easymotion/vim-easymotion'

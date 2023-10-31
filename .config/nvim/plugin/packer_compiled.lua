@@ -137,6 +137,11 @@ _G.packer_plugins = {
     path = "/home/ahsan/.local/share/nvim/site/pack/packer/start/java-syntax.vim",
     url = "https://github.com/uiiaoo/java-syntax.vim"
   },
+  ["leetcode.nvim"] = {
+    loaded = true,
+    path = "/home/ahsan/.local/share/nvim/site/pack/packer/start/leetcode.nvim",
+    url = "https://github.com/kawre/leetcode.nvim"
+  },
   ["lualine.nvim"] = {
     loaded = true,
     path = "/home/ahsan/.local/share/nvim/site/pack/packer/start/lualine.nvim",
@@ -146,6 +151,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ahsan/.local/share/nvim/site/pack/packer/start/nlua.nvim",
     url = "https://github.com/tjdevries/nlua.nvim"
+  },
+  ["nui.nvim"] = {
+    loaded = true,
+    path = "/home/ahsan/.local/share/nvim/site/pack/packer/start/nui.nvim",
+    url = "https://github.com/MunifTanjim/nui.nvim"
   },
   ["nvim-cmp"] = {
     loaded = true,
@@ -172,10 +182,20 @@ _G.packer_plugins = {
     path = "/home/ahsan/.local/share/nvim/site/pack/packer/start/nvim-metals",
     url = "https://github.com/scalameta/nvim-metals"
   },
+  ["nvim-notify"] = {
+    loaded = true,
+    path = "/home/ahsan/.local/share/nvim/site/pack/packer/start/nvim-notify",
+    url = "https://github.com/rcarriga/nvim-notify"
+  },
   ["nvim-tree.lua"] = {
     loaded = true,
     path = "/home/ahsan/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
     url = "https://github.com/nvim-tree/nvim-tree.lua"
+  },
+  ["nvim-treesitter"] = {
+    loaded = true,
+    path = "/home/ahsan/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
+    url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
@@ -193,6 +213,11 @@ _G.packer_plugins = {
     path = "/home/ahsan/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["riscv.vim"] = {
+    loaded = true,
+    path = "/home/ahsan/.local/share/nvim/site/pack/packer/start/riscv.vim",
+    url = "https://github.com/kylelaker/riscv.vim"
+  },
   ["rust-tools.nvim"] = {
     loaded = true,
     path = "/home/ahsan/.local/share/nvim/site/pack/packer/start/rust-tools.nvim",
@@ -207,6 +232,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ahsan/.local/share/nvim/site/pack/packer/start/tabular",
     url = "https://github.com/godlygeek/tabular"
+  },
+  ["telescope.nvim"] = {
+    loaded = true,
+    path = "/home/ahsan/.local/share/nvim/site/pack/packer/start/telescope.nvim",
+    url = "https://github.com/nvim-telescope/telescope.nvim"
   },
   ultisnips = {
     loaded = true,
@@ -346,13 +376,6 @@ time([[Defining packer_plugins]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-pcall(vim.api.nvim_create_user_command, 'GitGutterToggle', function(cmdargs)
-          require('packer.load')({'vim-gitgutter'}, { cmd = 'GitGutterToggle', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'vim-gitgutter'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('GitGutterToggle ', 'cmdline')
-      end})
 pcall(vim.api.nvim_create_user_command, 'ALEEnable', function(cmdargs)
           require('packer.load')({'ale'}, { cmd = 'ALEEnable', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
@@ -360,28 +383,35 @@ pcall(vim.api.nvim_create_user_command, 'ALEEnable', function(cmdargs)
           require('packer.load')({'ale'}, {}, _G.packer_plugins)
           return vim.fn.getcompletion('ALEEnable ', 'cmdline')
       end})
+pcall(vim.api.nvim_create_user_command, 'GitGutterToggle', function(cmdargs)
+          require('packer.load')({'vim-gitgutter'}, { cmd = 'GitGutterToggle', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'vim-gitgutter'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('GitGutterToggle ', 'cmdline')
+      end})
 time([[Defining lazy-load commands]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType cpp ++once lua require("packer.load")({'ale', 'coc.nvim'}, { ft = "cpp" }, _G.packer_plugins)]]
-vim.cmd [[au FileType ocaml ++once lua require("packer.load")({'coc.nvim'}, { ft = "ocaml" }, _G.packer_plugins)]]
-vim.cmd [[au FileType rust ++once lua require("packer.load")({'coc.nvim'}, { ft = "rust" }, _G.packer_plugins)]]
-vim.cmd [[au FileType c ++once lua require("packer.load")({'coc.nvim'}, { ft = "c" }, _G.packer_plugins)]]
-vim.cmd [[au FileType typescriptreact ++once lua require("packer.load")({'coc.nvim'}, { ft = "typescriptreact" }, _G.packer_plugins)]]
-vim.cmd [[au FileType typescript ++once lua require("packer.load")({'coc.nvim'}, { ft = "typescript" }, _G.packer_plugins)]]
-vim.cmd [[au FileType tex ++once lua require("packer.load")({'vim-grammarous'}, { ft = "tex" }, _G.packer_plugins)]]
-vim.cmd [[au FileType text ++once lua require("packer.load")({'vim-grammarous'}, { ft = "text" }, _G.packer_plugins)]]
-vim.cmd [[au FileType markdown ++once lua require("packer.load")({'vim-mustache-handlebars', 'vim-grammarous'}, { ft = "markdown" }, _G.packer_plugins)]]
-vim.cmd [[au FileType javascriptreact ++once lua require("packer.load")({'coc.nvim'}, { ft = "javascriptreact" }, _G.packer_plugins)]]
-vim.cmd [[au FileType mustache ++once lua require("packer.load")({'vim-mustache-handlebars'}, { ft = "mustache" }, _G.packer_plugins)]]
-vim.cmd [[au FileType html ++once lua require("packer.load")({'vim-mustache-handlebars'}, { ft = "html" }, _G.packer_plugins)]]
-vim.cmd [[au FileType python ++once lua require("packer.load")({'ale', 'indentpython.vim'}, { ft = "python" }, _G.packer_plugins)]]
 vim.cmd [[au FileType java ++once lua require("packer.load")({'ale'}, { ft = "java" }, _G.packer_plugins)]]
 vim.cmd [[au FileType javascript ++once lua require("packer.load")({'ale', 'coc.nvim'}, { ft = "javascript" }, _G.packer_plugins)]]
 vim.cmd [[au FileType haskell ++once lua require("packer.load")({'ale'}, { ft = "haskell" }, _G.packer_plugins)]]
+vim.cmd [[au FileType cpp ++once lua require("packer.load")({'ale', 'coc.nvim'}, { ft = "cpp" }, _G.packer_plugins)]]
+vim.cmd [[au FileType rust ++once lua require("packer.load")({'coc.nvim'}, { ft = "rust" }, _G.packer_plugins)]]
+vim.cmd [[au FileType typescript ++once lua require("packer.load")({'coc.nvim'}, { ft = "typescript" }, _G.packer_plugins)]]
+vim.cmd [[au FileType mustache ++once lua require("packer.load")({'vim-mustache-handlebars'}, { ft = "mustache" }, _G.packer_plugins)]]
+vim.cmd [[au FileType html ++once lua require("packer.load")({'vim-mustache-handlebars'}, { ft = "html" }, _G.packer_plugins)]]
+vim.cmd [[au FileType typescriptreact ++once lua require("packer.load")({'coc.nvim'}, { ft = "typescriptreact" }, _G.packer_plugins)]]
+vim.cmd [[au FileType tex ++once lua require("packer.load")({'vim-grammarous'}, { ft = "tex" }, _G.packer_plugins)]]
+vim.cmd [[au FileType text ++once lua require("packer.load")({'vim-grammarous'}, { ft = "text" }, _G.packer_plugins)]]
+vim.cmd [[au FileType markdown ++once lua require("packer.load")({'vim-grammarous', 'vim-mustache-handlebars'}, { ft = "markdown" }, _G.packer_plugins)]]
+vim.cmd [[au FileType ocaml ++once lua require("packer.load")({'coc.nvim'}, { ft = "ocaml" }, _G.packer_plugins)]]
+vim.cmd [[au FileType c ++once lua require("packer.load")({'coc.nvim'}, { ft = "c" }, _G.packer_plugins)]]
+vim.cmd [[au FileType javascriptreact ++once lua require("packer.load")({'coc.nvim'}, { ft = "javascriptreact" }, _G.packer_plugins)]]
+vim.cmd [[au FileType python ++once lua require("packer.load")({'ale', 'indentpython.vim'}, { ft = "python" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
 vim.cmd("augroup END")
 vim.cmd [[augroup filetypedetect]]

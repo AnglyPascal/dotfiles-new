@@ -131,7 +131,7 @@ au.FileType = {
     vim.g.vimtex_quickfix_mode = 0
     vim.g.Tex_FormatDependency_dvi = 'dvi,ps,pdf'
     -- vim.g.vimtex_view_method = 'llpp'
-    vim.g.vimtex_view_general_viewer = 'llpp'
+    vim.g.vimtex_view_general_viewer = 'zathura'
     vim.g.Tex_BibtexFlavor  =  'biber'
 
     vim.g.tex_conceal = "abdgm"

@@ -52,6 +52,7 @@ au.FileType = {
     cmd([[
       command! -nargs=0 Format :call CocActionAsync('format')
     ]])
+    map("n", "<C-l>", "<nop>")
   end
 }
 

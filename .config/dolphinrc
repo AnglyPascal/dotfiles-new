@@ -53,8 +53,8 @@ Places Icons Static Size=16
 [KPropertiesDialog]
 1366x768 screen: Height=596
 1366x768 screen: Width=525
-2 screens: Height=454
-2 screens: Width=409
+2 screens: Height=600
+2 screens: Width=525
 eDP-1 HDMI-2 Height 1366x768=600
 eDP-1 HDMI-2 Width 1366x768=454
 eDP-1 Height 1366x768 eDP-1=600

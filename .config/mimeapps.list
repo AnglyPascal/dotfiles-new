@@ -1,5 +1,6 @@
 [Added Associations]
 application/epub+zip=calibre-ebook-viewer.desktop;
+application/octet-stream=mpv.desktop;
 application/pdf=org.pwmt.zathura.desktop;epdfview.desktop;zathura.desktop;
 application/vnd.comicbook+zip=YACReader.desktop;org.pwmt.zathura.desktop;
 application/x-bittorrent=deluge.desktop;
@@ -32,6 +33,7 @@ x-scheme-handler/mailto=userapp-Thunderbird.desktop;
 
 [Default Applications]
 application/epub+zip=calibre-ebook-viewer.desktop;
+application/octet-stream=mpv.desktop;
 application/pdf=org.pwmt.zathura.desktop;
 application/vnd.comicbook+zip=YACReader.desktop;
 application/x-bittorrent=deluge.desktop

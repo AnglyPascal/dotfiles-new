@@ -35,6 +35,11 @@ map("n", "<leader>r", ':IndentGuidesToggle<CR>')
 
 -- NERDTree --------------
 map("n", "<leader>g", ":GitGutterToggle<CR>")
+map("n", "]h", ":GitGutterNextHunk<CR>")
+map("n", "[h", ":GitGutterPrevHunk<CR>")
+map("n", "<leader>hp", ":GitGutterPreviewHunk<CR>")
+map("n", "<leader>hs", ":GitGutterStageHunk<CR>")
+map("n", "<leader>hu", ":GitGutterUndoHunk<CR>")
 
 -- Git conflict markers --
 map("n", "cx", ":ConflictMarkerBoth<CR>")
@@ -53,12 +58,12 @@ map("i", "kj", "<esc>")
 -- splits ----------------
 map("n", "H", "<C-W><C-H>")
 map("n", "L", "<C-W><C-L>")
-map("n", "<C-j>", "<C-W><C-j>")
-map("n", "<C-k>", "<C-W><C-k>")
+map("n", "J", "<C-W><C-j>")
+map("n", "K", "<C-W><C-k>")
 
 -- tabs ------------------
-map("n", "J", "gT")
-map("n", "K", "gt")
+map("n", "<C-j>", "gT")
+map("n", "<C-k>", "gt")
 
 -- fugitive --------------
 map("n", "<leader>gd", ":Gvdiff<CR>")
