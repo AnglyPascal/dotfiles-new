@@ -125,6 +125,10 @@ au.FileType = {
     map("v", "<leader>b", 'c\\ifextraB<CR><c-r><c-o>"\\fi <esc>')
     map("v", "<leader>c", 'c\\ifextraC<CR><c-r><c-o>"\\fi <esc>')
 
+    map("n", "csm", "<Plug>(vimtex-env-change-math)")
+    map("n", "dsm", "<Plug>(vimtex-env-delete-math)")
+    map("n", "tsm", "<Plug>(vimtex-env-toggle-math)")
+
     cmd([[ hi clear Conceal ]])
 
     vim.g.tex_flavor = 'lualatex'
