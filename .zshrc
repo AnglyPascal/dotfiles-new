@@ -32,6 +32,7 @@ zstyle ':completion:*:*:fig:*' file-patterns                                    
 
 source "/home/ahsan/.config/zsh/zsh-vim-mode.plugin.zsh"
 source "/home/ahsan/.config/zsh/dirs.zsh"
+source "/home/ahsan/.config/zsh/net.zsh"
 source "/home/ahsan/.config/zsh/apps.zsh"
 source "/home/ahsan/.config/zsh/funcs.zsh"
 source "/home/ahsan/git/socialsync/scripts/commands.zsh"
