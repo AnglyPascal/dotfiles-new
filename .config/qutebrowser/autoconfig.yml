@@ -34,12 +34,15 @@ settings:
     '*://*.yts.mx/*': true
   content.media.audio_capture:
     https://app.roll20.net: false
+    https://discord.com: true
     https://meet.google.com: true
     https://online-voice-recorder.com: true
     https://teams.microsoft.com: true
     https://www.messenger.com: true
   content.media.audio_video_capture:
     https://app.roll20.net: false
+  content.media.video_capture:
+    https://discord.com: true
   content.notifications.enabled:
     https://9xbuddy.com: false
     https://bayfiles.com: false
@@ -98,4 +101,4 @@ settings:
     https://outlook.office.com?mailtouri=%25s: true
     https://outlook.office365.com?mailtouri=%25s: true
   zoom.default:
-    global: '100'
+    global: '110'

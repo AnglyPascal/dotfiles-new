@@ -1,4 +1,9 @@
+import catppuccin
+catppuccin.setup(c, 'mocha', True)
+# config.source('bestblack.py')
+
 c.content.user_stylesheets = "/home/ahsan/.config/qutebrowser/css/sharify.css"
+c.fonts.default_size       = "12pt"
 c.fonts.default_family     = "Share"
 c.fonts.web.family.fixed   = "Share Tech Mono"
 c.zoom.default      = 100
@@ -17,10 +22,11 @@ c.hints.chars = "wearsdfjklio"
 
 c.editor.command    = ["alacritty", "-e", "vim", "-f", "{file}", 
                        "-c", "normal {line}G{column0}l"]
-c.url.default_page  = "file:///home/ahsan/git/startpage/index.html"
-c.url.start_pages   = "file:///home/ahsan/git/startpage/index.html"
+c.url.default_page  = "https://web.tabliss.io/"
+c.url.start_pages   = "https://web.tabliss.io/"
 
 c.confirm_quit      = ["downloads"]
+c.downloads.location.directory = "/home/ahsan/downloads/"
 c.content.autoplay  = False
 c.auto_save.session = True
 
@@ -97,5 +103,3 @@ config.unbind("<ctrl+shift+w>")
 
 # config.bind("e", "spawn --userscript /home/ahsan/.config/qutebrowser/userscripts/view_in_mpv")
 config.bind("sp", "spawn --userscript qute-lastpass")
-
-config.source('bestblack.py')

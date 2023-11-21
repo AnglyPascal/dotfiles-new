@@ -15,5 +15,5 @@ else
   fi
 fi
 
-curl $QUTE_URL | xclip -sel clip -t image/$ext
+curl $QUTE_URL | wl-copy
 
