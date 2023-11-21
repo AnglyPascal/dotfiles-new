@@ -138,5 +138,3 @@ export PATH="$HOME/.gems/bin:$PATH"
 shopt -s autocd
 
 PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
-export PKG_CONFIG_PATH
-. "$HOME/.cargo/env"

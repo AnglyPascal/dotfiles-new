@@ -1,0 +1,29 @@
+# Default config for sway
+#
+# Copy this to ~/.config/sway/config and edit it to your liking.
+#
+# Read `man 5 sway` for a complete reference.
+
+# styles - set the folder for your theme definition file
+set $sway $HOME/.config/sway
+
+# theme variables
+# include $sway/themes/matcha-green
+include $sway/themes/catppuccin-mocha
+
+include $sway/definitions.d/definitions_default.conf
+
+# user variables
+include $sway/definitions.d/definitions_user.conf
+
+include $sway/inputs/*
+include $sway/outputs/*
+
+# enable modes
+include $sway/modes/*
+
+# only enable this if every app you use is compatible with wayland
+# xwayland disable
+
+# user config
+include $sway/config.d/*.conf

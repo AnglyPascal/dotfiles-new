@@ -1,6 +1,6 @@
 [user]
 	email = ahsanalmahir@gmail.com
-	name = AnglyPascal
+	name = M Ahsan Al Mahir
 [core]
 	editor = nvim
 [color]
@@ -15,3 +15,5 @@
 	autoSetupRemote = true
 [protocol "file"]
 	allow = always
+[credentials]
+	helper = store

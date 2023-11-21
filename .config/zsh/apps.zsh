@@ -1,19 +1,7 @@
-
-# modify the few start script
+# modify the feh start script
 alias feh_=/usr/bin/feh
 feh(){
-  if [[ -f $1 ]]
-  then
-    if [[ -f $2 ]]
-    then 
-      /usr/bin/feh --image-bg black --geometry 800x700 --scale-down -Z $@ &!
-    else
-      /usr/bin/feh --image-bg black --geometry 800x700 --scale-down -Z --start-at $1 &!
-    fi
-  else
-    /usr/bin/feh --image-bg black --geometry 800x700 --scale-down -Z $@ &!
-  fi
-  echo ''
+  sh $HOME/.config/zsh/feh.sh $@
 }
 
 i(){

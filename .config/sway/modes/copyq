@@ -1,0 +1,4 @@
+bindsym $mod+z exec copyq show
+bindsym $mod+Ctrl+Shift+z exec $clipboard 
+bindsym $mod+Ctrl+l exec copyq next
+bindsym $mod+Ctrl+h exec copyq previous
