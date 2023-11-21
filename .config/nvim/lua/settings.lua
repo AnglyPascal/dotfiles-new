@@ -22,10 +22,11 @@ require("nvim-tree").setup({
   },
   filters = {
     dotfiles = true,
+    custom = { '*.pdf' },
   },
-  ignore_ft_on_setup = {
-    "hi", "o", 
-  },
+  -- ignore_ft_on_setup = {
+  --   "hi", "o", 
+  -- },
 })
 
 cmd([[
@@ -70,7 +71,16 @@ cmd([[
 -- turn off spelling for any file with syntax on
 au.BufEnter = 
   function()
-    if vim.o.syntax == '' then
+    local filetypes = {'tex', 'text', 'markdown', 'md'}
+    local ft_spell_on = false
+
+    for i = 1, #filetypes do
+      if vim.o.filetype == filetypes[i] then
+        ft_spell_on = true
+      end
+    end
+
+    if vim.o.syntax == '' or ft_spell_on then
       vim.cmd([[hi SpellBad cterm=underline]])
     else
       vim.cmd([[hi clear SpellBad]])

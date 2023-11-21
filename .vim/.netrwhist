@@ -1,5 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =9
+let g:netrw_dirhistcnt =1
+let g:netrw_dirhist_1='/etc/lightdm'
+let g:netrw_dirhist_0='/etc/X11/xinit'
 let g:netrw_dirhist_9='/run/media/file1/MEGA/Main/git/scala-mustache/src/main/scala/com/anglypascal'
 let g:netrw_dirhist_8='/run/media/file2/onedrive/Oxford/parta/michaelmas/scala3/.metals'
 let g:netrw_dirhist_7='/run/media/file1/MEGA/Main/git/weePickle/weeyaml'
@@ -8,5 +10,3 @@ let g:netrw_dirhist_5='/run/media/file1/MEGA/Main/git/scala-mustache/src/test'
 let g:netrw_dirhist_4='/run/media/file1/MEGA/Main/git/jekyll/lib/minima/script'
 let g:netrw_dirhist_3='/run/media/file1/MEGA/Main/git/jekyll/lib/minima'
 let g:netrw_dirhist_2='/run/media/file1/MEGA/Main/git/jekyll/lib/minima/_layouts'
-let g:netrw_dirhist_1='/run/media/file1/MEGA/Main/git/scalite/src/main/scala'
-let g:netrw_dirhist_0='/run/media/file1/MEGA/Main/git/dotfiles/scripts'

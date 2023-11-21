@@ -5,16 +5,16 @@ local set = vim.opt
 local map = require("keybinds").map
 
 
--- Dosini ----------------------------
---------------------------------------
---
-au({'BufEnter', 'BufRead'}, {
-    '*.conf',
-    function()
-      vim.opt.filetype = "dosini"
-      vim.cmd([[hi clear SpellBad]])
-    end,
-  })
+---- Dosini ----------------------------
+----------------------------------------
+----
+--au({'BufEnter', 'BufRead'}, {
+--    '*.conf',
+--    function()
+--      vim.opt.filetype = "dosini"
+--      vim.cmd([[hi clear SpellBad]])
+--    end,
+--  })
 
 -- Assembly --------------------------
 --------------------------------------
@@ -71,17 +71,6 @@ au.FileType = {
   end
 }
 
-au.FileType = {
-  'nerdtree',
-  function()
-    if vim.bo.buftype == 'nofile' then
-      local nr = api.nvim_get_current_buf()
-      local options = { noremap = true, silent = true }
-      api.nvim_buf_set_keymap(nr, 'n', 'q', ':q<CR>', options)
-    end
-  end
-}
-
 -- Text  -----------------------------
 --------------------------------------
 --
@@ -93,8 +82,6 @@ au.FileType = {
 
     map("i", "<C-l>", "<c-g>u<Esc>:nohl<CR>[s1z=`]a<c-g>u")
     map("n", "<C-l>", "i<c-g>u<Esc>:nohl<CR>[s1z=`]a<c-g>u<Esc>")
-
-    cmd([[ hi SpellBad cterm=underline ]])
   end
 }
 
@@ -213,44 +200,44 @@ au.FileType = {
 }
 
 
--- Ocaml ----------------------------
---------------------------------------
+---- Ocaml ----------------------------
+----------------------------------------
 
-cmd([[
-let s:opam_share_dir = system("opam var share")
-let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')
+--cmd([[
+--let s:opam_share_dir = system("opam var share")
+--let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')
 
-let s:opam_configuration = {}
+--let s:opam_configuration = {}
 
-function! OpamConfOcpIndent()
-  execute "set rtp^=" . s:opam_share_dir . "/ocp-indent/vim"
-endfunction
-let s:opam_configuration['ocp-indent'] = function('OpamConfOcpIndent')
+--function! OpamConfOcpIndent()
+--  execute "set rtp^=" . s:opam_share_dir . "/ocp-indent/vim"
+--endfunction
+--let s:opam_configuration['ocp-indent'] = function('OpamConfOcpIndent')
 
-function! OpamConfOcpIndex()
-  execute "set rtp+=" . s:opam_share_dir . "/ocp-index/vim"
-endfunction
-let s:opam_configuration['ocp-index'] = function('OpamConfOcpIndex')
+--function! OpamConfOcpIndex()
+--  execute "set rtp+=" . s:opam_share_dir . "/ocp-index/vim"
+--endfunction
+--let s:opam_configuration['ocp-index'] = function('OpamConfOcpIndex')
 
-function! OpamConfMerlin()
-  let l:dir = s:opam_share_dir . "/merlin/vim"
-  execute "set rtp+=" . l:dir
-endfunction
-let s:opam_configuration['merlin'] = function('OpamConfMerlin')
+--function! OpamConfMerlin()
+--  let l:dir = s:opam_share_dir . "/merlin/vim"
+--  execute "set rtp+=" . l:dir
+--endfunction
+--let s:opam_configuration['merlin'] = function('OpamConfMerlin')
 
-let s:opam_packages = ["ocp-indent", "ocp-index", "merlin"]
-let s:opam_available_tools = []
-for tool in s:opam_packages
-  " Respect package order (merlin should be after ocp-index)
-  if isdirectory(s:opam_share_dir . "/" . tool)
-    call add(s:opam_available_tools, tool)
-    call s:opam_configuration[tool]()
-  endif
-endfor
-if count(s:opam_available_tools, "ocp-indent") == 0
-  source $HOME/.opam/ocp-indent/vim/indent/ocaml.vim
-endif
-]])
+--let s:opam_packages = ["ocp-indent", "ocp-index", "merlin"]
+--let s:opam_available_tools = []
+--for tool in s:opam_packages
+--  " Respect package order (merlin should be after ocp-index)
+--  if isdirectory(s:opam_share_dir . "/" . tool)
+--    call add(s:opam_available_tools, tool)
+--    call s:opam_configuration[tool]()
+--  endif
+--endfor
+--if count(s:opam_available_tools, "ocp-indent") == 0
+--  source $HOME/.opam/ocp-indent/vim/indent/ocaml.vim
+--endif
+--]])
 
 
 -- Python ----------------------------
