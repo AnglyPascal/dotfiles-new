@@ -42,7 +42,7 @@ ViewPropsTimestamp=2020,12,1,12,43,45
 [IconsMode]
 IconSize=64
 MaximumTextLines=2
-PreviewSize=208
+PreviewSize=224
 UseSystemFont=false
 ViewFont=Share Tech,10,-1,5,50,0,0,0,0,0
 
