@@ -66,12 +66,12 @@
 window#waybar {
     background: @theme_bg_color;
     color: @wm_icon_bg;
-    font-size: 13px;
+    font-size: 12pt;
 }
 
 tooltip {
     background-color: @theme_bg_color;
-    font-size: 9pt;
+    font-size: 10pt;
 }
 
 /* Each module */
