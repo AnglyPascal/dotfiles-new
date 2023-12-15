@@ -1,12 +1,13 @@
 # !/bin/bash
 
+alsa_output=$(pactl list sinks short | awk -F ' ' '{print $2}' | grep "alsa_output")
+bluez_output=$(pactl list sinks short | awk -F ' ' '{print $2}' | grep "bluez_output")
+
 string=$(pactl info | grep "Default Sink:")
 
-if [[ "$string" == "Default Sink: alsa_output.pci-0000_00_1f.3.analog-stereo" ]]
+if [[ "$string" == "Default Sink: $alsa_output" ]]
 then
-  echo "haha"
-  # pactl set-default-sink bluez_output.60_F4_3A_A2_5B_B8.a2dp-sink
-  pactl set-default-sink bluez_output.E8_EE_CC_48_B9_9C.a2dp-sink
+  pactl set-default-sink $bluez_output
 else 
-  pactl set-default-sink alsa_output.pci-0000_00_1f.3.analog-stereo
+  pactl set-default-sink $alsa_output
 fi

@@ -28,6 +28,7 @@ HiddenFilesShown=true
 
 [General]
 BrowseThroughArchives=true
+CloseActiveSplitView=false
 ConfirmClosingMultipleTabs=false
 GlobalViewProps=false
 LockPanels=false
@@ -55,8 +56,8 @@ Places Icons Static Size=16
 1366x768 screen: Width=525
 1536x960 screen: Height=622
 1536x960 screen: Width=456
-1920x1200 screen: Height=448
-1920x1200 screen: Width=333
+1920x1200 screen: Height=454
+1920x1200 screen: Width=418
 2 screens: Height=600
 2 screens: Width=525
 eDP-1 HDMI-2 Height 1366x768=600

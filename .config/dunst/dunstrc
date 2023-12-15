@@ -1,5 +1,5 @@
 [global]
-    frame_width = 0
+    frame_width = 2
     frame_color = "#788388"
     
     font = Share Tech Mono 10
@@ -83,7 +83,7 @@
     # for longer than idle_threshold seconds.
     # Set to 0 to disable.
     # default 120
-    idle_threshold = 120 
+    idle_threshold = 60 
     
     # Which monitor should the notifications be displayed on.
     monitor = 0
@@ -181,18 +181,18 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#263238"
+    background = "#17171c"
     foreground = "#556064"
     timeout = 10
 
 [urgency_normal]
-    background = "#263238"
+    background = "#17171c"
     foreground = "#F9FAF9"
     timeout = 10
 
 [urgency_critical]
-    background = "#D62929"
-    foreground = "#F9FAF9"
+    background = "#17171c"
+    foreground = "#D62929"
     timeout = 0
 
 

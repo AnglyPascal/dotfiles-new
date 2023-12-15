@@ -29,7 +29,7 @@ install=(
   # socials
   telegram-desktop discord
   # languages
-  jre-openjdk texlive base-devel jenv
+  jre-openjdk texlive base-devel jenv ccls clang
   # media
   mpv shotcut feh gwenview jpegoptim yt-dlp
   # docs
@@ -65,6 +65,10 @@ install_aur=(
   spotify spicetify-cli zoom librsvg 
   megasync findimagedupes 
   onedrive-abraunegg
+)
+
+pip_packages=(
+  cyberdrop-dl scipy numpy tldextract yapf
 )
 
 misc() {
@@ -116,6 +120,8 @@ eduroam_setup() {
 # sudo pacman -Rncs ${remove[@]}
 #
 # yay -S ${install_aur[@]}
+#
+# pip install --break-system-packages ${pip_packages[@]}
 #
 # fonts_setup
 # misc

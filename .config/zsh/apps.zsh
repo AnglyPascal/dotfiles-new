@@ -36,7 +36,7 @@ z (){
 }
 
 # convenience aliases with arguments
-mpv(){ /usr/bin/mpv $@ &! }
+mpv(){ /usr/bin/mpv --force-window $@ &! }
 mpvc(){ /usr/bin/mpv --loop-file=0 $@ &! }
 ink(){ inkscape $@ &!  }
 fig(){ inkscape --export-area-drawing --export-latex --export-filename="${1%.svg}.pdf" $1 }
@@ -117,7 +117,7 @@ flush () {
 }
 
 # convert image to b/w
-bw () { 
+bwpng () { 
   copyq read image/png 0 > $1.png; 
   convert $1.png -colorspace Gray $1.png 
 }
@@ -173,4 +173,28 @@ mega(){
   HOME=$(pwd)
   megasync &!
   HOME=/home/ahsan
+}
+
+cq() {
+  i=$1
+  for x in {0..$((i-1))}
+  do 
+    l=$(copyq read $x)
+    if [[ $l == *"youtube"* ]]; then
+      echo $l >> $2
+    else
+      echo $l | cut -d "?" -f 1 >> $2
+    fi
+  done
+}
+
+tk(){
+  temp=yt_temp
+  if [[ -f "yt_temp" ]]; then rm $temp; fi
+  cq $1 $temp
+  while IFS= read -r line; do
+    format="%(upload_date>%Y-%m-%d)s_%(epoch-3600>%H-%M-%S)s_%(title)s_%(id)s.%(ext)s"
+    yt-dlp -o "$format" "$line"
+  done < $temp
+  rm $temp 
 }

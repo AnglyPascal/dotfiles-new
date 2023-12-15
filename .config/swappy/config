@@ -1,4 +1,4 @@
 [Default]
-save_dir=${XDG_SCREENSHOTS_DIR:-$HOME/Screenshots}
+save_dir=${XDG_SCREENSHOTS_DIR:-$HOME/pictures/screenshots}
 show_panel=true
 early_exit=true

@@ -15,3 +15,6 @@ bindsym $mod+$alt+2   exec qutebrowser
 bindsym $mod+Shift+$alt+2 exec brave
 bindsym $mod+$alt+3   exec dolphin
 bindsym $mod+$alt+4   exec $spotify
+
+
+bindsym $mod+s $change_audio_sink
