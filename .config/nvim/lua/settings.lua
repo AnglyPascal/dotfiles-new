@@ -179,6 +179,8 @@ vim.g.ale_linters = {
   typescript = {'eslint'},
   typescriptreact = {'eslint'},
   vim = {'vint'},
+  bash = {'shellcheck'},
+  zsh = {'shellcheck'},
   tex = {},
   python = {'pylint'},
   ocaml = {'merlin'},
@@ -191,7 +193,9 @@ vim.g.ale_fixers = {
   typescript = {'prettier', 'eslint'},
   typescriptreact = {'prettier', 'eslint'},
   ocaml = {'ocamlformat'},
-  cpp = {}
+  cpp = {},
+  bash = {'shfmt'},
+  zsh = {'shfmt'},
 }
 
 vim.g.ale_haskell_ghc_options = '-fno-code -v0 -dynamic'

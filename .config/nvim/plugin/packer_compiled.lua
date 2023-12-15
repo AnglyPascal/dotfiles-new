@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/ahsan/.cache/nvim/packer_hererocks/2.1.1699392533/share/lua/5.1/?.lua;/home/ahsan/.cache/nvim/packer_hererocks/2.1.1699392533/share/lua/5.1/?/init.lua;/home/ahsan/.cache/nvim/packer_hererocks/2.1.1699392533/lib/luarocks/rocks-5.1/?.lua;/home/ahsan/.cache/nvim/packer_hererocks/2.1.1699392533/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/ahsan/.cache/nvim/packer_hererocks/2.1.1699392533/lib/lua/5.1/?.so"
+local package_path_str = "/home/ahsan/.cache/nvim/packer_hererocks/2.1.1702233742/share/lua/5.1/?.lua;/home/ahsan/.cache/nvim/packer_hererocks/2.1.1702233742/share/lua/5.1/?/init.lua;/home/ahsan/.cache/nvim/packer_hererocks/2.1.1702233742/lib/luarocks/rocks-5.1/?.lua;/home/ahsan/.cache/nvim/packer_hererocks/2.1.1702233742/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/ahsan/.cache/nvim/packer_hererocks/2.1.1702233742/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -371,22 +371,22 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType python ++once lua require("packer.load")({'indentpython.vim', 'ale'}, { ft = "python" }, _G.packer_plugins)]]
-vim.cmd [[au FileType java ++once lua require("packer.load")({'ale'}, { ft = "java" }, _G.packer_plugins)]]
-vim.cmd [[au FileType javascript ++once lua require("packer.load")({'coc.nvim', 'ale'}, { ft = "javascript" }, _G.packer_plugins)]]
+vim.cmd [[au FileType javascriptreact ++once lua require("packer.load")({'coc.nvim'}, { ft = "javascriptreact" }, _G.packer_plugins)]]
 vim.cmd [[au FileType typescript ++once lua require("packer.load")({'coc.nvim'}, { ft = "typescript" }, _G.packer_plugins)]]
-vim.cmd [[au FileType cpp ++once lua require("packer.load")({'coc.nvim', 'ale'}, { ft = "cpp" }, _G.packer_plugins)]]
+vim.cmd [[au FileType typescriptreact ++once lua require("packer.load")({'coc.nvim'}, { ft = "typescriptreact" }, _G.packer_plugins)]]
 vim.cmd [[au FileType ocaml ++once lua require("packer.load")({'coc.nvim'}, { ft = "ocaml" }, _G.packer_plugins)]]
 vim.cmd [[au FileType rust ++once lua require("packer.load")({'coc.nvim'}, { ft = "rust" }, _G.packer_plugins)]]
-vim.cmd [[au FileType c ++once lua require("packer.load")({'coc.nvim'}, { ft = "c" }, _G.packer_plugins)]]
 vim.cmd [[au FileType haskell ++once lua require("packer.load")({'ale'}, { ft = "haskell" }, _G.packer_plugins)]]
+vim.cmd [[au FileType javascript ++once lua require("packer.load")({'coc.nvim', 'ale'}, { ft = "javascript" }, _G.packer_plugins)]]
 vim.cmd [[au FileType html ++once lua require("packer.load")({'vim-mustache-handlebars'}, { ft = "html" }, _G.packer_plugins)]]
 vim.cmd [[au FileType tex ++once lua require("packer.load")({'vim-grammarous'}, { ft = "tex" }, _G.packer_plugins)]]
 vim.cmd [[au FileType text ++once lua require("packer.load")({'vim-grammarous'}, { ft = "text" }, _G.packer_plugins)]]
-vim.cmd [[au FileType markdown ++once lua require("packer.load")({'vim-mustache-handlebars', 'vim-grammarous'}, { ft = "markdown" }, _G.packer_plugins)]]
+vim.cmd [[au FileType markdown ++once lua require("packer.load")({'vim-grammarous', 'vim-mustache-handlebars'}, { ft = "markdown" }, _G.packer_plugins)]]
 vim.cmd [[au FileType mustache ++once lua require("packer.load")({'vim-mustache-handlebars'}, { ft = "mustache" }, _G.packer_plugins)]]
-vim.cmd [[au FileType typescriptreact ++once lua require("packer.load")({'coc.nvim'}, { ft = "typescriptreact" }, _G.packer_plugins)]]
-vim.cmd [[au FileType javascriptreact ++once lua require("packer.load")({'coc.nvim'}, { ft = "javascriptreact" }, _G.packer_plugins)]]
+vim.cmd [[au FileType c ++once lua require("packer.load")({'coc.nvim'}, { ft = "c" }, _G.packer_plugins)]]
+vim.cmd [[au FileType cpp ++once lua require("packer.load")({'coc.nvim', 'ale'}, { ft = "cpp" }, _G.packer_plugins)]]
+vim.cmd [[au FileType python ++once lua require("packer.load")({'indentpython.vim', 'ale'}, { ft = "python" }, _G.packer_plugins)]]
+vim.cmd [[au FileType java ++once lua require("packer.load")({'ale'}, { ft = "java" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
 vim.cmd("augroup END")
 vim.cmd [[augroup filetypedetect]]

@@ -75,7 +75,7 @@ function M.setup()
     
     use {
       'w0rp/ale',
-      ft = {'python', 'java', 'javascript', 'haskell', 'cpp'},
+      ft = {'python', 'java', 'javascript', 'haskell', 'cpp', 'zsh', 'bash', 'sh'},
       cmd = 'ALEEnable',
       config = 'vim.cmd[[ALEEnable]]'
     }

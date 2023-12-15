@@ -65,3 +65,4 @@ x-scheme-handler/http=org.qutebrowser.qutebrowser.desktop
 x-scheme-handler/https=org.qutebrowser.qutebrowser.desktop
 x-scheme-handler/mailto=userapp-Thunderbird.desktop
 x-scheme-handler/unknown=org.qutebrowser.qutebrowser.desktop
+x-scheme-handler/mailspring=Mailspring.desktop

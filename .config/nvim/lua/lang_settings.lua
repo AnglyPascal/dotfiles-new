@@ -250,7 +250,7 @@ au.FileType = {
     map("i", "<leader>ll", ":!python<space>%<CR>")
     map("n", "<leader>ll", ":!python<space>%<CR>")
     map("v", "<leader>ll", ":!python<space>%")
-    map("n", "<leader>f", ":%!python -m macchiato<CR>")
+    map("n", "<leader>f", ":%!python -m yapf<CR>")
   end
 }
 
