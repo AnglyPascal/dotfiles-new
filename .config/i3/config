@@ -31,6 +31,8 @@ floating_maximum_size 800 x 600
 
 font pango:Share Tech Mono 10
 
+exec --no-startup-id picom -b
+exec --no-startup-id xinput set-prop "ELAN0676:00 04F3:3195 Touchpad" "libinput Tapping Enabled" 1
 
 #####################
 # Basic Keybindings #
@@ -40,7 +42,8 @@ set     $term       alacritty
 bindsym $mod+Return exec alacritty
 bindsym $mod+t      exec alacritty
 bindsym $mod+q      kill
-bindsym $mod+d      exec --no-startup-id dmenu_recency
+# bindsym $mod+d      exec rofi -show combi -combi-modi "drun,run" -terminal $term -ssh-command "{terminal} {ssh- client} {host} [-p {port}]" -run-shell-command "{terminal} -e {cmd}" -show-icons -font "$gui-font" -lines 10 -width 35
+bindsym $mod+d exec dmenu_run
 
 
 #########
@@ -189,8 +192,8 @@ bindsym $mod+minus scratchpad show
 ###################
 
 # Monitor names
-set $monR HDMI-1-2
-set $monL eDP-1-1
+set $monR HDMI-A-0
+set $monL eDP
 
 # workspace names
 set $ws1  1
@@ -336,7 +339,7 @@ bindsym $mod+Shift+r restart # restart i3 inplace
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'" 
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Really wanna exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Really wanna exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
 
 
 ############################
@@ -344,7 +347,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Really wanna exit i3?' -b 'Y
 ############################
 
 # Set shut down, restart and locking features
-bindsym Ctrl+Shift+0 mode "$mode_system"
+bindsym $mod+Shift+e mode "$mode_system"
 
 set $mode_system (l)ock, (e)xit, (Shift+s)uspend, (r)eboot, (s)hutdown
 mode "$mode_system" {
@@ -379,7 +382,7 @@ exec --no-startup-id /home/ahsan/.scripts/wallpaper.sh
 exec --no-startup-id $HOME/.config/polybar/launch.sh
 
 # XP-Pen tablet setup
-exec --no-startup-id xrandr --output HDMI-1-2 --auto --output eDP-1-1 --auto --right-of HDMI-1-2
+exec --no-startup-id xrandr --output HDMI-A-0 --auto --output eDP --auto --right-of HDMI-A-0
 exec --no-startup-id sudo bash /home/ahsan/.config/xp_pen/Pentablet_Driver.sh
 
 exec --no-startup-id copyq
