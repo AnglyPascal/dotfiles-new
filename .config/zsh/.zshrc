@@ -23,8 +23,11 @@ bindkey jk vi-cmd-mode
 bindkey kj vi-cmd-mode
 bindkey -r '\e/'
 
-bindkey -s "^L" 'ls^M'
-bindkey -s "^F" 'fm;q^M'
+bindkey -s ";l" 'ls^M'
+bindkey -s ";f" 'fm;q^M'
+bindkey -s ";n" 'nvim^M'
+bindkey -s ";r" 'ranger^M'
+bindkey -s ";/" 'grg '
 
 eval "$(starship init zsh)"
 source "$HOME/.config/zsh/classpaths.zsh"

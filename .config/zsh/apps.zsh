@@ -122,6 +122,10 @@ bwpng () {
   convert $1.png -colorspace Gray $1.png 
 }
 
+sspdf () {
+  pdftk $1 cat ${2}-${2} output $3/$2.pdf
+}
+
 # convert pdf to b/w
 bwpdf () {
   pdftk $1 cat ${2}-${2} output $3
