@@ -138,11 +138,10 @@ tooltip {
  * -------------------------------------------------------------------------- */
 
 #custom-scratchpad,
-#custom-menu,
 #workspaces button.focused,
 #clock {
-    padding-left: 8px;
-    padding-right: 8px;
+    padding-left: 7px;
+    padding-right: 7px;
     color: @theme_bg_color;
     background-color: @theme_selected_bg_color;
 }
@@ -190,6 +189,8 @@ tooltip {
 #custom-menu {
     padding-left: 8px;
     padding-right: 13px;
+    color: @theme_selected_bg_color;
+    background-color: @theme_bg_color;
 }
 
 #memory {

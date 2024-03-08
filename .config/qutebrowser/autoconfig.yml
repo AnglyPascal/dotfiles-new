@@ -15,6 +15,7 @@ settings:
   content.desktop_capture:
     https://meet.google.com: true
   content.geolocation:
+    global: ask
     https://careers.arm.com: false
     https://careers.hpe.com: false
     https://careers.sig.com: false
@@ -57,6 +58,7 @@ settings:
     https://mega.nz: false
     https://musictaste.space: false
     https://nudebase.com: false
+    https://old.reddit.com: false
     https://onlyindianporn.me: false
     https://onlyindianporn.tv: false
     https://outlook.office.com: true
@@ -69,6 +71,7 @@ settings:
     https://toptoon.com: false
     https://user1.subscribe-notifications.com: false
     https://videocelebs.net: false
+    https://vooglebe.top: false
     https://w12.mangafreak.net: false
     https://web.tolstoycomments.com: false
     https://web.whatsapp.com: true
@@ -100,5 +103,9 @@ settings:
     https://mail.proton.me#mailto=%25s: false
     https://outlook.office.com?mailtouri=%25s: true
     https://outlook.office365.com?mailtouri=%25s: true
+  downloads.location.prompt:
+    global: true
+  downloads.position:
+    global: bottom
   zoom.default:
     global: '110'

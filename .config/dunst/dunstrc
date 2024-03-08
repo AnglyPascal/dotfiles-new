@@ -252,9 +252,10 @@
 
 [defaults_critical]
     msg_urgency = critical
-    background = "#D62929"
-    foreground = "#F9FAF9"
+    foreground = "#D62929"
     timeout = 0
+
+# background = "#D62929"
 #
 #[twitter]
 #    appname = Pidgin

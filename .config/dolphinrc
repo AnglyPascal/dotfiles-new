@@ -43,7 +43,7 @@ ViewPropsTimestamp=2020,12,1,12,43,45
 [IconsMode]
 IconSize=64
 MaximumTextLines=2
-PreviewSize=256
+PreviewSize=176
 UseSystemFont=false
 ViewFont=Share Tech,10,-1,5,50,0,0,0,0,0
 
@@ -57,9 +57,9 @@ Places Icons Static Size=16
 1536x960 screen: Height=622
 1536x960 screen: Width=456
 1920x1200 screen: Height=454
-1920x1200 screen: Width=418
-2 screens: Height=600
-2 screens: Width=525
+1920x1200 screen: Width=396
+2 screens: Height=448
+2 screens: Width=333
 eDP-1 HDMI-2 Height 1366x768=600
 eDP-1 HDMI-2 Width 1366x768=454
 eDP-1 Height 1366x768 eDP-1=600

@@ -190,8 +190,8 @@
             "default": ["󰕿", "󰖀", "󰕾"]
         },
         "tooltip-format": "{icon}  {volume}% {format_source}",
-        "on-click": "swaymsg exec \\$pulseaudio",
-        "on-click-middle": "swaymsg exec \\$volume_mute",
+        "on-click-middle": "swaymsg exec \\$pulseaudio",
+        "on-click": "swaymsg exec \\$volume_mute",
         "on-scroll-up": "swaymsg exec \\$volume_up",
         "on-scroll-down": "swaymsg exec \\$volume_down"
     },
@@ -311,7 +311,7 @@
         "tooltip": true,
         "interval": 3600,
         // accepts -c/--city <city> -t/--temperature <C/F> -d/--distance <km/miles>
-        "exec": "/usr/share/sway/scripts/weather.py -c dhaka",
+        "exec": "/usr/share/sway/scripts/weather.py",
         "return-type": "json",
         "format-icons": {
             "Unknown": "",
@@ -387,9 +387,9 @@
         /*     "spotify": "", */
         /*     "default": "🎜" */
         /* }, */
-        "on-click-right": "playerctl play-pause",
+        "on-click-right": "playerctl previous",
         "on-click": "playerctl next",
-        "on-click-middle": "playerctl previous",
+        "on-click-middle": "playerctl play-pause",
         "escape": true,
         "exec": "python $HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name

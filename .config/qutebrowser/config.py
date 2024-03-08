@@ -27,6 +27,7 @@ c.url.start_pages   = "https://web.tabliss.io/"
 
 c.confirm_quit      = ["downloads"]
 c.downloads.location.directory = "/home/ahsan/downloads/"
+c.downloads.position = "bottom"
 c.content.autoplay  = False
 c.auto_save.session = True
 
@@ -38,6 +39,7 @@ c.aliases = {
     "q"        : "close",
     "mpv"      : "spawn --userscript /home/ahsan/.config/qutebrowser/userscripts/view_in_mpv",
     "pass"     : "spawn -d pass -c",
+    "d"        : "set downloads.location.prompt"
 }
 
 # Padding around text for tabs
@@ -69,10 +71,10 @@ config.bind("e", 'spawn mpv --no-terminal -force-window=immediate ' +
             '--keep-open=yes "{url}"')
 config.bind(";m", 'hint links spawn mpv --no-terminal -force-window=immediate ' + 
             '--keep-open=yes "{hint-url}"')
-config.bind(";v", 'spawn yt-dlp -o' +  
-            '"/home/ahsan/Downloads/%(title)s_%(id)s.%(ext)s" "{url}" ')
-config.bind(";V", 'hint links spawn yt-dlp -o' +  
-            '"/home/ahsan/Downloads/%(title)s_%(id)s.%(ext)s" "{hint-url}" ')
+# config.bind(";v", 'spawn yt-dlp -o' +  
+#             '"/home/ahsan/downloads/%(title)s_%(id)s.%(ext)s" "{url}" ')
+# config.bind(";V", 'hint links spawn yt-dlp -o' +  
+#             '"/home/ahsan/downloads/%(title)s_%(id)s.%(ext)s" "{hint-url}" ')
 config.bind(";c", 'hint images userscript copy_image_to_clipboard')
 
 config.bind("<ctrl+l>", "hint inputs --first")
