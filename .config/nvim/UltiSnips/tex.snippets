@@ -103,14 +103,11 @@ else:
 endsnippet
 
 
-snippet it "italic" w
-\textit{$1}$0 
-endsnippet
-
-snippet '(bb|tt|ii|bf|imp|unimp|indef)' "one input commands" wr
+snippet '(bb|tt|it|bf|imp|unimp|indef|aref|tref|eqref)' "one input commands" wr
 `!p
-dic = {'bb': 'textbb', 'tt': 'texttt', 'ii': 'textit', 'bf': 'textbf', 'imp': 'imp',
-'unimp': 'textcolor{gray}', 'indef': 'indef'}
+dic = {'bb': 'textbb', 'tt': 'texttt', 'it': 'textit', 'bf': 'textbf', 'imp': 'imp',
+'unimp': 'textcolor{gray}', 'indef': 'indef', 'aref': 'autoref', 'tref': 'thmref',
+'eqref': 'eqref'}
 key = match.group(1)
 snip.rv = '\\' + dic[key]`{${1:${VISUAL}}}$0
 endsnippet
@@ -124,9 +121,10 @@ global !p
 def env_expand(key):
 	dic = {'lem':'lemma', 'prob':'problem', 'sollem':'sollem', 'soln':'solution',
 	'proof':'proof', 'hint':'hinted', 'esoln':'emptysoln', 'ethm':'emptythm',
-	'coro':'corollary', 'thm':'theorem', 'impthm':'theorembox', 'def':'definition',
-	'impdef':'impdefinition', 'algo':'algorithm', 'scala':'scala', 'java':'java',
-	'haskell':'haskell', 'eqn':'equation', 'nali':'align', 'remark':'remark'}
+	'coro':'corollary', 'thm':'theorem', 'impthm':'Theorem', 'def':'definition',
+	'impdef':'definition*', 'algo':'algorithm', 'scala':'scala', 'java':'java',
+	'haskell':'haskell', 'eqn':'equation', 'nali':'align', 'remark':'remark', 
+	'prop': 'proposition'}
 	if key in dic:
 		return dic[key]
 	else: 
@@ -140,11 +138,11 @@ def inline_env_expand(key):
 	lrp   = ("\\left(",               "\\right)")
 	lra   = ("\\left[",               "\\right]")
 	lrb   = ("\\left\{",              "\\right\}")
-	abso  = ("\\left|",               "\\right|")
-	norm  = ("\\left\|",              "\\right\|")
-	dotp  = ("\\left<",               "\\right>")
-	ceil  = ("\\left\\lceil ",         "\\right\\rceil ")
-	floor = ("\\left\\lfloor ",        "\\right\\rfloor ")
+	abs  = ("\\lvert ", "\\rvert ")
+	norm  = ("\\lVert ",            "\\rVert ")
+	dotp  = ("\\langle ",               "\\rangle ")
+	ceil  = ("\\lceil ",         "\\rceil ")
+	floor = ("\\lfloor ",        "\\rfloor ")
 	pmat  = ("\\begin{pmatrix}\n\t",    "\n\\end{pmatrix}")
 	bmat  = ("\\begin{bmatrix}\n\t",    "\n\\end{bmatrix}")
 	cases = ("\\begin{cases}\n\t",      "\n\\end{cases}")
@@ -155,7 +153,7 @@ def inline_env_expand(key):
 	item  = ("\\begin{itemize}", "\item ", "\\end{itemize}")
 
 	data = {'ml' : ml, 'dm' : dm, 'ali': ali, '()': lrp, 'lr(': lrp, 'lrb': lrb, 'lr{' : lrb, 'lra' : lra, 'lr[' : lra,
-					'abs' : abso, 'norm' : norm, 'dotp' : dotp, 'ceil' : ceil, 'floor' : floor, '\pmat': pmat, 'bmat': bmat,
+					'abs' : abs, 'norm' : norm, 'dotp' : dotp, 'ceil' : ceil, 'floor' : floor, '\pmat': pmat, 'bmat': bmat,
 					'cases': cases, 'enum': enum, 'itemize': item, 'arabic': arabic,
 					'roman': roman, 'alph': alph}
 
@@ -173,7 +171,7 @@ snip.rv = "\\end{" + name + "}"
 `$0
 endsnippet
 
-snippet '(lem|coro|prob|sollem|soln|proof|remark|rem|hint|example|center|tabular|esoln|ethm|frame|nali|eqn)' "env without name" br
+snippet '(lem|prop|coro|prob|sollem|soln|proof|remark|rem|hint|example|center|tabular|esoln|ethm|frame|nali|eqn)' "env without name" br
 `!p
 name = env_expand(match.group(1))
 snip.rv = "\\begin{" + name + "}"
@@ -258,7 +256,7 @@ endsnippet
 
 
 snippet begdoc "document template" i
-\documentclass{note_style}
+\documentclass[oxford]{ahsan}
 \title{$1}
 
 \begin{document}

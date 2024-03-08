@@ -6,8 +6,8 @@ endglobal
 context "math()"
 snippet '\b(bf|bb|vec|conju|tt|cal|frak|bar|ol)' "one input math commands" wrA
 `!p
-dic={'bb':'mathbb', 'tt':'mathtt', 'vec':'overrightarrow', 'conju':'overline',
-	 'cal':'mathcal', 'frak':'mathfrak', 'bf':'mathbf', 'ol':'overline',
+dic={'bb':'mathbb', 'tt':'texttt', 'vec':'overrightarrow', 'conju':'overline',
+	 'cal':'mathcal', 'frak':'mathfrak', 'bf':'bm', 'ol':'overline',
 	 'bar':'bar'}
 key=match.group(1)
 snip.rv = '\\' + dic[key]
@@ -15,18 +15,17 @@ snip.rv = '\\' + dic[key]
 endsnippet
 
 context "math()" 
-snippet '([^n]ul|[^o]rm)' "one input commands" wrA
+snippet '([^a-zA-Z])(ul|rm|op)' "one input commands" wrA
 `!p
-dic={'ul':'underline', 'rm':'mathrm'}
-key=match.group(1)
-key1=key[1:]
-snip.rv = key[0] + '\\' + dic[key1]
+dic={'ul':'underline', 'rm':'mathrm', 'op':'operatorname'}
+key=match.group(2)
+snip.rv = match.group(1) + '\\' + dic[key]
 `{${1:${VISUAL}}}$0
 endsnippet
 
 
 context "math()"
-snippet '([^\\])(oplus|otimes|times|dim|ker|Ker|img|to|ge|le|ne|pm|log|exp|sub|odot|cap|cup|sim|sin|cos|tan|ord|arg|gcd)' "math commands" wrA 
+snippet '([^\\a-z])(oplus|otimes|times|dim|ker|Ker|img|to|ge|le|ne|pm|log|exp|sub|odot|cap|cup|sim|sin|cos|tan|ord|arg|gcd)' "math commands" wrA 
 `!p
 key=match.group(2)
 snip.rv = match.group(1) + '\\' + key
@@ -34,7 +33,7 @@ snip.rv = match.group(1) + '\\' + key
 endsnippet
 
 context "math()"
-snippet '([^\\])(lsup|linf|sigalg|<=>|imp|trig|para|ee|arrowle)' "math commands" wrA 
+snippet '([^\\a-z])(lsup|linf|sigalg|<=>|imp|trig|para|ee|arrowle|mto)' "math commands" wrA 
 `!p
 dic={'para':'parallel', 'ee':'exists', 'imp':'implies', 'trig':'triangle', 'arrowle':'leftrightarrow', '<=>':'Leftrightarrow',
  'sigalg': '(\sigma\)-algebra', 'lsup':'limsup', 'linf':'liminf'}
@@ -93,7 +92,7 @@ context "math()"
 snippet '([^\\])([pP]hi|alp|sig|[zb]eta|[dD]el|[gG]am|kap|mu|lam|eps|[tT]au|pi|chi|the|[oO]me|Psi)' "greek letters " wrA
 `!p 
 dic={'phi':'phi', 'alp': 'alpha', 'sig':'sigma', 'beta':'beta', 'del':'delta', 'pi':'pi',
-	 'gam':'gamma', 'kap':'kappa', 'lam':'lambda', 'eps':'epsilon', 'tau':'tau',
+	 'gam':'gamma', 'kap':'kappa', 'lam':'lambda', 'eps':'varepsilon', 'tau':'tau',
 	 'chi':'chi', 'the':'theta', 'ome':'omega', 'Ome':'Omega', 'Tau':'Tau', 'Gam':'Gamma',
 	 'Del':'Delta', 'zeta':'zeta', 'Phi':'Phi', 'Psi':'Psi', 'mu':'mu'}
 key = match.group(2)

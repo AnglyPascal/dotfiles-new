@@ -86,7 +86,7 @@ au.FileType = {
 }
 
 
--- LaTeX -----------------------------
+-- latex -----------------------------
 --------------------------------------
 
 -- settings --
@@ -114,6 +114,7 @@ au.FileType = {
 
     map("n", "csm", "<Plug>(vimtex-env-change-math)")
     map("n", "dsm", "<Plug>(vimtex-env-delete-math)")
+    map("n", "ysm", "<Plug>(vimtex-env-copy-math)")
     map("n", "tsm", "<Plug>(vimtex-env-toggle-math)")
 
     cmd([[ hi clear Conceal ]])
@@ -130,6 +131,11 @@ au.FileType = {
     vim.g.vimtex_matchparen_enabled = 0
     vim.g.matchup_override_vimtex = 1
     vim.g.vimtex_delim_stopline = 100
+
+    vim.g.vimtex_quickfix_ignore_filters = {
+      'imakeidx Warning', 
+      'Reference.*undefined'
+    }
 
   end
 }
