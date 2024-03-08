@@ -24,4 +24,5 @@ $bindsym $mod+Shift+Print exec $screenshot_screen_upload
 
 # pick the region to screenshot
 $bindsym Print exec $screenshot_selection
+$bindsym Ctrl+Shift+d exec $screenshot_selection
 $bindsym $mod+Print exec $screenshot_selection_upload

@@ -2,7 +2,7 @@ set $mode_recording "<span foreground='$peach'></span>  \
 <span foreground='$subtext1'><b>Record</b></span> <span foreground='$peach'>(<b>r</b>)</span> \
 <span foreground='$subtext1'>+ [<span foreground='$peach'><b>Shift</b></span> for 󰍮]</span>"
 
-set $recorder /usr/share/sway/scripts/recorder.sh
+set $recorder $sway/scripts/recorder.sh
 
 mode --pango_markup $mode_recording {
         $bindsym r exec $recorder, mode "default"

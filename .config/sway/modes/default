@@ -94,13 +94,16 @@ $bindsym $mod+Alt+$down_alt move workspace to output down
 $bindsym $mod+Alt+$up_alt move workspace to output up
 
 ## Navigation // List all open windows in last-recently-used order ##
-$bindsym $mod+p exec env RUST_BACKTRACE=1 swayr switch-window &>> /tmp/swayr.log
+$bindsym $mod+Shift+p exec env RUST_BACKTRACE=1 swayr switch-window &>> /tmp/swayr.log
 
 ## Navigation // Switch to the last recently used window ##
-$bindsym Mod1+Tab exec env RUST_BACKTRACE=1 swayr switch-to-urgent-or-lru-window &>> /tmp/swayr.log
+# $bindsym Mod1+Tab exec env RUST_BACKTRACE=1 swayr switch-to-urgent-or-lru-window &>> /tmp/swayr.log
 
 ## Navigation // Switch to the last recently used workspace ##
-$bindsym $mod+Tab workspace back_and_forth
+$bindsym $mod+Tab focus output right
+$bindsym $mod+Shift+Tab workspace back_and_forth
+
+bindsym $mod+p move workspace to output right
 
 #
 # Workspaces:
@@ -159,7 +162,7 @@ $bindsym $mod+Shift+m exec /usr/share/sway/scripts/first-empty-workspace.py --mo
 # Layout stuff:
 #
 ## Setting // Split windows horizontally ##
-$bindsym $mod+b splith
+$bindsym $mod+Semicolon splith
 ## Setting // Split windows vertically ##
 $bindsym $mod+v splitv
 
