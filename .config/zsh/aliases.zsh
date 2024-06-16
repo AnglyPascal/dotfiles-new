@@ -45,4 +45,4 @@ alias fv="find . -regex '$vidRegex' -type f -exec echo \"{}\" \;"
 alias fp="find . -regex '$picRegex' -type f -exec echo \"{}\" \;"
 
 alias gpssh='gcloud compute ssh --zone "us-central1-c" "main" --project "group-design-practical"'
-
+alias snvim="sudo -E -s nvim"

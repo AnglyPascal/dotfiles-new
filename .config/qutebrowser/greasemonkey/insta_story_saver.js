@@ -9,7 +9,7 @@
 // @name:hi             इंस्टाग्राम डाउनलोडर
 // @name:ru             Загрузчик Instagram
 // @namespace           https://github.com/y252328/Instagram_Download_Button
-// @version             1.17.16
+// @version             1.17.18
 // @compatible          chrome
 // @description         Add the download button and the open button to download or open profile picture and media in the posts, stories, and highlights in Instagram
 // @description:zh-TW   在Instagram頁面加入下載按鈕與開啟按鈕，透過這些按鈕可以下載或開啟大頭貼與貼文、限時動態、Highlight中的照片或影片
@@ -187,14 +187,14 @@
 
     var checkExistTimer = setInterval(function () {
         const curUrl = window.location.href;
-        const savePostSelector = 'article *:not(li)>*>*>*>div:not([class])>div[role="button"]:not([style])';
+        const savePostSelector = 'article *:not(li)>*>*>*>div:not([class])>div[role="button"]:not([style]):not([tabindex="-1"])';
         const storySelector = 'section > *:not(main) header div>svg:not([aria-label=""])';
         const profileSelector = 'header section svg circle';
         const playSvgPathSelector = 'path[d="M5.888 22.5a3.46 3.46 0 0 1-1.721-.46l-.003-.002a3.451 3.451 0 0 1-1.72-2.982V4.943a3.445 3.445 0 0 1 5.163-2.987l12.226 7.059a3.444 3.444 0 0 1-.001 5.967l-12.22 7.056a3.462 3.462 0 0 1-1.724.462Z"]';
         const pauseSvgPathSelector = 'path[d="M15 1c-3.3 0-6 1.3-6 3v40c0 1.7 2.7 3 6 3s6-1.3 6-3V4c0-1.7-2.7-3-6-3zm18 0c-3.3 0-6 1.3-6 3v40c0 1.7 2.7 3 6 3s6-1.3 6-3V4c0-1.7-2.7-3-6-3z"]';
-        // Thanks for Jenie providing color check code
-        // https://greasyfork.org/zh-TW/scripts/406535-instagram-download-button/discussions/122185
-        let iconColor = getComputedStyle(document.body).backgroundColor === 'rgb(0, 0, 0)' ? 'white' : 'black';
+
+        let rgb = getComputedStyle(document.body).backgroundColor.match(/[.?\d]+/g);
+        let iconColor = (rgb[0] * 0.299 + rgb[1] * 0.587 + rgb[2] * 0.114) <= 150 ? 'white' : 'black'
 
         // clear all custom buttons when url changing
         if (preUrl !== curUrl) {
@@ -458,6 +458,13 @@
         return { url, mediaIndex };
     }
 
+    function findHighlightsIndex() {
+        let currentDivProgressbarDiv = document.querySelector('div[style^="transform"]').parentElement;
+        let progressbarRootDiv = currentDivProgressbarDiv.parentElement;
+        let progressbarDivs = progressbarRootDiv.children;
+        return Array.from(progressbarDivs).indexOf(currentDivProgressbarDiv);
+    }
+
     let infoCache = {}; // key: media id, value: info json
     let mediaIdCache = {}; // key: post id, value: media id
     async function getUrlFromInfoApi(articleNode, mediaIdx = 0) {
@@ -483,17 +490,17 @@
             }
 
             async function findMediaId() {
-                // method 1
+                // method 1: extract from url.
                 function method1() {
-                    let match = window.location.href.match(/www.instagram.com\/stories\/[^\/]+\/(\d+)/);
-                    if (match) return match[1];
+                    let href = window.location.href;
+                    let match = href.match(/www.instagram.com\/stories\/[^\/]+\/(\d+)/);
+                    if (!href.includes('highlights') && match) return match[1];
                 }
 
                 // method 3
                 async function method3() {
                     let postId = await findPostId(articleNode);
                     if (!postId) {
-                        console.log("Cannot find post id");
                         return null;
                     }
 
@@ -501,7 +508,7 @@
                         let postUrl = `https://www.instagram.com/p/${postId}/`;
                         let resp = await fetch(postUrl);
                         let text = await resp.text();
-                        let idMatch = text.match(mediaIdPattern);
+                        let idMatch = text ? text.match(mediaIdPattern) : [];
                         let mediaId = null;
                         for (let i = 0; i < idMatch.length; ++i) {
                             if (idMatch[i]) mediaId = idMatch[i];
@@ -516,7 +523,16 @@
                     let scriptJson = document.querySelectorAll('script[type="application/json"]');
                     for (let i = 0; i < scriptJson.length; i++) {
                         let match = scriptJson[i].text.match(/"pk":"(\d+)","id":"[\d_]+"/);
-                        if (match) return match[1];
+                        if (match) {
+                            if (!window.location.href.includes('highlights')) {
+                                return match[1];
+                            }
+                            let matchs = Array.from(scriptJson[i].text.matchAll(/"pk":"(\d+)","id":"[\d_]+"/g), match => match[1]);
+                            const matchIndex = findHighlightsIndex();
+                            if (matchs.length > matchIndex) {
+                                return matchs[matchIndex];
+                            }
+                        }
                     }
                 }
 
@@ -573,6 +589,15 @@
     }
 
     function findPostName(articleNode) {
+        // this grabs the username link that is visually in the author's post comment below the media 
+        // 'article section' includes the likes section and comment box
+        // '+ * a' pulls the first element after the section that contains a link (comment box doesn't)
+        // '[href^="/"][href$="/"]' requires the href attribute to begin and end with a slash to match a username
+        let imgNoCanvas = articleNode.querySelector('article section + * a[href^="/"][href$="/"]');
+        if (imgNoCanvas) {
+            return imgNoCanvas;
+        }
+
         // videos are handled differently
         let imgAlt = articleNode.querySelector('canvas ~ * img');
         if (imgAlt) {

@@ -64,6 +64,10 @@ config.bind("<ctrl+shift+tab>", "tab-prev")
 config.bind("wo", "set-cmd-text -sr :tab-focus")
 config.bind("yd", "yank;;tab-close")
 
+config.unbind(";d")
+config.bind(";dt", "set downloads.location.prompt true ;; set downloads.remove_finished -1")
+config.bind(";df", "set downloads.location.prompt false ;; set downloads.remove_finished 0")
+
 # config.unbind("cd")
 config.bind("cc", "download-clear")
 config.bind("co", "download-open")
@@ -84,6 +88,7 @@ config.bind("<ctrl+q>", "wq")
 config.bind("<ctrl+w>", "tab-close")
 config.unbind("sf")
 config.bind("sf", "save;;session-save")
+config.unbind("<ctrl+a>")
 
 config.bind("J", "tab-prev")
 config.bind("K", "tab-next")

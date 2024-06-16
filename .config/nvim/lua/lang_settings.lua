@@ -101,6 +101,7 @@ au.FileType = {
     set.foldmarker = 'BEGIN,END'
     
     -- vim.bo.vimtex_main = "main.tex"
+    map("n", "<leader>ss", ":VimtexCompileSS<CR>")
 
     map("v", "<leader>m", ":s/\\\\(\\(.\\{-}\\)\\\\)/\\\\[\\1\\\\]/g<CR>")
     map("v", "<leader>n", ":s/\\\\\\[\\(.\\{-}\\)\\\\\\]/\\\\(\\1\\\\)/g<CR>")
@@ -135,6 +136,11 @@ au.FileType = {
     vim.g.vimtex_quickfix_ignore_filters = {
       'imakeidx Warning', 
       'Reference.*undefined'
+    }
+
+    vim.g.vimtex_delim_toggle_mod_list = {
+      {'\\bigl', '\\bigr'},
+      {'\\left', '\\right'},
     }
 
   end

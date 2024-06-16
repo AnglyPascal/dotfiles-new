@@ -29,11 +29,6 @@ require("nvim-tree").setup({
   -- },
 })
 
-cmd([[
-  source $VIMRUNTIME/mswin.vim 
-  behave mswin
-]])
-
 set.compatible = false
 cmd([[
   filetype plugin indent on
@@ -99,6 +94,7 @@ set.wildignore:append("*/tmp/*,*.so,*.swp,*.zip,*.aux,*.log,*.pdf,*.pyc,*.o")
 set.wildignore:append("*.ggb,*.ilg,*.ind,*.fls,*.out,*.svg,*.synctex.gz")
 set.wildignore:append("*.idx,*.ggt,*.pdf_tex,*.fdb_latexmk")
 set.wildignore:append("*.blg,*.class,*.bbl,*.toc,*.xdv,*.ent")
+set.wildignore:append("*.tdo,*.todo,*.run.xml,*.bcf")
 
 vim.g.ctrlp_working_path_mode = ''
 cmd([[

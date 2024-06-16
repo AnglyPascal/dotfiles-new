@@ -107,5 +107,7 @@ settings:
     global: true
   downloads.position:
     global: bottom
+  downloads.remove_finished:
+    global: -1
   zoom.default:
     global: '110'

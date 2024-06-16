@@ -96,9 +96,9 @@ map("n", "<leader>gf", ":e <cfile><cr>")
 
 -- -- formatting ------------
 
--- paragraph tools -------
-map("n", "gj", "vipgq")
-map("n", "fj", "vipJ")
+-- -- paragraph tools -------
+-- map("n", "gj", "vipgq")
+-- map("n", "fj", "vipJ")
 
 -- disabling arrows ------
 -- map("i", "<Up>", "<Nop>")
@@ -122,6 +122,8 @@ map("v", "<leader>P", '"+P')
 map("i", "<C-l>", "<c-g>u<Esc>:nohl<CR>[s1z=`]a<c-g>u")
 map("n", "<C-l>", "i<c-g>u<Esc>:nohl<CR>[s1z=`]a<c-g>u<Esc>")
 
+
+map("n", "<leader><CR>", ":<up>", { silent = false, noremap = true })
 
 return M
 

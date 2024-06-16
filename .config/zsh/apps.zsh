@@ -149,7 +149,7 @@ sortImg() {
 
 ### switch between dark and light terminal and nvim themes
 toggle_term () {
-  ALACRITY_CONFIG="$HOME/.config/alacritty/alacritty.yml"
+  ALACRITY_CONFIG="$HOME/.config/alacritty/alacritty.toml"
   if grep -Fq "light.yaml" "$ALACRITY_CONFIG"
   then
       sed -i 's/light\.yaml/dark\.yaml/' "$ALACRITY_CONFIG"
@@ -201,4 +201,22 @@ tk(){
     yt-dlp -o "$format" "$line"
   done < $temp
   rm $temp 
+}
+
+# toggle seagate ssd
+sea() {
+  if grep -qs '/home/ahsan/sea' /proc/mounts; then
+    echo "unmounting"
+    sudo umount /dev/mapper/sea; sudo cryptsetup luksClose sea
+  else
+    echo "mounting"
+    dev="/dev/sda"
+    if lsblk -p | grep "1.8T" | grep -wq "/dev/sdb"; then
+      dev="/dev/sdb"
+    fi
+    if lsblk -p | grep "1.8T" | grep -wq "/dev/sdc"; then
+      dev="/dev/sdc"
+    fi
+    sudo cryptsetup luksOpen $dev sea; sudo mount /dev/mapper/sea sea; 
+  fi
 }

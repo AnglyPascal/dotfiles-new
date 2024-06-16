@@ -103,10 +103,13 @@ else:
 endsnippet
 
 
-snippet '(bb|tt|it|bf|imp|unimp|indef|aref|tref|eqref)' "one input commands" wr
+snippet '(emph|bb|tt|it|bf|imp|unimp|indef|inthm|sref|aref|nref|tref|eqref)' "one input commands" wr
 `!p
 dic = {'bb': 'textbb', 'tt': 'texttt', 'it': 'textit', 'bf': 'textbf', 'imp': 'imp',
+'emph': 'emph',
 'unimp': 'textcolor{gray}', 'indef': 'indef', 'aref': 'autoref', 'tref': 'thmref',
+'inthm': 'inthm',
+'sref': 'sideref', 'nref': 'nameref',
 'eqref': 'eqref'}
 key = match.group(1)
 snip.rv = '\\' + dic[key]`{${1:${VISUAL}}}$0
@@ -135,9 +138,9 @@ def inline_env_expand(key):
 	# ml    = ("$",                    "$")
 	dm    = ("\[",                    "\]")
 	ali   = ("\[\\begin{aligned}", "",  "\\end{aligned}\]")
-	lrp   = ("\\left(",               "\\right)")
-	lra   = ("\\left[",               "\\right]")
-	lrb   = ("\\left\{",              "\\right\}")
+	lrp   = ("(",               ")")
+	lra   = ("[",               "]")
+	lrb   = ("\{",              "\}")
 	abs  = ("\\lvert ", "\\rvert ")
 	norm  = ("\\lVert ",            "\\rVert ")
 	dotp  = ("\\langle ",               "\\rangle ")
@@ -322,4 +325,9 @@ snippet mcols "begin"
 \begin{multicols}{2}
 	$1
 \end{multicols}$0
+endsnippet
+
+
+snippet cap "force capitalize name of env" i
+$\text{${1:${VISUAL}}}$
 endsnippet

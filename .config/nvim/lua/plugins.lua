@@ -39,6 +39,7 @@ function M.setup()
       opt = true 
     }
 
+
     use {
       "hrsh7th/nvim-cmp",
       requires = {
@@ -122,7 +123,7 @@ function M.setup()
     -- }
 
     -- Color schemes
-    use 'norcalli/nvim-colorizer.lua'
+    -- use 'norcalli/nvim-colorizer.lua'
 
     -- Statusline
     use {
@@ -246,7 +247,7 @@ function M.setup()
 
     -- latex
     vim.g.latexfmt_no_join_any = { 
-      '\\ifextraC', '\\ifextraA', '\\ifextraB', '\\fi', '\\else' 
+      '\\ifextraC', '\\ifextraA', '\\ifextraB', '\\fi', '\\else', '\\todo'
     }
     use 'anglypascal/vim-latexfmt'
     -- use 'lervag/vimtex'

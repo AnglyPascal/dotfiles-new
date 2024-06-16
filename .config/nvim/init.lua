@@ -31,6 +31,6 @@ require("coc")
 require("metals_config")
 ----------------------------------
 
-require('colorizer').setup()
+-- require('colorizer').setup()
 
 vim.cmd.color('bestblack')

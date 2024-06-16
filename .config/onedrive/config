@@ -6,13 +6,15 @@
 # For explanations of all config options below see docs/USAGE.md or the man page.
 #
 
-sync_dir                       = "/run/media/file2/onedrive"
-skip_dir                       = "/GARNiDELiA/social_media_lives/kishikaisei_online_events"
-skip_dir                       = "/GARNiDELiA/lives/Kishikaisei 起死回生 Premium Live"
-skip_dir                       = "/GARNiDELiA/lives/Utamonogatari"
-skip_dir                       = "/GARNiDELiA/lives"
-skip_dir                       = "/Oxford/.git"
-skip_dir                       = "/Manga/3-gatsu no Lion"
+sync_dir                       = "/run/media/store/onedrive"
+skip_dir                       = "GARNiDELiA"
+skip_dir                       = "Oxford"
+# skip_dir                       = "/GARNiDELiA/social_media_lives/kishikaisei_online_events"
+# skip_dir                       = "/GARNiDELiA/lives/Kishikaisei 起死回生 Premium Live"
+# skip_dir                       = "/GARNiDELiA/lives/Utamonogatari"
+# skip_dir                       = "/GARNiDELiA/lives"
+# skip_dir                       = "/Oxford/.git"
+# skip_dir                       = "/Manga/3-gatsu no Lion"
 skip_file                    = "*.idx|*.aux|*.toc|*.fdb_latexmk|*.log|*.fls|*.out|*.ilg|*.ind|*.synctex.gz|*.class|*.tmp"
 # log_dir                      = "/var/log/onedrive/"
 # upload_only                    = "true"
