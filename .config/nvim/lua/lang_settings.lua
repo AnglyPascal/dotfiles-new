@@ -342,9 +342,8 @@ au.FileType = {
 au.FileType = {
   'cpp',
   function()
-    map("i", ";ll", ":!gcc<space>%<CR>")
-    map("n", ";ll", ":!gcc<space>%<CR>")
-    -- map("n", "<leader>f", ":<C-u>ClangFormat<CR>")
+    map("i", ";ll", ":!g++<space>%<CR>")
+    map("n", ";ll", ":!g++<space>%<CR>")
   end
 }
 

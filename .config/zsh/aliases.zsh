@@ -46,3 +46,6 @@ alias fp="find . -regex '$picRegex' -type f -exec echo \"{}\" \;"
 
 alias gpssh='gcloud compute ssh --zone "us-central1-c" "main" --project "group-design-practical"'
 alias snvim="sudo -E -s nvim"
+
+alias gcc_arm="arm-none-eabi-gcc"
+alias arm="arm-none-eabi-gcc"
