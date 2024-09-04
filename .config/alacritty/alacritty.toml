@@ -1,0 +1,7 @@
+import = ["/home/ahsan/.config/alacritty/dark.toml"]
+
+[font]
+size = 11.0
+
+[font.normal]
+family = "Shure Tech Mono Nerd Font"
