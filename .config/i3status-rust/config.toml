@@ -1,0 +1,66 @@
+icons_format = "<span font_family='Font Awesome 6 Free'>{icon}</span>"
+
+[theme]
+theme = "nord-dark"
+[theme.overrides]
+idle_bg = "#17171c"
+
+[icons]
+icons = "awesome6"
+[icons.overrides]
+volume_muted = ''
+
+[[block]]
+block = "music"
+format = " $icon {$combo.str(max_w:30) $prev $play $next|}"
+[[block.click]]
+button = "left"
+action = "next_player"
+[[block.click]]
+button = "right"
+action = "play_pause"
+
+[[block]]
+block = "cpu"
+info_cpu = 20
+warning_cpu = 70
+critical_cpu = 90
+format = " $barchart $utilization "
+
+[[block]]
+block = "memory"
+format = " $icon $mem_total_used_percents.eng(w:2)"
+format_alt = " $icon_swap $swap_used_percents.eng(w:2)"
+
+[[block]]
+block = "battery"
+format = " $icon{ $percentage|}"
+device = "DisplayDevice"
+driver = "upower"
+full_threshold = 75
+[[block.click]]
+button = "left"
+cmd = "alacritty -T upower --hold -e upower -d"
+
+[[block]]
+block = "sound"
+format = " $icon{ $volume|}"
+# [block.mappings]
+# "alsa_output.pci-0000_64_00.6.HiFi__Speaker__sink" = ""
+# "alsa_output.pci-0000_00_1b.0.analog-stereo" = ""
+[[block.click]]
+button = "left"
+cmd = "pavucontrol"
+[block.theme_overrides]
+warning_bg = "#17171c" # nord0
+warning_fg = "#81a1c1" # light blue
+
+[[block]]
+block = "net"
+format = " $icon {$signal_strength $ssid|}"
+
+[[block]]
+block = "time"
+interval = 60
+format = " <span font-family=\"Courier Prime\"><b>$timestamp.datetime(f:'%a %Y-%m-%d %R')</b></span> "
+

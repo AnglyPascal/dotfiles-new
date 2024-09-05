@@ -41,6 +41,8 @@ setup_dots () {
     ln -s $i $root/.config
   done
 
+  ln -sf $root/.config/zsh/.zshrc $root
+
   for i in $dots/.local/share/applications/*
   do 
     ln -sf $i $root/.local/share/applications/
@@ -83,7 +85,9 @@ install_packages () {
     gimp inkscape krita \
     rofi xclip \
     thunderbird nodejs npm \
-    xournalpp
+    xournalpp \
+    qemu-system-arm qemu-img \
+    arm-none-eabi-gcc arm-none-eabi-gdb arm-none-eabi-binutils arm-none-eabi-newlib \
 
   git clone --depth 1 https://github.com/wbthomason/packer.nvim   \
     ~/.local/cabalshare/nvim/site/pack/packer/start/packer.nvim

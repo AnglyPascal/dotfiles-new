@@ -1,0 +1,24 @@
+{
+    "firefox": "firefox",
+    "google-chrome": "chrome",
+    "qutebrowser": "chrome",
+    "brave": "brave",
+
+    "Alacritty": "terminal",
+
+    "thunderbird": "envelope",
+
+    "zathura": "file",
+    "calibre": "file",
+
+    "dolphin": "folder-open",
+
+    "spotify": "spotify",
+    "mpv": "play",
+    "feh": "image",
+    "darktable": "camera",
+
+    "telegram-desktop": "telegram",
+
+    "_no_match": "question"
+}

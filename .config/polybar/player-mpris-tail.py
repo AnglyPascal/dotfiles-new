@@ -307,7 +307,7 @@ class Player:
             self.metadata['duration']   = _duration
 
     def _ytTitleConverter(self, title):
-        m = re.search('(.*?)[\[|\(].*[\)|\]](.*)', title)
+        m = re.search('(.*?)[\\[|\\(].*[\\)|\\]](.*)', title)
         if m:
             return m.group(1) + m.group(2) if m.group(2) else m.group(1)
         else:
