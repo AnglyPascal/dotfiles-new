@@ -17,8 +17,8 @@ c.hints.chars = "wearsdfjklio"
 
 c.editor.command    = ["alacritty", "-e", "vim", "-f", "{file}", 
                        "-c", "normal {line}G{column0}l"]
-c.url.default_page  = "file:///home/ahsan/git/startpage/index.html"
-c.url.start_pages   = "file:///home/ahsan/git/startpage/index.html"
+c.url.default_page  = "file:///home/ahsan/.config/qutebrowser/start_page/index.html"
+c.url.start_pages   = "file:///home/ahsan/.config/qutebrowser/start_page/index.html"
 
 c.confirm_quit      = ["downloads"]
 c.content.autoplay  = False
