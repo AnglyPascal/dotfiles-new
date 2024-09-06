@@ -3,30 +3,20 @@ local cmd = vim.cmd
 local set = vim.opt
 local au = require('au')
 
--- require("nvim-tree").setup({
---   sort_by = "case_sensitive",
---   -- auto_close = true,
---   view = {
---     width = 30,
---     -- adaptive_size = true,
---     mappings = {
---       list = {
---         { key = "v", action = "split" },
---         { key = "t", action = "tabnew" },
---         { key = "s", action = "vsplit" },
---       },
---     },
---   },
---   renderer = {
---     group_empty = true,
---   },
---   filters = {
---     dotfiles = true,
---   },
---   ignore_ft_on_setup = {
---     "hi", "o", 
---   },
--- })
+require("nvim-tree").setup({
+  sort = {
+    sorter = "case_sensitive",
+  },
+  view = {
+    width = 30,
+  },
+  renderer = {
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = true,
+  },
+})
 
 set.compatible = false
 cmd([[

@@ -81,45 +81,12 @@ function M.setup()
     }
     use 'tpope/vim-surround'
 
-    -- use {
-    --   'nvim-tree/nvim-tree.lua',
-    --   requires = {
-    --     'nvim-tree/nvim-web-devicons', -- optional, for file icons
-    --   },
-    --   tag = 'nightly' -- optional, updated every week. (see issue #1193)
-    -- }
-
-    -- use {
-    --   "kawre/leetcode.nvim",
-    --   -- build = ":TSUpdate html",
-    --   requires = {
-    --     "nvim-treesitter/nvim-treesitter",
-    --     "nvim-telescope/telescope.nvim",
-    --     "nvim-lua/plenary.nvim", -- required by telescope
-    --     "MunifTanjim/nui.nvim",
-
-    --     -- optional
-    --     "nvim-tree/nvim-web-devicons",
-
-    --     -- recommended
-    --     "rcarriga/nvim-notify",
-    --   },
-    --   opts = {
-    --     -- configuration goes here
-    --   },
-    -- }
-
-    -- new
-    -- use 'AndrewRadev/sideways.vim' -- move list values sideways
-    -- use 'easymotion/vim-easymotion'
-    -- use 'wellle/context.vim'
-    -- vim.g.context_add_mappings = 0
-
-    -- use {
-    --   'francoiscabrol/ranger.vim',
-    --   opt = true,
-    --   cmd = {'Ranger'},
-    -- }
+    use {
+      'nvim-tree/nvim-tree.lua',
+      requires = {
+        'nvim-tree/nvim-web-devicons', -- optional, for file icons
+      },
+    }
 
     -- Color schemes
     use 'norcalli/nvim-colorizer.lua'

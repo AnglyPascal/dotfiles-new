@@ -62,5 +62,5 @@ format = " $icon {$signal_strength $ssid|}"
 [[block]]
 block = "time"
 interval = 60
-format = " <span font-family=\"Courier Prime\"><b>$timestamp.datetime(f:'%a %Y-%m-%d %R')</b></span> "
+format = " <span font-family=\"Courier Prime\" ><b>$timestamp.datetime(f:'%a') <span size=\"x-large\">$timestamp.datetime(f:'%d')</span> $timestamp.datetime(f:'%b') <span size=\"x-large\">$timestamp.datetime(f:'%R')</span></b></span> "
 

@@ -71,7 +71,7 @@ install_packages () {
     copyq \
     telegram-desktop discord  \
     python3 python-pip \
-    gcc cmake \
+    gcc clang ccls clang-format cmake \
     haskell-base jre-openjdk texlive \
     mpv shotcut maim feh gwenview \
     playerctl jpegoptim \

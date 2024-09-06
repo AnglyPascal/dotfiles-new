@@ -63,6 +63,7 @@ settings:
     https://rajwap.pro: false
     https://shainsie.com: false
     https://subscribe-notifications.com: false
+    https://toonily.com: false
     https://toptoon.com: false
     https://user1.subscribe-notifications.com: false
     https://videocelebs.net: false
@@ -97,5 +98,7 @@ settings:
     https://mail.proton.me#mailto=%25s: false
     https://outlook.office.com?mailtouri=%25s: true
     https://outlook.office365.com?mailtouri=%25s: true
+  downloads.position:
+    global: bottom
   zoom.default:
     global: '100'

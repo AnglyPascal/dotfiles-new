@@ -81,7 +81,7 @@ bindsym $alt+7  exec playerctl previous
 # Application Keybinds #
 ########################
 
-bindsym $mod+z        exec bluetoothctl power on && bluetootchctl connect 60:F4:3A:A2:5B:B8
+# bindsym $mod+z        exec bluetoothctl power on && bluetootchctl connect 60:F4:3A:A2:5B:B8
 bindsym $mod+F2       exec qutebrowser
 bindsym $mod+Ctrl+F2  exec firefox
 bindsym $mod+Shift+F2 exec brave
@@ -129,7 +129,7 @@ bindsym Print --release exec maim -u -s -m 7 "/home/ahsan/Pictures/temp.png"    
           mv "/home/ahsan/Pictures/temp.png"                                            \
           "/home/ahsan/Pictures/Screenshots/$(date +%s).png"
 
-bindsym Ctrl+Shift+z exec copyq show
+bindsym $mod+z exec copyq show
 # bindsym Ctrl+Shift+l exec copyq next
 # bindsym Ctrl+Shift+h exec copyq previous
 bindsym $mod+shift+x exec betterlockscreen -l dim
@@ -343,7 +343,7 @@ bindsym $mod+Shift+r restart # restart i3 inplace
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'" 
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Really wanna exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Really wanna exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
 
 
 ############################
@@ -351,7 +351,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Really wanna exit i3?' -b 'Y
 ############################
 
 # Set shut down, restart and locking features
-bindsym Ctrl+Shift+0 mode "$mode_system"
+bindsym $mod+Shift+e mode "$mode_system"
 
 set $mode_system (l)ock, (e)xit, (Shift+s)uspend, (r)eboot, (s)hutdown
 mode "$mode_system" {
@@ -407,8 +407,8 @@ bar {
         statusline #dddddd
         focused_workspace #81a1c1 #81a1c1 #17171c
         active_workspace #17171c #17171c #ffffff
-        inactive_workspace #17171c #17171c #b8b8b8
-        urgent_workspace #2f343a #900000 #ffffff
+        inactive_workspace #17171c #17171c #D8DEE9
+        urgent_workspace #2f343a #D08770 #17171c
     }
 }
 
@@ -441,10 +441,10 @@ set_from_resource $term_color15    color15
 ################
 
 # class                 border  backgr. text    indic.   child_border
-client.focused          #d08770 #d08770 #80FFF9 #d08770
+client.focused          #2F3D44 #2F3D44 #80FFF9 #2F3D44
 client.focused_inactive #2F3D44 #17171c #1ABC9C #17171c
 client.unfocused        #17171c #17171c #1ABC9C #17171c
-client.urgent           #CB4B16 #bf616a #1ABC9C #268BD2
+client.urgent           #bf616a #bf616a #1ABC9C #bf616a
 client.placeholder      #000000 #0c0c0c #ffffff #000000 
 client.background       #17171c
 

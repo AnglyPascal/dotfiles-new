@@ -69,6 +69,9 @@ intensity=1.00
 no_inactiveness=false
 saturation=1.00
 shadowless_popup=false
+drag_from_buttons=false
+menu_blur_radius=0
+tooltip_blur_radius=0
 
 [GeneralColors]
 window.color=#17171c
@@ -93,7 +96,7 @@ progress.indicator.text.color=#cfd8dc
 
 [Hacks]
 transparent_ktitle_label=true
-transparent_dolphin_view=true
+transparent_dolphin_view=false
 transparent_pcmanfm_sidepane=true
 blur_translucent=true
 transparent_menutitle=true
@@ -115,6 +118,8 @@ kinetic_scrolling=false
 middle_click_scroll=false
 noninteger_translucency=false
 scroll_jump_workaround=false
+blur_only_active_window=false
+style_vertical_toolbars=false
 
 [PanelButtonCommand]
 frame=true
