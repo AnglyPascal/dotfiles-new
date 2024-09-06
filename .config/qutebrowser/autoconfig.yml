@@ -98,7 +98,11 @@ settings:
     https://mail.proton.me#mailto=%25s: false
     https://outlook.office.com?mailtouri=%25s: true
     https://outlook.office365.com?mailtouri=%25s: true
+  downloads.location.prompt:
+    global: false
   downloads.position:
     global: bottom
+  downloads.remove_finished:
+    global: 0
   zoom.default:
     global: '100'
