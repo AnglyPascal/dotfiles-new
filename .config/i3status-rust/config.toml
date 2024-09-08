@@ -44,10 +44,10 @@ cmd = "alacritty -T upower --hold -e upower -d"
 
 [[block]]
 block = "sound"
-format = " $icon{ $volume|}"
-# [block.mappings]
-# "alsa_output.pci-0000_64_00.6.HiFi__Speaker__sink" = ""
-# "alsa_output.pci-0000_00_1b.0.analog-stereo" = ""
+format = " <span font_family='Font Awesome 6 Free'>$output_name</span> {$volume|0%}"
+[block.mappings]
+"alsa_output.pci-0000_64_00.6.HiFi__Speaker__sink" = ""
+"bluez_output.E8_EE_CC_48_B9_9C.1" = ""
 [[block.click]]
 button = "left"
 cmd = "pavucontrol"
