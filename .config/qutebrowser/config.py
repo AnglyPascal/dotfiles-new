@@ -68,6 +68,8 @@ config.unbind(";d")
 config.bind(";dt", "set downloads.location.prompt true ;; set downloads.remove_finished -1")
 config.bind(";df", "set downloads.location.prompt false ;; set downloads.remove_finished 0")
 
+config.bind(";p", "mode-enter passthrough")
+
 # config.unbind("cd")
 config.bind("cc", "download-clear")
 config.bind("co", "download-open")

@@ -226,6 +226,8 @@ function M.setup()
         ]])
      }
 
+     use 'instant-markdown/vim-instant-markdown'
+
     -- -- R
     -- use 'jalvesaq/Nvim-R'
   end

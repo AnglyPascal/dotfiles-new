@@ -11,8 +11,15 @@ local map = require("keybinds").map
 au({'BufEnter', 'BufRead'}, {
     '*.conf',
     function()
-      vim.opt.filetype = "dosini"
+      vim.opt.filetype = "conf"
       vim.cmd([[hi clear SpellBad]])
+    end,
+  })
+
+au({'BufEnter', 'BufRead'}, {
+    '*.strace',
+    function()
+      vim.opt.filetype = "strace"
     end,
   })
 

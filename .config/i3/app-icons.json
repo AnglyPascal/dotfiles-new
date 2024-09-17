@@ -2,13 +2,14 @@
     "firefox": "firefox",
     "google-chrome": "chrome",
     "qutebrowser": "chrome",
-    "brave": "brave",
+    "brave-browser": "chrome",
 
     "Alacritty": "terminal",
 
     "thunderbird": "envelope",
 
     "zathura": "file",
+    "mcomix": "book",
     "calibre": "file",
 
     "dolphin": "folder-open",
@@ -20,6 +21,11 @@
     "darktable": "camera",
 
     "telegram-desktop": "telegram",
+    "transmission-gtk": "download",
+
+    "facebook": "facebook",
+    "instagram": "instagram",
+    "reddit": "reddit",
 
     "_no_match": "question"
 }

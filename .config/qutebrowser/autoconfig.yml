@@ -11,7 +11,7 @@ settings:
   content.autoplay:
     global: false
   content.blocking.method:
-    global: both
+    global: auto
   content.desktop_capture:
     https://meet.google.com: true
   content.geolocation:
@@ -32,6 +32,10 @@ settings:
   content.javascript.enabled:
     '*://*.yts.as/*': false
     '*://*.yts.mx/*': true
+  content.local_storage:
+    gogoanimes.ai: false
+    simpcity.ru: false
+    simpcity.su: false
   content.media.audio_capture:
     https://app.roll20.net: false
     https://meet.google.com: true
@@ -99,10 +103,10 @@ settings:
     https://outlook.office.com?mailtouri=%25s: true
     https://outlook.office365.com?mailtouri=%25s: true
   downloads.location.prompt:
-    global: true
+    global: false
   downloads.position:
     global: bottom
   downloads.remove_finished:
-    global: -1
+    global: 0
   zoom.default:
     global: '100'

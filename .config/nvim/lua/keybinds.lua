@@ -61,6 +61,11 @@ map("n", "L", "<C-W><C-L>")
 map("n", "J", "<C-W><C-j>")
 map("n", "K", "<C-W><C-k>")
 
+
+-- terminal --------------
+map("t", "<esc>", "<C-\\><C-n>")
+map("n", "<C-T>", ":split term://zsh<CR>")
+
 -- tabs ------------------
 map("n", "<C-j>", "gT")
 map("n", "<C-k>", "gt")

@@ -2,29 +2,17 @@
 ### Lazim's i3 ###
 ##################
 
-# Set mod key (Mod1=<Alt>, Mod4=<Super>)
+include ~/.config/i3/config.d/*
+
 set $mod Mod4
 set $alt Mod1
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod 
 
-
 #############################
 # General Window Decoration #
 #############################
-
-# border/titlebar
-new_window               normal
-hide_edge_borders        vertical
-for_window [class="^.*"] border pixel 2
-
-bindsym Control+Shift+x [class="^.*"] border toggle
-
-# Configure border style <normal|1pixel|pixel xx|none|pixel>
-default_border          pixel 1
-default_floating_border normal
-hide_edge_borders       none # Hide borders
 
 floating_minimum_size 75 x 50
 floating_maximum_size 800 x 600
@@ -36,9 +24,8 @@ font pango:Share Tech Mono 10
 # Basic Keybindings #
 #####################
 
-set     $term       alacritty
-bindsym $mod+Return exec alacritty
-bindsym $mod+t      exec alacritty
+set $term alacritty
+bindsym $mod+Return exec $term
 bindsym $mod+q      kill
 bindsym $mod+d      exec --no-startup-id dmenu_recency
 
@@ -101,33 +88,6 @@ bindsym $mod+$alt+3   exec dolphin
 bindsym $mod+$alt+4   exec spotify
 
 
-###############
-# Screenshots #
-###############
-
-# window select
-bindsym $mod+Shift+Print exec maim -u -st 9999999 -B "/home/ahsan/Pictures/temp.png" && \
-          xclip -sel clip -t image/png "/home/ahsan/Pictures/temp.png"               && \
-          mv "/home/ahsan/Pictures/temp.png"                                            \
-          "/home/ahsan/Pictures/Screenshots/$(date +%s).png"
-# full monitor
-bindsym $mod+Print --release exec maim -u -m 7 "/home/ahsan/Pictures/temp.png"       && \
-          xclip -sel clip -t image/png "/home/ahsan/Pictures/temp.png"               && \
-          mv "/home/ahsan/Pictures/temp.png"                                            \
-          "/home/ahsan/Pictures/Screenshots/$(date +%s).png"
-bindsym $mod+Ctrl+Shift+D --release exec maim -u -m 7 "/home/ahsan/Pictures/temp.png"       && \
-          xclip -sel clip -t image/png "/home/ahsan/Pictures/temp.png"               && \
-          mv "/home/ahsan/Pictures/temp.png"                                            \
-          "/home/ahsan/Pictures/Screenshots/$(date +%s).png"
-# area selection
-bindsym Ctrl+Shift+D --release exec maim -u -s -m 7 "/home/ahsan/Pictures/temp.png"         && \
-          xclip -sel clip -t image/png "/home/ahsan/Pictures/temp.png"               && \
-          mv "/home/ahsan/Pictures/temp.png"                                            \
-          "/home/ahsan/Pictures/Screenshots/$(date +%s).png"
-bindsym Print --release exec maim -u -s -m 7 "/home/ahsan/Pictures/temp.png"         && \
-          xclip -sel clip -t image/png "/home/ahsan/Pictures/temp.png"               && \
-          mv "/home/ahsan/Pictures/temp.png"                                            \
-          "/home/ahsan/Pictures/Screenshots/$(date +%s).png"
 
 bindsym $mod+z exec copyq show
 # bindsym Ctrl+Shift+l exec copyq next
@@ -185,83 +145,6 @@ bindsym Ctrl+Shift+Down move scratchpad
 bindsym $mod+minus scratchpad show         
 
 
-###################
-# Workspace names #
-###################
-
-exec_always --no-startup-id exec i3-workspace-names-daemon -config-path ~/.config/i3/app-icons.json
-
-# Monitor names
-set $monR HDMI-1-2
-set $monL eDP-1-1
-
-# workspace names
-set $ws1  1
-set $ws2  2
-set $ws3  3
-set $ws4  4
-set $ws5  5
-set $ws6  6
-set $ws7  7
-set $ws8  8
-set $ws9  9
-set $ws10 10
-
-# # assign workspaces to specific outputs
-# workspace number $ws1  output $monR
-# workspace number $ws2  output $monR
-# workspace number $ws3  output $monR
-# workspace number $ws4  output $monR
-# workspace number $ws5  output $monL
-# workspace number $ws6  output $monL
-# workspace number $ws7  output $monL
-# workspace number $ws8  output $monR
-# workspace number $ws9  output $monR
-# workspace number $ws10 output $monR
-
-bindsym $mod+p move workspace to output left
-bindsym $mod+Tab focus output left
-
-# switch to workspace
-bindsym $mod+1 workspace number $ws1
-bindsym $mod+2 workspace number $ws2
-bindsym $mod+3 workspace number $ws3
-bindsym $mod+4 workspace number $ws4
-bindsym $mod+5 workspace number $ws5
-bindsym $mod+6 workspace number $ws6
-bindsym $mod+7 workspace number $ws7
-bindsym $mod+8 workspace number $ws8
-bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
-
-
-# Move focused container to workspace
-bindsym $mod+Ctrl+1 move container to workspace number $ws1
-bindsym $mod+Ctrl+2 move container to workspace number $ws2
-bindsym $mod+Ctrl+3 move container to workspace number $ws3
-bindsym $mod+Ctrl+4 move container to workspace number $ws4
-bindsym $mod+Ctrl+5 move container to workspace number $ws5
-bindsym $mod+Ctrl+6 move container to workspace number $ws6
-bindsym $mod+Ctrl+7 move container to workspace number $ws7
-bindsym $mod+Ctrl+8 move container to workspace number $ws8
-bindsym $mod+Ctrl+9 move container to workspace number $ws9
-bindsym $mod+Ctrl+0 move container to workspace number $ws10
-
-# Move to workspace with focused container
-bindsym $mod+Shift+1 move container to workspace number $ws1; workspace number $ws1
-bindsym $mod+Shift+2 move container to workspace number $ws2; workspace number $ws2
-bindsym $mod+Shift+3 move container to workspace number $ws3; workspace number $ws3
-bindsym $mod+Shift+4 move container to workspace number $ws4; workspace number $ws4
-bindsym $mod+Shift+5 move container to workspace number $ws5; workspace number $ws5
-bindsym $mod+Shift+6 move container to workspace number $ws6; workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7; workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8; workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9; workspace number $ws9
-bindsym $mod+Shift+0 move container to workspace number $ws10; workspace number $ws10
-
-bindsym $mod+Ctrl+greater move workspace to output right
-bindsym $mod+Ctrl+less move workspace to output left
-
 
 #########################
 # Specific window rules #
@@ -297,14 +180,6 @@ for_window [class="(?i)System-config-printer.py"]  floating enable border normal
 for_window [title="upower"]           floating enable
 for_window [class="pavucontrol"]           floating enable
 
-# Window assignment
-assign [class="discord"]     $ws7
-assign [class="team"]        $ws8
-assign [title="Telegram"]    $ws9
-assign [class="firefox"]     $ws6
-assign [class="^tlauncher*"] $ws10
-assign [class="^Minecraft*"] $ws10
-assign [class="[sS]potify"]  $ws4
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -448,65 +323,4 @@ client.urgent           #bf616a #bf616a #1ABC9C #bf616a
 client.placeholder      #000000 #0c0c0c #ffffff #000000 
 client.background       #17171c
 
-
-#############################
-### Settings for i3-gaps: ###
-#############################
-
-# Set inner/outer gaps
-gaps inner 8
-gaps outer 0
-workspace 1 gaps inner 0
-workspace 1 gaps outer 0
-
-smart_borders on
-
-# change borders
-# bindsym $mod+u       border none
-bindsym $mod+Shift+u border none
-bindsym $mod+n       gaps inner current set 0
-bindsym $mod+Shift+n gaps inner current set 8
-
-bindsym $mod+u [workspace=__focused__] floating toggle
-
-
-###############
-# Modify Gaps #
-###############
-
-set $mode_gaps Gaps: (o) outer, (i) inner
-set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-bindsym $mod+Shift+g mode "$mode_gaps"
-
-mode "$mode_gaps" {
-        bindsym o      mode "$mode_gaps_outer"
-        bindsym i      mode "$mode_gaps_inner"
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_inner" {
-        bindsym plus  gaps inner current plus 5
-        bindsym minus gaps inner current minus 5
-        bindsym 0     gaps inner current set 0
-
-        bindsym Shift+plus  gaps inner all plus 5
-        bindsym Shift+minus gaps inner all minus 5
-        bindsym Shift+0     gaps inner all set 0
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_outer" {
-        bindsym plus  gaps outer current plus 5
-        bindsym minus gaps outer current minus 5
-        bindsym 0     gaps outer current set 0
-
-        bindsym Shift+plus  gaps outer all plus 5
-        bindsym Shift+minus gaps outer all minus 5
-        bindsym Shift+0     gaps outer all set 0
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
 

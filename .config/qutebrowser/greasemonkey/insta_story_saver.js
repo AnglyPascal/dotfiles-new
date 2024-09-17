@@ -101,6 +101,20 @@
         if (prefetchAndAttachLink) onMouseInHandler(mockEvent);
         onClickHandler(mockEvent);
       }
+      // right arrow
+      buttons = document.getElementsByClassName('_afxw');
+      if (buttons.length > 0 && buttons[buttons.length - 1].innerHTML.indexOf("_9zm2") > -1) {
+        buttons[buttons.length - 1].click();
+      }
+      else {
+        buttons = document.getElementsByClassName('_abl-');
+        for (var i = 0; i < buttons.length; i++) {
+          if (buttons[i].innerHTML.indexOf("Next") > -1) {
+            buttons[i].click();
+            break;
+          }
+        }
+      }
     }
     if (event.altKey && event.key === 'k') {
       let buttons = document.getElementsByClassName('newtab-btn');

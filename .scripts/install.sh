@@ -13,6 +13,7 @@ link_directories () {
   ln -sf $store/documents/ $root
   ln -sf $store/downloads/ $root
   ln -sf $store/public/ $root
+  ln -sf $store/pictures/ $root
   ln -sf $store/videos/ $root
   ln -sf $store/manga/ $root
 
@@ -71,7 +72,7 @@ install_packages () {
     copyq \
     telegram-desktop discord  \
     python3 python-pip \
-    gcc clang ccls clang-format cmake \
+    gcc clang ccls clang-format cmake gdb valgrind \
     haskell-base jre-openjdk texlive \
     mpv shotcut maim feh gwenview \
     playerctl jpegoptim \
