@@ -1,0 +1,3 @@
+[submodule ".scripts/ffscreencast"]
+	path = .scripts/ffscreencast
+	url = https://github.com/AnglyPascal/ffscreencast
