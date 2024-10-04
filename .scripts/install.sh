@@ -5,6 +5,7 @@ root="/home/ahsan"
 dots="$root/git/dots"
 store="/run/mount/store"
 
+
 link_directories () {
   ln -sf $store/git/ $root
   
@@ -130,6 +131,11 @@ install_yay_pip () {
       --break-system-packages
 
   echo ''
+}
+
+
+tearfree () {
+   sudo cp $dots/.sys/10-amdgpu.conf /etc/X11/xorg.conf.d
 }
 
 

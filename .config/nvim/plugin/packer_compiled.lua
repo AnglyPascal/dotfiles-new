@@ -74,10 +74,10 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  ["BetterLua.vim"] = {
+  ["aerial.nvim"] = {
     loaded = true,
-    path = "/home/ahsan/.local/share/nvim/site/pack/packer/start/BetterLua.vim",
-    url = "https://github.com/euclidianAce/BetterLua.vim"
+    path = "/home/ahsan/.local/share/nvim/site/pack/packer/start/aerial.nvim",
+    url = "https://github.com/stevearc/aerial.nvim"
   },
   ale = {
     commands = { "ALEEnable" },
@@ -120,11 +120,6 @@ _G.packer_plugins = {
     path = "/home/ahsan/.local/share/nvim/site/pack/packer/start/ctrlp.vim",
     url = "https://github.com/kien/ctrlp.vim"
   },
-  ["haskell-vim"] = {
-    loaded = true,
-    path = "/home/ahsan/.local/share/nvim/site/pack/packer/start/haskell-vim",
-    url = "https://github.com/neovimhaskell/haskell-vim"
-  },
   ["indentpython.vim"] = {
     loaded = false,
     needs_bufread = false,
@@ -132,20 +127,10 @@ _G.packer_plugins = {
     path = "/home/ahsan/.local/share/nvim/site/pack/packer/opt/indentpython.vim",
     url = "https://github.com/vim-scripts/indentpython.vim"
   },
-  ["java-syntax.vim"] = {
-    loaded = true,
-    path = "/home/ahsan/.local/share/nvim/site/pack/packer/start/java-syntax.vim",
-    url = "https://github.com/uiiaoo/java-syntax.vim"
-  },
   ["lualine.nvim"] = {
     loaded = true,
     path = "/home/ahsan/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
-  },
-  ["nlua.nvim"] = {
-    loaded = true,
-    path = "/home/ahsan/.local/share/nvim/site/pack/packer/start/nlua.nvim",
-    url = "https://github.com/tjdevries/nlua.nvim"
   },
   ["nvim-cmp"] = {
     loaded = true,
@@ -176,6 +161,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ahsan/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
     url = "https://github.com/nvim-tree/nvim-tree.lua"
+  },
+  ["nvim-treesitter"] = {
+    loaded = true,
+    path = "/home/ahsan/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
+    url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
@@ -268,11 +258,6 @@ _G.packer_plugins = {
     path = "/home/ahsan/.local/share/nvim/site/pack/packer/opt/vim-grammarous",
     url = "https://github.com/rhysd/vim-grammarous"
   },
-  ["vim-hindent"] = {
-    loaded = true,
-    path = "/home/ahsan/.local/share/nvim/site/pack/packer/start/vim-hindent",
-    url = "https://github.com/alx741/vim-hindent"
-  },
   ["vim-http-client"] = {
     loaded = true,
     path = "/home/ahsan/.local/share/nvim/site/pack/packer/start/vim-http-client",
@@ -282,6 +267,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ahsan/.local/share/nvim/site/pack/packer/start/vim-indent-guides",
     url = "https://github.com/nathanaelkane/vim-indent-guides"
+  },
+  ["vim-instant-markdown"] = {
+    loaded = true,
+    path = "/home/ahsan/.local/share/nvim/site/pack/packer/start/vim-instant-markdown",
+    url = "https://github.com/instant-markdown/vim-instant-markdown"
   },
   ["vim-javascript"] = {
     loaded = true,
@@ -303,22 +293,10 @@ _G.packer_plugins = {
     path = "/home/ahsan/.local/share/nvim/site/pack/packer/start/vim-latexfmt",
     url = "https://github.com/anglypascal/vim-latexfmt"
   },
-  ["vim-literate"] = {
-    loaded = true,
-    path = "/home/ahsan/.local/share/nvim/site/pack/packer/start/vim-literate",
-    url = "https://github.com/khardix/vim-literate"
-  },
   ["vim-maktaba"] = {
     loaded = true,
     path = "/home/ahsan/.local/share/nvim/site/pack/packer/start/vim-maktaba",
     url = "https://github.com/google/vim-maktaba"
-  },
-  ["vim-mustache-handlebars"] = {
-    loaded = false,
-    needs_bufread = true,
-    only_cond = false,
-    path = "/home/ahsan/.local/share/nvim/site/pack/packer/opt/vim-mustache-handlebars",
-    url = "https://github.com/mustache/vim-mustache-handlebars"
   },
   ["vim-polyglot"] = {
     loaded = true,
@@ -339,11 +317,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ahsan/.local/share/nvim/site/pack/packer/start/vimtex",
     url = "https://github.com/lervag/vimtex"
-  },
-  ["yats.vim"] = {
-    loaded = true,
-    path = "/home/ahsan/.local/share/nvim/site/pack/packer/start/yats.vim",
-    url = "https://github.com/HerringtonDarkholme/yats.vim"
   }
 }
 
@@ -371,31 +344,21 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType mustache ++once lua require("packer.load")({'vim-mustache-handlebars'}, { ft = "mustache" }, _G.packer_plugins)]]
-vim.cmd [[au FileType html ++once lua require("packer.load")({'vim-mustache-handlebars'}, { ft = "html" }, _G.packer_plugins)]]
-vim.cmd [[au FileType rust ++once lua require("packer.load")({'coc.nvim'}, { ft = "rust" }, _G.packer_plugins)]]
-vim.cmd [[au FileType tex ++once lua require("packer.load")({'vim-grammarous'}, { ft = "tex" }, _G.packer_plugins)]]
-vim.cmd [[au FileType markdown ++once lua require("packer.load")({'vim-grammarous', 'vim-mustache-handlebars'}, { ft = "markdown" }, _G.packer_plugins)]]
-vim.cmd [[au FileType ocaml ++once lua require("packer.load")({'coc.nvim'}, { ft = "ocaml" }, _G.packer_plugins)]]
-vim.cmd [[au FileType c ++once lua require("packer.load")({'coc.nvim'}, { ft = "c" }, _G.packer_plugins)]]
-vim.cmd [[au FileType typescriptreact ++once lua require("packer.load")({'coc.nvim'}, { ft = "typescriptreact" }, _G.packer_plugins)]]
-vim.cmd [[au FileType python ++once lua require("packer.load")({'ale', 'indentpython.vim'}, { ft = "python" }, _G.packer_plugins)]]
+vim.cmd [[au FileType python ++once lua require("packer.load")({'indentpython.vim', 'ale'}, { ft = "python" }, _G.packer_plugins)]]
 vim.cmd [[au FileType java ++once lua require("packer.load")({'ale'}, { ft = "java" }, _G.packer_plugins)]]
-vim.cmd [[au FileType javascript ++once lua require("packer.load")({'ale', 'coc.nvim'}, { ft = "javascript" }, _G.packer_plugins)]]
-vim.cmd [[au FileType haskell ++once lua require("packer.load")({'ale'}, { ft = "haskell" }, _G.packer_plugins)]]
-vim.cmd [[au FileType cpp ++once lua require("packer.load")({'ale', 'coc.nvim'}, { ft = "cpp" }, _G.packer_plugins)]]
-vim.cmd [[au FileType typescript ++once lua require("packer.load")({'coc.nvim'}, { ft = "typescript" }, _G.packer_plugins)]]
-vim.cmd [[au FileType javascriptreact ++once lua require("packer.load")({'coc.nvim'}, { ft = "javascriptreact" }, _G.packer_plugins)]]
 vim.cmd [[au FileType text ++once lua require("packer.load")({'vim-grammarous'}, { ft = "text" }, _G.packer_plugins)]]
+vim.cmd [[au FileType c ++once lua require("packer.load")({'coc.nvim'}, { ft = "c" }, _G.packer_plugins)]]
+vim.cmd [[au FileType markdown ++once lua require("packer.load")({'vim-grammarous'}, { ft = "markdown" }, _G.packer_plugins)]]
+vim.cmd [[au FileType tex ++once lua require("packer.load")({'vim-grammarous'}, { ft = "tex" }, _G.packer_plugins)]]
+vim.cmd [[au FileType javascriptreact ++once lua require("packer.load")({'coc.nvim'}, { ft = "javascriptreact" }, _G.packer_plugins)]]
+vim.cmd [[au FileType typescript ++once lua require("packer.load")({'coc.nvim'}, { ft = "typescript" }, _G.packer_plugins)]]
+vim.cmd [[au FileType typescriptreact ++once lua require("packer.load")({'coc.nvim'}, { ft = "typescriptreact" }, _G.packer_plugins)]]
+vim.cmd [[au FileType ocaml ++once lua require("packer.load")({'coc.nvim'}, { ft = "ocaml" }, _G.packer_plugins)]]
+vim.cmd [[au FileType javascript ++once lua require("packer.load")({'coc.nvim', 'ale'}, { ft = "javascript" }, _G.packer_plugins)]]
+vim.cmd [[au FileType haskell ++once lua require("packer.load")({'ale'}, { ft = "haskell" }, _G.packer_plugins)]]
+vim.cmd [[au FileType cpp ++once lua require("packer.load")({'coc.nvim', 'ale'}, { ft = "cpp" }, _G.packer_plugins)]]
+vim.cmd [[au FileType rust ++once lua require("packer.load")({'coc.nvim'}, { ft = "rust" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
-vim.cmd("augroup END")
-vim.cmd [[augroup filetypedetect]]
-time([[Sourcing ftdetect script at: /home/ahsan/.local/share/nvim/site/pack/packer/opt/vim-mustache-handlebars/ftdetect/handlebars.vim]], true)
-vim.cmd [[source /home/ahsan/.local/share/nvim/site/pack/packer/opt/vim-mustache-handlebars/ftdetect/handlebars.vim]]
-time([[Sourcing ftdetect script at: /home/ahsan/.local/share/nvim/site/pack/packer/opt/vim-mustache-handlebars/ftdetect/handlebars.vim]], false)
-time([[Sourcing ftdetect script at: /home/ahsan/.local/share/nvim/site/pack/packer/opt/vim-mustache-handlebars/ftdetect/mustache.vim]], true)
-vim.cmd [[source /home/ahsan/.local/share/nvim/site/pack/packer/opt/vim-mustache-handlebars/ftdetect/mustache.vim]]
-time([[Sourcing ftdetect script at: /home/ahsan/.local/share/nvim/site/pack/packer/opt/vim-mustache-handlebars/ftdetect/mustache.vim]], false)
 vim.cmd("augroup END")
 
 _G._packer.inside_compile = false

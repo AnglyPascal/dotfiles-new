@@ -103,10 +103,10 @@ settings:
     https://outlook.office.com?mailtouri=%25s: true
     https://outlook.office365.com?mailtouri=%25s: true
   downloads.location.prompt:
-    global: false
+    global: true
   downloads.position:
     global: bottom
   downloads.remove_finished:
-    global: 0
+    global: -1
   zoom.default:
     global: '100'

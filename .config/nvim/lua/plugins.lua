@@ -54,7 +54,7 @@ function M.setup()
     use 'kien/ctrlp.vim'
     use 'tpope/vim-commentary'
     use 'sheerun/vim-polyglot'
-    -- use 'aserebryakov/vim-todo-lists'
+
     use 'nathanaelkane/vim-indent-guides'
     use {
       'rhysd/vim-grammarous',
@@ -65,6 +65,7 @@ function M.setup()
     --   "windwp/nvim-autopairs",
     --     config = function() require("nvim-autopairs").setup {} end
     -- }
+    
     use { 
       'jiangmiao/auto-pairs',
       -- ft = {
@@ -94,7 +95,9 @@ function M.setup()
     -- Statusline
     use {
       'nvim-lualine/lualine.nvim',
-      requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+      requires = {
+        'nvim-tree/nvim-web-devicons', -- optional, for file icons
+      },
     }
 
     -- Python
@@ -102,19 +105,6 @@ function M.setup()
       'vim-scripts/indentpython.vim',
       ft = {'python'},
     }
-    -- use 'davidhalter/jedi-vim'
-    -- use { 
-    --   'Valloric/YouCompleteMe',
-    --   ft = {'python'},
-    -- }
-    -- use {
-    --   'vim-syntastic/syntastic', 
-    --   ft = {'python'}
-    -- }
-    -- use {
-    --   'nvie/vim-flake8', 
-    --   ft = {'python'}
-    -- }
 
     -- Git
     use 'tpope/vim-fugitive'
@@ -127,9 +117,9 @@ function M.setup()
     use 'godlygeek/tabular'
 
     -- Java
-    use 'uiiaoo/java-syntax.vim'
+    -- use 'uiiaoo/java-syntax.vim'
     -- use 'roxma/vim-hug-neovim-rpc'
-    --
+    
     -- Add maktaba and codefmt to the runtimepath.
     -- (The latter must be installed before it can be used.)
     use 'google/vim-maktaba'
@@ -192,29 +182,24 @@ function M.setup()
     use { 'kylelaker/riscv.vim' }
 
     -- TypeScript
-    use 'HerringtonDarkholme/yats.vim'
+    -- use 'HerringtonDarkholme/yats.vim'
 
     -- Haskell
-    use 'khardix/vim-literate'
-    use 'neovimhaskell/haskell-vim'
-    use 'alx741/vim-hindent'
+    -- use 'khardix/vim-literate'
+    -- use 'neovimhaskell/haskell-vim'
+    -- use 'alx741/vim-hindent'
     -- use 'alx741/vim-stylishask'
     -- use 'neovimhaskell/haskell-vim'
 
-    -- mustache
-    use {
-      'mustache/vim-mustache-handlebars',
-      ft = {'mustache', 'html', 'markdown'}
-    }
-
-    -- Lua
-    use 'tjdevries/nlua.nvim'
-    use 'euclidianAce/BetterLua.vim'
+    -- -- Lua
+    -- use 'tjdevries/nlua.nvim'
+    -- use 'euclidianAce/BetterLua.vim'
 
     -- latex
     vim.g.latexfmt_no_join_any = { 
       '\\ifextraC', '\\ifextraA', '\\ifextraB', '\\fi', '\\else' 
     }
+
     use 'anglypascal/vim-latexfmt'
     -- use 'lervag/vimtex'
 
@@ -226,10 +211,17 @@ function M.setup()
         ]])
      }
 
-     use 'instant-markdown/vim-instant-markdown'
+    use 'instant-markdown/vim-instant-markdown'
 
     -- -- R
     -- use 'jalvesaq/Nvim-R'
+    
+    use {
+      "stevearc/aerial.nvim",
+      requires = { 
+        {"nvim-treesitter/nvim-treesitter"},
+      }
+    }
   end
 
   packer_init()

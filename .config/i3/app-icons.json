@@ -9,7 +9,7 @@
     "thunderbird": "envelope",
 
     "zathura": "file",
-    "mcomix": "book",
+    "mcomix": "comment-dots",
     "calibre": "file",
 
     "dolphin": "folder-open",
@@ -26,6 +26,8 @@
     "facebook": "facebook",
     "instagram": "instagram",
     "reddit": "reddit",
+
+    "Manga": "comment-dots",
 
     "_no_match": "question"
 }

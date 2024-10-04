@@ -51,6 +51,10 @@ map("n", "gF", "<c-w>gf")
 map("n", "<C-s>", ":up<CR>")
 map("i", "<C-s>", "<esc><C-s>a")
 
+-- Aerial ----------------
+map("n", "<leader>a", ":AerialToggle!<CR>")
+vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle!<CR>")
+
 -- Escape maps -----------
 map("i", "jk", "<esc>")
 map("i", "kj", "<esc>")
