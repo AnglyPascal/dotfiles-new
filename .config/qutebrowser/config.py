@@ -14,7 +14,7 @@ c.url.searchengines = {
     "you":"https://youtube.com/results?search_query={}",
     "tl":"https://translate.google.com/?sl=auto&tl=en&text={}&op=translate",
     "hs":"https://hoogle.haskell.org/?hoogle={}&scope=set%3Astackage",
-    "lg": "http://libgen.rs/search.php?req={}&lg_topic=libgen&open=0&view=simple&res=25&phrase=1&column=def",
+    "lg": "http://libgen.is/search.php?req={}&lg_topic=libgen&open=0&view=simple&res=25&phrase=1&column=def",
     "gr": "https://www.goodreads.com/search?q={}&qid=",
 }
 
