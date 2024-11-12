@@ -67,7 +67,7 @@ install_packages () {
     yay \
     brave-browser qutebrowser \
     alacritty \
-    gvim neovim \
+    gvim neovim tig \
     polybar \
     dolphin \
     copyq \
@@ -76,7 +76,7 @@ install_packages () {
     gcc clang ccls clang-format cmake gdb valgrind \
     haskell-base jre-openjdk texlive \
     mpv shotcut maim feh gwenview \
-    playerctl jpegoptim \
+    playerctl jpegoptim pdftk \
     zathura zathura-cb zathura-djvu zathura-pdf-mupdf calibre \
     adobe-source-han-sans-jp-fonts ttf-font-awesome ttf-hanazono \
     ttf-roboto noto-fonts-cjk noto-fonts-emoji \
