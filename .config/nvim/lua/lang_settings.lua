@@ -151,6 +151,12 @@ au.FileType = {
     vim.g.matchup_override_vimtex = 1
     vim.g.vimtex_delim_stopline = 100
 
+    vim.g.vimtex_delim_toggle_mod_list = {
+      {'\\left', '\\right'},
+      {'\\bigl', '\\bigr'},
+      {'\\Bigl', '\\Bigr'},
+    }
+
   end
 }
 

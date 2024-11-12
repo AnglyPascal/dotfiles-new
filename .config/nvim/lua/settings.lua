@@ -16,6 +16,7 @@ local function my_on_attach(bufnr)
   -- custom mappings
   vim.keymap.set('n', 'v', api.node.open.horizontal, opts('vertical split'))
   vim.keymap.set('n', 's', api.node.open.vertical, opts('vertical split'))
+  vim.keymap.set("n", "<c-o>", api.node.run.system, opts("Run System"))
   vim.keymap.set('n', 't', api.node.open.tab, opts('vertical split'))
   vim.keymap.set("n", "L", "<C-W><C-L>", opts('move to right'))
 
@@ -32,9 +33,11 @@ require("nvim-tree").setup({
   on_attach = my_on_attach,
   renderer = {
     group_empty = true,
+    symlink_destination = false,
   },
   filters = {
     dotfiles = true,
+    custom = { 'node_modules', '*.o', '*.a' },
   },
 })
 
