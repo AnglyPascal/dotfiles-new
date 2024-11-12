@@ -220,3 +220,7 @@ sea() {
     sudo cryptsetup luksOpen $dev sea; sudo mount /dev/mapper/sea sea; 
   fi
 }
+
+mpvs() {
+  find . -regex '.*\.\(mp4\|mkv\|gif\|webm\)$' -exec mpv --shuffle {} +
+}

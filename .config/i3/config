@@ -261,7 +261,7 @@ exec --no-startup-id /home/ahsan/.scripts/wallpaper.sh
 # exec --no-startup-id $HOME/.config/polybar/launch.sh
 
 # XP-Pen tablet setup
-exec --no-startup-id xrandr --output HDMI-1-2 --auto --output eDP-1-1 --auto --right-of HDMI-1-2
+exec --no-startup-id xrandr --output HDMI-A-0 --auto --output eDP --auto --right-of HDMI-A-0
 exec --no-startup-id sudo bash /home/ahsan/.config/xp_pen/Pentablet_Driver.sh
 
 exec --no-startup-id copyq

@@ -102,6 +102,8 @@ settings:
     https://mail.proton.me#mailto=%25s: false
     https://outlook.office.com?mailtouri=%25s: true
     https://outlook.office365.com?mailtouri=%25s: true
+  content.tls.certificate_errors:
+    global: ask-block-thirdparty
   downloads.location.prompt:
     global: true
   downloads.position:

@@ -1,2 +1,4 @@
 .config/copyq/*
 .zcompdump*
+.config/autorandr/*
+.config/qutebrowser/qsettings/

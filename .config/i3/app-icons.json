@@ -29,5 +29,9 @@
 
     "Manga": "comment-dots",
 
+    "libreoffice-calc": "file-excel",
+    "libreoffice-writer": "file-word",
+    "libreoffice-impress": "file-powerpoint",
+
     "_no_match": "question"
 }
