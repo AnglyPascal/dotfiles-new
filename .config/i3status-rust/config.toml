@@ -20,12 +20,12 @@ action = "next_player"
 button = "right"
 action = "play_pause"
 
-[[block]]
-block = "cpu"
-info_cpu = 20
-warning_cpu = 70
-critical_cpu = 90
-format = " $barchart $utilization "
+# [[block]]
+# block = "cpu"
+# info_cpu = 20
+# warning_cpu = 70
+# critical_cpu = 90
+# format = " $barchart $utilization "
 
 [[block]]
 block = "memory"

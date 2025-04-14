@@ -106,7 +106,7 @@ au.FileType = {
 }
 
 
--- LaTeX -----------------------------
+-- latex -----------------------------
 --------------------------------------
 
 -- settings --
@@ -141,7 +141,6 @@ au.FileType = {
     vim.g.tex_flavor = 'lualatex'
     vim.g.vimtex_quickfix_mode = 0
     vim.g.Tex_FormatDependency_dvi = 'dvi,ps,pdf'
-    -- vim.g.vimtex_view_method = 'llpp'
     vim.g.vimtex_view_general_viewer = 'zathura'
     vim.g.Tex_BibtexFlavor  =  'biber'
 
@@ -152,9 +151,9 @@ au.FileType = {
     vim.g.vimtex_delim_stopline = 100
 
     vim.g.vimtex_delim_toggle_mod_list = {
-      {'\\left', '\\right'},
       {'\\bigl', '\\bigr'},
       {'\\Bigl', '\\Bigr'},
+      {'\\left', '\\right'},
     }
 
   end
@@ -243,29 +242,33 @@ au.FileType = {
 au.FileType = {
   'python',
   function()
-    vim.g.python_highlight_all=1
-
+    vim.g.python_highlight_all = 1
     set.foldmethod = 'indent'
-    set.foldlevel  = 99
+    set.foldlevel = 99
     set.tabstop = 4
     set.softtabstop = 4
     set.shiftwidth = 4
     set.textwidth = 79
-    -- set.expandtab = true
     set.autoindent = true
-    set.fileformat = unix
-
+    set.fileformat = 'unix'
     vim.g.SimpylFold_docstring_preview = 1
-
-    cmd([[
+    
+   cmd([[
       "python with virtualenv support
-py << EOF
+py3 << EOF
 import os
 import sys
-if 'VIRTUAL_ENV' in os.environ:
-    project_base_dir = os.environ['VIRTUAL_ENV']
-    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-    execfile(activate_this, dict(__file__=activate_this))
+
+# Get the virtual environment path
+venv_path = os.environ.get('VIRTUAL_ENV')
+if venv_path:
+    # Add the virtual environment's site-packages to the Python path
+    venv_site_packages = os.path.join(venv_path, 'lib', 'python*', 'site-packages')
+    import glob
+    site_packages_dirs = glob.glob(venv_site_packages)
+    
+    if site_packages_dirs:
+        sys.path.insert(0, site_packages_dirs[0])
 EOF
     ]])
   end

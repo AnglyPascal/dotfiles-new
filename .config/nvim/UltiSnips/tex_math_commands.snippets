@@ -10,21 +10,23 @@ dic = {
 'op':'operatorname',
 'para':'parallel', 'ee':'exists', 'imp':'implies', 'trig':'triangle',
 'arrowle':'leftrightarrow', '<=>':'Leftrightarrow', '=>':'Rightarrow',
-'sigalg': '(\sigma\)-algebra', 
+'sigalg': '(\sigma\)-algebra', 'mto': 'mapsto',
 'lsup':'limsup', 'linf':'liminf', 'sup':'sup', 'inf':'inf', 
 'eq':'equiv', 'fa':'forall', 'null':'varnothing', '...':'dots ', 'ity':'infty',
-'nin':'notin', '--': 'setminus', 'in':'in', '_in':'in', 
+'nin':'notin', '--': 'setminus', 'in':'in', '_in':'in', 'cong': 'cong',
+'bull':'bullet', 'star':'star',
 'qed':'qedhere', 
 'var':'\\text{var}', 'cov':'\\text{cov}', 'det':'\\text{det}',
 
 # greek alphabet
 'alp': 'alpha', 'sig':'sigma', 'beta':'beta', 'del':'delta', 'pi':'pi',
 'gam':'gamma', 'Gam':'Gamma', 'kap':'kappa', 'lam':'lambda', 'eps':'varepsilon', 'tau':'tau', 'rho':
-'rho', 'chi':'chi', 'the':'theta', 'ome':'omega', 'Ome':'Omega', 'Tau':'Tau',
-'Del':'Delta', 'zeta':'zeta', 'Phi':'Phi', 'Psi':'Psi', 'mu':'mu',
+'rho', 'chi':'chi', 'the':'theta', 'eta':  'eta', 'ome':'omega', 'Ome':'Omega', 'Tau':'Tau',
+'Del':'Delta', 'zeta':'zeta', 'Phi':'Phi', 'Psi':'Psi', 'mu':'mu', 
+'x_i':'xi', 
 
 # exact matches
-'perp':'^{\\perp}', 'circ':'^{\\circ}', 
+'perp':'^{\\perp}', 'circ':'\\circ', 'cdot': '\\cdot',
 'st':'\\text{ such that, }', 'and':'\\text{ and }',
 'or':'\\text{ or }', 'if':'\\text{ if }',
 'as':'\\text{ as }', 'for':'\\text{ for }',
@@ -73,7 +75,7 @@ snip.rv = match.group(1) + '\\' + f(key)
 endsnippet
 
 context "math()"
-snippet '([^\\a-zA-Z])(qed|ts|ds|oplus|otimes|times|lsup|linf|sigalg|<=>|=>|imp|trig|para|ee|arrowle|mto)' "math commands" wrA 
+snippet '([^\\a-zA-Z])(qed|ts|ds|oplus|otimes|times|lsup|linf|sigalg|<=>|=>|imp|trig|para|ee|cong|bull|star|arrowle|mto)' "math commands" wrA 
 `!p
 key=match.group(2)
 snip.rv = match.group(1) + '\\' + f(key)
@@ -97,7 +99,7 @@ snip.rv = match.group(1) + '\\' + f(key)
 endsnippet
 
 context "math()"
-snippet '([^\\a-zA-Z])([pP]hi|alp|iota|sig|[zb]eta|ell|[dD]el|[gG]am|kap|mu|lam|eps|[tT]au|rho|pi|chi|the|[oO]me|[pP]si)' "greek letters " wrA
+snippet '([^\\a-zA-Z])([pP]hi|alp|iota|sig|[zb]eta|ell|[dD]el|[gG]am|kap|mu|eta|lam|eps|[tT]au|rho|pi|chi|the|[oO]me|[pP]si|x_i)' "greek letters " wrA
 `!p 
 key = match.group(2)
 snip.rv = match.group(1) + '\\' + f(key)
@@ -137,7 +139,7 @@ endsnippet
 
 
 context "math()"
-snippet '([^\\a-zA-Z])(and|perp|circ|st|or|if|for|as)' "exact replace" wrA
+snippet '([^\\a-zA-Z])(and|perp|circ|cdot|st|or|if|for|as)' "exact replace" wrA
 `!p 
 key = match.group(2)
 snip.rv = match.group(1) + f(key)

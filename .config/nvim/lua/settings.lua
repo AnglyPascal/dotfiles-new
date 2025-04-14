@@ -122,6 +122,12 @@ cmd([[ au TextYankPost * silent! lua vim.highlight.on_yank() ]])
 
 -- Git Gutter --------------------
 vim.g.gitgutter_highlight_lines = 1
+vim.g.gitgutter_sign_added = '+'
+vim.g.gitgutter_sign_modified = '~'
+vim.g.gitgutter_sign_removed = '-'
+vim.g.gitgutter_sign_removed_first_line = '-'
+vim.g.gitgutter_sign_modified_removed = '~'
+
 
 -- Completion --------------------
 local cmp = require("cmp")

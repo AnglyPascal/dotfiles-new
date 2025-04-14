@@ -31,3 +31,8 @@ bindkey -s ";/" 'grg '
 
 eval "$(starship init zsh)"
 source "$HOME/.config/zsh/classpaths.zsh"
+
+source "$HOME/.venv/bin/activate"
+
+export TMUX_CONF="$HOME/.config/tmux/tmux.conf"
+alias tmux="tmux -f $TMUX_CONF"

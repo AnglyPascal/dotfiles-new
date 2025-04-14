@@ -161,7 +161,8 @@ function M.setup()
         'ocaml',
         'c',
         'cpp',
-        'rust'
+        'rust',
+        'python'
       },
     }
 
@@ -174,7 +175,11 @@ function M.setup()
     --
 
     -- C++
-    use { 'bfrg/vim-cpp-modern' }
+    use { 'bfrg/vim-cpp-modern',
+      vim.cmd([[
+        let g:cpp_type_name_highlight = 1
+      ]])
+    }
     use { 'rhysd/vim-clang-format' }
 
     -- Assembly
@@ -201,7 +206,6 @@ function M.setup()
     }
 
     use 'anglypascal/vim-latexfmt'
-    -- use 'lervag/vimtex'
 
     use { 'lervag/vimtex',
       vim.cmd([[
@@ -211,7 +215,7 @@ function M.setup()
         ]])
      }
 
-    use 'instant-markdown/vim-instant-markdown'
+    -- use 'instant-markdown/vim-instant-markdown'
 
     -- -- R
     -- use 'jalvesaq/Nvim-R'
@@ -222,6 +226,8 @@ function M.setup()
         {"nvim-treesitter/nvim-treesitter"},
       }
     }
+
+    use { 'vhda/verilog_systemverilog.vim' }
   end
 
   packer_init()

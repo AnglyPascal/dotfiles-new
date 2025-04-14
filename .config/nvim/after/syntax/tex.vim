@@ -27,3 +27,4 @@ syntax match texRefEnvConcealedDelim contained "{" conceal cchar=[
 syntax match texRefEnvConcealedDelim contained "}" conceal cchar=]
 
 syntax region texComment matchgroup=texCmdConditional start="\\ifextra[ABC]\>" end="\\\%(fi\|else\)\>" contains=texCommentConditionals
+

@@ -92,10 +92,21 @@ if (has('termguicolors') && &termguicolors) || has('gui_running')
   hi VertSplit      guifg=#34353b guibg=#34353b guisp=NONE gui=NONE      cterm=NONE
   hi IncSearch      guifg=#17171c guibg=#ebcb8b guisp=NONE gui=NONE      cterm=NONE
   hi Visual         guifg=NONE    guibg=#43454b guisp=NONE gui=NONE      cterm=NONE
-  hi DiffAdd        guifg=#b1faeb guibg=#1e2a28 guisp=NONE gui=NONE      cterm=NONE
-  hi DiffChange     guifg=#ffa14f guibg=NONE    guisp=NONE gui=NONE      cterm=NONE
-  hi DiffDelete     guifg=#ff8a7a guibg=#2f2625 guisp=NONE gui=NONE      cterm=NONE
-  hi DiffText       guifg=#ffa14f guibg=#2e2622 guisp=NONE gui=NONE      cterm=NONE
+
+  " hi DiffAdd        guifg=NONE    guibg=#1e2a28 guisp=NONE gui=NONE      cterm=NONE
+  " hi DiffChange     guifg=NONE    guibg=#2c252f guisp=NONE gui=NONE      cterm=NONE
+  " hi DiffDelete     guifg=NONE    guibg=#2f2625 guisp=NONE gui=NONE      cterm=NONE
+  " hi DiffText       guifg=#ffa14f guibg=#2e2622 guisp=NONE gui=NONE      cterm=NONE
+   
+  hi DiffAdd        guifg=NONE    guibg=NONE    guisp=NONE gui=NONE      cterm=NONE
+  hi DiffChange     guifg=NONE    guibg=NONE    guisp=NONE gui=NONE      cterm=NONE
+  hi DiffDelete     guifg=NONE    guibg=NONE    guisp=NONE gui=NONE      cterm=NONE
+  hi DiffText       guifg=#ffa14f guibg=NONE    guisp=NONE gui=NONE      cterm=NONE
+
+  hi GitGutterAdd    guifg=#A3BE8C guibg=#1e2a28
+  hi GitGutterChange guifg=#EBCB8B guibg=#2c252f
+  hi GitGutterDelete guifg=#BF616A guibg=#2f2625
+
   hi Comment        guifg=#838991 guibg=NONE    guisp=NONE gui=NONE      cterm=NONE
   hi Error          guifg=#bf616a guibg=NONE guisp=NONE gui=NONE      cterm=NONE
   hi PreProc        guifg=#ebcb8b guibg=NONE    guisp=NONE gui=NONE      cterm=BOLD

@@ -22,6 +22,10 @@
     },
     "ccls": {
       "command": "ccls",
+      "args": [
+        "--log-file=/tmp/ccls.log",
+        "-v=1"
+      ],
       "filetypes": [
         "c",
         "cc",

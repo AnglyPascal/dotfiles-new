@@ -30,6 +30,8 @@ HiddenFilesShown=true
 BrowseThroughArchives=true
 CloseActiveSplitView=false
 ConfirmClosingMultipleTabs=false
+DoubleClickViewAction=create_dir
+EditableUrl=true
 GlobalViewProps=false
 LockPanels=false
 RememberOpenedTabs=false
@@ -43,9 +45,7 @@ ViewPropsTimestamp=2020,12,1,12,43,45
 [IconsMode]
 IconSize=64
 MaximumTextLines=2
-PreviewSize=224
-UseSystemFont=false
-ViewFont=Share Tech,10,-1,5,50,0,0,0,0,0
+PreviewSize=192
 
 [KFileDialog Settings]
 Places Icons Auto-resize=false
@@ -85,7 +85,6 @@ eDP-1-1 Width 1366x768 eDP-1-1=407
 
 [MainWindow]
 MenuBar=Disabled
-ToolBarsMovable=Disabled
 eDP-1 DP-1 Height 1920x1080=1045
 eDP-1 DP-1 Width 1920x1080=1904
 eDP-1 DP-1 XPosition 1366x768=0

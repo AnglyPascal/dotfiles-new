@@ -176,6 +176,8 @@ for_window [class="Thunderbird"]    floating enable
 for_window [class="(?i)System-config-printer.py"]  floating enable border normal
 
 
+hide_edge_borders smart_no_gaps
+
 # status bar windows
 for_window [title="upower"]           floating enable
 for_window [class="pavucontrol"]           floating enable
@@ -252,6 +254,8 @@ bindsym XF86PowerOff exec betterlockscreen -l -u "/home/ahsan/Pictures/Violet Ev
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
+exec_always --no-startup-id sh ~/.config/conky/start.sh
+
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
@@ -261,7 +265,7 @@ exec --no-startup-id /home/ahsan/.scripts/wallpaper.sh
 # exec --no-startup-id $HOME/.config/polybar/launch.sh
 
 # XP-Pen tablet setup
-exec --no-startup-id xrandr --output HDMI-A-0 --auto --output eDP --auto --right-of HDMI-A-0
+exec --no-startup-id xrandr --output HDMI-A-0 --auto --output DisplayPort-0 --auto --output eDP --auto --right-of HDMI-A-0 --right-of DisplayPort-0
 exec --no-startup-id sudo bash /home/ahsan/.config/xp_pen/Pentablet_Driver.sh
 
 exec --no-startup-id copyq

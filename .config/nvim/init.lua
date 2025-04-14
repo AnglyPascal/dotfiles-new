@@ -33,3 +33,8 @@ require("metals_config")
 require('colorizer').setup()
 
 vim.cmd.color('bestblack')
+
+local project_local_config = vim.fn.getcwd() .. "/.nvim/init.lua"
+if vim.fn.filereadable(project_local_config) == 1 then
+  dofile(project_local_config)
+end

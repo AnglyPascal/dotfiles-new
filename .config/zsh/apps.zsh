@@ -210,17 +210,15 @@ sea() {
     sudo umount /dev/mapper/sea; sudo cryptsetup luksClose sea
   else
     echo "mounting"
-    dev="/dev/sda"
-    if lsblk -p | grep "1.8T" | grep -wq "/dev/sdb"; then
-      dev="/dev/sdb"
-    fi
-    if lsblk -p | grep "1.8T" | grep -wq "/dev/sdc"; then
-      dev="/dev/sdc"
-    fi
+    dev="$(sudo blkid | rg "crypto_LUKS" | awk '{print substr($1, 1, length($1)-1)}')"
     sudo cryptsetup luksOpen $dev sea; sudo mount /dev/mapper/sea sea; 
   fi
 }
 
 mpvs() {
-  find . -regex '.*\.\(mp4\|mkv\|gif\|webm\)$' -exec mpv --shuffle {} +
+  find ./ -type f -iregex ".*\.\(mp4\|mkv\|webm\|gif\|mov\|avi\|wmv\|flv\|MP4\|MKV\|WEBM\|MOV\)" | shuf | xargs -d '\n' mpv
+}
+
+mpvr() {
+  find . -regex '.*\.\(MP4\|MKV\|WEBM\|mp4\|mkv\|gif\|webm\|mov\|MOV\)$' -exec mpv {} +
 }

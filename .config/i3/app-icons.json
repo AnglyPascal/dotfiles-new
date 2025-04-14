@@ -33,5 +33,10 @@
     "libreoffice-writer": "file-word",
     "libreoffice-impress": "file-powerpoint",
 
+    "zxlive": "file",
+    "ZXLive": "file",
+    "tikzit": "draw-polygon",
+    "tikzit": "draw-polygon",
+
     "_no_match": "question"
 }

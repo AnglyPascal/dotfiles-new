@@ -1,0 +1,6 @@
+syntax keyword cppModifier __extern_C__
+syntax keyword cppModifier __naked__
+syntax keyword cppModifier __always_inline__
+syntax keyword cppModifier __noinline__
+syntax keyword cppModifier __recover_section__
+

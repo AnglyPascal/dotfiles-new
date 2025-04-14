@@ -25,12 +25,12 @@
     </Common>
     <Shortcuts>
       <ShortcutKeys IsDisable="0">
-        <K1 DefActionID="1" SelectID="0" ShortcutsID="1" Show="1"/>
-        <K2 DefActionID="2" SelectID="0" ShortcutsID="2" Show="1"/>
-        <K3 DefActionID="3" SelectID="0" ShortcutsID="3" Show="1"/>
-        <K4 DefActionID="4" SelectID="0" ShortcutsID="4" Show="1"/>
-        <K5 DefActionID="5" SelectID="0" ShortcutsID="5" Show="1"/>
-        <K6 DefActionID="6" SelectID="0" ShortcutsID="6" Show="1"/>
+        <K1 DefActionID="1" ShortcutsID="1" Show="1" SelectID="0"/>
+        <K2 DefActionID="2" ShortcutsID="2" Show="1" SelectID="0"/>
+        <K3 DefActionID="3" ShortcutsID="3" Show="1" SelectID="0"/>
+        <K4 DefActionID="4" ShortcutsID="4" Show="1" SelectID="0"/>
+        <K5 DefActionID="5" ShortcutsID="5" Show="1" SelectID="0"/>
+        <K6 DefActionID="6" ShortcutsID="6" Show="1" SelectID="0"/>
       </ShortcutKeys>
     </Shortcuts>
   </G640S>
@@ -55,14 +55,14 @@
     </Common>
     <Shortcuts>
       <ShortcutKeys IsDisable="0">
-        <K1 DefActionID="1" SelectID="0" ShortcutsID="1" Show="1"/>
-        <K2 DefActionID="2" SelectID="0" ShortcutsID="2" Show="1"/>
-        <K3 DefActionID="3" SelectID="0" ShortcutsID="3" Show="1"/>
-        <K4 DefActionID="4" SelectID="0" ShortcutsID="4" Show="1"/>
-        <K5 DefActionID="5" SelectID="0" ShortcutsID="5" Show="1"/>
-        <K6 DefActionID="6" SelectID="0" ShortcutsID="6" Show="1"/>
-        <K7 DefActionID="7" SelectID="0" ShortcutsID="7" Show="1"/>
-        <K8 DefActionID="8" SelectID="0" ShortcutsID="8" Show="1"/>
+        <K1 DefActionID="1" ShortcutsID="1" Show="1" SelectID="0"/>
+        <K2 DefActionID="2" ShortcutsID="2" Show="1" SelectID="0"/>
+        <K3 DefActionID="3" ShortcutsID="3" Show="1" SelectID="0"/>
+        <K4 DefActionID="4" ShortcutsID="4" Show="1" SelectID="0"/>
+        <K5 DefActionID="5" ShortcutsID="5" Show="1" SelectID="0"/>
+        <K6 DefActionID="6" ShortcutsID="6" Show="1" SelectID="0"/>
+        <K7 DefActionID="7" ShortcutsID="7" Show="1" SelectID="0"/>
+        <K8 DefActionID="8" ShortcutsID="8" Show="1" SelectID="0"/>
       </ShortcutKeys>
     </Shortcuts>
   </Deco01>
@@ -87,12 +87,12 @@
     </Common>
     <Shortcuts>
       <ShortcutKeys IsDisable="0">
-        <K1 DefActionID="1" SelectID="0" ShortcutsID="1" Show="1"/>
-        <K2 DefActionID="2" SelectID="0" ShortcutsID="2" Show="1"/>
-        <K3 DefActionID="3" SelectID="0" ShortcutsID="3" Show="1"/>
-        <K4 DefActionID="4" SelectID="0" ShortcutsID="4" Show="1"/>
-        <K5 DefActionID="5" SelectID="0" ShortcutsID="5" Show="1"/>
-        <K6 DefActionID="6" SelectID="0" ShortcutsID="6" Show="1"/>
+        <K1 DefActionID="1" ShortcutsID="1" Show="1" SelectID="0"/>
+        <K2 DefActionID="2" ShortcutsID="2" Show="1" SelectID="0"/>
+        <K3 DefActionID="3" ShortcutsID="3" Show="1" SelectID="0"/>
+        <K4 DefActionID="4" ShortcutsID="4" Show="1" SelectID="0"/>
+        <K5 DefActionID="5" ShortcutsID="5" Show="1" SelectID="0"/>
+        <K6 DefActionID="6" ShortcutsID="6" Show="1" SelectID="0"/>
       </ShortcutKeys>
     </Shortcuts>
     <WheelData SelectID="2"/>
@@ -118,12 +118,12 @@
     </Common>
     <Shortcuts>
       <ShortcutKeys IsDisable="0">
-        <K1 DefActionID="1" SelectID="0" ShortcutsID="1" Show="1"/>
-        <K2 DefActionID="2" SelectID="0" ShortcutsID="2" Show="1"/>
-        <K3 DefActionID="3" SelectID="0" ShortcutsID="3" Show="1"/>
-        <K4 DefActionID="4" SelectID="0" ShortcutsID="4" Show="1"/>
-        <K5 DefActionID="5" SelectID="0" ShortcutsID="5" Show="1"/>
-        <K6 DefActionID="6" SelectID="0" ShortcutsID="6" Show="1"/>
+        <K1 DefActionID="1" ShortcutsID="1" Show="1" SelectID="0"/>
+        <K2 DefActionID="2" ShortcutsID="2" Show="1" SelectID="0"/>
+        <K3 DefActionID="3" ShortcutsID="3" Show="1" SelectID="0"/>
+        <K4 DefActionID="4" ShortcutsID="4" Show="1" SelectID="0"/>
+        <K5 DefActionID="5" ShortcutsID="5" Show="1" SelectID="0"/>
+        <K6 DefActionID="6" ShortcutsID="6" Show="1" SelectID="0"/>
       </ShortcutKeys>
     </Shortcuts>
     <WheelData SelectID="0"/>
@@ -209,14 +209,14 @@
     </Common>
     <Shortcuts>
       <ShortcutKeys IsDisable="0">
-        <K1 DefActionID="1" SelectID="0" ShortcutsID="1" Show="1"/>
-        <K2 DefActionID="2" SelectID="0" ShortcutsID="2" Show="1"/>
-        <K3 DefActionID="3" SelectID="0" ShortcutsID="3" Show="1"/>
-        <K4 DefActionID="4" SelectID="0" ShortcutsID="4" Show="1"/>
-        <K5 DefActionID="5" SelectID="0" ShortcutsID="5" Show="1"/>
-        <K6 DefActionID="6" SelectID="0" ShortcutsID="6" Show="1"/>
-        <K7 DefActionID="7" SelectID="0" ShortcutsID="7" Show="1"/>
-        <K8 DefActionID="8" SelectID="0" ShortcutsID="8" Show="1"/>
+        <K1 DefActionID="1" ShortcutsID="1" Show="1" SelectID="0"/>
+        <K2 DefActionID="2" ShortcutsID="2" Show="1" SelectID="0"/>
+        <K3 DefActionID="3" ShortcutsID="3" Show="1" SelectID="0"/>
+        <K4 DefActionID="4" ShortcutsID="4" Show="1" SelectID="0"/>
+        <K5 DefActionID="5" ShortcutsID="5" Show="1" SelectID="0"/>
+        <K6 DefActionID="6" ShortcutsID="6" Show="1" SelectID="0"/>
+        <K7 DefActionID="7" ShortcutsID="7" Show="1" SelectID="0"/>
+        <K8 DefActionID="8" ShortcutsID="8" Show="1" SelectID="0"/>
       </ShortcutKeys>
     </Shortcuts>
   </Star03>
@@ -241,11 +241,11 @@
     </Common>
     <Shortcuts>
       <ShortcutKeys IsDisable="0">
-        <K1 DefActionID="1" SelectID="0" ShortcutsID="1" Show="1"/>
-        <K2 DefActionID="2" SelectID="0" ShortcutsID="2" Show="1"/>
-        <K3 DefActionID="3" SelectID="0" ShortcutsID="5" Show="1"/>
-        <K4 DefActionID="4" SelectID="0" ShortcutsID="4" Show="1"/>
-        <K5 DefActionID="5" SelectID="0" ShortcutsID="3" Show="1"/>
+        <K1 DefActionID="1" ShortcutsID="1" Show="1" SelectID="0"/>
+        <K2 DefActionID="2" ShortcutsID="2" Show="1" SelectID="0"/>
+        <K3 DefActionID="3" ShortcutsID="5" Show="1" SelectID="0"/>
+        <K4 DefActionID="4" ShortcutsID="4" Show="1" SelectID="0"/>
+        <K5 DefActionID="5" ShortcutsID="3" Show="1" SelectID="0"/>
       </ShortcutKeys>
     </Shortcuts>
     <WheelData SelectID="0"/>
@@ -271,12 +271,12 @@
     </Common>
     <Shortcuts>
       <ShortcutKeys IsDisable="0">
-        <K1 DefActionID="1" SelectID="0" ShortcutsID="1" Show="1"/>
-        <K2 DefActionID="2" SelectID="0" ShortcutsID="5" Show="1"/>
-        <K3 DefActionID="3" SelectID="0" ShortcutsID="3" Show="1"/>
-        <K4 DefActionID="4" SelectID="0" ShortcutsID="4" Show="1"/>
-        <K5 DefActionID="21" SelectID="0" ShortcutsID="7" Show="0"/>
-        <K6 DefActionID="22" SelectID="0" ShortcutsID="8" Show="0"/>
+        <K1 DefActionID="1" ShortcutsID="1" Show="1" SelectID="0"/>
+        <K2 DefActionID="2" ShortcutsID="5" Show="1" SelectID="0"/>
+        <K3 DefActionID="3" ShortcutsID="3" Show="1" SelectID="0"/>
+        <K4 DefActionID="4" ShortcutsID="4" Show="1" SelectID="0"/>
+        <K5 DefActionID="21" ShortcutsID="7" Show="0" SelectID="0"/>
+        <K6 DefActionID="22" ShortcutsID="8" Show="0" SelectID="0"/>
       </ShortcutKeys>
     </Shortcuts>
     <WheelData SelectID="0"/>
@@ -302,12 +302,12 @@
     </Common>
     <Shortcuts>
       <ShortcutKeys IsDisable="0">
-        <K1 DefActionID="1" SelectID="0" ShortcutsID="1" Show="1"/>
-        <K2 DefActionID="2" SelectID="0" ShortcutsID="2" Show="1"/>
-        <K3 DefActionID="3" SelectID="0" ShortcutsID="3" Show="1"/>
-        <K4 DefActionID="4" SelectID="0" ShortcutsID="4" Show="1"/>
-        <K5 DefActionID="5" SelectID="0" ShortcutsID="5" Show="1"/>
-        <K6 DefActionID="6" SelectID="0" ShortcutsID="6" Show="1"/>
+        <K1 DefActionID="1" ShortcutsID="1" Show="1" SelectID="0"/>
+        <K2 DefActionID="2" ShortcutsID="2" Show="1" SelectID="0"/>
+        <K3 DefActionID="3" ShortcutsID="3" Show="1" SelectID="0"/>
+        <K4 DefActionID="4" ShortcutsID="4" Show="1" SelectID="0"/>
+        <K5 DefActionID="5" ShortcutsID="5" Show="1" SelectID="0"/>
+        <K6 DefActionID="6" ShortcutsID="6" Show="1" SelectID="0"/>
       </ShortcutKeys>
     </Shortcuts>
     <WheelData SelectID="0"/>
@@ -333,12 +333,12 @@
     </Common>
     <Shortcuts>
       <ShortcutKeys IsDisable="0">
-        <K1 DefActionID="1" SelectID="0" ShortcutsID="1" Show="1"/>
-        <K2 DefActionID="2" SelectID="0" ShortcutsID="2" Show="1"/>
-        <K3 DefActionID="3" SelectID="0" ShortcutsID="3" Show="1"/>
-        <K4 DefActionID="4" SelectID="0" ShortcutsID="4" Show="1"/>
-        <K5 DefActionID="5" SelectID="0" ShortcutsID="5" Show="1"/>
-        <K6 DefActionID="6" SelectID="0" ShortcutsID="6" Show="1"/>
+        <K1 DefActionID="1" ShortcutsID="1" Show="1" SelectID="0"/>
+        <K2 DefActionID="2" ShortcutsID="2" Show="1" SelectID="0"/>
+        <K3 DefActionID="3" ShortcutsID="3" Show="1" SelectID="0"/>
+        <K4 DefActionID="4" ShortcutsID="4" Show="1" SelectID="0"/>
+        <K5 DefActionID="5" ShortcutsID="5" Show="1" SelectID="0"/>
+        <K6 DefActionID="6" ShortcutsID="6" Show="1" SelectID="0"/>
       </ShortcutKeys>
     </Shortcuts>
     <WheelData SelectID="0"/>
@@ -384,14 +384,14 @@
     </Common>
     <Shortcuts>
       <ShortcutKeys IsDisable="0">
-        <K1 DefActionID="1" SelectID="1" ShortcutsID="1" Show="1">0:65505|50|33554432|16777248</K1>
-        <K2 DefActionID="2" SelectID="1" ShortcutsID="2" Show="1">0:65507|37|67108864|16777249</K2>
-        <K3 DefActionID="3" SelectID="1" ShortcutsID="3" Show="1">0:122|52|67108864|90</K3>
-        <K4 DefActionID="4" SelectID="1" ShortcutsID="4" Show="1">0:82|27|100663296|82</K4>
-        <K5 DefActionID="5" SelectID="1" ShortcutsID="5" Show="1">0:65362|111|0|16777235</K5>
-        <K6 DefActionID="6" SelectID="1" ShortcutsID="6" Show="1">0:65364|116|0|16777237</K6>
-        <K7 DefActionID="7" SelectID="1" ShortcutsID="7" Show="1">0:99|54|67108864|67</K7>
-        <K8 DefActionID="8" SelectID="1" ShortcutsID="8" Show="1">0:118|55|67108864|86</K8>
+        <K1 DefActionID="1" ShortcutsID="1" Show="1" SelectID="1">0:65505|50|33554432|16777248</K1>
+        <K2 DefActionID="2" ShortcutsID="2" Show="1" SelectID="1">0:65507|37|67108864|16777249</K2>
+        <K3 DefActionID="3" ShortcutsID="3" Show="1" SelectID="1">0:122|52|67108864|90</K3>
+        <K4 DefActionID="4" ShortcutsID="4" Show="1" SelectID="1">0:82|27|100663296|82</K4>
+        <K5 DefActionID="5" ShortcutsID="5" Show="1" SelectID="1">0:65362|111|0|16777235</K5>
+        <K6 DefActionID="6" ShortcutsID="6" Show="1" SelectID="1">0:65364|116|0|16777237</K6>
+        <K7 DefActionID="7" ShortcutsID="7" Show="1" SelectID="1">0:99|54|67108864|67</K7>
+        <K8 DefActionID="8" ShortcutsID="8" Show="1" SelectID="1">0:118|55|67108864|86</K8>
       </ShortcutKeys>
     </Shortcuts>
     <WheelData SelectID="4"/>
@@ -418,19 +418,19 @@
     </Common>
     <Shortcuts>
       <ShortcutKeys IsDisable="0">
-        <K1 DefActionID="1" SelectID="1" ShortcutsID="1" Show="1"/>
-        <K2 DefActionID="2" SelectID="0" ShortcutsID="2" Show="1"/>
-        <K3 DefActionID="3" SelectID="1" ShortcutsID="3" Show="1"/>
-        <K4 DefActionID="4" SelectID="0" ShortcutsID="4" Show="1"/>
-        <K5 DefActionID="5" SelectID="1" ShortcutsID="5" Show="1"/>
-        <K6 DefActionID="6" SelectID="0" ShortcutsID="6" Show="1"/>
-        <K7 DefActionID="7" SelectID="1" ShortcutsID="7" Show="1"/>
-        <K8 DefActionID="8" SelectID="0" ShortcutsID="8" Show="1"/>
+        <K1 DefActionID="1" ShortcutsID="1" Show="1" SelectID="1"/>
+        <K2 DefActionID="2" ShortcutsID="2" Show="1" SelectID="0"/>
+        <K3 DefActionID="3" ShortcutsID="3" Show="1" SelectID="1"/>
+        <K4 DefActionID="4" ShortcutsID="4" Show="1" SelectID="0"/>
+        <K5 DefActionID="5" ShortcutsID="5" Show="1" SelectID="1"/>
+        <K6 DefActionID="6" ShortcutsID="6" Show="1" SelectID="0"/>
+        <K7 DefActionID="7" ShortcutsID="7" Show="1" SelectID="1"/>
+        <K8 DefActionID="8" ShortcutsID="8" Show="1" SelectID="0"/>
       </ShortcutKeys>
     </Shortcuts>
     <WheelData SelectID="4"/>
     <TrackPad rightID="0" leftID="3"/>
-    <TabletLight RingLightID="50" TabletLightID="50"/>
+    <TabletLight TabletLightID="50" RingLightID="50"/>
   </DecoPro>
   <P1501>
     <DeviceInfo>
@@ -453,14 +453,14 @@
     </Common>
     <Shortcuts>
       <ShortcutKeys IsDisable="0">
-        <K1 DefActionID="1" SelectID="1" ShortcutsID="1" Show="1"/>
-        <K2 DefActionID="2" SelectID="0" ShortcutsID="2" Show="1"/>
-        <K3 DefActionID="3" SelectID="1" ShortcutsID="3" Show="1"/>
-        <K4 DefActionID="4" SelectID="1" ShortcutsID="4" Show="1"/>
-        <K5 DefActionID="5" SelectID="0" ShortcutsID="5" Show="1"/>
-        <K6 DefActionID="6" SelectID="0" ShortcutsID="6" Show="1"/>
-        <K7 DefActionID="7" SelectID="1" ShortcutsID="7" Show="1"/>
-        <K8 DefActionID="8" SelectID="1" ShortcutsID="8" Show="1"/>
+        <K1 DefActionID="1" ShortcutsID="1" Show="1" SelectID="1"/>
+        <K2 DefActionID="2" ShortcutsID="2" Show="1" SelectID="0"/>
+        <K3 DefActionID="3" ShortcutsID="3" Show="1" SelectID="1"/>
+        <K4 DefActionID="4" ShortcutsID="4" Show="1" SelectID="1"/>
+        <K5 DefActionID="5" ShortcutsID="5" Show="1" SelectID="0"/>
+        <K6 DefActionID="6" ShortcutsID="6" Show="1" SelectID="0"/>
+        <K7 DefActionID="7" ShortcutsID="7" Show="1" SelectID="1"/>
+        <K8 DefActionID="8" ShortcutsID="8" Show="1" SelectID="1"/>
       </ShortcutKeys>
     </Shortcuts>
   </P1501>
@@ -485,22 +485,22 @@
     </Common>
     <Shortcuts>
       <ShortcutKeys IsDisable="0">
-        <K1 DefActionID="1" SelectID="1" ShortcutsID="1" Show="1"/>
-        <K2 DefActionID="2" SelectID="0" ShortcutsID="2" Show="1"/>
-        <K3 DefActionID="3" SelectID="1" ShortcutsID="3" Show="1"/>
-        <K4 DefActionID="4" SelectID="0" ShortcutsID="4" Show="1"/>
-        <K5 DefActionID="5" SelectID="1" ShortcutsID="5" Show="1"/>
-        <K6 DefActionID="6" SelectID="1" ShortcutsID="6" Show="1"/>
-        <K7 DefActionID="7" SelectID="1" ShortcutsID="7" Show="1"/>
-        <K8 DefActionID="8" SelectID="1" ShortcutsID="8" Show="1"/>
-        <K9 DefActionID="9" SelectID="0" ShortcutsID="9" Show="1"/>
-        <K10 DefActionID="10" SelectID="0" ShortcutsID="10" Show="1"/>
-        <K11 DefActionID="11" SelectID="1" ShortcutsID="11" Show="1"/>
-        <K12 DefActionID="12" SelectID="1" ShortcutsID="12" Show="1"/>
-        <K13 DefActionID="13" SelectID="1" ShortcutsID="13" Show="1"/>
-        <K14 DefActionID="14" SelectID="1" ShortcutsID="14" Show="1"/>
-        <K15 DefActionID="15" SelectID="0" ShortcutsID="15" Show="1"/>
-        <K16 DefActionID="16" SelectID="0" ShortcutsID="16" Show="1"/>
+        <K1 DefActionID="1" ShortcutsID="1" Show="1" SelectID="1"/>
+        <K2 DefActionID="2" ShortcutsID="2" Show="1" SelectID="0"/>
+        <K3 DefActionID="3" ShortcutsID="3" Show="1" SelectID="1"/>
+        <K4 DefActionID="4" ShortcutsID="4" Show="1" SelectID="0"/>
+        <K5 DefActionID="5" ShortcutsID="5" Show="1" SelectID="1"/>
+        <K6 DefActionID="6" ShortcutsID="6" Show="1" SelectID="1"/>
+        <K7 DefActionID="7" ShortcutsID="7" Show="1" SelectID="1"/>
+        <K8 DefActionID="8" ShortcutsID="8" Show="1" SelectID="1"/>
+        <K9 DefActionID="9" ShortcutsID="9" Show="1" SelectID="0"/>
+        <K10 DefActionID="10" ShortcutsID="10" Show="1" SelectID="0"/>
+        <K11 DefActionID="11" ShortcutsID="11" Show="1" SelectID="1"/>
+        <K12 DefActionID="12" ShortcutsID="12" Show="1" SelectID="1"/>
+        <K13 DefActionID="13" ShortcutsID="13" Show="1" SelectID="1"/>
+        <K14 DefActionID="14" ShortcutsID="14" Show="1" SelectID="1"/>
+        <K15 DefActionID="15" ShortcutsID="15" Show="1" SelectID="0"/>
+        <K16 DefActionID="16" ShortcutsID="16" Show="1" SelectID="0"/>
       </ShortcutKeys>
     </Shortcuts>
   </P22EPro16Key>
@@ -525,29 +525,29 @@
     </Common>
     <Shortcuts>
       <ShortcutKeys IsDisable="0">
-        <K1 DefActionID="1" SelectID="1" ShortcutsID="1" Show="1"/>
-        <K2 DefActionID="2" SelectID="1" ShortcutsID="2" Show="1"/>
-        <K3 DefActionID="3" SelectID="1" ShortcutsID="3" Show="1"/>
-        <K4 DefActionID="4" SelectID="1" ShortcutsID="4" Show="1"/>
-        <K5 DefActionID="5" SelectID="1" ShortcutsID="5" Show="1"/>
-        <K6 DefActionID="6" SelectID="1" ShortcutsID="6" Show="1"/>
-        <K7 DefActionID="7" SelectID="1" ShortcutsID="7" Show="1"/>
-        <K8 DefActionID="8" SelectID="1" ShortcutsID="8" Show="1"/>
-        <K9 DefActionID="9" SelectID="0" ShortcutsID="9" Show="1"/>
-        <K10 DefActionID="10" SelectID="0" ShortcutsID="10" Show="1"/>
-        <K11 DefActionID="11" SelectID="1" ShortcutsID="11" Show="1"/>
-        <K12 DefActionID="12" SelectID="1" ShortcutsID="12" Show="1"/>
-        <K13 DefActionID="13" SelectID="1" ShortcutsID="13" Show="1"/>
-        <K14 DefActionID="14" SelectID="1" ShortcutsID="14" Show="1"/>
-        <K15 DefActionID="15" SelectID="1" ShortcutsID="15" Show="1"/>
-        <K16 DefActionID="16" SelectID="1" ShortcutsID="16" Show="1"/>
-        <K17 DefActionID="17" SelectID="1" ShortcutsID="17" Show="1"/>
-        <K18 DefActionID="18" SelectID="1" ShortcutsID="18" Show="1"/>
-        <K19 DefActionID="19" SelectID="1" ShortcutsID="19" Show="1"/>
-        <K20 DefActionID="20" SelectID="1" ShortcutsID="20" Show="1"/>
+        <K1 DefActionID="1" ShortcutsID="1" Show="1" SelectID="1"/>
+        <K2 DefActionID="2" ShortcutsID="2" Show="1" SelectID="1"/>
+        <K3 DefActionID="3" ShortcutsID="3" Show="1" SelectID="1"/>
+        <K4 DefActionID="4" ShortcutsID="4" Show="1" SelectID="1"/>
+        <K5 DefActionID="5" ShortcutsID="5" Show="1" SelectID="1"/>
+        <K6 DefActionID="6" ShortcutsID="6" Show="1" SelectID="1"/>
+        <K7 DefActionID="7" ShortcutsID="7" Show="1" SelectID="1"/>
+        <K8 DefActionID="8" ShortcutsID="8" Show="1" SelectID="1"/>
+        <K9 DefActionID="9" ShortcutsID="9" Show="1" SelectID="0"/>
+        <K10 DefActionID="10" ShortcutsID="10" Show="1" SelectID="0"/>
+        <K11 DefActionID="11" ShortcutsID="11" Show="1" SelectID="1"/>
+        <K12 DefActionID="12" ShortcutsID="12" Show="1" SelectID="1"/>
+        <K13 DefActionID="13" ShortcutsID="13" Show="1" SelectID="1"/>
+        <K14 DefActionID="14" ShortcutsID="14" Show="1" SelectID="1"/>
+        <K15 DefActionID="15" ShortcutsID="15" Show="1" SelectID="1"/>
+        <K16 DefActionID="16" ShortcutsID="16" Show="1" SelectID="1"/>
+        <K17 DefActionID="17" ShortcutsID="17" Show="1" SelectID="1"/>
+        <K18 DefActionID="18" ShortcutsID="18" Show="1" SelectID="1"/>
+        <K19 DefActionID="19" ShortcutsID="19" Show="1" SelectID="1"/>
+        <K20 DefActionID="20" ShortcutsID="20" Show="1" SelectID="1"/>
       </ShortcutKeys>
     </Shortcuts>
-    <WheelData SelectID="2" RightSelectID="4" RightelectID="0"/>
+    <WheelData RightSelectID="4" SelectID="2" RightelectID="0"/>
   </LAU2202>
   <P22ProNoKey>
     <DeviceInfo>
@@ -590,12 +590,12 @@
     </Common>
     <Shortcuts>
       <ShortcutKeys IsDisable="0">
-        <K1 DefActionID="1" SelectID="0" ShortcutsID="1" Show="1"/>
-        <K2 DefActionID="2" SelectID="0" ShortcutsID="2" Show="1"/>
-        <K3 DefActionID="3" SelectID="0" ShortcutsID="3" Show="1"/>
-        <K4 DefActionID="4" SelectID="0" ShortcutsID="4" Show="1"/>
-        <K5 DefActionID="5" SelectID="0" ShortcutsID="5" Show="1"/>
-        <K6 DefActionID="6" SelectID="0" ShortcutsID="6" Show="1"/>
+        <K1 DefActionID="1" ShortcutsID="1" Show="1" SelectID="0"/>
+        <K2 DefActionID="2" ShortcutsID="2" Show="1" SelectID="0"/>
+        <K3 DefActionID="3" ShortcutsID="3" Show="1" SelectID="0"/>
+        <K4 DefActionID="4" ShortcutsID="4" Show="1" SelectID="0"/>
+        <K5 DefActionID="5" ShortcutsID="5" Show="1" SelectID="0"/>
+        <K6 DefActionID="6" ShortcutsID="6" Show="1" SelectID="0"/>
       </ShortcutKeys>
     </Shortcuts>
   </P13Key6>
@@ -620,10 +620,10 @@
     </Common>
     <Shortcuts>
       <ShortcutKeys IsDisable="0">
-        <K1 DefActionID="1" SelectID="1" ShortcutsID="1" Show="1"/>
-        <K2 DefActionID="2" SelectID="1" ShortcutsID="2" Show="1"/>
-        <K3 DefActionID="3" SelectID="1" ShortcutsID="3" Show="1"/>
-        <K4 DefActionID="4" SelectID="1" ShortcutsID="4" Show="1"/>
+        <K1 DefActionID="1" ShortcutsID="1" Show="1" SelectID="1"/>
+        <K2 DefActionID="2" ShortcutsID="2" Show="1" SelectID="1"/>
+        <K3 DefActionID="3" ShortcutsID="3" Show="1" SelectID="1"/>
+        <K4 DefActionID="4" ShortcutsID="4" Show="1" SelectID="1"/>
       </ShortcutKeys>
     </Shortcuts>
     <WheelData SelectID="0"/>
@@ -649,16 +649,16 @@
     </Common>
     <Shortcuts>
       <ShortcutKeys IsDisable="0">
-        <K1 DefActionID="1" SelectID="0" ShortcutsID="1" Show="1"/>
-        <K2 DefActionID="2" SelectID="0" ShortcutsID="2" Show="1"/>
-        <K3 DefActionID="3" SelectID="0" ShortcutsID="3" Show="1"/>
-        <K4 DefActionID="4" SelectID="0" ShortcutsID="4" Show="1"/>
-        <K5 DefActionID="5" SelectID="0" ShortcutsID="5" Show="1"/>
-        <K6 DefActionID="6" SelectID="0" ShortcutsID="6" Show="1"/>
-        <K7 DefActionID="7" SelectID="0" ShortcutsID="7" Show="1"/>
-        <K8 DefActionID="8" SelectID="0" ShortcutsID="8" Show="1"/>
-        <K9 DefActionID="9" SelectID="0" ShortcutsID="9" Show="1"/>
-        <K10 DefActionID="10" SelectID="0" ShortcutsID="10" Show="1"/>
+        <K1 DefActionID="1" ShortcutsID="1" Show="1" SelectID="0"/>
+        <K2 DefActionID="2" ShortcutsID="2" Show="1" SelectID="0"/>
+        <K3 DefActionID="3" ShortcutsID="3" Show="1" SelectID="0"/>
+        <K4 DefActionID="4" ShortcutsID="4" Show="1" SelectID="0"/>
+        <K5 DefActionID="5" ShortcutsID="5" Show="1" SelectID="0"/>
+        <K6 DefActionID="6" ShortcutsID="6" Show="1" SelectID="0"/>
+        <K7 DefActionID="7" ShortcutsID="7" Show="1" SelectID="0"/>
+        <K8 DefActionID="8" ShortcutsID="8" Show="1" SelectID="0"/>
+        <K9 DefActionID="9" ShortcutsID="9" Show="1" SelectID="0"/>
+        <K10 DefActionID="10" ShortcutsID="10" Show="1" SelectID="0"/>
       </ShortcutKeys>
     </Shortcuts>
   </BPU0610>
@@ -683,14 +683,14 @@
     </Common>
     <Shortcuts>
       <ShortcutKeys IsDisable="0">
-        <K1 DefActionID="1" SelectID="0" ShortcutsID="1" Show="1"/>
-        <K2 DefActionID="2" SelectID="0" ShortcutsID="2" Show="1"/>
-        <K3 DefActionID="3" SelectID="0" ShortcutsID="3" Show="1"/>
-        <K4 DefActionID="4" SelectID="0" ShortcutsID="4" Show="1"/>
-        <K5 DefActionID="5" SelectID="0" ShortcutsID="5" Show="1"/>
-        <K6 DefActionID="6" SelectID="0" ShortcutsID="6" Show="1"/>
-        <K7 DefActionID="7" SelectID="0" ShortcutsID="7" Show="1"/>
-        <K8 DefActionID="8" SelectID="0" ShortcutsID="8" Show="1"/>
+        <K1 DefActionID="1" ShortcutsID="1" Show="1" SelectID="0"/>
+        <K2 DefActionID="2" ShortcutsID="2" Show="1" SelectID="0"/>
+        <K3 DefActionID="3" ShortcutsID="3" Show="1" SelectID="0"/>
+        <K4 DefActionID="4" ShortcutsID="4" Show="1" SelectID="0"/>
+        <K5 DefActionID="5" ShortcutsID="5" Show="1" SelectID="0"/>
+        <K6 DefActionID="6" ShortcutsID="6" Show="1" SelectID="0"/>
+        <K7 DefActionID="7" ShortcutsID="7" Show="1" SelectID="0"/>
+        <K8 DefActionID="8" ShortcutsID="8" Show="1" SelectID="0"/>
       </ShortcutKeys>
     </Shortcuts>
   </BPU0410>
@@ -715,12 +715,12 @@
     </Common>
     <Shortcuts>
       <ShortcutKeys IsDisable="0">
-        <K1 DefActionID="1" SelectID="0" ShortcutsID="1" Show="1"/>
-        <K2 DefActionID="2" SelectID="0" ShortcutsID="2" Show="1"/>
-        <K3 DefActionID="3" SelectID="0" ShortcutsID="3" Show="1"/>
-        <K4 DefActionID="4" SelectID="0" ShortcutsID="4" Show="1"/>
-        <K5 DefActionID="5" SelectID="0" ShortcutsID="5" Show="1"/>
-        <K6 DefActionID="6" SelectID="0" ShortcutsID="6" Show="1"/>
+        <K1 DefActionID="1" ShortcutsID="1" Show="1" SelectID="0"/>
+        <K2 DefActionID="2" ShortcutsID="2" Show="1" SelectID="0"/>
+        <K3 DefActionID="3" ShortcutsID="3" Show="1" SelectID="0"/>
+        <K4 DefActionID="4" ShortcutsID="4" Show="1" SelectID="0"/>
+        <K5 DefActionID="5" ShortcutsID="5" Show="1" SelectID="0"/>
+        <K6 DefActionID="6" ShortcutsID="6" Show="1" SelectID="0"/>
       </ShortcutKeys>
     </Shortcuts>
   </BPU0405>
@@ -746,14 +746,14 @@
     </Common>
     <Shortcuts>
       <ShortcutKeys IsDisable="0">
-        <K1 DefActionID="1" SelectID="0" ShortcutsID="1" Show="1"/>
-        <K2 DefActionID="2" SelectID="0" ShortcutsID="2" Show="1"/>
-        <K3 DefActionID="3" SelectID="0" ShortcutsID="3" Show="1"/>
-        <K4 DefActionID="4" SelectID="0" ShortcutsID="4" Show="1"/>
-        <K5 DefActionID="5" SelectID="0" ShortcutsID="5" Show="1"/>
-        <K6 DefActionID="6" SelectID="0" ShortcutsID="6" Show="1"/>
-        <K7 DefActionID="7" SelectID="0" ShortcutsID="7" Show="1"/>
-        <K8 DefActionID="8" SelectID="0" ShortcutsID="8" Show="1"/>
+        <K1 DefActionID="1" ShortcutsID="1" Show="1" SelectID="0"/>
+        <K2 DefActionID="2" ShortcutsID="2" Show="1" SelectID="0"/>
+        <K3 DefActionID="3" ShortcutsID="3" Show="1" SelectID="0"/>
+        <K4 DefActionID="4" ShortcutsID="4" Show="1" SelectID="0"/>
+        <K5 DefActionID="5" ShortcutsID="5" Show="1" SelectID="0"/>
+        <K6 DefActionID="6" ShortcutsID="6" Show="1" SelectID="0"/>
+        <K7 DefActionID="7" ShortcutsID="7" Show="1" SelectID="0"/>
+        <K8 DefActionID="8" ShortcutsID="8" Show="1" SelectID="0"/>
       </ShortcutKeys>
     </Shortcuts>
   </LPU1505F>

@@ -29,6 +29,16 @@ settings:
     https://www.google.com: false
     https://www.johnsoncontrols.com: false
     https://www.moneygram.com: false
+  content.javascript.clipboard:
+    https://chatgpt.com: access-paste
+    https://colordesigner.io: access-paste
+    https://snip.mathpix.com: access-paste
+    https://www.google.com: access-paste
+    https://www.imagetotext.info: access-paste
+    https://www.imagetotext.io: access-paste
+    https://www.mybib.com: access-paste
+    https://www.zoopla.co.uk: access-paste
+    https://yandex.com: access-paste
   content.javascript.enabled:
     '*://*.yts.as/*': false
     '*://*.yts.mx/*': true
@@ -111,4 +121,4 @@ settings:
   downloads.remove_finished:
     global: -1
   zoom.default:
-    global: '100'
+    global: '120'

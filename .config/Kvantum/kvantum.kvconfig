@@ -1,2 +1,5 @@
 [General]
 theme=MoeDark
+
+[Applications]
+KvLibadwaitaMaia=dolphin

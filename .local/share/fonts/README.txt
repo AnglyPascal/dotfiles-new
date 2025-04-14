@@ -1,23 +1,36 @@
-Yanone Kaffeesatz Variable Font
-===============================
+Roboto Condensed Variable Font
+==============================
 
-This download contains Yanone Kaffeesatz as both a variable font and static fonts.
+This download contains Roboto Condensed as both variable fonts and static fonts.
 
-Yanone Kaffeesatz is a variable font with this axis:
+Roboto Condensed is a variable font with this axis:
   wght
 
-This means all the styles are contained in a single file:
-  YanoneKaffeesatz-VariableFont_wght.ttf
+This means all the styles are contained in these files:
+  RobotoCondensed-VariableFont_wght.ttf
+  RobotoCondensed-Italic-VariableFont_wght.ttf
 
 If your app fully supports variable fonts, you can now pick intermediate styles
 that aren’t available as static fonts. Not all apps support variable fonts, and
-in those cases you can use the static font files for Yanone Kaffeesatz:
-  static/YanoneKaffeesatz-ExtraLight.ttf
-  static/YanoneKaffeesatz-Light.ttf
-  static/YanoneKaffeesatz-Regular.ttf
-  static/YanoneKaffeesatz-Medium.ttf
-  static/YanoneKaffeesatz-SemiBold.ttf
-  static/YanoneKaffeesatz-Bold.ttf
+in those cases you can use the static font files for Roboto Condensed:
+  static/RobotoCondensed-Thin.ttf
+  static/RobotoCondensed-ExtraLight.ttf
+  static/RobotoCondensed-Light.ttf
+  static/RobotoCondensed-Regular.ttf
+  static/RobotoCondensed-Medium.ttf
+  static/RobotoCondensed-SemiBold.ttf
+  static/RobotoCondensed-Bold.ttf
+  static/RobotoCondensed-ExtraBold.ttf
+  static/RobotoCondensed-Black.ttf
+  static/RobotoCondensed-ThinItalic.ttf
+  static/RobotoCondensed-ExtraLightItalic.ttf
+  static/RobotoCondensed-LightItalic.ttf
+  static/RobotoCondensed-Italic.ttf
+  static/RobotoCondensed-MediumItalic.ttf
+  static/RobotoCondensed-SemiBoldItalic.ttf
+  static/RobotoCondensed-BoldItalic.ttf
+  static/RobotoCondensed-ExtraBoldItalic.ttf
+  static/RobotoCondensed-BlackItalic.ttf
 
 Get started
 -----------
@@ -61,7 +74,7 @@ License
 Please read the full license text (OFL.txt) to understand the permissions,
 restrictions and requirements for usage, redistribution, and modification.
 
-You can use them freely in your products & projects - print or digital,
+You can use them in your products & projects – print or digital,
 commercial or otherwise.
 
 This isn't legal advice, please consider consulting a lawyer and see the full

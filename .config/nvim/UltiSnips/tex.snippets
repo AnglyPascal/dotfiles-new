@@ -17,6 +17,7 @@ endglobal
 
 
 
+
 snippet beg "begin"
 \begin{$1}
 	$2
@@ -66,7 +67,7 @@ endsnippet
 
 context "math()"
 snippet ii "complex i" iA
-\mathrm{i}
+\\mathrm{i}
 endsnippet
 
 
@@ -124,10 +125,10 @@ global !p
 def env_expand(key):
 	dic = {'lem':'lemma', 'prob':'problem', 'sollem':'sollem', 'soln':'solution',
 	'proof':'proof', 'hint':'hinted', 'esoln':'emptysoln', 'ethm':'emptythm',
-	'coro':'corollary', 'thm':'theorem', 'impthm':'Theorem', 'def':'definition',
-	'impdef':'definition*', 'algo':'algorithm', 'scala':'scala', 'java':'java',
+	'coro':'corollary', 'thm':'theorem', 'thm*':'theorem*', 'Thm':'Theorem', 'def':'definition',
+	'def*':'definition*', 'algo':'algorithm', 'scala':'scala', 'java':'java',
 	'haskell':'haskell', 'eqn':'equation', 'nali':'align', 'remark':'remark', 
-	'prop': 'proposition'}
+	'prop': 'proposition', 'fact': 'fact'}
 	if key in dic:
 		return dic[key]
 	else: 
@@ -137,7 +138,7 @@ def inline_env_expand(key):
 	ml    = ("\(",                    "\)")
 	# ml    = ("$",                    "$")
 	dm    = ("\[",                    "\]")
-	ali   = ("\[\\begin{aligned}", "",  "\\end{aligned}\]")
+	ali   = ("\\begin{align*}", "",  "\\end{align*}")
 	lrp   = ("(",               ")")
 	lra   = ("[",               "]")
 	lrb   = ("\{",              "\}")
@@ -163,7 +164,7 @@ def inline_env_expand(key):
 	return data[key]
 endglobal
 
-snippet '(thm|def|impdef|impthm|algo|scala|java|haskell)' "env with name" br
+snippet '(thm|thm*|def|def*|Thm|algo|scala|java|haskell)' "env with name" br
 `!p
 name = env_expand(match.group(1))
 snip.rv = "\\begin{" + name + "}"
@@ -174,7 +175,7 @@ snip.rv = "\\end{" + name + "}"
 `$0
 endsnippet
 
-snippet '(lem|prop|coro|prob|sollem|soln|proof|remark|rem|hint|example|center|tabular|esoln|ethm|frame|nali|eqn)' "env without name" br
+snippet '(lem|prop|coro|prob|sollem|soln|proof|remark|rem|hint|example|center|tabular|esoln|ethm|frame|nali|eqn|fact)' "env without name" br
 `!p
 name = env_expand(match.group(1))
 snip.rv = "\\begin{" + name + "}"
@@ -208,9 +209,9 @@ snip.rv = beg`
 endsnippet
 
 snippet ali "aligned" bA
-\[\begin{aligned}
+\begin{align*}
 	${1:${VISUAL}}
-\end{aligned}\]
+\end{align*}
 endsnippet
 
 

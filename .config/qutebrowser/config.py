@@ -10,6 +10,7 @@ c.zoom.default      = 100
 
 c.url.searchengines = {
     "DEFAULT":"https://google.com/search?q={}",
+    "g1":"https://www.google.com/search?q={}&authuser=1",
     "ddg":"https://duckduckgo.com/?q={}",
     "you":"https://youtube.com/results?search_query={}",
     "tl":"https://translate.google.com/?sl=auto&tl=en&text={}&op=translate",
