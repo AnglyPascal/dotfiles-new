@@ -1,0 +1,4 @@
+# text/html; w3m -I %{charset} -T text/html; copiousoutput;
+text/html; html2text --images-to-alt --ignore-tables --decode-errors=ignore %s; copiousoutput
+application/pdf; zathura %s;
+

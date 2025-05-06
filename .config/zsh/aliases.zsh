@@ -49,3 +49,4 @@ alias snvim="sudo -E -s nvim"
 
 alias gcc_arm="arm-none-eabi-gcc"
 alias arm="arm-none-eabi-gcc"
+

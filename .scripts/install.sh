@@ -90,6 +90,9 @@ install_packages () {
     xournalpp \
     qemu-system-arm qemu-img \
     arm-none-eabi-gcc arm-none-eabi-gdb arm-none-eabi-binutils arm-none-eabi-newlib \
+    neomutt gpg pinentry \
+    conky \
+
 
   git clone --depth 1 https://github.com/wbthomason/packer.nvim   \
     ~/.local/cabalshare/nvim/site/pack/packer/start/packer.nvim
@@ -124,11 +127,17 @@ install_yay_pip () {
   curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | gpg --import -
 
   info 'installing yay packages'
-  yay -S spotify librsvg megasync findimagedupes onedrive-abraunegg mcomix
+  yay -S spotify librsvg megasync findimagedupes onedrive-abraunegg mcomix gopreload-git gcalcli
 
   info 'installing pip packages'
-  pip install pynvim numpy scipy matplotlib pyplot yt-dlp cyberdrop-dl     \
+  /usr/bin/pip install pynvim numpy scipy matplotlib pyplot yt-dlp cyberdrop-dl     \
       --break-system-packages
+
+  python -m venv .venv
+  source .venv/bin/activate
+
+  pip install pynvim numpy scipy matplotlib pyplot yt-dlp cyberdrop-dl     \
+    black-macchiato catppuccin
 
   echo ''
 }

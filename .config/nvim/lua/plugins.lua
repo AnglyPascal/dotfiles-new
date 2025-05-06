@@ -76,7 +76,7 @@ function M.setup()
     
     use {
       'w0rp/ale',
-      ft = {'python', 'java', 'javascript', 'haskell', 'cpp'},
+      ft = {'java', 'javascript', 'haskell', 'cpp'},
       cmd = 'ALEEnable',
       config = 'vim.cmd[[ALEEnable]]'
     }
@@ -162,7 +162,7 @@ function M.setup()
         'c',
         'cpp',
         'rust',
-        'python'
+        -- 'python'
       },
     }
 

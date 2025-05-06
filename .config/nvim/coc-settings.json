@@ -1,6 +1,11 @@
 {
   "coc.preferences.jumpCommand": "drop",
   "python.formatting.provider": "yapf",
+
+  "pyright.inlayHints.functionReturnTypes": false,
+  "pyright.inlayHints.variableTypes": false,
+  "pyright.inlayHints.parameterTypes": false,
+
   "cpp.formatting.provider": "clang-format",
   "coc.preferences.formatOnSaveFiletypes": [
     "python"

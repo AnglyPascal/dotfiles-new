@@ -150,6 +150,12 @@ au.FileType = {
     vim.g.matchup_override_vimtex = 1
     vim.g.vimtex_delim_stopline = 100
 
+    cmd([[
+    let g:vimtex_syntax_custom_cmds = [
+      \ {'name': 'agc', 'env': 1, 'verbatim': 1},
+      \ ]
+    ]])
+
     vim.g.vimtex_delim_toggle_mod_list = {
       {'\\bigl', '\\bigr'},
       {'\\Bigl', '\\Bigr'},

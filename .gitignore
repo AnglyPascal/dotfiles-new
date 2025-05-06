@@ -2,3 +2,4 @@
 .zcompdump*
 .config/autorandr/*
 .config/qutebrowser/qsettings/
+*token*

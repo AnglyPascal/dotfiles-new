@@ -56,11 +56,13 @@ settings:
     https://app.roll20.net: false
   content.notifications.enabled:
     https://9xbuddy.com: false
+    https://all3do.com: false
     https://bayfiles.com: false
     https://calendar.google.com: true
     https://creator.nightcafe.studio: false
     https://en.vidmo.pro: false
     https://epicstream.com: false
+    https://freeastrologers.com: false
     https://inflact.com: false
     https://lihkg.com: false
     https://littlexgarden.com: false
@@ -75,6 +77,7 @@ settings:
     https://play.pokemonshowdown.com: false
     https://postimg.cc: false
     https://rajwap.pro: false
+    https://redbirdapparel.co.uk: false
     https://shainsie.com: false
     https://subscribe-notifications.com: false
     https://toonily.com: false
@@ -91,6 +94,7 @@ settings:
     https://www.grameenphone.com: false
     https://www.hentai.name: false
     https://www.instagram.com: true
+    https://www.kwai.com: false
     https://www.messenger.com: false
     https://www.mtcgame.com: false
     https://www.netflix.com: false
