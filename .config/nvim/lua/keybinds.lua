@@ -103,12 +103,6 @@ map("n", "d", '"_d')
 -- open file ------------
 map("n", "<leader>gf", ":e <cfile><cr>")
 
--- -- formatting ------------
-
--- paragraph tools -------
-map("n", "gj", "vipgq")
-map("n", "fj", "vipJ")
-
 -- disabling arrows ------
 -- map("i", "<Up>", "<Nop>")
 -- map("i", "<Right>", "<Nop>")

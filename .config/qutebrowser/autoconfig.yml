@@ -15,6 +15,7 @@ settings:
   content.desktop_capture:
     https://meet.google.com: true
   content.geolocation:
+    https://bikeroll.net: true
     https://careers.arm.com: false
     https://careers.hpe.com: false
     https://careers.sig.com: false
@@ -26,17 +27,25 @@ settings:
     https://jobs.intuit.com: false
     https://jpmc.fa.oraclecloud.com: false
     https://search.jobs.barclays: false
+    https://www.aldi.co.uk: true
+    https://www.foxtons.co.uk: true
     https://www.google.com: false
     https://www.johnsoncontrols.com: false
     https://www.moneygram.com: false
+    https://www.wego.com.bd: true
   content.javascript.clipboard:
+    https://chat.deepseek.com: access-paste
     https://chatgpt.com: access-paste
     https://colordesigner.io: access-paste
     https://snip.mathpix.com: access-paste
+    https://unioxfordnexus-my.sharepoint.com: access-paste
+    https://unsplash.com: access-paste
     https://www.google.com: access-paste
     https://www.imagetotext.info: access-paste
     https://www.imagetotext.io: access-paste
     https://www.mybib.com: access-paste
+    https://www.reddit.com: access-paste
+    https://www.spareroom.co.uk: access-paste
     https://www.zoopla.co.uk: access-paste
     https://yandex.com: access-paste
   content.javascript.enabled:
@@ -48,12 +57,15 @@ settings:
     simpcity.su: false
   content.media.audio_capture:
     https://app.roll20.net: false
+    https://discord.com: true
     https://meet.google.com: true
     https://online-voice-recorder.com: true
     https://teams.microsoft.com: true
     https://www.messenger.com: true
   content.media.audio_video_capture:
     https://app.roll20.net: false
+  content.media.video_capture:
+    https://meet.google.com: true
   content.notifications.enabled:
     https://9xbuddy.com: false
     https://all3do.com: false
@@ -82,6 +94,7 @@ settings:
     https://subscribe-notifications.com: false
     https://toonily.com: false
     https://toptoon.com: false
+    https://txxx.com: false
     https://user1.subscribe-notifications.com: false
     https://videocelebs.net: false
     https://w12.mangafreak.net: false
@@ -97,6 +110,7 @@ settings:
     https://www.kwai.com: false
     https://www.messenger.com: false
     https://www.mtcgame.com: false
+    https://www.nakednews.com: false
     https://www.netflix.com: false
     https://www.novelcool.com: false
     https://www.ohmymag.com: false
@@ -106,6 +120,7 @@ settings:
     https://www.rt.com: false
     https://www.sportskeeda.com: false
     https://www.tiktok.com: false
+    https://www.ubereats.com: true
     https://www.youtube.com: true
     https://youjizz.sex: false
   content.pdfjs:

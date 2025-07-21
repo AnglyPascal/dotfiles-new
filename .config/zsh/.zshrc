@@ -16,7 +16,7 @@ source "$HOME/.config/zsh/apps.zsh"
 source "$HOME/.config/zsh/graphics.zsh"
 
 source "$HOME/git/oxford/misc/scripts/notes.zsh"
-source "$HOME/git/socialsync/scripts/commands.zsh"
+source "$HOME/git/archive/socialsync/scripts/commands.zsh"
 
 bindkey -v
 bindkey jk vi-cmd-mode
@@ -36,3 +36,6 @@ source "$HOME/.venv/bin/activate"
 
 export TMUX_CONF="$HOME/.config/tmux/tmux.conf"
 alias tmux="tmux -f $TMUX_CONF"
+
+export SUDO_EDITOR="nvim"
+export PATH=~/.npm-global/bin:$PATH

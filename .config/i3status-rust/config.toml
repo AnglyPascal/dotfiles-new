@@ -1,4 +1,4 @@
-icons_format = "<span font_family='Font Awesome 6 Free'>{icon}</span>"
+# cons_format = "<span font_family='Font Awesome 6 Free'>{icon}</span>"
 
 [theme]
 theme = "nord-dark"
@@ -13,6 +13,7 @@ volume_muted = ''
 [[block]]
 block = "music"
 format = " $icon {$combo.str(max_w:30) $prev $play $next|}"
+seek_step_secs = 10
 [[block.click]]
 button = "left"
 action = "next_player"
@@ -27,10 +28,10 @@ action = "play_pause"
 # critical_cpu = 90
 # format = " $barchart $utilization "
 
-[[block]]
-block = "memory"
-format = " $icon $mem_total_used_percents.eng(w:2)"
-format_alt = " $icon_swap $swap_used_percents.eng(w:2)"
+# [[block]]
+# block = "memory"
+# format = " $icon $mem_total_used_percents.eng(w:2)"
+# format_alt = " $icon_swap $swap_used_percents.eng(w:2)"
 
 [[block]]
 block = "battery"

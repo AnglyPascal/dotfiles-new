@@ -195,8 +195,8 @@ vim.g.ale_linters = {
   tex = {},
   python = {'pylint'},
   ocaml = {'merlin'},
-  cpp = {},
-  c = {},
+  cpp = {'clangtidy'},
+  c = {'clangtidy'},
 }
 
 vim.g.ale_fixers = {

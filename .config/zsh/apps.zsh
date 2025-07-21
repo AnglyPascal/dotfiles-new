@@ -216,7 +216,7 @@ sea() {
 }
 
 mpvs() {
-  find ./ -type f -iregex ".*\.\(mp4\|mkv\|webm\|gif\|mov\|avi\|wmv\|flv\|MP4\|MKV\|WEBM\|MOV\)" | shuf | xargs -d '\n' mpv
+  find ./ -type f -iregex ".*\.\(mp4\|mkv\|webm\|gif\|mov\|avi\|wmv\|flv\|MP4\|MKV\|WEBM\|MOV\)" | shuf | xargs -d '\n' mpv --really-quiet --msg-level=all=info 
 }
 
 mpvr() {

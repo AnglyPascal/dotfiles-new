@@ -10,6 +10,7 @@ set $alt Mod1
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod 
 
+
 #############################
 # General Window Decoration #
 #############################
@@ -40,6 +41,7 @@ bindsym $mod+s      exec /home/ahsan/.scripts/sound.sh; \
                     exec polybar-msg cmd restart
 bindsym $mod+m      exec /home/ahsan/.scripts/mic.sh
 # bindsym $mod+x      exec sudo pkill Pentablet_Drive; exec sudo /home/ahsan/.config/xp_pen/Pentablet_Driver.sh
+
 
 #########################
 # Media player controls #

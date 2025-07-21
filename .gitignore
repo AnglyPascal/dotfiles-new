@@ -2,4 +2,6 @@
 .zcompdump*
 .config/autorandr/*
 .config/qutebrowser/qsettings/
+.config/mutt/mutt_oauth2.py
 *token*
+__pycache__

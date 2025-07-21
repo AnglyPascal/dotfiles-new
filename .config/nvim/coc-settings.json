@@ -7,9 +7,6 @@
   "pyright.inlayHints.parameterTypes": false,
 
   "cpp.formatting.provider": "clang-format",
-  "coc.preferences.formatOnSaveFiletypes": [
-    "python"
-  ],
   "languageserver": {
     "ocaml": {
       "command": "opam",

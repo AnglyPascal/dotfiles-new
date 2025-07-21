@@ -45,7 +45,7 @@ import readline
 # encryption and decryption pipes you prefer. They should read from standard
 # input and write to standard output. The example values here invoke GPG,
 # although won't work until an appropriate identity appears in the first line.
-ENCRYPTION_PIPE = ['gpg', '--encrypt', '--recipient', 'email']
+ENCRYPTION_PIPE = ['gpg', '--encrypt', '--recipient', 'ahsanalmahir@gmail.com']
 DECRYPTION_PIPE = ['gpg', '--decrypt']
 
 registrations = {
@@ -59,8 +59,6 @@ registrations = {
         'smtp_endpoint': 'smtp.gmail.com',
         'sasl_method': 'OAUTHBEARER',
         'scope': 'https://mail.google.com/',
-        'client_id': 'id',
-        'client_secret': 'sec',
     },
     'microsoft': {
         'authorize_endpoint':
