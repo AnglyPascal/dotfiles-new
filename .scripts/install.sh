@@ -82,15 +82,18 @@ install_packages () {
   sudo pacman-mirrors -c Bangladesh
   sudo pacman -Syu --noconfirm
 
-  sudo pacman -S --noconfirm --needed \
+  sudo pacman -S --needed \
     yay \
     brave-browser qutebrowser \
     alacritty \
+    i3status-rust \
     gvim neovim tig \
     dolphin \
     telegram-desktop \
     python python-pip \
-    gcc clang ccls cmake gdb valgrind
+    gcc clang ccls cmake gdb valgrind \
+    meson cmake base-devel ninja \
+    ccache cloudflared npm
 
   if [ "$WITH_OPTIONAL" = true ]; then
     sudo pacman -S --noconfirm --needed \
