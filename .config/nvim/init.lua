@@ -1,39 +1,34 @@
--- PLUGINS -----------------------
-
--- disable netrw at the very start of your init.lua (strongly advised)
-vim.g.loaded = 1
+-- Disable netrw early
+vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-
-require("plugins").setup()
 vim.g.polyglot_disabled = { 'latex' }
 
-require('lualine').setup()
-----------------------------------
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
--- SETTINGS  ---------------------
-require("settings")
-----------------------------------
+-- Load core configuration
+require("core.options")
+require("core.keymaps")
+require("core.autocmds")
 
--- LANG SETTINGS -----------------
-require("lang_settings")
-----------------------------------
+-- Setup plugins
+require("plugins")
 
--- KEY-BINDINGS ------------------
-require("keybinds")
-----------------------------------
+-- Set colorscheme
+vim.cmd.colorscheme('bestblack')
 
--- CoC Setup ---------------------
-require("coc")
-----------------------------------
-
--- LSP Setup ---------------------
-require("metals_config")
-----------------------------------
-
-require('colorizer').setup()
-
-vim.cmd.color('bestblack')
-
+-- Load project-local config if it exists
 local project_local_config = vim.fn.getcwd() .. "/.nvim/init.lua"
 if vim.fn.filereadable(project_local_config) == 1 then
   dofile(project_local_config)

@@ -49,4 +49,9 @@
       }
     }
   }
+
+  "javascript.format.tabSize": 4,
+  "javascript.format.insertSpaces": true,
+  "typescript.format.tabSize": 4,
+  "typescript.format.insertSpaces": true
 }
