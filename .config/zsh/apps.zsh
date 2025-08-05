@@ -206,13 +206,15 @@ tk(){
 # toggle seagate ssd
 sea() {
   if grep -qs '/home/ahsan/sea' /proc/mounts; then
-    echo "unmounting"
-    sudo umount /dev/mapper/sea; sudo cryptsetup luksClose sea
+    echo "remounting"
+    sudo umount /dev/mapper/sea
+    sudo cryptsetup luksClose sea
   else
     echo "mounting"
-    dev="$(sudo blkid | rg "crypto_LUKS" | awk '{print substr($1, 1, length($1)-1)}')"
-    sudo cryptsetup luksOpen $dev sea; sudo mount /dev/mapper/sea sea; 
   fi
+  dev="$(sudo blkid | rg "crypto_LUKS" | awk '{print substr($1, 1, length($1)-1)}')"
+  sudo cryptsetup luksOpen $dev sea --key-file /root/sea.key
+  sudo mount /dev/mapper/sea sea; 
 }
 
 mpvs() {

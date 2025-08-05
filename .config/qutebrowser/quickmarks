@@ -105,4 +105,7 @@ maria https://search.bilibili.com/all?keyword=%E7%BE%8E%E4%BE%9D%E7%A4%BC%E8%8A%
 cnn https://edition.cnn.com/
 a https://app.trading212.com/
 c https://www.investing.com/economic-calendar/
-trade file:///home/ahsan/git/fin/page/index.html
+trade http://localhost:8000/index.html
+cl https://claude.ai/new
+trades http://localhost:8000/trades.html
+replay http://localhost:8000/index_replay.html

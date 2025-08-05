@@ -5,3 +5,4 @@
 .config/mutt/mutt_oauth2.py
 *token*
 __pycache__
+lazy-lock.json

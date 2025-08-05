@@ -36,6 +36,7 @@ settings:
   content.javascript.clipboard:
     https://chat.deepseek.com: access-paste
     https://chatgpt.com: access-paste
+    https://claude.ai: access-paste
     https://colordesigner.io: access-paste
     https://snip.mathpix.com: access-paste
     https://unioxfordnexus-my.sharepoint.com: access-paste
