@@ -1,26 +1,44 @@
-export ZSH="/home/ahsan/.oh-my-zsh"
-source "$HOME/.config/zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh"
+# =============================================================================
+# ~/.zshrc - Modular config with OMZ + Starship (Simple Source Approach)
+# =============================================================================
 
-DISABLE_MAGIC_FUNCTIONS=true
-plugins=(git extract)
+export ZSH="/home/ahsan/.oh-my-zsh"
+source "$HOME/.config/zsh/catppuccin_mocha.zsh"
+
+DISABLE_MAGIC_FUNCTIONS=true # disable OMZ magic functions
+ZSH_THEME=""
+
+plugins=(
+    git                   
+    extract              
+    colored-man-pages   
+    command-not-found  
+    sudo              
+    zsh-syntax-highlighting
+        # git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
+        #   ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    zsh-vi-mode
+        # git clone https://github.com/jeffreytse/zsh-vi-mode.git \
+        #   ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-vi-mode
+)
+
 source $ZSH/oh-my-zsh.sh
 
 source "$HOME/.config/zsh/lscolors.sh"
-source "$HOME/.config/zsh/zsh-vim-mode.plugin.zsh"
-
-source "$HOME/.config/zsh/definitions.zsh"
-source "$HOME/.config/zsh/aliases.zsh"
+source "$HOME/.config/zsh/core.zsh"
+source "$HOME/.config/zsh/dev.zsh" 
+source "$HOME/.config/zsh/media.zsh"
+source "$HOME/.config/zsh/utils.zsh"
 source "$HOME/.config/zsh/autocomplete.zsh"
-source "$HOME/.config/zsh/net.zsh"
-source "$HOME/.config/zsh/apps.zsh"
-source "$HOME/.config/zsh/graphics.zsh"
 
-source "$HOME/git/oxford/misc/scripts/notes.zsh"
-source "$HOME/git/archive/socialsync/scripts/commands.zsh"
+[[ -f "$HOME/git/oxford/misc/scripts/notes.zsh" ]] && source "$HOME/git/oxford/misc/scripts/notes.zsh"
+[[ -f "$HOME/git/archive/socialsync/scripts/commands.zsh" ]] && source "$HOME/git/archive/socialsync/scripts/commands.zsh"
 
-bindkey -v
-bindkey jk vi-cmd-mode
-bindkey kj vi-cmd-mode
+[[ -f "$HOME/.venv/bin/activate" ]] && source "$HOME/.venv/bin/activate"
+
+ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
+ZVM_VI_INSERT_ESCAPE_BINDKEY=kj
+
 bindkey -r '\e/'
 
 bindkey -s ";l" 'ls^M'
@@ -29,13 +47,33 @@ bindkey -s ";n" 'nvim^M'
 bindkey -s ";r" 'ranger^M'
 bindkey -s ";/" 'grg '
 
-eval "$(starship init zsh)"
-source "$HOME/.config/zsh/classpaths.zsh"
+HISTFILE=~/.zsh_history
+HISTSIZE=50000
+SAVEHIST=50000
+setopt SHARE_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_SAVE_NO_DUPS
 
-source "$HOME/.venv/bin/activate"
+setopt EXTENDED_GLOB
+setopt NO_CASE_GLOB
 
-export TMUX_CONF="$HOME/.config/tmux/tmux.conf"
-alias tmux="tmux -f $TMUX_CONF"
+bindkey '^R' history-incremental-search-backward
+bindkey '^S' history-incremental-search-forward
 
-export SUDO_EDITOR="nvim"
-export PATH=~/.npm-global/bin:$PATH
+if zle -la history-substring-search-up; then
+    bindkey '^P' history-substring-search-up
+    bindkey '^N' history-substring-search-down
+else
+    bindkey '^P' up-line-or-history
+    bindkey '^N' down-line-or-history
+fi
+
+if command -v starship &> /dev/null; then
+    eval "$(starship init zsh)"
+else
+    echo "⚠️  Starship not found - install with: curl -sS https://starship.rs/install.sh | sh"
+fi

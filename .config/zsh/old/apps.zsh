@@ -4,21 +4,6 @@ feh(){
   sh $HOME/.config/zsh/feh.sh $@
 }
 
-i(){
-  if [[ -f $1 ]]
-  then
-    if [[ -f $2 ]]
-    then 
-      imv $@ &!
-    else
-      imv-dir $1 &!
-    fi
-  else
-    imv-dir . &!
-  fi
-  echo ''
-}
-
 # open document files with the appropriate apps
 z (){ 
   if [[ "$1" == *.(pdf|djvu) ]]
@@ -218,9 +203,43 @@ sea() {
 }
 
 mpvs() {
-  find ./ -type f -iregex ".*\.\(mp4\|mkv\|webm\|gif\|mov\|avi\|wmv\|flv\|MP4\|MKV\|WEBM\|MOV\)" | shuf | xargs -d '\n' mpv --really-quiet --msg-level=all=info 
+  local shuffle=true
+  local recursive=false
+
+  while [[ $# -gt 0 ]]; do
+    case $1 in
+      --no-shuffle|-n) shuffle=false; shift ;;
+      --shuffle|-s) shuffle=true; shift ;;
+      --local|-l) recursive=false; shift ;;
+      --recursive|-r) recursive=true; shift ;;
+      --help|-h)
+        echo "Usage: mpvs [OPTIONS]"
+        echo "  -s/--shuffle, -n/--no-shuffle"
+        echo "  -r/--recursive, -l/--local"
+        return 0 ;;
+      *) echo "Unknown option: $1"; return 1 ;;
+    esac
+  done
+
+  # Find video files based on recursive option
+  local video_files
+  if [[ "$recursive" == true ]]; then
+    video_files=$(find ./ -type f -iregex ".*\.\(mp4\|mkv\|webm\|gif\|mov\|avi\|wmv\|flv\|MP4\|MKV\|WEBM\|MOV\)")
+  else
+    video_files=$(find ./ -maxdepth 1 -type f -iregex ".*\.\(mp4\|mkv\|webm\|gif\|mov\|avi\|wmv\|flv\|MP4\|MKV\|WEBM\|MOV\)")
+  fi
+
+  [[ -z "$video_files" ]] && { echo "No video files found"; return 1; }
+
+  [[ "$shuffle" == true ]] && video_files=$(echo "$video_files" | shuf)
+
+  echo "$video_files" | xargs -d '\n' mpv --really-quiet --msg-level=all=info
 }
 
 mpvr() {
-  find . -regex '.*\.\(MP4\|MKV\|WEBM\|mp4\|mkv\|gif\|webm\|mov\|MOV\)$' -exec mpv {} +
+    mpvs --recursive "$@"
+}
+
+mpvn() {
+    mpvs --no-shuffle "$@"
 }
