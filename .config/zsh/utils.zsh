@@ -208,3 +208,27 @@ fhelp() {
     echo "  fs 'TODO'            │ Search for 'TODO' in files"
     echo "  fmod 3               │ Files modified in last 3 days"
 }
+
+cq() {
+    i=$1
+    for x in {0..$((i-1))}
+    do 
+        l=$(copyq read $x)
+        if [[ $l == *"youtube"* ]]; then
+            echo $l >> $2
+        else
+            echo $l | cut -d "?" -f 1 >> $2
+        fi
+    done
+}
+
+tk() {
+    temp=yt_temp
+    if [[ -f "yt_temp" ]]; then rm $temp; fi
+    cq $1 $temp
+    while IFS= read -r line; do
+        format="%(upload_date>%Y-%m-%d)s_%(epoch-3600>%H-%M-%S)s_%(title)s_%(id)s.%(ext)s"
+        yt-dlp -o "$format" "$line"
+    done < $temp
+    rm $temp 
+}

@@ -9,24 +9,24 @@ DISABLE_MAGIC_FUNCTIONS=true # disable OMZ magic functions
 ZSH_THEME=""
 
 plugins=(
-    git                   
-    extract              
-    colored-man-pages   
-    command-not-found  
-    sudo              
+    git
+    extract
+    colored-man-pages
+    command-not-found
+    sudo
     zsh-syntax-highlighting
-        # git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
-        #   ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    # git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
+    #   ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
     zsh-vi-mode
-        # git clone https://github.com/jeffreytse/zsh-vi-mode.git \
-        #   ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-vi-mode
+    # git clone https://github.com/jeffreytse/zsh-vi-mode.git \
+    #   ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
 
 source "$HOME/.config/zsh/lscolors.sh"
 source "$HOME/.config/zsh/core.zsh"
-source "$HOME/.config/zsh/dev.zsh" 
+source "$HOME/.config/zsh/dev.zsh"
 source "$HOME/.config/zsh/media.zsh"
 source "$HOME/.config/zsh/utils.zsh"
 source "$HOME/.config/zsh/autocomplete.zsh"
@@ -36,7 +36,6 @@ source "$HOME/.config/zsh/autocomplete.zsh"
 
 [[ -f "$HOME/.venv/bin/activate" ]] && source "$HOME/.venv/bin/activate"
 
-ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 ZVM_VI_INSERT_ESCAPE_BINDKEY=kj
 
 bindkey -r '\e/'
@@ -72,8 +71,11 @@ else
     bindkey '^N' down-line-or-history
 fi
 
-if command -v starship &> /dev/null; then
+if command -v starship &>/dev/null; then
     eval "$(starship init zsh)"
 else
     echo "⚠️  Starship not found - install with: curl -sS https://starship.rs/install.sh | sh"
 fi
+
+export GOPATH="$HOME/.go"
+export PATH="$PATH:$GOPATH/bin"
