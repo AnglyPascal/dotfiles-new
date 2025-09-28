@@ -8,23 +8,40 @@ return {
       { "gdh", "<cmd>diffget //2<cr>", desc = "Get left diff" },
       { "gdl", "<cmd>diffget //3<cr>", desc = "Get right diff" },
       { "gdp", "<cmd>diffput<cr>", desc = "Put diff" },
-      { "<leader>/", ":Git grep -q ", desc = "Git grep" },
     },
   },
 
-  -- Git gutter (modern alternative: gitsigns.nvim)
   {
     "lewis6991/gitsigns.nvim",
-    event = { "BufReadPre", "BufNewFile" },
+    lazy = false,  -- load eagerly so it's available
     keys = {
-      { "<leader>g", "<cmd>Gitsigns toggle_signs<cr>", desc = "Toggle git signs" },
-      { "]h", "<cmd>Gitsigns next_hunk<cr>", desc = "Next git hunk" },
-      { "[h", "<cmd>Gitsigns prev_hunk<cr>", desc = "Previous git hunk" },
-      { "<leader>hp", "<cmd>Gitsigns preview_hunk<cr>", desc = "Preview hunk" },
-      { "<leader>hs", "<cmd>Gitsigns stage_hunk<cr>", desc = "Stage hunk" },
-      { "<leader>hu", "<cmd>Gitsigns undo_stage_hunk<cr>", desc = "Undo stage hunk" },
+      {
+        "<leader>g",
+        function()
+          local gs = package.loaded.gitsigns
+          if gs then
+            if gs.toggle_signs then
+              gs.toggle_signs()
+            else
+              vim.notify("Gitsigns is not initialized", vim.log.levels.WARN)
+            end
+          else
+            require("gitsigns").setup()
+          end
+        end,
+        desc = "Toggle git signs",
+      },
+      { "]h", function() require("gitsigns").next_hunk() end, desc = "Next git hunk" },
+      { "[h", function() require("gitsigns").prev_hunk() end, desc = "Previous git hunk" },
+      { "<leader>hp",
+        function() require("gitsigns").preview_hunk() end, desc = "Preview hunk" },
+      { "<leader>hr", function() require("gitsigns").reset_hunk() end, desc = "Reset hunk" },
+      { "<leader>hs",
+        function() require("gitsigns").stage_hunk() end, desc = "Stage hunk" },
+      { "<leader>hu", function() require("gitsigns").undo_stage_hunk() end, desc = "Undo stage hunk" },
     },
     config = function()
+      -- Only configure but don't activate gitsigns initially
       require("gitsigns").setup({
         signs = {
           add = { text = "+" },
@@ -33,6 +50,18 @@ return {
           topdelete = { text = "-" },
           changedelete = { text = "~" },
         },
+        signs_staged = {
+          add = { text = "+|" },
+          change = { text = "~|" },
+          delete = { text = "-|" },
+          topdelete = { text = "-|" },
+          changedelete = { text = "~|" },
+        },
+
+        signcolumn = false,         -- don't show signs initially
+        numhl = false,              -- turn off number highlighting
+        linehl = false,
+        word_diff = false,
         current_line_blame = false,
         sign_priority = 6,
         update_debounce = 100,
@@ -46,6 +75,9 @@ return {
           col = 1,
         },
       })
+
+      -- Immediately disable signs after setup
+      require("gitsigns").toggle_signs(false)
     end,
   },
 }

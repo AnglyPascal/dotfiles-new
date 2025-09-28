@@ -208,8 +208,8 @@ vim.g.ale_fixers = {
 }
 
 vim.g.ale_haskell_ghc_options = '-fno-code -v0 -dynamic'
-vim.g.ale_cpp_clangd_options = '-std=c++17 -Wall'
-vim.g.ale_cpp_cc_options = '-std=c++17 -Wall'
+vim.g.ale_cpp_clangd_options = '-std=c++26 -Wall'
+vim.g.ale_cpp_cc_options = '-std=c++26 -Wall'
 
 
 -- LuaLine ------------------------

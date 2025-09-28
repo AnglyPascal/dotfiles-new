@@ -1,64 +1,31 @@
 local lspconfig = require("lspconfig")
-
 local M = {}
 
 function M.setup(on_attach, capabilities)
-  -- Lua LSP
+  capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+  -- Manual server setup with your custom configs
+  lspconfig.clangd.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+  })
+
   lspconfig.lua_ls.setup({
     on_attach = on_attach,
     capabilities = capabilities,
     settings = {
       Lua = {
-        runtime = {
-          version = "LuaJIT",
-        },
-        diagnostics = {
-          globals = { "vim" },
-        },
+        runtime = { version = "LuaJIT" },
+        diagnostics = { globals = { "vim" } },
         workspace = {
           library = vim.api.nvim_get_runtime_file("", true),
           checkThirdParty = false,
         },
-        telemetry = {
-          enable = false,
-        },
+        telemetry = { enable = false },
       },
     },
   })
 
-  lspconfig.lua_ls.setup {
-  on_init = function(client)
-    local path = client.workspace_folders[1].name
-    if vim.loop.fs_stat(path..'/.luarc.json') or vim.loop.fs_stat(path..'/.luarc.jsonc') then
-      return
-    end
-
-    client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
-      runtime = {
-        -- Tell the language server which version of Lua you're using
-        -- (most likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT'
-      },
-      -- Make the server aware of Neovim runtime files
-      workspace = {
-        checkThirdParty = false,
-        library = {
-          vim.env.VIMRUNTIME
-          -- Depending on the usage, you might want to add additional paths here.
-          -- "${3rd}/luv/library"
-          -- "${3rd}/busted/library",
-        }
-        -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
-        -- library = vim.api.nvim_get_runtime_file("", true)
-      }
-    })
-  end,
-  settings = {
-    Lua = {}
-  }
-}
-
-  -- Python LSP
   lspconfig.pyright.setup({
     on_attach = on_attach,
     capabilities = capabilities,
@@ -73,31 +40,6 @@ function M.setup(on_attach, capabilities)
     },
   })
 
-  -- C/C++ LSP
-  lspconfig.clangd.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-    cmd = {
-      "clangd",
-      "--background-index",
-      "--clang-tidy",
-      "--header-insertion=iwyu",
-      "--completion-style=detailed",
-      "--function-arg-placeholders",
-      "--fallback-style=llvm",
-    },
-    init_options = {
-      usePlaceholders = true,
-    },
-  })
-
-  -- Bash LSP
-  lspconfig.bashls.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-  })
-
-  -- JSON LSP
   lspconfig.jsonls.setup({
     on_attach = on_attach,
     capabilities = capabilities,
@@ -109,21 +51,88 @@ function M.setup(on_attach, capabilities)
     },
   })
 
-  -- YAML LSP
   lspconfig.yamlls.setup({
     on_attach = on_attach,
     capabilities = capabilities,
     settings = {
       yaml = {
-        schemaStore = {
-          enable = false,
-          url = "",
-        },
+        schemaStore = { enable = false, url = "" },
         schemas = require("schemastore").yaml.schemas(),
       },
     },
   })
+
+  lspconfig.ts_ls.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"),
+    settings = {
+      typescript = {
+        format = { indentSize = 2, convertTabsToSpaces = true },
+      },
+      javascript = {
+        format = { indentSize = 2, convertTabsToSpaces = true },
+      },
+    },
+  })
+
+  lspconfig.bashls.setup({
+    on_attach = on_attach,
+    filetypes = { "sh", "bash", "zsh" },
+    settings = {
+      bashIde = {
+        formatter = "beautysh"
+      }
+    }
+  })
+
+  -- Configure gopls
+  lspconfig.gopls.setup {
+    on_attach = on_attach,
+    cmd = { "gopls" },
+    filetypes = { "go", "gomod", "gowork", "gotmpl" },
+    root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
+    settings = {
+      gopls = {
+        analyses = {
+          unusedparams = true,
+          ST1021 = false, -- comment format
+          ST1000 = false, -- package comment
+          ST1020 = false, -- package comment
+        },
+        gofumpt = true,
+      },
+    },
+  }
+
+  lspconfig.protols.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    settings = {
+      buf = {
+        format = true,
+        lint = false,
+      }
+    },
+  })
+
+  -- Simple setups for other servers
+  lspconfig.cssls.setup({ on_attach = on_attach, capabilities = capabilities })
+  lspconfig.rust_analyzer.setup({ on_attach = on_attach, capabilities = capabilities })
+
+  lspconfig.cmake.setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
+    filetypes = { "cmake" },
+    init_options = {
+      buildDirectory = "build_dev"
+    },
+    settings = {
+      cmake = {
+        buildDirectory = "build_dev"
+      }
+    }
+  })
 end
 
 return M
-

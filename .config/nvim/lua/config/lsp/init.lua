@@ -33,6 +33,11 @@ local function on_attach(client, bufnr)
     vim.diagnostic.jump({ count = 1, float = true })
   end, opts)
 
+  -- Enable formatting for bash language server
+  if client.name == "bashls" then
+    client.server_capabilities.documentFormattingProvider = true
+  end
+
   -- Formatting
   if client.supports_method("textDocument/formatting") then
     keymap("n", "<leader>f", function()
@@ -64,31 +69,22 @@ vim.diagnostic.config({
 -- Highlight entire line for errors
 -- Highlight the line number for warnings
 vim.diagnostic.config({
-    signs = {
-        text = {
-            [vim.diagnostic.severity.ERROR] = '',
-            [vim.diagnostic.severity.WARN] = '',
-        },
-        linehl = {
-            [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
-        },
-        numhl = {
-            [vim.diagnostic.severity.WARN] = 'WarningMsg',
-        },
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = '',
+      [vim.diagnostic.severity.WARN] = '',
     },
+    linehl = {
+      [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
+    },
+    numhl = {
+      [vim.diagnostic.severity.WARN] = 'WarningMsg',
+    },
+  },
 })
 
 -- Configure servers
 require("config.lsp.servers").setup(on_attach, capabilities)
 
-vim.lsp.config('lua_ls', {
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { "vim" }
-      }
-    }
-  }
-})
-
-
+vim.lsp.set_log_level("WARN")
+require('vim.lsp.log').set_format_func(vim.inspect)

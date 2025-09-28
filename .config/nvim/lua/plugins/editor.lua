@@ -5,7 +5,7 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     cmd = { "NvimTreeToggle", "NvimTreeOpen" },
     keys = {
-      { "<C-n>", "<cmd>NvimTreeToggle<cr>", desc = "Toggle file tree" },
+      { "<C-n>",     "<cmd>NvimTreeToggle<cr>", desc = "Toggle file tree" },
       { "<leader>n", "<cmd>NvimTreeToggle<cr>", desc = "Toggle file tree" },
     },
     config = function()
@@ -55,14 +55,16 @@ return {
     },
     cmd = "Telescope",
     keys = {
-      { "<C-p>", "<cmd>Telescope find_files<cr>", desc = "Find files" },
-      { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files" },
-      { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Live grep" },
-      { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find buffers" },
-      { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help tags" },
+      { "<C-p>",      "<cmd>Telescope find_files<cr>",  desc = "Find files" },
+      { "<leader>/",  "<cmd>Telescope live_grep<cr>",   desc = "Live grep" },
+      { "<leader>?",  "<cmd>Telescope grep_string<cr>", desc = "Grep string" },
+      { "<leader>b",  "<cmd>Telescope buffers<cr>",     desc = "Find buffers" },
+      { "<leader>gh", "<cmd>Telescope help_tags<cr>",   desc = "Help tags" },
+      { "<leader>gg", "<cmd>Telescope git_files<cr>",   desc = "Git files" },
     },
     config = function()
       local telescope = require("telescope")
+      local actions = require("telescope.actions")
       telescope.setup({
         defaults = {
           file_ignore_patterns = {
@@ -70,6 +72,12 @@ return {
             "%.ggb", "%.ilg", "%.ind", "%.fls", "%.out", "%.synctex.gz",
             "%.idx", "%.ggt", "%.pdf_tex", "%.fdb_latexmk", "%.blg", "%.class",
             "%.bbl", "%.toc", "%.xdv", "%.ent", "dist/", "target/", "%.bloop/", "%.metals/"
+          },
+          mappings = {
+            i = {
+              ["jk"] = actions.close,
+              ["kj"] = actions.close,
+            },
           },
         },
       })
@@ -96,7 +104,7 @@ return {
   {
     "tpope/vim-commentary",
     keys = {
-      { "gc", mode = { "n", "v" } },
+      { "gc",  mode = { "n", "v" } },
       { "gcc", mode = "n" },
     },
   },
@@ -121,7 +129,7 @@ return {
     "rhysd/conflict-marker.vim",
     event = "BufReadPost",
     keys = {
-      { "cx", "<cmd>ConflictMarkerBoth<cr>", desc = "Take both sides" },
+      { "cx", "<cmd>ConflictMarkerBoth<cr>",  desc = "Take both sides" },
       { "cX", "<cmd>ConflictMarkerBoth!<cr>", desc = "Take both sides (reverse)" },
     },
   },
@@ -180,5 +188,26 @@ return {
   {
     "aquach/vim-http-client",
     ft = { "http", "rest" },
+  },
+
+  -- Spectre for find/replace
+  {
+    'nvim-pack/nvim-spectre',
+    lazy = false,
+    config = function()
+      require('spectre').setup({
+        default = {
+          find = {
+            cmd = "rg",
+            options = { "--ignore-case" }
+          }
+        }
+      })
+    end,
+    keys = {
+      { "<leader>S",  '<cmd>lua require("spectre").toggle()<CR>',                             desc = "Toggle Spectre" },
+      { "<leader>sw", '<cmd>lua require("spectre").open_visual({select_word=true})<CR>',      desc = "Search current word" },
+      { "<leader>sp", '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', desc = "Search in current file" },
+    }
   },
 }

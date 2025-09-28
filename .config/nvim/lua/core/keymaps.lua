@@ -71,14 +71,6 @@ keymap("n", "<C-l>", "i<c-g>u<Esc>:nohlsearch<CR>[s1z=`]a<c-g>u<Esc>", opts)
 keymap("n", "<C-n>", ":NvimTreeToggle<CR>", opts)
 keymap("n", "<leader>n", ":NvimTreeToggle<CR>", opts)
 
--- Git
-keymap("n", "<leader>g", ":GitGutterToggle<CR>", opts)
-keymap("n", "]h", ":GitGutterNextHunk<CR>", opts)
-keymap("n", "[h", ":GitGutterPrevHunk<CR>", opts)
-keymap("n", "<leader>hp", ":GitGutterPreviewHunk<CR>", opts)
-keymap("n", "<leader>hs", ":GitGutterStageHunk<CR>", opts)
-keymap("n", "<leader>hu", ":GitGutterUndoHunk<CR>", opts)
-
 -- Git conflict markers
 keymap("n", "cx", ":ConflictMarkerBoth<CR>", opts)
 keymap("n", "cX", ":ConflictMarkerBoth!<CR>", opts)
@@ -88,7 +80,6 @@ keymap("n", "<leader>gd", ":Gvdiff<CR>", opts)
 keymap("n", "gdh", ":diffget //2<CR>", opts)
 keymap("n", "gdl", ":diffget //3<CR>", opts)
 keymap("n", "gdp", ":diffput<CR>", opts)
-keymap("n", "<leader>/", ":Git grep -q ", { noremap = true })
 
 -- Indent guides
 keymap("n", "<leader>r", ":IndentGuidesToggle<CR>", opts)
