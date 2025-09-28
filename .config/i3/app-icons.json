@@ -39,5 +39,7 @@
     "tikzit": "draw-polygon",
     "tikzit": "draw-polygon",
 
+    "steam": "steam",
+
     "_no_match": "question"
 }
