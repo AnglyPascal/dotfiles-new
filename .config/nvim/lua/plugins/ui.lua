@@ -40,8 +40,5 @@ return {
   {
     "sheerun/vim-polyglot",
     event = { "BufReadPre", "BufNewFile" },
-    init = function()
-      vim.g.polyglot_disabled = { "latex" }
-    end,
   },
 }

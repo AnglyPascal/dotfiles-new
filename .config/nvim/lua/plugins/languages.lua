@@ -57,14 +57,17 @@ return {
     ft = { "verilog", "systemverilog" },
   },
 
-  -- Code formatting tools
   {
-    "google/vim-maktaba",
-    lazy = true,
-  },
-  {
-    "google/vim-codefmt",
-    dependencies = { "google/vim-maktaba" },
-    cmd = { "FormatCode", "FormatLines" },
-  },
+    "nvimtools/none-ls.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      local null_ls = require("null-ls")
+
+      null_ls.setup({
+        sources = {
+          null_ls.builtins.formatting.yapf,
+        },
+      })
+    end,
+  }
 }

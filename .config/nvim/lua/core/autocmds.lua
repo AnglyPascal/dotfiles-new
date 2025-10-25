@@ -86,7 +86,9 @@ api.nvim_create_autocmd("FileType", {
     vim.keymap.set("n", "<leader>m", "v:s/\\\\(\\(.\\{-}\\)\\\\)/\\\\[\\1\\\\]/g<CR>", opts)
     vim.keymap.set("n", "<leader>n", "v:s/\\\\\\[\\(.\\{-}\\)\\\\\\]/\\\\(\\1\\\\)/<CR>", opts)
     vim.keymap.set("n", "<leader>f", "==<Plug>latexfmt_format", opts)
-    vim.keymap.set("v", "<leader>e", "'<,'>s/\\%V\\_.*\\%V./\\t\\\\begin{enumerate}[label=(\\\\arabic*)]^M&^M\\t\\\\end{enumerate}/g | '<,'>s/(\\d*)/\\\\item/g", opts)
+    vim.keymap.set("v", "<leader>e",
+      "'<,'>s/\\%V\\_.*\\%V./\\t\\\\begin{enumerate}[label=(\\\\arabic*)]^M&^M\\t\\\\end{enumerate}/g | '<,'>s/(\\d*)/\\\\item/g",
+      opts)
     vim.keymap.set("v", "<leader>a", 'c\\ifextraA<CR><c-r><c-o>"\\fi <esc>', opts)
     vim.keymap.set("v", "<leader>b", 'c\\ifextraB<CR><c-r><c-o>"\\fi <esc>', opts)
     vim.keymap.set("v", "<leader>c", 'c\\ifextraC<CR><c-r><c-o>"\\fi <esc>', opts)
@@ -112,15 +114,8 @@ api.nvim_create_autocmd("FileType", {
     vim.opt_local.tabstop = 4
     vim.opt_local.softtabstop = 4
     vim.opt_local.shiftwidth = 4
-    vim.opt_local.textwidth = 79
     vim.opt_local.autoindent = true
     vim.opt_local.fileformat = 'unix'
-
-    -- Python keymaps
-    vim.keymap.set("i", "<leader>ll", ":!python %<CR>", opts)
-    vim.keymap.set("n", "<leader>ll", ":!python %<CR>", opts)
-    vim.keymap.set("v", "<leader>ll", ":!python %", opts)
-    vim.keymap.set("n", "<leader>f", ":%!python -m macchiato<CR>", opts)
   end,
 })
 
@@ -216,5 +211,12 @@ api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   pattern = "*config.py",
   callback = function()
     vim.opt_local.filetype = "python"
+  end,
+})
+
+api.nvim_create_autocmd("FileType", {
+  pattern = "python",
+  callback = function()
+    vim.opt_local.formatoptions:remove("t")
   end,
 })

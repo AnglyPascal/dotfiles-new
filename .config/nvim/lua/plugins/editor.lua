@@ -57,14 +57,16 @@ return {
     keys = {
       { "<C-p>",      "<cmd>Telescope find_files<cr>",  desc = "Find files" },
       { "<leader>/",  "<cmd>Telescope live_grep<cr>",   desc = "Live grep" },
-      { "<leader>?",  "<cmd>Telescope grep_string<cr>", desc = "Grep string" },
+      { "<leader>?",  "<cmd>Telescope resume<cr>", desc = "Resume previous picker" },
       { "<leader>b",  "<cmd>Telescope buffers<cr>",     desc = "Find buffers" },
       { "<leader>gh", "<cmd>Telescope help_tags<cr>",   desc = "Help tags" },
       { "<leader>gg", "<cmd>Telescope git_files<cr>",   desc = "Git files" },
+      -- { "<leader>sr", "<cmd>Telescope resume<cr>",      desc = "Resume previous picker" },
     },
     config = function()
       local telescope = require("telescope")
       local actions = require("telescope.actions")
+
       telescope.setup({
         defaults = {
           file_ignore_patterns = {
@@ -77,6 +79,12 @@ return {
             i = {
               ["jk"] = actions.close,
               ["kj"] = actions.close,
+              ["<C-s>"] = actions.select_vertical, -- open in vertical split
+              ["<C-v>"] = actions.select_horizontal, -- open in horizontal split
+            },
+            n = {
+              ["<C-s>"] = actions.select_vertical,
+              ["<C-v>"] = actions.select_horizontal,
             },
           },
         },

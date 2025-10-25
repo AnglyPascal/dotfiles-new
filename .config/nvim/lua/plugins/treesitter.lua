@@ -14,14 +14,18 @@ return {
           "c", "cpp", "lua", "python", "javascript", "typescript",
           "rust", "scala", "ocaml", "bash", "vim", "vimdoc",
           "markdown", "json", "yaml", "toml", "html", "css",
+          -- intentionally NOT including "latex"
         },
+        ignore_install = { "latex" }, -- don't even attempt to install the latex parser
         auto_install = true,
         highlight = {
           enable = true,
-          additional_vim_regex_highlighting = false,
+          disable = { "latex" },                           -- disable Tree-sitter highlighting for latex
+          additional_vim_regex_highlighting = { "latex" }, -- let VimTeX handle highlighting
         },
         indent = {
           enable = true,
+          disable = { "latex" }, -- optional: Tree-sitter indentation can also break VimTeX
         },
         textobjects = {
           select = {

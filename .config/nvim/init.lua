@@ -33,3 +33,5 @@ local project_local_config = vim.fn.getcwd() .. "/.nvim/init.lua"
 if vim.fn.filereadable(project_local_config) == 1 then
   dofile(project_local_config)
 end
+
+-- Add to your init.lua or keymaps config
