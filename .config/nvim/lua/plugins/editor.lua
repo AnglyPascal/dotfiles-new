@@ -142,19 +142,6 @@ return {
     },
   },
 
-  -- Snippets
-  {
-    "SirVer/ultisnips",
-    event = "InsertEnter",
-    dependencies = { "honza/vim-snippets" },
-  },
-
-  -- Alignment
-  {
-    "godlygeek/tabular",
-    cmd = { "Tabularize", "Tab" },
-  },
-
   -- Code outline/symbols
   {
     "stevearc/aerial.nvim",
@@ -192,12 +179,6 @@ return {
     end,
   },
 
-  -- HTTP client
-  {
-    "aquach/vim-http-client",
-    ft = { "http", "rest" },
-  },
-
   -- Spectre for find/replace
   {
     'nvim-pack/nvim-spectre',
@@ -221,6 +202,9 @@ return {
 
   {
     "bngarren/checkmate.nvim",
-    ft = "todo",
-  },
+    ft = "markdown",
+    opts = {
+      files = { "todo.md" },
+    },
+  }
 }

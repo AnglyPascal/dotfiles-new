@@ -83,3 +83,6 @@ keymap("n", "gdp", ":diffput<CR>", opts)
 
 -- Indent guides
 keymap("n", "<leader>r", ":IndentGuidesToggle<CR>", opts)
+
+keymap("n", "<leader>tn", "<cmd>Checkmate create<cr>", { desc = "New checkbox" })
+keymap("n", "<leader>tt", "<cmd>Checkmate toggle<cr>", { desc = "Toggle checkbox" })

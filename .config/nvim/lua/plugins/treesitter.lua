@@ -6,7 +6,7 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
-      "OXY2DEV/markview.nvim",
+      -- "OXY2DEV/markview.nvim",
     },
     config = function()
       require("nvim-treesitter.configs").setup({
@@ -14,18 +14,19 @@ return {
           "c", "cpp", "lua", "python", "javascript", "typescript",
           "rust", "scala", "ocaml", "bash", "vim", "vimdoc",
           "markdown", "json", "yaml", "toml", "html", "css",
-          -- intentionally NOT including "latex"
         },
-        ignore_install = { "latex" }, -- don't even attempt to install the latex parser
+        ignore_install = { "latex" },
         auto_install = true,
+        sync_install = false, -- add this
+        modules = {},         -- add this
         highlight = {
           enable = true,
-          disable = { "latex" },                           -- disable Tree-sitter highlighting for latex
-          additional_vim_regex_highlighting = { "latex" }, -- let VimTeX handle highlighting
+          disable = { "latex" },
+          additional_vim_regex_highlighting = { "latex" },
         },
         indent = {
           enable = true,
-          disable = { "latex" }, -- optional: Tree-sitter indentation can also break VimTeX
+          disable = { "latex" },
         },
         textobjects = {
           select = {
@@ -64,4 +65,19 @@ return {
       })
     end,
   },
+
+  {
+    "OXY2DEV/markview.nvim",
+    ft = "markdown",
+    opts = {
+      markdown = {
+        list_items = {
+          enable = false,
+        },
+        headings = {
+          shift_width = 0,
+        },
+      },
+    },
+  }
 }

@@ -2,7 +2,6 @@ local api = vim.api
 
 -- Create augroups
 local general_group = api.nvim_create_augroup("General", { clear = true })
-local filetype_group = api.nvim_create_augroup("FileTypes", { clear = true })
 local text_group = api.nvim_create_augroup("TextFiles", { clear = true })
 local spell_group = api.nvim_create_augroup("SpellCheck", { clear = true })
 
@@ -27,15 +26,12 @@ api.nvim_create_autocmd("BufEnter", {
 })
 
 -- Help files
-api.nvim_create_autocmd("BufEnter", {
+api.nvim_create_autocmd("FileType", {
   group = general_group,
-  pattern = "*.txt",
+  pattern = "help",
   callback = function()
-    if vim.bo.buftype == 'help' then
-      vim.cmd([[wincmd J]])
-      local bufnr = api.nvim_get_current_buf()
-      vim.keymap.set('n', 'q', ':q<CR>', { buffer = bufnr, noremap = true, silent = true })
-    end
+    vim.cmd([[wincmd J]])
+    vim.keymap.set('n', 'q', '<cmd>q<CR>', { buffer = true, silent = true })
   end,
 })
 
@@ -44,17 +40,14 @@ api.nvim_create_autocmd("FileType", {
   group = general_group,
   pattern = "qf",
   callback = function()
-    if vim.bo.buftype == 'quickfix' then
-      local bufnr = api.nvim_get_current_buf()
-      vim.keymap.set('n', 'q', ':q<CR>', { buffer = bufnr, noremap = true, silent = true })
-    end
+    vim.keymap.set('n', 'q', '<cmd>q<CR>', { buffer = true, silent = true })
   end,
 })
 
 -- Text files (Markdown, TeX, Text)
 api.nvim_create_autocmd("FileType", {
   group = text_group,
-  pattern = { "markdown", "tex", "text", "md" },
+  pattern = { "markdown", "tex", "text" },
   callback = function()
     vim.opt_local.spell = true
     vim.opt_local.spelllang = "en_gb"
@@ -64,11 +57,9 @@ api.nvim_create_autocmd("FileType", {
 
 -- LaTeX specific
 api.nvim_create_autocmd("FileType", {
-  group = filetype_group,
   pattern = "tex",
   callback = function()
-    local bufnr = vim.api.nvim_get_current_buf()
-    local opts = { buffer = bufnr, noremap = true, silent = true }
+    local opts = { buffer = true, silent = true }
 
     vim.opt_local.spell = true
     vim.opt_local.spelllang = "en_us"
@@ -103,12 +94,8 @@ api.nvim_create_autocmd("FileType", {
 
 -- Python
 api.nvim_create_autocmd("FileType", {
-  group = filetype_group,
   pattern = "python",
   callback = function()
-    local bufnr = vim.api.nvim_get_current_buf()
-    local opts = { buffer = bufnr, noremap = true, silent = true }
-
     vim.opt_local.foldmethod = 'indent'
     vim.opt_local.foldlevel = 99
     vim.opt_local.tabstop = 4
@@ -116,107 +103,21 @@ api.nvim_create_autocmd("FileType", {
     vim.opt_local.shiftwidth = 4
     vim.opt_local.autoindent = true
     vim.opt_local.fileformat = 'unix'
-  end,
-})
-
--- JavaScript
-api.nvim_create_autocmd("FileType", {
-  group = filetype_group,
-  pattern = "javascript",
-  callback = function()
-    local bufnr = vim.api.nvim_get_current_buf()
-    local opts = { buffer = bufnr, noremap = true, silent = true }
-
-    vim.keymap.set("i", ";ll", ":!node %<CR>", opts)
-    vim.keymap.set("n", ";ll", ":!node %<CR>", opts)
-    vim.keymap.set("v", ";ll", ":!node %", opts)
-  end,
-})
-
--- Bash
-api.nvim_create_autocmd("FileType", {
-  group = filetype_group,
-  pattern = "bash",
-  callback = function()
-    local bufnr = vim.api.nvim_get_current_buf()
-    local opts = { buffer = bufnr, noremap = true, silent = true }
-
-    vim.keymap.set("i", ";ll", ":!bash %<CR>", opts)
-    vim.keymap.set("n", ";ll", ":!bash %<CR>", opts)
-    vim.keymap.set("v", ";ll", ":!bash %", opts)
-  end,
-})
-
--- C++
-api.nvim_create_autocmd("FileType", {
-  group = filetype_group,
-  pattern = "cpp",
-  callback = function()
-    local bufnr = vim.api.nvim_get_current_buf()
-    local opts = { buffer = bufnr, noremap = true, silent = true }
-
-    vim.keymap.set("i", ";ll", ":!gcc %<CR>", opts)
-    vim.keymap.set("n", ";ll", ":!gcc %<CR>", opts)
-    vim.keymap.set("n", "<leader>f", ":<C-u>ClangFormat<CR>", opts)
-  end,
-})
-
--- Custom filetypes
-api.nvim_create_autocmd({ "BufEnter", "BufRead" }, {
-  group = filetype_group,
-  pattern = "*.conf",
-  callback = function()
-    vim.opt_local.filetype = "conf"
-    vim.cmd([[hi clear SpellBad]])
-  end,
-})
-
-api.nvim_create_autocmd({ "BufEnter", "BufRead" }, {
-  group = filetype_group,
-  pattern = "*.strace",
-  callback = function()
-    vim.opt_local.filetype = "strace"
-  end,
-})
-
-api.nvim_create_autocmd({ "BufEnter", "BufRead" }, {
-  group = filetype_group,
-  pattern = "*.s",
-  callback = function()
-    vim.opt_local.filetype = "gas"
-    vim.cmd([[hi clear SpellBad]])
-  end,
-})
-
-api.nvim_create_autocmd({ "BufEnter", "BufRead" }, {
-  group = filetype_group,
-  pattern = "*.p",
-  callback = function()
-    vim.opt_local.filetype = "pascal"
-    vim.cmd([[hi clear SpellBad]])
-  end,
-})
-
-api.nvim_create_autocmd({ "BufEnter", "BufRead" }, {
-  group = filetype_group,
-  pattern = "*.cls",
-  callback = function()
-    vim.opt_local.filetype = "tex"
-    vim.opt_local.syntax = "tex"
-  end,
-})
-
-api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-  group = filetype_group,
-  pattern = "*config.py",
-  callback = function()
-    vim.opt_local.filetype = "python"
-  end,
-})
-
-api.nvim_create_autocmd("FileType", {
-  pattern = "python",
-  callback = function()
     vim.opt_local.formatoptions:remove("t")
+  end,
+})
+
+-- Disable spell for specific filetypes
+api.nvim_create_autocmd("FileType", {
+  pattern = { "conf", "gas" },
+  callback = function()
+    vim.cmd([[hi clear SpellBad]])
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*.todo",
+  callback = function()
+    vim.bo.filetype = "todo"
   end,
 })

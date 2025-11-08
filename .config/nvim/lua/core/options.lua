@@ -47,28 +47,12 @@ g.indent_guides_guide_size = 1
 g.indent_guides_color_change_percent = 5
 g.ctrlp_working_path_mode = ''
 
--- -- Git gutter
--- g.gitgutter_highlight_lines = 1
--- g.gitgutter_sign_added = '+'
--- g.gitgutter_sign_modified = '~'
--- g.gitgutter_sign_removed = '-'
--- g.gitgutter_sign_removed_first_line = '-'
--- g.gitgutter_sign_modified_removed = '~'
-
 -- UltiSnips
 g.UltiSnipsExpandTrigger = '<tab>'
 g.UltiSnipsJumpForwardTrigger = '<tab>'
 g.UltiSnipsJumpBackwardTrigger = '<s-tab>'
 g.UltiSnipsEditSplit = "vertical"
 g.UltiSnipsSnippetDirectories = { vim.fn.expand("~/.vim/UltiSnips"), "UltiSnips" }
-
--- -- ALE
--- g.ale_echo_msg_error_str = 'E'
--- g.ale_echo_msg_warning_str = 'W'
--- g.ale_sign_error = 'E'
--- g.ale_sign_warning = 'W'
--- g.ale_open_list = 0
--- g.ale_loclist = 0
 
 -- Markdown
 g.vim_markdown_follow_anchor = 1

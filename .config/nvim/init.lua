@@ -1,3 +1,16 @@
+-- Filetype detection (modern approach)
+vim.filetype.add({
+  extension = {
+    conf = "conf",
+    s = "gas",
+    cls = "tex",
+    todo = "todo",
+  },
+  pattern = {
+    [".*config%.py"] = "python",
+  },
+})
+
 -- Disable netrw early
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1

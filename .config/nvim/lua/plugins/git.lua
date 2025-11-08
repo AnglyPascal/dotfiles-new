@@ -2,9 +2,9 @@ return {
   -- Git integration
   {
     "tpope/vim-fugitive",
-    cmd = { "Git", "Gstatus", "Gblame", "Gpush", "Gpull", "Gvdiff", "Gwrite", "Gread" },
+    cmd = { "Git", "Gstatus", "Gblame", "Gpush", "Gpull", "Gdiffsplit", "Gwrite", "Gread" },
     keys = {
-      { "<leader>gd", "<cmd>Gvdiff<cr>", desc = "Git diff" },
+      { "<leader>gd", "<cmd>Gdiffsplit<cr>", desc = "Git diff" },
       { "gdh", "<cmd>diffget //2<cr>", desc = "Get left diff" },
       { "gdl", "<cmd>diffget //3<cr>", desc = "Get right diff" },
       { "gdp", "<cmd>diffput<cr>", desc = "Put diff" },
@@ -31,14 +31,14 @@ return {
         end,
         desc = "Toggle git signs",
       },
-      { "]h", function() require("gitsigns").next_hunk() end, desc = "Next git hunk" },
-      { "[h", function() require("gitsigns").prev_hunk() end, desc = "Previous git hunk" },
+      { "]h", function() require("gitsigns").nav_hunk("next") end, desc = "Next git hunk" },
+      { "[h", function() require("gitsigns").nav_hunk("prev") end, desc = "Previous git hunk" },
       { "<leader>hp",
         function() require("gitsigns").preview_hunk() end, desc = "Preview hunk" },
       { "<leader>hr", function() require("gitsigns").reset_hunk() end, desc = "Reset hunk" },
       { "<leader>hs",
         function() require("gitsigns").stage_hunk() end, desc = "Stage hunk" },
-      { "<leader>hu", function() require("gitsigns").undo_stage_hunk() end, desc = "Undo stage hunk" },
+      { "<leader>hu", function() require("gitsigns").stage_hunk({ undo = true }) end, desc = "Undo stage hunk" },
     },
     config = function()
       -- Only configure but don't activate gitsigns initially
@@ -60,7 +60,7 @@ return {
 
         signcolumn = false,         -- don't show signs initially
         numhl = false,              -- turn off number highlighting
-        linehl = false,
+        linehl = true,
         word_diff = false,
         current_line_blame = false,
         sign_priority = 6,

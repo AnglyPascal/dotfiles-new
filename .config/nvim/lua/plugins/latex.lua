@@ -23,4 +23,12 @@ return {
     "anglypascal/vim-latexfmt",
     ft = { "tex", "latex" },
   },
+
+  -- Snippets
+  {
+    "SirVer/ultisnips",
+    ft = { "tex", "plaintex", "latex" },
+    dependencies = { "honza/vim-snippets" },
+  },
+
 }
