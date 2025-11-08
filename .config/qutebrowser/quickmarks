@@ -82,14 +82,14 @@ pmm https://courses.maths.ox.ac.uk/course/view.php?id=4980
 os file:///run/media/file2/onedrive/Oxford/partb/operating_systems/schedule.html
 ml https://courses.cs.ox.ac.uk/course/view.php?id=650#section-5
 combi https://courses.cs.ox.ac.uk/course/view.php?id=618#section-2
-p https://www.islamicfinder.org/world/bangladesh/1185241/dhaka-dhaka-division-bd-prayer-times/
+p https://www.islamicfinder.org/world/united-kingdom/2643743/london-prayer-times/
 mcsc https://www.cs.ox.ac.uk/teaching/mcs/PartC/
 ffa https://courses.maths.ox.ac.uk/course/view.php?id=5573
 sde https://courses.maths.ox.ac.uk/course/view.php?id=5558
 kindle https://www.amazon.co.uk/sendtokindle
 git https://github.com/AnglyPascal/
 cads https://courses.cs.ox.ac.uk/course/view.php?name=cads_2024_2025
-gpt https://chatgpt.com/c/6848a40c-3970-8002-9179-48df712c6029
+gpt https://chatgpt.com/?model=auto
 embxx https://arobenko.github.io/bare_metal_cpp/
 qp https://www.cs.ox.ac.uk/teaching/courses/2024-2025/quantum/
 v https://www.google.com/search?q=champions+in+lol+warrior&num=10&sca_esv=0e039e0d08dcb7c3&sxsrf=ADLYWIJCNx5ywm4N8HMZqpONzpmk9vUw8g%3A1733088709791&ei=xdVMZ93rL-GAhbIP4vGOyAw&ved=0ahUKEwid4qTHwoeKAxVhQEEAHeK4A8kQ4dUDCA8&uact=5&oq=champions+in+lol+warrior&gs_lp=Egxnd3Mtd2l6LXNlcnAiGGNoYW1waW9ucyBpbiBsb2wgd2FycmlvcjIFECEYoAEyBRAhGJ8FMgUQIRifBTIFECEYnwUyBRAhGJ8FMgUQIRifBTIFECEYnwUyBRAhGJ8FMgUQIRifBTIFECEYnwVIyAVQAFipBHAAeAGQAQCYAYABoAGGA6oBAzMuMbgBA8gBAPgBAZgCBKAClgPCAgQQIxgnwgIIEAAYgAQYogTCAgcQIRigARgKmAMAkgcDMy4xoAegGw&sclient=gws-wiz-serp
@@ -108,4 +108,6 @@ c https://www.investing.com/economic-calendar/
 trade http://localhost:8000/index.html
 cl https://claude.ai/new
 trades http://localhost:8000/trades.html
-replay http://localhost:8000/index_replay.html
+replay http://localhost:8001/index_replay.html
+email https://chatgpt.com/c/6848a40c-3970-8002-9179-48df712c6029
+dist http://nil.csail.mit.edu/6.824/2020/schedule.html

@@ -37,9 +37,9 @@
     "zxlive": "file",
     "ZXLive": "file",
     "tikzit": "draw-polygon",
-    "tikzit": "draw-polygon",
 
     "steam": "steam",
+    "virt-manager": "desktop",
 
     "_no_match": "question"
 }

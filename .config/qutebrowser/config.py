@@ -128,5 +128,8 @@ config.bind("<ctrl+shift+r>",
 config.bind("<ctrl+shift+p>", "open -p")
 config.unbind("<ctrl+shift+w>")
 
-# config.bind("e", "spawn --userscript /home/ahsan/.config/qutebrowser/userscripts/view_in_mpv")
 config.bind("sp", "spawn --userscript qute-lastpass")
+
+# with config.pattern('*:///*') as p:
+#     config.unbind('h', mode='normal')
+#     config.unbind('l', mode='normal')

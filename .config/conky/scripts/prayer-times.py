@@ -4,8 +4,8 @@ import requests
 from datetime import datetime, timedelta
 
 # Location settings
-CITY = "Dhaka"
-COUNTRY = "Bangladesh"
+CITY = "London"
+COUNTRY = "United Kingdom"
 METHOD = 3  # Calculation method
 
 # Conky color tags

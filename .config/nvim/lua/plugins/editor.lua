@@ -55,12 +55,12 @@ return {
     },
     cmd = "Telescope",
     keys = {
-      { "<C-p>",      "<cmd>Telescope find_files<cr>",  desc = "Find files" },
-      { "<leader>/",  "<cmd>Telescope live_grep<cr>",   desc = "Live grep" },
-      { "<leader>?",  "<cmd>Telescope resume<cr>", desc = "Resume previous picker" },
-      { "<leader>b",  "<cmd>Telescope buffers<cr>",     desc = "Find buffers" },
-      { "<leader>gh", "<cmd>Telescope help_tags<cr>",   desc = "Help tags" },
-      { "<leader>gg", "<cmd>Telescope git_files<cr>",   desc = "Git files" },
+      { "<C-p>",      "<cmd>Telescope find_files<cr>", desc = "Find files" },
+      { "<leader>/",  "<cmd>Telescope live_grep<cr>",  desc = "Live grep" },
+      { "<leader>]",  "<cmd>Telescope resume<cr>",     desc = "Resume previous picker" },
+      { "<leader>b",  "<cmd>Telescope buffers<cr>",    desc = "Find buffers" },
+      { "<leader>gh", "<cmd>Telescope help_tags<cr>",  desc = "Help tags" },
+      { "<leader>gg", "<cmd>Telescope git_files<cr>",  desc = "Git files" },
       -- { "<leader>sr", "<cmd>Telescope resume<cr>",      desc = "Resume previous picker" },
     },
     config = function()
@@ -79,7 +79,7 @@ return {
             i = {
               ["jk"] = actions.close,
               ["kj"] = actions.close,
-              ["<C-s>"] = actions.select_vertical, -- open in vertical split
+              ["<C-s>"] = actions.select_vertical,   -- open in vertical split
               ["<C-v>"] = actions.select_horizontal, -- open in horizontal split
             },
             n = {
@@ -217,5 +217,10 @@ return {
       { "<leader>sw", '<cmd>lua require("spectre").open_visual({select_word=true})<CR>',      desc = "Search current word" },
       { "<leader>sp", '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', desc = "Search in current file" },
     }
+  },
+
+  {
+    "bngarren/checkmate.nvim",
+    ft = "todo",
   },
 }

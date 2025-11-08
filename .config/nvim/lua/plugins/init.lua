@@ -36,3 +36,17 @@ require("lazy").setup({
     },
   },
 })
+
+vim.keymap.set("n", "<leader>[", function()
+  require("telescope.builtin").find_files({
+    find_command = {
+      "rg",
+      "--files",
+      "--no-ignore",
+      "--hidden",
+      "--glob", "!**/_deps/*",
+      "--glob", "!**/third_party/*",
+      "--glob", "!**/CMakeFiles/*",
+    },
+  })
+end, { desc = "Find files (ignore .gitignore, exclude _deps)" })

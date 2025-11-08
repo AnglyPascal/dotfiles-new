@@ -36,49 +36,49 @@ run_step() {
   fi
 }
 
-link_directories () {
+link_directories() {
   ln -sf "$store/git/" "$root"
 
   rm -rf "$root"/{Desktop,Documents,Downloads,Music,Pictures,Public,Templates,Videos}
 
-  ln -sf "$store/desktop/"    "$root"
-  ln -sf "$store/documents/"  "$root"
-  ln -sf "$store/downloads/"  "$root"
-  ln -sf "$store/public/"     "$root"
-  ln -sf "$store/pictures/"   "$root"
-  ln -sf "$store/videos/"     "$root"
-  ln -sf "$store/manga/"      "$root"
-  ln -sf "$store/.software/"  "$root"
+  ln -sf "$store/desktop/" "$root"
+  ln -sf "$store/documents/" "$root"
+  ln -sf "$store/downloads/" "$root"
+  ln -sf "$store/public/" "$root"
+  ln -sf "$store/pictures/" "$root"
+  ln -sf "$store/videos/" "$root"
+  ln -sf "$store/manga/" "$root"
+  ln -sf "$store/.software/" "$root"
 }
 
-setup_dots () {
+setup_dots() {
   ln -sf "$dots/.scripts/" "$root"
-  ln -sf "$dots/.themes/"  "$root"
-  ln -sf "$dots/.vim"      "$root"
+  ln -sf "$dots/.themes/" "$root"
+  ln -sf "$dots/.vim" "$root"
 
-  for i in "$dots"/.*; do 
+  for i in "$dots"/.*; do
     [[ -f "$i" ]] && ln -sf "$i" "$root"
   done
 
-  for i in "$dots/.config/"*; do 
-    rm -rf "$root/.config/${i##*/}" 
+  for i in "$dots/.config/"*; do
+    rm -rf "$root/.config/${i##*/}"
     ln -s "$i" "$root/.config"
   done
 
   ln -sf "$root/.config/zsh/.zshrc" "$root"
 
-  for i in "$dots/.local/share/applications/"*; do 
+  for i in "$dots/.local/share/applications/"*; do
     ln -sf "$i" "$root/.local/share/applications/"
   done
 
   ln -sf "$dots/.local/share/fonts/" "$root/.local/share/"
 }
 
-git_setup () {
+git_setup() {
   git config --global credential.helper store
 }
 
-install_packages () {
+install_packages() {
   sudo pacman-mirrors -c Bangladesh
   sudo pacman -Syu --noconfirm
 
@@ -130,13 +130,13 @@ install_packages () {
   fi
 }
 
-install_omz (){
+install_omz() {
   sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   chsh -s "$(which zsh)"
   curl -sS https://starship.rs/install.sh | sh
 }
 
-install_yay_pip () {
+install_yay_pip() {
   curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | gpg --import -
 
   yay -S --noconfirm \
@@ -152,7 +152,7 @@ install_yay_pip () {
     black-macchiato catppuccin
 }
 
-tearfree () {
+tearfree() {
   if lspci | grep -i 'vga' | grep -qi 'amd'; then
     sudo cp "$dots/.sys/10-amdgpu.conf" /etc/X11/xorg.conf.d
   else
@@ -160,7 +160,7 @@ tearfree () {
   fi
 }
 
-main () {
+main() {
   run_step "Link directories" link_directories
   run_step "Setup dotfiles" setup_dots
   run_step "Git configuration" git_setup

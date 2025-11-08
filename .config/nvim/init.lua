@@ -34,4 +34,5 @@ if vim.fn.filereadable(project_local_config) == 1 then
   dofile(project_local_config)
 end
 
--- Add to your init.lua or keymaps config
+vim.o.exrc = true   -- allow project-local config files (.nvim.lua, .exrc)
+vim.o.secure = true -- disable unsafe commands in these files

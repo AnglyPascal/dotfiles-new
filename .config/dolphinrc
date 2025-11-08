@@ -23,9 +23,6 @@ eDP-1-1 Width 1366=700
 [Favorite Profiles]
 Favorites=
 
-[FoldersPanel]
-HiddenFilesShown=true
-
 [General]
 BrowseThroughArchives=true
 CloseActiveSplitView=false
@@ -45,7 +42,7 @@ ViewPropsTimestamp=2020,12,1,12,43,45
 [IconsMode]
 IconSize=64
 MaximumTextLines=2
-PreviewSize=240
+PreviewSize=192
 
 [KFileDialog Settings]
 Places Icons Auto-resize=false

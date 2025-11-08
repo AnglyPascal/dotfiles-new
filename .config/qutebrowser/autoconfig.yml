@@ -28,6 +28,7 @@ settings:
     https://jpmc.fa.oraclecloud.com: false
     https://search.jobs.barclays: false
     https://www.aldi.co.uk: true
+    https://www.axs.com: false
     https://www.foxtons.co.uk: true
     https://www.google.com: false
     https://www.johnsoncontrols.com: false
@@ -58,11 +59,13 @@ settings:
     simpcity.su: false
   content.media.audio_capture:
     https://app.roll20.net: false
+    https://chatgpt.com: false
     https://discord.com: true
     https://meet.google.com: true
     https://online-voice-recorder.com: true
     https://teams.microsoft.com: true
     https://www.messenger.com: true
+    https://www.youtube.com: true
   content.media.audio_video_capture:
     https://app.roll20.net: false
   content.media.video_capture:
