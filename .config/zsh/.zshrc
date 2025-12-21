@@ -5,7 +5,7 @@
 export ZSH="/home/ahsan/.oh-my-zsh"
 source "$HOME/.config/zsh/catppuccin_mocha.zsh"
 
-DISABLE_MAGIC_FUNCTIONS=true # disable OMZ magic functions
+DISABLE_MAGIC_FUNCTIONS=true
 ZSH_THEME=""
 
 plugins=(
@@ -20,6 +20,9 @@ plugins=(
     zsh-vi-mode
     # git clone https://github.com/jeffreytse/zsh-vi-mode.git \
     #   ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-vi-mode
+    autoswitch_virtualenv
+    # git clone "https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv.git" \
+    #   "$ZSH_CUSTOM/plugins/autoswitch_virtualenv"
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -31,10 +34,13 @@ source "$HOME/.config/zsh/media.zsh"
 source "$HOME/.config/zsh/utils.zsh"
 source "$HOME/.config/zsh/autocomplete.zsh"
 
-[[ -f "$HOME/git/oxford/misc/scripts/notes.zsh" ]] && source "$HOME/git/oxford/misc/scripts/notes.zsh"
+# [[ -f "$HOME/git/oxford/misc/scripts/notes.zsh" ]] && source "$HOME/git/oxford/misc/scripts/notes.zsh"
 [[ -f "$HOME/git/archive/socialsync/scripts/commands.zsh" ]] && source "$HOME/git/archive/socialsync/scripts/commands.zsh"
 
-[[ -f "$HOME/.venv/bin/activate" ]] && source "$HOME/.venv/bin/activate"
+# [[ -f "$HOME/.main/bin/activate" ]] && source "$HOME/.main/bin/activate"
+export AUTOSWITCH_DEFAULTENV="main"
+export AUTOSWITCH_SILENT=1
+
 
 ZVM_VI_INSERT_ESCAPE_BINDKEY=kj
 
@@ -79,3 +85,4 @@ fi
 
 export GOPATH="$HOME/.go"
 export PATH="$PATH:$GOPATH/bin"
+export GTEST_COLOR=1

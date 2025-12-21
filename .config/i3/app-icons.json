@@ -6,7 +6,7 @@
 
     "Alacritty": "terminal",
 
-    "thunderbird": "envelope",
+    "org.mozilla.Thunderbird": "envelope",
 
     "zathura": "file",
     "mcomix": "comment-dots",

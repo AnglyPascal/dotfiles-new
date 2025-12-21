@@ -8,17 +8,17 @@ return {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
-      -- "hrsh7th/cmp-vsnip",
-      -- "hrsh7th/vim-vsnip",
-      -- "rafamadriz/friendly-snippets",
+      "hrsh7th/cmp-vsnip",
+      "hrsh7th/vim-vsnip",
+      "rafamadriz/friendly-snippets",
     },
     config = function()
       local cmp = require("cmp")
 
       cmp.setup({
         snippet = {
-          expand = function(_)
-            -- vim.fn["vsnip#anonymous"](args.body)
+          expand = function(args)
+            vim.fn["vsnip#anonymous"](args.body)
           end,
         },
         mapping = cmp.mapping.preset.insert({
