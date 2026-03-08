@@ -135,7 +135,7 @@ sea() {
   fi
   dev="$(sudo blkid | rg "crypto_LUKS" | awk '{print substr($1, 1, length($1)-1)}')"
   sudo cryptsetup luksOpen $dev sea --key-file /root/sea.key
-  sudo mount /dev/mapper/sea sea; 
+  sudo mount /dev/mapper/sea sea
 }
 
 # Archive extraction with better error handling

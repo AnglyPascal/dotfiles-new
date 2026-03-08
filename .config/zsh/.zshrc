@@ -86,3 +86,7 @@ fi
 export GOPATH="$HOME/.go"
 export PATH="$PATH:$GOPATH/bin"
 export GTEST_COLOR=1
+
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_DATA_DIRS="$HOME/.local/share:$XDG_DATA_DIRS"
+

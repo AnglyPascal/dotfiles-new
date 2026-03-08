@@ -6,6 +6,8 @@
 mpv() { /usr/bin/mpv --force-window "$@" &! }
 mpvc() { /usr/bin/mpv --loop-file=0 "$@" &! }
 
+alias mcomix="PATH=/usr/bin:$PATH /usr/bin/mcomix"
+
 # Enhanced MPV shuffled playlist with path support
 mpvs() {
     local shuffle=true

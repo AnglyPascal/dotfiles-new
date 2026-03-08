@@ -9,6 +9,7 @@ require("lazy").setup({
   { import = "plugins.treesitter" },
   { import = "plugins.latex" },
   { import = "plugins.languages" },
+  { import = "plugins.molten" },
 }, {
   -- Lazy.nvim configuration
   defaults = {

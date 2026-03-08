@@ -180,6 +180,19 @@ function M.setup(on_attach, capabilities)
     root_markers = { 'Cargo.toml', 'rust-project.json', '.git' },
     capabilities = capabilities,
     on_attach = on_attach,
+    settings = {
+      ['rust-analyzer'] = {
+        cargo = {
+          allFeatures = true,
+        },
+        check = {
+          command = "clippy",
+        },
+        procMacro = {
+          enable = true,
+        },
+      },
+    },
   })
 
   -- cmake

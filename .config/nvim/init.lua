@@ -16,6 +16,8 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.g.polyglot_disabled = { 'latex' }
 
+vim.g.python3_host_prog = vim.fn.expand("/run/mount/store/.virtualenvs/main/bin/python3")
+
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then

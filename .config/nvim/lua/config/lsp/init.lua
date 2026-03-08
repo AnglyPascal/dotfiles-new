@@ -88,3 +88,5 @@ require("config.lsp.servers").setup(on_attach, capabilities)
 
 vim.lsp.set_log_level("WARN")
 require('vim.lsp.log').set_format_func(vim.inspect)
+
+require("config.lsp.servers").setup(on_attach, capabilities)

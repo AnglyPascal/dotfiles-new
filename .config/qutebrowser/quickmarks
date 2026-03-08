@@ -25,7 +25,7 @@ amazon https://www.amazon.co.uk/?ref=icp_country_us
 fp https://www.cs.ox.ac.uk/teaching/materials21-22/fp/
 anal https://courses.maths.ox.ac.uk/course/view.php?id=54
 meal https://hall.sjc.ox.ac.uk/m4meals/Default.aspx
-bili https://search.bilibili.com/all?keyword=garnidelia&from_source=webtop_search&spm_id_from=333.1007&order=pubdate&duration=0&tids_1=0&page=1
+bili https://search.bilibili.com/all?keyword=%E7%BE%8E%E4%BE%9D%E7%A4%BC%E8%8A%BD&from_source=webtop_search&spm_id_from=333.1007&tids_1=0&order=pubdate
 la https://courses.maths.ox.ac.uk/course/view.php?id=1047
 python https://py.mit.edu/fall21
 oxmail https://outlook.office.com/mail/inbox
@@ -111,3 +111,5 @@ trades http://localhost:8000/trades.html
 replay http://localhost:8001/index_replay.html
 email https://chatgpt.com/c/6848a40c-3970-8002-9179-48df712c6029
 dist http://nil.csail.mit.edu/6.824/2020/schedule.html
+grnd https://search.bilibili.com/all?keyword=garnidelia&from_source=webtop_search&spm_id_from=333.1007&order=pubdate&tids_1=0
+q https://quran.com/
