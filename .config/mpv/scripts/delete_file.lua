@@ -5,7 +5,7 @@ require 'mp.options'
 options = {}
 options.MoveToFolder = false
 
-if package.config:sub(1,1) == "/" then
+if package.config:sub(1, 1) == "/" then
    options.DeletedFilesPath = utils.join_path(os.getenv("HOME"), "delete_file")
    ops = "unix"
 else
@@ -61,11 +61,11 @@ function delete()
 
    for i, v in pairs(del_list) do
       if options.MoveToFolder then
-         print("moving: "..v)
+         print("moving: " .. v)
          local _, file_name = utils.split_path(v)
          --this loop will add a number to the file name if it already exists in the directory
          --But limit the number of iterations
-         for i = 1,100 do
+         for i = 1, 100 do
             if i > 1 then
                if file_name:find("[.].+$") then
                   file_name = file_name:gsub("([.].+)$", string.format("_%d%%1", i))
@@ -73,7 +73,7 @@ function delete()
                   file_name = string.format("%s_%d", file_name, i)
                end
             end
-            
+
             local movedPath = utils.join_path(options.DeletedFilesPath, file_name)
             local fileInfo = utils.file_info(movedPath)
             if not fileInfo then
@@ -82,7 +82,7 @@ function delete()
             end
          end
       else
-         print("deleting: "..v)
+         print("deleting: " .. v)
          os.remove(v)
       end
    end
@@ -90,9 +90,9 @@ end
 
 function showList()
    local delString = "Delete Marks:\n"
-   for _,v in pairs(del_list) do
-      local dFile = v:gsub("/","\\")
-      delString = delString..dFile:match("\\*([^\\]*)$").."; "
+   for _, v in pairs(del_list) do
+      local dFile = v:gsub("/", "\\")
+      delString = delString .. dFile:match("\\*([^\\]*)$") .. "; "
    end
    if delString:find(";") then
       mp.osd_message(delString)
@@ -101,12 +101,13 @@ function showList()
       showListTimer:kill()
    end
 end
-showListTimer = mp.add_periodic_timer(1,showList)
+
+showListTimer = mp.add_periodic_timer(1, showList)
 showListTimer:kill()
 function list_marks()
    if showListTimer:is_enabled() then
       showListTimer:kill()
-      mp.osd_message("",0)
+      mp.osd_message("", 0)
    else
       local delString = showList()
       if delString and delString:find(";") then
@@ -120,5 +121,7 @@ end
 
 mp.add_key_binding("DEL", "delete_file", mark_delete)
 mp.add_key_binding("alt+DEL", "list_marks", list_marks)
-mp.add_key_binding("ctrl+shift+DEL", "clear_list", function() mp.osd_message("Undelete all"); del_list = {}; end)
+mp.add_key_binding("ctrl+shift+DEL", "clear_list", function()
+   mp.osd_message("Undelete all"); del_list = {};
+end)
 mp.register_event("shutdown", delete)

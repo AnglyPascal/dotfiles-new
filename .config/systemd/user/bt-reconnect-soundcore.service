@@ -1,0 +1,16 @@
+[Unit]
+Description=Reconnect Soundcore P30i after WirePlumber is ready
+After=wireplumber.service
+Requires=wireplumber.service
+
+[Service]
+Type=oneshot
+ExecStartPre=/bin/sleep 2
+ExecStart=/usr/bin/bluetoothctl disconnect 34:09:C9:7D:9C:00
+ExecStartPost=/bin/sleep 1
+ExecStartPost=/usr/bin/bluetoothctl connect 34:09:C9:7D:9C:00
+RemainAfterExit=yes
+
+[Install]
+WantedBy=default.target
+

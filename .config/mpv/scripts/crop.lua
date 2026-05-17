@@ -30,6 +30,7 @@ function split(input)
     end
     return ret
 end
+
 local msg = require 'mp.msg'
 
 opts.accept = split(opts.accept)
@@ -37,6 +38,7 @@ opts.cancel = split(opts.cancel)
 function mode_ok(mode)
     return mode == "soft" or mode == "hard" or mode == "delogo"
 end
+
 if not mode_ok(opts.mode) then
     msg.error("Invalid mode value: " .. opts.mode)
     return
@@ -44,7 +46,7 @@ end
 
 local assdraw = require 'mp.assdraw'
 local active = false
-local active_mode = "" -- same possible values as opts.mode
+local active_mode = ""        -- same possible values as opts.mode
 local needs_drawing = false
 local crop_first_corner = nil -- in normalized video space
 local crop_cursor = {
@@ -133,9 +135,9 @@ function draw_shade(ass, unshaded, window)
     --     |     ll      |    |
     --     +-------------+----+
     ass:draw_start()
-    ass:rect_cw(v.top_left.x, v.top_left.y, c1.x, c2.y) -- ul
-    ass:rect_cw(c1.x, v.top_left.y, v.bottom_right.x, c1.y) -- ur
-    ass:rect_cw(v.top_left.x, c2.y, c2.x, v.bottom_right.y) -- ll
+    ass:rect_cw(v.top_left.x, v.top_left.y, c1.x, c2.y)         -- ul
+    ass:rect_cw(c1.x, v.top_left.y, v.bottom_right.x, c1.y)     -- ur
+    ass:rect_cw(v.top_left.x, c2.y, c2.x, v.bottom_right.y)     -- ll
     ass:rect_cw(c2.x, c1.y, v.bottom_right.x, v.bottom_right.y) -- lr
     ass:draw_stop()
     -- also possible to draw a rect over the whole video
@@ -193,10 +195,10 @@ function draw_position_text(ass, text, position, window_size, offset)
         align = align + 6
         ofy = 1
     end
-    ass:append("{\\an"..align.."}")
+    ass:append("{\\an" .. align .. "}")
     ass:append("{\\fs26}")
     ass:append("{\\bord1.5}")
-    ass:pos(ofx*offset + position.x, ofy*offset + position.y)
+    ass:pos(ofx * offset + position.x, ofy * offset + position.y)
     ass:append(text)
 end
 
@@ -250,8 +252,8 @@ function draw_crop_zone()
                 local text = string.format("%d, %d", cursor_norm.x * vop.w, cursor_norm.y * vop.h)
                 if crop_first_corner then
                     text = string.format("%s (%dx%d)", text,
-                        math.abs((cursor_norm.x - crop_first_corner.x) * vop.w ),
-                        math.abs((cursor_norm.y - crop_first_corner.y) * vop.h )
+                        math.abs((cursor_norm.x - crop_first_corner.x) * vop.w),
+                        math.abs((cursor_norm.y - crop_first_corner.y) * vop.h)
                     )
                 end
                 draw_position_text(ass, text, cursor, { w = dim.w, h = dim.h }, 6)
@@ -291,8 +293,8 @@ function crop_video(x, y, w, h, dim)
             if y + h == vop.h then h = h - 1 end
         end
         vf_table[#vf_table + 1] = {
-            name=(active_mode == "hard") and "crop" or "delogo",
-            params= { x = tostring(x), y = tostring(y), w = tostring(w), h = tostring(h) }
+            name = (active_mode == "hard") and "crop" or "delogo",
+            params = { x = tostring(x), y = tostring(y), w = tostring(w), h = tostring(h) }
         }
         mp.set_property_native("vf", vf_table)
     end
@@ -331,10 +333,10 @@ local bindings_repeat = {}
 function cancel_crop()
     crop_first_corner = nil
     for key, _ in pairs(bindings) do
-        mp.remove_key_binding("crop-"..key)
+        mp.remove_key_binding("crop-" .. key)
     end
     for key, _ in pairs(bindings_repeat) do
-        mp.remove_key_binding("crop-"..key)
+        mp.remove_key_binding("crop-" .. key)
     end
     mp.unobserve_property(redraw)
     mp.unregister_idle(draw_crop_zone)
@@ -365,10 +367,10 @@ function start_crop(mode)
     end
     redraw()
     for key, func in pairs(bindings) do
-        mp.add_forced_key_binding(key, "crop-"..key, func)
+        mp.add_forced_key_binding(key, "crop-" .. key, func)
     end
     for key, func in pairs(bindings_repeat) do
-        mp.add_forced_key_binding(key, "crop-"..key, func, { repeatable = true })
+        mp.add_forced_key_binding(key, "crop-" .. key, func, { repeatable = true })
     end
     mp.register_idle(draw_crop_zone)
     mp.observe_property("osd-dimensions", nil, redraw)
@@ -387,8 +389,8 @@ function toggle_crop(mode)
         if #vf_table > 0 then
             for i = #vf_table, 1, -1 do
                 if vf_table[i].name == to_remove then
-                    for j = i, #vf_table-1 do
-                        vf_table[j] = vf_table[j+1]
+                    for j = i, #vf_table - 1 do
+                        vf_table[j] = vf_table[j + 1]
                     end
                     vf_table[#vf_table] = nil
                     mp.set_property_native("vf", vf_table)
@@ -405,7 +407,9 @@ end
 
 -- bindings
 if opts.mouse_support then
-    bindings["MOUSE_MOVE"] = function() crop_cursor.x, crop_cursor.y = mp.get_mouse_pos(); redraw() end
+    bindings["MOUSE_MOVE"] = function()
+        crop_cursor.x, crop_cursor.y = mp.get_mouse_pos(); redraw()
+    end
 end
 for _, key in ipairs(opts.accept) do
     bindings[key] = update_crop_zone_state
@@ -420,6 +424,7 @@ function movement_func(move_x, move_y)
         redraw()
     end
 end
+
 bindings_repeat[opts.left_coarse]  = movement_func(-opts.coarse_movement, 0)
 bindings_repeat[opts.right_coarse] = movement_func(opts.coarse_movement, 0)
 bindings_repeat[opts.up_coarse]    = movement_func(0, -opts.coarse_movement)
