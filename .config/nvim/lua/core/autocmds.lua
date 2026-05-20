@@ -3,25 +3,12 @@ local api = vim.api
 -- Create augroups
 local general_group = api.nvim_create_augroup("General", { clear = true })
 local text_group = api.nvim_create_augroup("TextFiles", { clear = true })
-local spell_group = api.nvim_create_augroup("SpellCheck", { clear = true })
 
 -- Highlight on yank
 api.nvim_create_autocmd("TextYankPost", {
   group = general_group,
   callback = function()
     vim.highlight.on_yank()
-  end,
-})
-
--- Turn off spelling for files with syntax highlighting
-api.nvim_create_autocmd("BufEnter", {
-  group = spell_group,
-  callback = function()
-    if vim.o.syntax == '' then
-      vim.cmd([[hi SpellBad cterm=underline]])
-    else
-      vim.cmd([[hi clear SpellBad]])
-    end
   end,
 })
 
@@ -49,6 +36,7 @@ api.nvim_create_autocmd("FileType", {
   group = text_group,
   pattern = { "markdown", "tex", "text" },
   callback = function()
+    if vim.bo.buftype ~= "" then return end  -- skip floats/scratch (e.g. LSP hover)
     vim.opt_local.spell = true
     vim.opt_local.spelllang = "en_gb"
     vim.cmd([[ hi SpellBad cterm=underline ]])
@@ -59,6 +47,7 @@ api.nvim_create_autocmd("FileType", {
 api.nvim_create_autocmd("FileType", {
   pattern = "tex",
   callback = function()
+    if vim.bo.buftype ~= "" then return end
     local opts = { buffer = true, silent = true }
 
     vim.opt_local.spell = true
@@ -68,9 +57,6 @@ api.nvim_create_autocmd("FileType", {
     vim.opt_local.softtabstop = 4
     vim.opt_local.expandtab = true
     vim.opt_local.autoindent = true
-    vim.opt_local.foldmethod = 'marker'
-    vim.opt_local.foldmarker = 'BEGIN,END'
-
     -- LaTeX-specific keymaps
     vim.keymap.set("v", "<leader>m", ":s/\\\\(\\(.\\{-}\\)\\\\)/\\\\[\\1\\\\]/g<CR>", opts)
     vim.keymap.set("v", "<leader>n", ":s/\\\\\\[\\(.\\{-}\\)\\\\\\]/\\\\(\\1\\\\)/g<CR>", opts)
@@ -96,22 +82,12 @@ api.nvim_create_autocmd("FileType", {
 api.nvim_create_autocmd("FileType", {
   pattern = "python",
   callback = function()
-    vim.opt_local.foldmethod = 'indent'
-    vim.opt_local.foldlevel = 99
     vim.opt_local.tabstop = 4
     vim.opt_local.softtabstop = 4
     vim.opt_local.shiftwidth = 4
     vim.opt_local.autoindent = true
     vim.opt_local.fileformat = 'unix'
     vim.opt_local.formatoptions:remove("t")
-  end,
-})
-
--- Disable spell for specific filetypes
-api.nvim_create_autocmd("FileType", {
-  pattern = { "conf", "gas" },
-  callback = function()
-    vim.cmd([[hi clear SpellBad]])
   end,
 })
 

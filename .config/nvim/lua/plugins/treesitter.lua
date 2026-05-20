@@ -31,10 +31,6 @@ return {
           -- Only start if parser is installed
           if not pcall(vim.treesitter.start, buf, lang) then return end
 
-          -- Folding via treesitter (optional)
-          vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-          vim.wo.foldmethod = "expr"
-
           -- Indent via treesitter
           vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
         end,

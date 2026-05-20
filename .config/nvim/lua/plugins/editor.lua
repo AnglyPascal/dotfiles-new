@@ -125,10 +125,15 @@ return {
 
   -- Indent guides
   {
-    "nathanaelkane/vim-indent-guides",
-    cmd = "IndentGuidesToggle",
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    cmd = { "IBLToggle", "IBLEnable", "IBLDisable" },
     keys = {
-      { "<leader>r", "<cmd>IndentGuidesToggle<cr>", desc = "Toggle indent guides" },
+      { "<leader>r", "<cmd>IBLToggle<cr>", desc = "Toggle indent guides" },
+    },
+    opts = {
+      indent = { char = "|" },
+      scope = { enabled = false },
     },
   },
 
@@ -137,8 +142,13 @@ return {
     "rhysd/conflict-marker.vim",
     event = "BufReadPost",
     keys = {
-      { "cx", "<cmd>ConflictMarkerBoth<cr>",  desc = "Take both sides" },
-      { "cX", "<cmd>ConflictMarkerBoth!<cr>", desc = "Take both sides (reverse)" },
+      { "co", "<cmd>ConflictMarkerOurselves<cr>",  desc = "Conflict: take ours" },
+      { "ct", "<cmd>ConflictMarkerThemselves<cr>", desc = "Conflict: take theirs" },
+      { "cb", "<cmd>ConflictMarkerBoth<cr>",       desc = "Conflict: take both (ours first)" },
+      { "cB", "<cmd>ConflictMarkerBoth!<cr>",      desc = "Conflict: take both (theirs first)" },
+      { "cn", "<cmd>ConflictMarkerNone<cr>",       desc = "Conflict: take neither" },
+      { "]x", "<cmd>ConflictMarkerNextHunk<cr>",   desc = "Next conflict" },
+      { "[x", "<cmd>ConflictMarkerPrevHunk<cr>",   desc = "Prev conflict" },
     },
   },
 
@@ -170,11 +180,13 @@ return {
     cmd = { "GrammarousCheck", "GrammarousReset" },
   },
 
-  -- Color highlighter
+  -- Color highlighter (markdown + config/data formats only)
   {
     "catgoose/nvim-colorizer.lua",
-    event = "BufReadPre",
-    opts = {},
+    ft = { "markdown", "css", "scss", "html", "conf", "toml", "yaml", "json" },
+    opts = {
+      filetypes = { "markdown", "css", "scss", "html", "conf", "toml", "yaml", "json" },
+    },
   },
 
   -- Spectre for find/replace

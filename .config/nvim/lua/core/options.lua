@@ -22,6 +22,7 @@ opt.textwidth = 87
 opt.mouse = ""
 opt.splitright = true
 opt.signcolumn = "number"
+opt.foldenable = false
 opt.conceallevel = 2
 opt.termguicolors = true
 
@@ -32,7 +33,7 @@ g.shortmess = "atToOc"
 -- Spelling
 opt.spellfile = vim.fn.expand("~/.config/nvim/spell/en.utf-8.add")
 opt.encoding = "utf-8"
-opt.spell = true
+opt.spell = false
 opt.spelllang = "en_gb"
 
 -- Wildignore patterns

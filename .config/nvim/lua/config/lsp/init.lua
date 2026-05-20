@@ -55,10 +55,16 @@ vim.diagnostic.config({
   virtual_text = {
     prefix = "●",
     source = "if_many",
+    filter = function(diag)
+      return diag.source ~= "spell"
+    end,
   },
   float = {
     source = true,
     border = "rounded",
+    filter = function(diag)
+      return diag.source ~= "spell"
+    end,
   },
   signs = true,
   underline = true,
@@ -84,9 +90,4 @@ vim.diagnostic.config({
 })
 
 -- Configure servers
-require("config.lsp.servers").setup(on_attach, capabilities)
-
-vim.lsp.log.set_level("TRACE")
-require('vim.lsp.log').set_format_func(vim.inspect)
-
 require("config.lsp.servers").setup(on_attach, capabilities)
