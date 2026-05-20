@@ -13,20 +13,11 @@ alias rr='rm -r'
 alias cp="cp -i"
 
 # Modern tool replacements with fallbacks
-if command -v eza &> /dev/null; then
-    alias ls='eza --group-directories-first --icons'
-    alias ll='eza -la --group-directories-first --icons --git'
-    alias la='eza -a --group-directories-first --icons'
-    alias ld='eza -D'
-    alias lt='eza --tree'
-    alias lc='eza --group-directories-first --icons -I "*.class|*.out|*.o"'
-else
-    alias ls='ls -X --group-directories-first --color=auto'
-    alias ll='ls -alF'
-    alias la='ls -XA --group-directories-first --color=auto'
-    alias ld='ls -d */'
-    alias lc='ls --hide="*.class" --hide="*.out" --hide="*.o"'
-fi
+alias ls='ls -X --group-directories-first --color=auto'
+alias ll='ls -alF'
+alias la='ls -XA --group-directories-first --color=auto'
+alias ld='ls -d */'
+alias lc='ls --hide="*.class" --hide="*.out" --hide="*.o"'
 
 if command -v bat &> /dev/null; then
     alias cat='bat --paging=never'
@@ -47,7 +38,6 @@ fi
 
 if command -v rg &> /dev/null; then
     alias grep='rg'
-    alias rgh='history | rg'
 fi
 
 # System info
@@ -92,5 +82,3 @@ export PATH="~/.npm-global/bin:$PATH"
 
 # Custom tmux alias with your config
 alias tmux="tmux -f $TMUX_CONF"
-
-# Note: LS_COLORS loaded from your existing lscolors.sh by .zshrc

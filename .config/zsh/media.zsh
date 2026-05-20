@@ -184,3 +184,56 @@ z() {
 # Quick file managers
 alias r='ranger'
 alias fm='dolphin ./ &!'
+
+combine_videos() {
+    local output=""
+    local files=()
+
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            -o) output="$2"; shift 2;;
+            *)  files+=("$1"); shift;;
+        esac
+    done
+
+    if [[ -z "$output" || ${#files[@]} -eq 0 ]]; then
+        echo "Usage: combine_videos file1 file2 ... -o output.mkv"
+        return 1
+    fi
+
+    local list=$(mktemp /tmp/ffmpeg-concat-XXXX.txt)
+    for f in "${files[@]}"; do
+        printf "file '%s'\n" "$(realpath "$f")" >> "$list"
+    done
+
+    ffmpeg -f concat -safe 0 -i "$list" -c copy "$output"
+    rm "$list"
+}
+
+compress_video() {
+    local output=""
+    local input=""
+    local preset="medium"
+    local crf=22
+
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            -o)      output="$2"; shift 2;;
+            -preset) preset="$2"; shift 2;;
+            -crf)    crf="$2";    shift 2;;
+            *)       input="$1";  shift;;
+        esac
+    done
+
+    if [[ -z "$input" || -z "$output" ]]; then
+        echo "Usage: compress_video input.mkv -o output.mkv [-preset slow] [-crf 20]"
+        return 1
+    fi
+
+    ffmpeg -i "$input" \
+        -c:v libx265 -preset "$preset" -crf "$crf" \
+        -pix_fmt yuv420p10le \
+        -c:a aac -b:a 128k \
+        -sn \
+        "$output"
+}

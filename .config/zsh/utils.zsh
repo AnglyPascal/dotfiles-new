@@ -7,20 +7,20 @@ if command -v fd &> /dev/null; then
     # Modern find using fd
     ff() {
         local pattern="$1"
-        local path="${2:-.}"
-        fd -i "$pattern" "$path"
+        local dir="${2:-.}"
+        fd -i "$pattern" "$dir"
     }
     
     fe() {
         local ext="$1" 
-        local path="${2:-.}"
-        fd -e "$ext" "$path"
+        local dir="${2:-.}"
+        fd -e "$ext" "$dir"
     }
     
     fdir() {
         local pattern="$1"
-        local path="${2:-.}"
-        fd -t d -i "$pattern" "$path"
+        local dir="${2:-.}"
+        fd -t d -i "$pattern" "$dir"
     }
     
     fx() {
@@ -32,23 +32,23 @@ else
     # Fallback find functions
     ff() {
         local pattern="$1"
-        local path="${2:-.}"
-        echo "🔍 Searching for: $pattern in $path"
-        find "$path" -iname "*$pattern*" -type f 2>/dev/null
+        local dir="${2:-.}"
+        echo "🔍 Searching for: $pattern in $dir"
+        find "$dir" -iname "*$pattern*" -type f 2>/dev/null
     }
     
     fe() {
         local ext="$1"
-        local path="${2:-.}"
-        echo "🔍 Finding .$ext files in $path"
-        find "$path" -name "*.$ext" -type f 2>/dev/null
+        local dir="${2:-.}"
+        echo "🔍 Finding .$ext files in $dir"
+        find "$dir" -name "*.$ext" -type f 2>/dev/null
     }
     
     fdir() {
         local pattern="$1"
-        local path="${2:-.}"
-        echo "🔍 Finding directories: $pattern in $path"
-        find "$path" -type d -iname "*$pattern*" 2>/dev/null
+        local dir="${2:-.}"
+        echo "🔍 Finding directories: $pattern in $dir"
+        find "$dir" -type d -iname "*$pattern*" 2>/dev/null
     }
     
     fx() {
@@ -81,13 +81,13 @@ fp() {
 # Content search in files
 fs() {
     local pattern="$1"
-    local path="${2:-.}"
-    echo "🔍 Searching content: $pattern in $path"
+    local dir="${2:-.}"
+    echo "🔍 Searching content: $pattern in $dir"
     
     if command -v rg &> /dev/null; then
-        rg -i "$pattern" "$path"
+        rg -i "$pattern" "$dir"
     else
-        grep -r -i "$pattern" "$path"
+        grep -r -i "$pattern" "$dir"
     fi
 }
 
@@ -190,23 +190,23 @@ uz() {
 fhelp() {
     echo "🔍 Find Functions Help"
     echo "====================="
-    echo "  ff <pattern> [path]  │ Find files by name (case insensitive)"
-    echo "  fe <ext> [path]      │ Find files by extension"
-    echo "  fdir <pattern>       │ Find directories"
-    echo "  fx <pattern> <cmd>   │ Find files and execute command"
-    echo "  fv [path]           │ Find video files"
-    echo "  fp [path]           │ Find image files"
-    echo "  fs <pattern> [path]  │ Search file contents"
-    echo "  fmod [days]          │ Find recently modified files"
-    echo "  flarge [mb]          │ Find large files (default: 100MB+)"
+    echo "  ff <pattern> [dir]  │ Find files by name (case insensitive)"
+    echo "  fe <ext> [dir]      │ Find files by extension"
+    echo "  fdir <pattern>      │ Find directories"
+    echo "  fx <pattern> <cmd>  │ Find files and execute command"
+    echo "  fv [dir]            │ Find video files"
+    echo "  fp [dir]            │ Find image files"
+    echo "  fs <pattern> [dir]  │ Search file contents"
+    echo "  fmod [days]         │ Find recently modified files"
+    echo "  flarge [mb]         │ Find large files (default: 100MB+)"
     echo
     echo "Examples:"
-    echo "  ff config            │ Find files containing 'config'"
-    echo "  fe cpp               │ Find all .cpp files"  
-    echo "  fdir build           │ Find directories with 'build' in name"
-    echo "  fx '*.log' rm        │ Delete all log files"
-    echo "  fs 'TODO'            │ Search for 'TODO' in files"
-    echo "  fmod 3               │ Files modified in last 3 days"
+    echo "  ff config           │ Find files containing 'config'"
+    echo "  fe cpp              │ Find all .cpp files"  
+    echo "  fdir build          │ Find directories with 'build' in name"
+    echo "  fx '*.log' rm       │ Delete all log files"
+    echo "  fs 'TODO'           │ Search for 'TODO' in files"
+    echo "  fmod 3              │ Files modified in last 3 days"
 }
 
 cq() {
@@ -223,12 +223,18 @@ cq() {
 }
 
 tk() {
-    temp=yt_temp
-    if [[ -f "yt_temp" ]]; then rm $temp; fi
-    cq $1 $temp
+    local temp=yt_temp
+    [[ -f "$temp" ]] && rm "$temp"
+    cq "$1" "$temp"
     while IFS= read -r line; do
-        format="%(upload_date>%Y-%m-%d)s_%(epoch-3600>%H-%M-%S)s_%(title)s_%(id)s.%(ext)s"
-        yt-dlp -o "$format" "$line"
-    done < $temp
-    rm $temp 
+        local fmt="%(upload_date>%Y-%m-%d)s_%(epoch-3600>%H-%M-%S)s_%(title)s_%(id)s.%(ext)s"
+        yt-dlp \
+            -f "bestvideo+bestaudio/best" \
+            --merge-output-format mkv \
+            -o "$fmt" \
+            --remote-components ejs:npm \
+            "${@:2}" \
+            "$line"
+    done < "$temp"
+    rm "$temp"
 }
