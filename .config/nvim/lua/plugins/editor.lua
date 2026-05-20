@@ -172,11 +172,9 @@ return {
 
   -- Color highlighter
   {
-    "norcalli/nvim-colorizer.lua",
-    event = "BufReadPost",
-    config = function()
-      require("colorizer").setup()
-    end,
+    "catgoose/nvim-colorizer.lua",
+    event = "BufReadPre",
+    opts = {},
   },
 
   -- Spectre for find/replace

@@ -1,67 +1,43 @@
 return {
-  -- Treesitter for better syntax highlighting
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
+    lazy = false,
     build = ":TSUpdate",
-    event = { "BufReadPost", "BufNewFile" },
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter-textobjects",
-      -- "OXY2DEV/markview.nvim",
-    },
     config = function()
-      require("nvim-treesitter.configs").setup({
-        ensure_installed = {
-          "c", "cpp", "lua", "python", "javascript", "typescript",
-          "rust", "scala", "ocaml", "bash", "vim", "vimdoc",
-          "markdown", "json", "yaml", "toml", "html", "css",
-        },
-        ignore_install = { "latex" },
-        auto_install = true,
-        sync_install = false, -- add this
-        modules = {},         -- add this
-        highlight = {
-          enable = true,
-          disable = { "latex" },
-          additional_vim_regex_highlighting = { "latex" },
-        },
-        indent = {
-          enable = true,
-          disable = { "latex" },
-        },
-        textobjects = {
-          select = {
-            enable = true,
-            lookahead = true,
-            keymaps = {
-              ["af"] = "@function.outer",
-              ["if"] = "@function.inner",
-              ["ac"] = "@class.outer",
-              ["ic"] = "@class.inner",
-              ["aa"] = "@parameter.outer",
-              ["ia"] = "@parameter.inner",
-            },
-          },
-          move = {
-            enable = true,
-            set_jumps = true,
-            goto_next_start = {
-              ["]m"] = "@function.outer",
-              ["]]"] = "@class.outer",
-            },
-            goto_next_end = {
-              ["]M"] = "@function.outer",
-              ["]["] = "@class.outer",
-            },
-            goto_previous_start = {
-              ["[m"] = "@function.outer",
-              ["[["] = "@class.outer",
-            },
-            goto_previous_end = {
-              ["[M"] = "@function.outer",
-              ["[]"] = "@class.outer",
-            },
-          },
-        },
+      require("nvim-treesitter").setup({
+        -- install_dir is optional; defaults to stdpath("data")/site
+      })
+
+      -- Install parsers (async). Only runs missing ones.
+      require("nvim-treesitter").install({
+        "c", "cpp", "lua", "python", "javascript", "typescript", "tsx",
+        "rust", "scala", "ocaml", "bash", "vim", "vimdoc",
+        "markdown", "markdown_inline", "json", "yaml", "toml", "html", "css",
+      })
+
+      -- Enable highlighting + indent per filetype.
+      -- The main branch does NOT auto-enable these; you must do it yourself.
+      vim.api.nvim_create_autocmd("FileType", {
+        callback = function(args)
+          local buf = args.buf
+          local ft = vim.bo[buf].filetype
+          if ft == "latex" then return end
+
+          -- Map filetype -> parser language if they differ
+          local lang = vim.treesitter.language.get_lang(ft)
+          if not lang then return end
+
+          -- Only start if parser is installed
+          if not pcall(vim.treesitter.start, buf, lang) then return end
+
+          -- Folding via treesitter (optional)
+          vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+          vim.wo.foldmethod = "expr"
+
+          -- Indent via treesitter
+          vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end,
       })
     end,
   },
@@ -71,13 +47,9 @@ return {
     ft = "markdown",
     opts = {
       markdown = {
-        list_items = {
-          enable = false,
-        },
-        headings = {
-          shift_width = 0,
-        },
+        list_items = { enable = false },
+        headings = { shift_width = 0 },
       },
     },
-  }
+  },
 }

@@ -39,7 +39,7 @@ local function on_attach(client, bufnr)
   end
 
   -- Formatting
-  if client.supports_method("textDocument/formatting") then
+  if client:supports_method("textDocument/formatting") then
     keymap("n", "<leader>f", function()
       vim.lsp.buf.format({ async = true })
     end, opts)
@@ -86,7 +86,7 @@ vim.diagnostic.config({
 -- Configure servers
 require("config.lsp.servers").setup(on_attach, capabilities)
 
-vim.lsp.set_log_level("WARN")
+vim.lsp.log.set_level("TRACE")
 require('vim.lsp.log').set_format_func(vim.inspect)
 
 require("config.lsp.servers").setup(on_attach, capabilities)
