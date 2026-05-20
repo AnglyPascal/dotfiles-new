@@ -108,19 +108,12 @@ return {
     event = { "BufReadPre", "BufNewFile" },
   },
 
-  -- Commentary
+  -- Surround (Lua rewrite, same cs/ds/ys keys, proper dot-repeat)
   {
-    "tpope/vim-commentary",
-    keys = {
-      { "gc",  mode = { "n", "v" } },
-      { "gcc", mode = "n" },
-    },
-  },
-
-  -- Surround
-  {
-    "tpope/vim-surround",
-    keys = { "cs", "ds", "ys" },
+    "kylechui/nvim-surround",
+    version = "*",
+    event = "VeryLazy",
+    opts = {},
   },
 
   -- Indent guides

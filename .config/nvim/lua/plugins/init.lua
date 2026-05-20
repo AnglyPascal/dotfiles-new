@@ -8,6 +8,7 @@ require("lazy").setup({
   { import = "plugins.git" },
   { import = "plugins.treesitter" },
   { import = "plugins.latex" },
+  { import = "plugins.formatting" },
   { import = "plugins.languages" },
   { import = "plugins.molten" },
 }, {

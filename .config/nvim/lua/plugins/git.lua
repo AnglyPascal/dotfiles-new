@@ -11,6 +11,18 @@ return {
     },
   },
 
+  -- Side-by-side diffs and file history
+  {
+    "sindrets/diffview.nvim",
+    cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewFileHistory" },
+    keys = {
+      { "<leader>gv", "<cmd>DiffviewOpen<cr>",              desc = "Diffview open" },
+      { "<leader>gV", "<cmd>DiffviewFileHistory %<cr>",     desc = "Diffview file history" },
+      { "<leader>gq", "<cmd>DiffviewClose<cr>",             desc = "Diffview close" },
+    },
+    opts = {},
+  },
+
   {
     "lewis6991/gitsigns.nvim",
     lazy = false,  -- load eagerly so it's available

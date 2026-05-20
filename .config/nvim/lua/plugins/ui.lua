@@ -36,9 +36,4 @@ return {
     lazy = true,
   },
 
-  -- Better syntax highlighting (polyglot replacement)
-  {
-    "sheerun/vim-polyglot",
-    event = { "BufReadPre", "BufNewFile" },
-  },
 }

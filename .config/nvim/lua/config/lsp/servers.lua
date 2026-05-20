@@ -42,7 +42,6 @@ function M.setup(on_attach, capabilities)
       client.server_capabilities.documentFormattingProvider = false
       client.server_capabilities.documentRangeFormattingProvider = false
       on_attach(client, bufnr)
-      vim.bo[bufnr].formatprg = 'yapf'
     end,
     settings = {
       python = {
@@ -53,19 +52,6 @@ function M.setup(on_attach, capabilities)
         },
       },
     },
-  })
-
-  vim.api.nvim_create_autocmd('FileType', {
-    pattern = 'python',
-    group = vim.api.nvim_create_augroup('python_yapf', { clear = true }),
-    callback = function(args)
-      local bufnr = args.buf
-      vim.keymap.set('n', '<leader>f', function()
-        local view = vim.fn.winsaveview()
-        vim.cmd('%!yapf')
-        vim.fn.winrestview(view)
-      end, { buffer = bufnr, desc = 'Format with yapf' })
-    end,
   })
 
   -- jsonls

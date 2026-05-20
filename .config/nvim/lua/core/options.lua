@@ -2,7 +2,6 @@ local opt = vim.opt
 local g = vim.g
 
 -- General settings
-opt.compatible = false
 opt.number = true
 opt.relativenumber = true
 opt.autoindent = true
@@ -44,9 +43,6 @@ opt.wildignore:append("*.blg,*.class,*.bbl,*.toc,*.xdv,*.ent")
 
 -- Plugin-specific globals
 g.auto_save = 1
-g.indent_guides_guide_size = 1
-g.indent_guides_color_change_percent = 5
-g.ctrlp_working_path_mode = ''
 
 -- UltiSnips
 g.UltiSnipsExpandTrigger = '<tab>'
@@ -55,31 +51,19 @@ g.UltiSnipsJumpBackwardTrigger = '<s-tab>'
 g.UltiSnipsEditSplit = "vertical"
 g.UltiSnipsSnippetDirectories = { vim.fn.expand("~/.vim/UltiSnips"), "UltiSnips" }
 
--- Markdown
-g.vim_markdown_follow_anchor = 1
-
 -- Python
 g.python_highlight_all = 1
 
 -- LaTeX
 g.tex_flavor = 'lualatex'
 g.vimtex_quickfix_mode = 0
-g.Tex_FormatDependency_dvi = 'dvi,ps,pdf'
-g.vimtex_view_general_viewer = 'zathura'
-g.vimtex_view_method = 'zathura'
-g.vimtex_view_automatic = 0
-g.vimtex_quickfix_open_on_warning = 0
-g.Tex_BibtexFlavor = 'biber'
 g.tex_conceal = "abdgm"
 g.tex_conceal_frac = 1
 g.vimtex_matchparen_enabled = 0
 g.matchup_override_vimtex = 1
-g.vimtex_delim_stopline = 100
 
 -- LaTeX format
 g.latexfmt_no_join_any = {
   '\\ifextraC', '\\ifextraA', '\\ifextraB', '\\fi', '\\else'
 }
 
--- C++
-g.cpp_type_name_highlight = 1
