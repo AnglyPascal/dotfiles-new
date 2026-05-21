@@ -35,7 +35,7 @@ cpp_build() {
         ms|minsize|minsizerel)
             build_type="MinSizeRel" ;;
         *)
-            echo "⚠️  Unknown build type: $build_type"
+            echo "[!] Unknown build type: $build_type"
             echo "   Valid options: d/debug, r/release, rd/relwithdebinfo, ms/minsizerel"
             return 1 ;;
     esac
@@ -49,7 +49,7 @@ cpp_build() {
         fi
     fi
     
-    echo "🔨 Building C++ project..."
+    echo "Building C++ project..."
     echo "   Build dir: $build_dir"
     echo "   Type: $build_type"
     
@@ -84,7 +84,7 @@ cpp_clean() {
     esac
     
     if [[ -d "$build_dir" ]]; then
-        echo "🧹 Cleaning build directory: $build_dir"
+        echo "Cleaning build directory: $build_dir"
         rm -rf "$build_dir"
     else
         echo "No build directory found: $build_dir"
@@ -108,10 +108,10 @@ cpp_run() {
     esac
     
     if [[ -f "$build_dir/$binary" ]]; then
-        echo "🚀 Running: $build_dir/$binary"
+        echo "Running: $build_dir/$binary"
         "$build_dir/$binary"
     else
-        echo "❌ Binary not found: $build_dir/$binary"
+        echo "[x] Binary not found: $build_dir/$binary"
         return 1
     fi
 }
@@ -122,17 +122,17 @@ com() {
     local output="${file%.*}"
     
     if [[ ! -f "$file" ]]; then
-        echo "❌ File not found: $file"
+        echo "[x] File not found: $file"
         return 1
     fi
     
-    echo "🔨 Compiling: $file"
+    echo "Compiling: $file"
     if g++ -std=c++20 -Wall -Wextra -O2 "$file" -o "$output"; then
-        echo "✅ Compilation successful"
-        echo "🚀 Running: $output"
+        echo "[✓] Compilation successful"
+        echo "Running: $output"
         "./$output"
     else
-        echo "❌ Compilation failed"
+        echo "[x] Compilation failed"
         return 1
     fi
 }
@@ -141,7 +141,7 @@ com() {
 gcheat() {
     case "${1:-help}" in
         help|--help|-h)
-            echo "🎯 Git Cheat Sheet"
+            echo "Git Cheat Sheet"
             echo "=================="
             echo "  gcheat basic     │ Basic operations (status, add, commit)"
             echo "  gcheat branch    │ Branch operations"
@@ -152,7 +152,7 @@ gcheat() {
             echo "  gcheat aliases   │ Show current git aliases"
             ;;
         basic)
-            echo "📋 Basic Git Operations"
+            echo "Basic Git Operations"
             echo "======================="
             echo "  git status               │ gst    │ Show repo status"
             echo "  git add                  │ ga     │ Stage all changes"
@@ -165,7 +165,7 @@ gcheat() {
             echo "  git diff                 │ gdiff  │ Show changes"
             ;;
         branch)
-            echo "🌿 Branch Operations"
+            echo "Branch Operations"
             echo "==================="
             echo "  git checkout <branch>    │ gco    │ Switch to branch"
             echo "  git checkout -b <name>   │ gcb    │ Create & switch"
@@ -177,7 +177,7 @@ gcheat() {
             echo "  git branch -m <new>      │        │ Rename current branch"
             ;;
         remote)
-            echo "🔄 Remote Operations"
+            echo "Remote Operations"
             echo "==================="
             echo "  git remote -v               │        │ Show remotes"
             echo "  git fetch                   │        │ Fetch changes"
@@ -187,7 +187,7 @@ gcheat() {
             echo "  git remote add <n> <url>    │        │ Add remote"
             ;;
         undo)
-            echo "🔧 Undo Operations"
+            echo "Undo Operations"
             echo "=================="
             echo "  git checkout -- <file>   │        │ Discard file changes"
             echo "  git reset HEAD <file>    │        │ Unstage file"
@@ -199,7 +199,7 @@ gcheat() {
             echo "  git stash pop            │        │ Apply last stash"
             ;;
         search)
-            echo "🔍 Search Operations"
+            echo "Search Operations"
             echo "==================="
             echo "  git grep <pattern>       │ grg    │ Search tracked files"
             echo "  git log --grep=\"msg\"     │        │ Search commit messages"
@@ -209,7 +209,7 @@ gcheat() {
             echo "  git show <commit>        │        │ Show commit details"
             ;;
         config)
-            echo "⚙️  Configuration"
+            echo "Configuration"
             echo "=================="
             echo "  git config user.name \"N\"       │ Set username"
             echo "  git config user.email \"E\"      │ Set email"
@@ -218,7 +218,7 @@ gcheat() {
             echo "  git config core.editor nvim    │ Set editor"
             ;;
         aliases)
-            echo "🎯 Current Git Aliases"
+            echo "Current Git Aliases"
             echo "====================="
             if git config --get-regexp alias &>/dev/null; then
                 git config --get-regexp alias | sed 's/alias\.//' | column -t -s ' '
@@ -227,7 +227,7 @@ gcheat() {
             fi
             ;;
         *)
-            echo "❌ Unknown section: $1"
+            echo "[x] Unknown section: $1"
             echo "Use 'gcheat help' to see available sections"
             ;;
     esac

@@ -33,35 +33,35 @@ else
     ff() {
         local pattern="$1"
         local dir="${2:-.}"
-        echo "🔍 Searching for: $pattern in $dir"
+        echo "Searching for: $pattern in $dir"
         find "$dir" -iname "*$pattern*" -type f 2>/dev/null
     }
     
     fe() {
         local ext="$1"
         local dir="${2:-.}"
-        echo "🔍 Finding .$ext files in $dir"
+        echo "Finding .$ext files in $dir"
         find "$dir" -name "*.$ext" -type f 2>/dev/null
     }
     
     fdir() {
         local pattern="$1"
         local dir="${2:-.}"
-        echo "🔍 Finding directories: $pattern in $dir"
+        echo "Finding directories: $pattern in $dir"
         find "$dir" -type d -iname "*$pattern*" 2>/dev/null
     }
     
     fx() {
         local pattern="$1"
         shift
-        echo "🔍 Finding and executing: $pattern"
+        echo "Finding and executing: $pattern"
         find . -iname "*$pattern*" -type f -exec "$@" {} \;
     }
 fi
 
 # Quick media file searches
 fv() { 
-    echo "🎬 Finding video files..."
+    echo "Finding video files..."
     if command -v fd &> /dev/null; then
         fd -e mp4 -e mkv -e webm -e mov -e avi -e wmv -e flv "${1:-.}"
     else
@@ -70,7 +70,7 @@ fv() {
 }
 
 fp() {
-    echo "🖼️  Finding image files..."
+    echo "Finding image files..."
     if command -v fd &> /dev/null; then
         fd -e jpg -e jpeg -e png -e webp -e bmp "${1:-.}"
     else
@@ -82,7 +82,7 @@ fp() {
 fs() {
     local pattern="$1"
     local dir="${2:-.}"
-    echo "🔍 Searching content: $pattern in $dir"
+    echo "Searching content: $pattern in $dir"
     
     if command -v rg &> /dev/null; then
         rg -i "$pattern" "$dir"
@@ -94,7 +94,7 @@ fs() {
 # Time-based find functions
 fmod() {
     local days="${1:-1}"
-    echo "🕐 Finding files modified in last $days day(s)..."
+    echo "Finding files modified in last $days day(s)..."
     
     if command -v fd &> /dev/null; then
         fd --changed-within "${days}d" --type f
@@ -105,22 +105,12 @@ fmod() {
 
 flarge() {
     local size="${1:-100}"
-    echo "📊 Finding files larger than ${size}MB..."
+    echo "Finding files larger than ${size}MB..."
     
     if command -v fd &> /dev/null; then
         fd --size +"${size}m" --type f
     else
         find . -size +"${size}M" -type f
-    fi
-}
-
-# Directory size analysis
-sizes() {
-    echo "📊 Directory sizes:"
-    if command -v dust &> /dev/null; then
-        dust -d 1
-    else
-        du -h --max-depth=1 | sort -hr
     fi
 }
 
@@ -138,57 +128,52 @@ sea() {
   sudo mount /dev/mapper/sea sea
 }
 
-# Archive extraction with better error handling
+# ex <archive> [target_dir]
 ex() {
-    if [[ ! -f "$1" ]]; then
-        echo "❌ File not found: $1"
+    local archive="$1"
+    local dir="${2:-.}"
+
+    if [[ ! -f "$archive" ]]; then
+        echo "[x] File not found: $archive"
         return 1
     fi
-    
-    echo "📦 Extracting: $1"
-    case "$1" in
-        *.tar.bz2|*.tbz2) tar xjf "$1" ;;
-        *.tar.gz|*.tgz) tar xzf "$1" ;;
-        *.tar.xz) tar xJf "$1" ;;
-        *.tar) tar xf "$1" ;;
-        *.bz2) bunzip2 "$1" ;;
-        *.rar) unrar x "$1" ;;
-        *.gz) gunzip "$1" ;;
-        *.zip) unzip "$1" ;;
-        *.Z) uncompress "$1" ;;
-        *.7z) 7z x "$1" ;;
-        *.xz) unxz "$1" ;;
-        *.lzma) unlzma "$1" ;;
-        *) echo "❌ Unsupported format: $1"; return 1 ;;
+
+    [[ "$dir" != "." ]] && mkdir -p "$dir"
+    echo "Extracting: $archive${2:+ → $dir/}"
+
+    case "$archive" in
+        *.tar.bz2|*.tbz2)  tar xjf "$archive" -C "$dir" ;;
+        *.tar.gz|*.tgz)    tar xzf "$archive" -C "$dir" ;;
+        *.tar.xz)          tar xJf "$archive" -C "$dir" ;;
+        *.tar)             tar xf  "$archive" -C "$dir" ;;
+        *.zip)             unzip "$archive" -d "$dir" ;;
+        *.rar)             unrar x "$archive" "$dir/" ;;
+        *.7z)              7z x "$archive" -o"$dir" ;;
+        *.bz2)             bunzip2 "$archive" ;;
+        *.gz)              gunzip "$archive" ;;
+        *.Z)               uncompress "$archive" ;;
+        *.xz)              unxz "$archive" ;;
+        *.lzma)            unlzma "$archive" ;;
+        *) echo "[x] Unsupported format: $archive"; return 1 ;;
     esac
-    echo "✅ Extraction complete"
+    echo "[✓] Extraction complete"
 }
 
-# Extract all archives to individual folders
+# Extract all archives in cwd, each into a folder named after the archive
 uz() {
     local count=0
     for archive in *.{zip,rar,7z}(N); do
         [[ -f "$archive" ]] || continue
-        local name="${archive%.*}"
-        mkdir -p "$name"
-        
-        case "$archive" in
-            *.zip) unzip "$archive" -d "$name" ;;
-            *.rar) unrar x "$archive" "$name/" ;;
-            *.7z) 7z x "$archive" -o"$name" ;;
-        esac
-        
-        echo "✅ $archive → $name/"
-        ((count++))
+        ex "$archive" "${archive%.*}" && ((count++))
     done
-    
+
     [[ $count -eq 0 ]] && echo "No archives found to extract"
-    [[ $count -gt 0 ]] && echo "🎉 Extracted $count archive(s)"
+    [[ $count -gt 0 ]] && echo "Extracted $count archive(s)"
 }
 
 # Find help function
 fhelp() {
-    echo "🔍 Find Functions Help"
+    echo "Find Functions Help"
     echo "====================="
     echo "  ff <pattern> [dir]  │ Find files by name (case insensitive)"
     echo "  fe <ext> [dir]      │ Find files by extension"

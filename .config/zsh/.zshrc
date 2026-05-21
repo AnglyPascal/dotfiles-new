@@ -2,7 +2,7 @@
 # ~/.zshrc - Modular config with OMZ + Starship (Simple Source Approach)
 # =============================================================================
 
-export ZSH="/home/ahsan/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 source "$HOME/.config/zsh/catppuccin_mocha.zsh"
 
 DISABLE_MAGIC_FUNCTIONS=true
@@ -34,23 +34,33 @@ source "$HOME/.config/zsh/media.zsh"
 source "$HOME/.config/zsh/utils.zsh"
 source "$HOME/.config/zsh/autocomplete.zsh"
 
-# [[ -f "$HOME/git/oxford/misc/scripts/notes.zsh" ]] && source "$HOME/git/oxford/misc/scripts/notes.zsh"
 [[ -f "$HOME/git/archive/socialsync/scripts/commands.zsh" ]] && source "$HOME/git/archive/socialsync/scripts/commands.zsh"
 
-# [[ -f "$HOME/.main/bin/activate" ]] && source "$HOME/.main/bin/activate"
 export AUTOSWITCH_DEFAULTENV="main"
 export AUTOSWITCH_SILENT=1
 
-
 ZVM_VI_INSERT_ESCAPE_BINDKEY=kj
 
-bindkey -r '\e/'
+zvm_after_init() {
+    bindkey -r '\e/'
 
-bindkey -s ";l" 'ls^M'
-bindkey -s ";f" 'fm;q^M'
-bindkey -s ";n" 'nvim^M'
-bindkey -s ";r" 'ranger^M'
-bindkey -s ";/" 'grg '
+    bindkey -s ";l" 'ls^M'
+    bindkey -s ";f" 'fm;q^M'
+    bindkey -s ";n" 'nvim^M'
+    bindkey -s ";r" 'ranger^M'
+    bindkey -s ";/" 'grg '
+
+    bindkey '^R' history-incremental-search-backward
+    bindkey '^S' history-incremental-search-forward
+
+    if zle -la history-substring-search-up; then
+        bindkey '^P' history-substring-search-up
+        bindkey '^N' history-substring-search-down
+    else
+        bindkey '^P' up-line-or-history
+        bindkey '^N' down-line-or-history
+    fi
+}
 
 HISTFILE=~/.zsh_history
 HISTSIZE=50000
@@ -66,16 +76,6 @@ setopt HIST_SAVE_NO_DUPS
 setopt EXTENDED_GLOB
 setopt NO_CASE_GLOB
 
-bindkey '^R' history-incremental-search-backward
-bindkey '^S' history-incremental-search-forward
-
-if zle -la history-substring-search-up; then
-    bindkey '^P' history-substring-search-up
-    bindkey '^N' history-substring-search-down
-else
-    bindkey '^P' up-line-or-history
-    bindkey '^N' down-line-or-history
-fi
 
 if command -v starship &>/dev/null; then
     eval "$(starship init zsh)"
@@ -90,4 +90,4 @@ export GTEST_COLOR=1
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_DATA_DIRS="$HOME/.local/share:$XDG_DATA_DIRS"
 
-. "/home/ahsan/.deno/env"
+[[ -f "$HOME/.deno/env" ]] && . "$HOME/.deno/env"

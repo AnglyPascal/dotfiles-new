@@ -40,14 +40,6 @@ if command -v rg &> /dev/null; then
     alias grep='rg'
 fi
 
-# System info
-alias free='free -m'
-
-# Quick edit shortcuts  
-alias vrc='nvim ~/.zshrc'
-alias vzsh='nvim ~/.config/zsh/'
-alias vi3='nvim ~/.config/i3/config'
-
 # Theme switching
 toggle_theme() {
     local alacritty_config="$HOME/.config/alacritty/alacritty.toml"
