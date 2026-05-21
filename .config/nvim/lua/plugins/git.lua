@@ -3,66 +3,29 @@ return {
   {
     "tpope/vim-fugitive",
     cmd = { "Git", "Gstatus", "Gblame", "Gpush", "Gpull", "Gdiffsplit", "Gwrite", "Gread" },
-    keys = {
-      { "<leader>gd", "<cmd>Gdiffsplit<cr>", desc = "Git diff" },
-      { "gdh", "<cmd>diffget //2<cr>", desc = "Get left diff" },
-      { "gdl", "<cmd>diffget //3<cr>", desc = "Get right diff" },
-      { "gdp", "<cmd>diffput<cr>", desc = "Put diff" },
-    },
   },
 
   -- Side-by-side diffs and file history
   {
     "sindrets/diffview.nvim",
     cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewFileHistory" },
-    keys = {
-      { "<leader>gv", "<cmd>DiffviewOpen<cr>",              desc = "Diffview open" },
-      { "<leader>gV", "<cmd>DiffviewFileHistory %<cr>",     desc = "Diffview file history" },
-      { "<leader>gq", "<cmd>DiffviewClose<cr>",             desc = "Diffview close" },
-    },
     opts = {},
   },
 
   {
     "lewis6991/gitsigns.nvim",
-    lazy = false,  -- load eagerly so it's available
-    keys = {
-      {
-        "<leader>g",
-        function()
-          local gs = package.loaded.gitsigns
-          if gs then
-            if gs.toggle_signs then
-              gs.toggle_signs()
-            else
-              vim.notify("Gitsigns is not initialized", vim.log.levels.WARN)
-            end
-          else
-            require("gitsigns").setup()
-          end
-        end,
-        desc = "Toggle git signs",
-      },
-      { "]h", function() require("gitsigns").nav_hunk("next") end, desc = "Next git hunk" },
-      { "[h", function() require("gitsigns").nav_hunk("prev") end, desc = "Previous git hunk" },
-      { "<leader>hp",
-        function() require("gitsigns").preview_hunk() end, desc = "Preview hunk" },
-      { "<leader>hr", function() require("gitsigns").reset_hunk() end, desc = "Reset hunk" },
-      { "<leader>hs",
-        function() require("gitsigns").stage_hunk() end, desc = "Stage hunk" },
-      { "<leader>hu", function() require("gitsigns").stage_hunk({ undo = true }) end, desc = "Undo stage hunk" },
-    },
+    lazy = false,
     config = function()
       -- Only configure but don't activate gitsigns initially
       require("gitsigns").setup({
-        signs = {
+        signs              = {
           add = { text = "+" },
           change = { text = "~" },
           delete = { text = "-" },
           topdelete = { text = "-" },
           changedelete = { text = "~" },
         },
-        signs_staged = {
+        signs_staged       = {
           add = { text = "+|" },
           change = { text = "~|" },
           delete = { text = "-|" },
@@ -70,16 +33,16 @@ return {
           changedelete = { text = "~|" },
         },
 
-        signcolumn = false,         -- don't show signs initially
-        numhl = false,              -- turn off number highlighting
-        linehl = true,
-        word_diff = false,
+        signcolumn         = false,
+        numhl              = false,
+        linehl             = false,
+        word_diff          = false,
         current_line_blame = false,
-        sign_priority = 6,
-        update_debounce = 100,
-        status_formatter = nil,
-        max_file_length = 40000,
-        preview_config = {
+        sign_priority      = 6,
+        update_debounce    = 100,
+        status_formatter   = nil,
+        max_file_length    = 40000,
+        preview_config     = {
           border = "single",
           style = "minimal",
           relative = "cursor",
@@ -88,8 +51,24 @@ return {
         },
       })
 
-      -- Immediately disable signs after setup
-      require("gitsigns").toggle_signs(false)
+      -- Number-column highlight colors (re-applied after any :colorscheme reload)
+      local function set_hl()
+        local hl = vim.api.nvim_set_hl
+        -- unstaged
+        hl(0, "GitSignsAddNr", { fg = "#a6e3a1", bg = "#1e3a2f" })
+        hl(0, "GitSignsChangeNr", { fg = "#f9e2af", bg = "#3a2e14" })
+        hl(0, "GitSignsDeleteNr", { fg = "#f38ba8", bg = "#3a1a1c" })
+        hl(0, "GitSignsTopDeleteNr", { fg = "#f38ba8", bg = "#3a1a1c" })
+        hl(0, "GitSignsChangeDeleteNr", { fg = "#f9e2af", bg = "#3a1a1c" })
+        -- staged (fg only)
+        hl(0, "GitSignsStagedAddNr",          { fg = "#a6e3a1" })
+        hl(0, "GitSignsStagedChangeNr",        { fg = "#f9e2af" })
+        hl(0, "GitSignsStagedDeleteNr",        { fg = "#f38ba8" })
+        hl(0, "GitSignsStagedTopDeleteNr",     { fg = "#f38ba8" })
+        hl(0, "GitSignsStagedChangeDeleteNr",  { fg = "#f9e2af" })
+      end
+      set_hl()
+      vim.api.nvim_create_autocmd("ColorScheme", { callback = set_hl })
     end,
   },
 }

@@ -41,9 +41,6 @@ opt.wildignore:append("*.ggb,*.ilg,*.ind,*.fls,*.out,*.svg,*.synctex.gz")
 opt.wildignore:append("*.idx,*.ggt,*.pdf_tex,*.fdb_latexmk")
 opt.wildignore:append("*.blg,*.class,*.bbl,*.toc,*.xdv,*.ent")
 
--- Plugin-specific globals
-g.auto_save = 1
-
 -- UltiSnips
 g.UltiSnipsExpandTrigger = '<tab>'
 g.UltiSnipsJumpForwardTrigger = '<tab>'

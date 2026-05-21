@@ -4,6 +4,16 @@ local api = vim.api
 local general_group = api.nvim_create_augroup("General", { clear = true })
 local text_group = api.nvim_create_augroup("TextFiles", { clear = true })
 
+-- Auto-save on leaving insert mode or switching buffer/window
+api.nvim_create_autocmd({ "InsertLeave", "BufLeave", "FocusLost" }, {
+  group = general_group,
+  callback = function()
+    if vim.bo.modified and vim.bo.buftype == "" and vim.fn.expand("%") ~= "" then
+      vim.cmd("silent! write")
+    end
+  end,
+})
+
 -- Highlight on yank
 api.nvim_create_autocmd("TextYankPost", {
   group = general_group,

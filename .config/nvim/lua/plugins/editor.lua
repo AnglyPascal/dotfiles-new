@@ -4,10 +4,6 @@ return {
     "nvim-tree/nvim-tree.lua",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     cmd = { "NvimTreeToggle", "NvimTreeOpen" },
-    keys = {
-      { "<C-n>",     "<cmd>NvimTreeToggle<cr>", desc = "Toggle file tree" },
-      { "<leader>n", "<cmd>NvimTreeToggle<cr>", desc = "Toggle file tree" },
-    },
     config = function()
       local function my_on_attach(bufnr)
         local api = require("nvim-tree.api")
@@ -54,15 +50,6 @@ return {
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     },
     cmd = "Telescope",
-    keys = {
-      { "<C-p>",      "<cmd>Telescope find_files<cr>", desc = "Find files" },
-      { "<leader>/",  "<cmd>Telescope live_grep<cr>",  desc = "Live grep" },
-      { "<leader>]",  "<cmd>Telescope resume<cr>",     desc = "Resume previous picker" },
-      { "<leader>b",  "<cmd>Telescope buffers<cr>",    desc = "Find buffers" },
-      { "<leader>gh", "<cmd>Telescope help_tags<cr>",  desc = "Help tags" },
-      { "<leader>gg", "<cmd>Telescope git_files<cr>",  desc = "Git files" },
-      -- { "<leader>sr", "<cmd>Telescope resume<cr>",      desc = "Resume previous picker" },
-    },
     config = function()
       local telescope = require("telescope")
       local actions = require("telescope.actions")
@@ -102,12 +89,6 @@ return {
     end,
   },
 
-  -- Auto-save
-  {
-    "907th/vim-auto-save",
-    event = { "BufReadPre", "BufNewFile" },
-  },
-
   -- Surround (Lua rewrite, same cs/ds/ys keys, proper dot-repeat)
   {
     "kylechui/nvim-surround",
@@ -121,9 +102,6 @@ return {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
     cmd = { "IBLToggle", "IBLEnable", "IBLDisable" },
-    keys = {
-      { "<leader>r", "<cmd>IBLToggle<cr>", desc = "Toggle indent guides" },
-    },
     opts = {
       indent = { char = "|" },
       scope = { enabled = false },
@@ -134,15 +112,6 @@ return {
   {
     "rhysd/conflict-marker.vim",
     event = "BufReadPost",
-    keys = {
-      { "co", "<cmd>ConflictMarkerOurselves<cr>",  desc = "Conflict: take ours" },
-      { "ct", "<cmd>ConflictMarkerThemselves<cr>", desc = "Conflict: take theirs" },
-      { "cb", "<cmd>ConflictMarkerBoth<cr>",       desc = "Conflict: take both (ours first)" },
-      { "cB", "<cmd>ConflictMarkerBoth!<cr>",      desc = "Conflict: take both (theirs first)" },
-      { "cn", "<cmd>ConflictMarkerNone<cr>",       desc = "Conflict: take neither" },
-      { "]x", "<cmd>ConflictMarkerNextHunk<cr>",   desc = "Next conflict" },
-      { "[x", "<cmd>ConflictMarkerPrevHunk<cr>",   desc = "Prev conflict" },
-    },
   },
 
   -- Code outline/symbols
@@ -153,9 +122,6 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
     cmd = { "AerialToggle", "AerialOpen" },
-    keys = {
-      { "<leader>a", "<cmd>AerialToggle!<cr>", desc = "Toggle aerial" },
-    },
     config = function()
       require("aerial").setup({
         on_attach = function(bufnr)
@@ -196,11 +162,6 @@ return {
         }
       })
     end,
-    keys = {
-      { "<leader>S",  '<cmd>lua require("spectre").toggle()<CR>',                             desc = "Toggle Spectre" },
-      { "<leader>sw", '<cmd>lua require("spectre").open_visual({select_word=true})<CR>',      desc = "Search current word" },
-      { "<leader>sp", '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', desc = "Search in current file" },
-    }
   },
 
   {
