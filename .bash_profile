@@ -6,3 +6,4 @@
 export PATH="$HOME/.jenv/bin:$PATH"
 
 
+. "/home/ahsan/.deno/env"

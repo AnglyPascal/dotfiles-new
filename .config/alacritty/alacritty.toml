@@ -7,3 +7,8 @@ family = "Shure Tech Mono Nerd Font"
 
 [general]
 import = ["/home/ahsan/.config/alacritty/dark.toml"]
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001B\r"

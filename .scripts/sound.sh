@@ -4,6 +4,7 @@ speaker="alsa_output.pci-0000_64_00.6.HiFi__Speaker__sink"
 headphones=(
   "bluez_output.E8:EE:CC:48:B9:9C"
   "bluez_output.34:09:C9:7D:9C:00"
+  "bluez_output.34_09_C9_7D_9C_00.1"
 )
 
 current=$(pactl info | awk '/Default Sink:/ {print $3}')

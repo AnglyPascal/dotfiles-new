@@ -1,7 +1,7 @@
 #!/bin/sh
 
-temp_file="/home/ahsan/pictures/temp.png"
-perm_file="/home/ahsan/pictures/screenshots/$(date +%s).png"
+temp_file="$HOME/pictures/temp.png"
+perm_file="$HOME/pictures/screenshots/$(date +%s).png"
 
 window_select() { maim -u -st 9999999 -B "$temp_file"; }
 full_monitor() { maim -u -m 7 "$temp_file"; }

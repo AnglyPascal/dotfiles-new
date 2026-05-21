@@ -8,14 +8,14 @@ local MODES = {
     },
     hq = {
         label = 'high quality',
-        ext   = 'mp4',
-        args  = { '-c:v', 'libx264', '-preset', 'slow', '-crf', '18', '-c:a', 'aac', '-b:a', '192k' }
+        ext   = 'mkv',
+        args  = { '-c:v', 'libx265', '-preset', 'slow', '-crf', '16', '-pix_fmt', 'yuv420p10le', '-c:a', 'aac', '-b:a', '192k' }
     },
     lossless = {
         label = 'lossless',
         ext   = 'mkv',
-        args  = { '-c:v', 'libx264', '-preset', 'ultrafast', '-qp', '0', '-c:a', 'flac' }
-    }
+        args  = { '-c:v', 'libx265', '-preset', 'slow', '-x265-params', 'lossless=1', '-pix_fmt', 'yuv420p10le', '-c:a', 'flac' }
+    },
 }
 
 local function encode(mode)
@@ -47,6 +47,7 @@ local function encode(mode)
             '-ss', tostring(a),
             '-to', tostring(b),
             '-i', src,
+            '-sn',
         }
         for _, v in ipairs(m.args) do
             cmd[#cmd + 1] = v
